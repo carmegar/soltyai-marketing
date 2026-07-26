@@ -1,0 +1,4 @@
+# El CI corre en Linux: los scripts y los workflows viajan siempre en LF.
+*.js text eol=lf
+*.json text eol=lf
+*.yml text eol=lf

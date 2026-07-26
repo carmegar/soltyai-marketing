@@ -1,0 +1,26 @@
+name: guardrails
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  verificar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      # Sin dependencias a propósito: el linter tiene que correr en segundos y no puede
+      # romperse por un npm install. Si algún día necesita una librería, revisar esa decisión.
+      - name: El linter muerde
+        run: node src/guardrails/prueba.js
+
+      - name: Guardrails de mensaje
+        run: node src/guardrails/index.js
+
+      - name: Catálogo y márgenes
+        run: node src/catalogo/index.js validar

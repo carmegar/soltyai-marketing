@@ -1,0 +1,115 @@
+{
+  "_doc": "Catálogo de todo lo que SoltyAI puede vender, con su costo real de servir y su margen. Es la fuente para cotizar (src/catalogo) y para gobernar el margen. Regla dura: si un precio o un costo NO está verificado contra una fuente, va con estado 'supuesto' y el CLI lo marca en amarillo en cada cotización. Nada de números inventados que después se presentan como hechos.",
+  "actualizado": "2026-07-25",
+  "moneda": "COP",
+
+  "servicios": [
+    {
+      "id": "bot-esencial",
+      "nombre": "SoltyAI Esencial (bot determinista)",
+      "linea": "suscripcion",
+      "tipo": "recurrente",
+      "precio": 290000,
+      "costoMes": 8000,
+      "estado": "vigente",
+      "fuente": "ESTADO.md §Marketing (acordado 2026-07-22)",
+      "incluye": ["200 conversaciones/mes", "modo determinista sin IA", "1 canal (Telegram hoy)"],
+      "notas": "El costo es casi puro infra: sin IA el costo marginal por conversación es ~0. Es el plan que más protege el margen."
+    },
+    {
+      "id": "bot-pro",
+      "nombre": "SoltyAI Pro (con IA topada)",
+      "linea": "suscripcion",
+      "tipo": "recurrente",
+      "precio": 490000,
+      "costoMes": 78000,
+      "estado": "vigente",
+      "fuente": "ESTADO.md §Marketing + 01-SOURCE-BRIEF §Costo de servir",
+      "incluye": ["500 conversaciones/mes", "IA Claude Haiku 4.5 dentro del tope", "1 canal"],
+      "notas": "Costo = infra (~$8.000) + IA 500 conv × US$0.035 × TRM 4.000 ≈ $70.000. El tope de conversaciones es lo que sostiene el margen; pasado el tope se cobra excedente."
+    },
+    {
+      "id": "bot-premium",
+      "nombre": "SoltyAI Premium (multi-sede)",
+      "linea": "suscripcion",
+      "tipo": "recurrente",
+      "precio": 790000,
+      "costoMes": 218000,
+      "estado": "vigente",
+      "fuente": "ESTADO.md §Marketing + 01-SOURCE-BRIEF §Costo de servir",
+      "incluye": ["1.500 conversaciones/mes", "IA topada", "multi-sede"],
+      "notas": "Costo = infra + IA 1.500 conv × US$0.035 × TRM 4.000 ≈ $210.000. Es el plan de margen porcentual más bajo: vigilarlo si el uso real se pega al tope."
+    },
+    {
+      "id": "setup",
+      "nombre": "Setup / adaptación done-for-you",
+      "linea": "suscripcion",
+      "tipo": "unico",
+      "precio": 400000,
+      "costoUnico": 240000,
+      "estado": "supuesto",
+      "fuente": "Precio verificado (ESTADO.md §Marketing). El COSTO es supuesto: 4 h de trabajo del fundador a tarifa interna.",
+      "incluye": ["carga de catálogo/inventario", "ajuste de flujos y tono", "conexión del canal", "prueba con datos reales"],
+      "notas": "El setup financia el CAC. Si un setup real toma más de 4 h de forma sistemática, hay que subir el precio o simplificar el onboarding — medirlo desde el primer cliente."
+    },
+    {
+      "id": "excedente-conversaciones",
+      "nombre": "Excedente de conversaciones",
+      "linea": "suscripcion",
+      "tipo": "consumo",
+      "precio": 50000,
+      "unidad": "cada 100 conversaciones",
+      "costoUnico": 14000,
+      "estado": "vigente",
+      "fuente": "ESTADO.md §Marketing",
+      "notas": "Costo = 100 conv × US$0.035 × TRM 4.000. Margen sano; existe para que el uso alto no coma el margen del plan."
+    },
+
+    {
+      "id": "desarrollo-a-medida",
+      "nombre": "Desarrollo a la medida",
+      "linea": "servicios",
+      "tipo": "proyecto",
+      "precio": 3000000,
+      "costoUnico": 2400000,
+      "estado": "supuesto",
+      "fuente": "Piso de precio verificado (13-PLAN-12-CLIENTES §10). Referencia real de mercado propio: módulo Zaranda de Swisscontact $2.300.000. El costo (40 h a tarifa interna) es supuesto.",
+      "reglas": ["pisoPrecio", "anticipo50", "unoPorTrimestre", "dejaPiezaReutilizable", "saleConPropuestaDeBot"],
+      "notas": "El precio del catálogo es el PISO, no el precio: cada proyecto se cotiza por alcance. El costo real es tiempo del único desarrollador, que es también el único vendedor — por eso el margen contable engaña: el costo de oportunidad es la prospección que se detiene."
+    },
+    {
+      "id": "web-corporativa",
+      "nombre": "Página web / landing corporativa",
+      "linea": "servicios",
+      "tipo": "proyecto",
+      "precio": 1500000,
+      "costoUnico": 900000,
+      "estado": "supuesto",
+      "fuente": "Sin precio verificado. Supuesto a confirmar con la primera venta real.",
+      "reglas": ["anticipo50", "saleConPropuestaDeBot"],
+      "notas": "Excepción explícita al piso de $3M: la web es puerta de entrada barata a un cliente que después toma bot. Solo se toma si sale con propuesta de suscripción."
+    },
+    {
+      "id": "integracion-erp",
+      "nombre": "Integración a ERP / sistema legacy",
+      "linea": "servicios",
+      "tipo": "mixto",
+      "precio": 3500000,
+      "precioRecurrente": 720000,
+      "costoUnico": 2400000,
+      "costoMes": 30000,
+      "estado": "legacy",
+      "fuente": "01-SOURCE-BRIEF (modelo USD: desde $3.500 setup + $180/mes). Convertido a COP con TRM supuesta 4.000 — NO reconciliado con el pricing COP vigente.",
+      "reglas": ["pisoPrecio", "anticipo50"],
+      "notas": "⚠️ Único ítem del catálogo que sigue en el modelo USD viejo. Antes de cotizarlo hay que fijar su precio COP igual que se hizo con los planes."
+    }
+  ],
+
+  "reglas": {
+    "pisoPrecio": "No se cotiza por debajo de $3.000.000 (13 §10). Excepción anotada: proyecto chico que abre cliente grande.",
+    "anticipo50": "50% de anticipo para agendar. Sin anticipo no entra al calendario (lección Swisscontact: $2,3M cobrados contra entrega).",
+    "unoPorTrimestre": "Máximo un proyecto a la vez y uno por trimestre mientras la meta de 12 clientes esté viva.",
+    "dejaPiezaReutilizable": "Si no deja módulo reutilizable en platform/, es trabajo por horas disfrazado.",
+    "saleConPropuestaDeBot": "Todo cliente de servicio recibe propuesta de suscripción. La puerta es el proyecto; la renta es el bot."
+  }
+}

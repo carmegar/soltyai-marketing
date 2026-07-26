@@ -1,0 +1,179 @@
+GUIONES DE OUTBOUND — SoltyAI (WhatsApp 1 a 1, manual)
+Actualizado: 2026-07-25. Precios en COP vigentes. Texto plano: se copia y se pega tal cual.
+Reemplaza lo que va entre [corchetes]. No pegues los encabezados en mayúscula.
+
+REGLAS QUE NO SE SALTAN
+- 30 a 50 mensajes por dia como maximo, desde un numero calentado. Esto es manual, no un blast.
+- Personaliza SIEMPRE el primer toque con el nombre real del negocio y una senal concreta.
+- Un solo llamado a la accion por mensaje. En el toque 1 no se habla de precio.
+- Opt out en el primer mensaje, y se respeta al instante.
+- La demo es por Telegram. No prometas WhatsApp API mientras Meta no apruebe.
+- Nunca subas estos telefonos a Meta como audiencia.
+
+
+=====================================================================
+TOQUE 1 — DIA 0
+=====================================================================
+
+--- A. Inmobiliaria con buenas resenas ---
+
+Hola [nombre], buenas. Vi que [Inmobiliaria X] tiene muy buenas resenas en [ciudad], felicitaciones.
+Le escribo de SoltyAI: montamos asistentes que responden por WhatsApp y Telegram con el inventario
+real de la inmobiliaria. Responden precios, zonas y disponibilidad a cualquier hora, y agendan la
+visita en la agenda del asesor.
+Le grabe un video corto de uno funcionando con inmuebles reales: [link video]
+Si no le interesa me dice y no le vuelvo a escribir.
+
+
+--- B. Negocio sin pagina web ---
+
+Hola [nombre], buenas. Encontre [Inmobiliaria X] en Google Maps.
+Una pregunta rapida: cuando alguien escribe preguntando por un inmueble a las 8 de la noche o un
+domingo, quien responde?
+Nosotros montamos un asistente que contesta por usted a cualquier hora, con sus inmuebles y sus
+precios, y le agenda la visita. Aca se ve funcionando: [link video]
+Si prefiere que no le escriba mas, me avisa y listo.
+
+
+--- C. Corta y directa ---
+
+Hola [nombre], soy Carlos, de SoltyAI.
+Cuantos clientes le escriben a [Inmobiliaria X] fuera de horario y no alcanzan a responderles?
+Tenemos un asistente que responde y agenda visitas solo, con su propio inventario. Un minuto de
+video: [link video]
+Si no aplica para ustedes, sin problema.
+
+
+=====================================================================
+TOQUE 2 — DIA 2 o 3 (a quien no respondio)
+=====================================================================
+
+Hola [nombre], le escribi hace un par de dias.
+Le dejo otra vez el video por si tiene un minuto: [link video]
+La gracia es que atiende y agenda mientras usted esta ocupado con lo demas. Le sirve que se lo
+muestre funcionando con los inmuebles de [Inmobiliaria X]?
+
+
+--- Si vio el video pero no contesto ---
+
+Hola [nombre], vi que alcanzo a ver el video. Que le parecio?
+Si quiere, le armo el bot con los datos reales de [Inmobiliaria X], sus proyectos, sus zonas y sus
+precios, y usted lo prueba antes de decidir nada.
+
+
+=====================================================================
+TOQUE 3 — DIA 5 a 7 (cierre del hilo)
+=====================================================================
+
+Hola [nombre], le hago el ultimo toque y no le insisto mas.
+Si le sirve, se lo dejamos montado esta semana: la instalacion es de 400.000 y desde ahi queda en
+290.000 mensuales mas IVA, con todo incluido.
+Como estamos arrancando en [ciudad], a los primeros clientes les dejamos 30% de descuento los
+primeros tres meses a cambio de poder contar el caso.
+Le cuadra que hablemos 10 minutos hoy o manana?
+
+
+=====================================================================
+CUANDO RESPONDEN: LLEVARLOS A LA DEMO
+=====================================================================
+
+Paso 1. Agradece y ofrece el bot en vivo (ojo: el bot pide autorizacion, hay que aprobarlo en el
+momento, asi que ofrecelo cuando puedas estar pendiente).
+
+  Que bueno que me responde. Le paso el bot para que lo viva usted mismo: [link bot]
+  Escribale como si fuera un cliente buscando apartamento. Yo le habilito el acceso ya mismo,
+  deme un minuto.
+
+Paso 2. Si preguntan que es exactamente:
+
+  Es un asistente conectado a su inventario. Responde por precio, zona y disponibilidad, filtra al
+  que solo esta mirando, y al que si va en serio le agenda la visita y le avisa al asesor.
+  Usted recibe el cliente ya calificado y con la cita puesta.
+
+Paso 3. Cierre a reunion, con el setup como prueba:
+
+  Que le parecio? Si le gusta, le dejo el bot cargado con los datos reales de [Inmobiliaria X]
+  para que lo pruebe de verdad. Tiene 10 minutos hoy o manana y lo dejamos armado?
+
+Paso 4. Anota en el CSV: nombre, negocio, ciudad, que dijo, proximo paso y fecha.
+
+
+=====================================================================
+OBJECIONES (responder corto y devolver con pregunta)
+=====================================================================
+
+"Cuanto cuesta?" (muy temprano)
+  Para inmobiliaria arranca en 290.000 al mes mas IVA, con la instalacion aparte, 400.000 una sola
+  vez. Antes de hablar de plata, prefiere verlo funcionando con sus inmuebles? Son dos minutos.
+
+"Esta muy caro"
+  Le entiendo. Miremoslo asi: un asesor cuesta mas de 1.200.000 al mes y aun asi no cubre noches ni
+  domingos. El bot atiende todo el tiempo por una fraccion, y la IA va incluida, sin cobrarle aparte.
+  Con que le entre un negocio mas de los que hoy se le escapan de noche, ya se pago.
+  Cuantos clientes calcula que se le pierden por no alcanzar a responder?
+
+"Ya tengo quien responda"
+  Perfecto, no lo reemplaza. Le quita las diez preguntas repetidas de siempre y contesta cuando esa
+  persona no esta. Ella cierra, el bot filtra y agenda. Le muestro como se reparten el trabajo?
+
+"Ya uso WhatsApp Business con respuestas automaticas"
+  Esas son respuestas fijas. Esto entiende lo que le preguntan, busca en su inventario y agenda la
+  visita solo. La diferencia se nota en un minuto de prueba.
+
+"Es por WhatsApp?"
+  Hoy se lo muestro por Telegram, que para el cliente es igual, y WhatsApp esta en camino.
+  Lo importante es que vea como conversa.
+
+"No tengo tiempo ahora"
+  Justo por eso existe. Le dejo el video y lo ve cuando pueda: [link video]
+  Si le gusta, coordinamos 10 minutos y yo lo dejo listo.
+
+"Y si responde mal o inventa?"
+  Solo responde con lo que usted le carga. Si no sabe algo, pasa el chat a una persona en vez de
+  inventar. Y usted ve todas las conversaciones en un panel.
+
+"Que hacen con mis datos?"
+  Los datos son suyos, se los puede llevar cuando quiera y no los revendemos. Cumplimos la ley 1581.
+  El bot solo usa la informacion que usted le carga de su negocio.
+
+"Como se que funciona? Tienen casos?"
+  Estamos arrancando, por eso el descuento a los primeros. Ya tenemos uno andando en una operacion
+  de domicilios en Bucaramanga. La mejor prueba es que lo pruebe usted con un caso suyo.
+
+"Mandeme informacion"
+  Mejor que un PDF: vealo funcionando, es un minuto. [link video]
+  Si le interesa, le paso el resumen de precios despues.
+
+"Necesito saber de tecnologia?"
+  Nada. Nosotros lo montamos con sus datos y usted solo lo usa. Eso es justamente la instalacion.
+
+"Dejeme pensarlo / lo hablo con mi socio"
+  Claro. Para que lo decidan viendo algo real, le dejo el bot cargado con los datos de
+  [Inmobiliaria X] y lo prueban los dos. Sin compromiso.
+
+"De donde saco mi numero?"
+  De su perfil publico en Google Maps. Le escribi porque [Inmobiliaria X] se ve activa y creo que
+  esto le suma. Si prefiere que no lo contacte mas, lo respeto de una.
+
+"Hay permanencia?"
+  No. Es mensual, lo cancela cuando quiera y se lleva sus datos. La idea es que se quede porque le
+  sirve, no porque este amarrado.
+
+"No me interesa"
+  Sin problema, gracias por responder. Cualquier cosa quedo atento. Exitos.
+  (Marcar descartado y no volver a escribir.)
+
+
+=====================================================================
+PRECIOS (para no improvisar)
+=====================================================================
+
+Inmobiliaria, mas IVA:
+  Esencial   290.000 al mes    hasta 200 conversaciones
+  Pro        490.000 al mes    hasta 500 conversaciones, con IA
+  Premium    790.000 al mes    hasta 1.500 conversaciones, multi sede
+  Instalacion 400.000 una sola vez
+  Conversaciones de mas: 50.000 por cada 100
+
+Primeros 3 a 5 clientes: 30% de descuento por 3 meses, a cambio de poder contar el caso.
+No existen planes Starter, Growth ni Pro genericos. No los menciones.

@@ -1,0 +1,15 @@
+node_modules/
+.env
+.env.*
+!.env.example
+*.log
+
+# Datos personales (Ley 1581): listas de prospectos, exports de CRM, correos.
+# El registro de links, el catálogo y el tablero SÍ se versionan (son memoria de la empresa).
+data/privado/
+data/exports/
+*.csv
+!copy/**/*.csv
+
+# Salidas de generación (creatividades pesadas). Las piezas aprobadas van a redes/ o swipe/.
+out/

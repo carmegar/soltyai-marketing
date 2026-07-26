@@ -1,0 +1,136 @@
+{
+  "_doc": "Hechos canónicos en formato máquina. Espejo de 01-SOURCE-BRIEF.md + ESTADO.md §Marketing. Si cambia el precio o la promesa, se cambia AQUÍ y en el doc, en el mismo commit. Los guardrails leen este archivo: es lo que hace que una decisión escrita se vuelva una regla que falla el CI.",
+  "actualizado": "2026-07-25",
+  "fuentes": [
+    "01-SOURCE-BRIEF.md (promesa, verticales, canales, costo de servir)",
+    "ESTADO.md §Marketing (pricing COP vigente, acordado 2026-07-22)",
+    "13-PLAN-12-CLIENTES.md §10 (reglas de la línea de servicios)",
+    "03-competitor-analysis.md §3 (ángulos quemados del mercado)"
+  ],
+
+  "moneda": "COP",
+  "trm": {
+    "valor": 4000,
+    "estado": "supuesto",
+    "nota": "Solo para comparar los precios USD legacy de 05/06 con los COP vigentes. Actualizar contra la TRM real antes de usarlo en una cotización."
+  },
+
+  "planes": [
+    { "id": "esencial", "nombre": "Esencial", "precioMes": 290000, "conversaciones": 200, "ia": false, "estado": "vigente" },
+    { "id": "pro", "nombre": "Pro", "precioMes": 490000, "conversaciones": 500, "ia": true, "estado": "vigente" },
+    { "id": "premium", "nombre": "Premium", "precioMes": 790000, "conversaciones": 1500, "ia": true, "estado": "vigente" }
+  ],
+  "setup": { "precio": 400000, "nota": "Única vez. ES la adaptación done-for-you, no una barrera." },
+  "excedente": { "precio": 50000, "cada": 100, "unidad": "conversaciones" },
+  "iva": 0.19,
+  "descuentoPrimerosClientes": {
+    "porcentaje": 0.3,
+    "meses": 3,
+    "cupos": 5,
+    "condicion": "caso de estudio",
+    "estado": "autorizado"
+  },
+
+  "promesa": {
+    "central": "Te devolvemos tiempo y ponemos orden en tu negocio: un asistente que atiende, vende y agenda 24/7 — adaptado a tu forma de trabajar.",
+    "tagline": "Más tiempo, más orden, más ventas — con un bot hecho a tu medida.",
+    "moat": "No te entregamos una herramienta para que la configures tú. La adaptamos a tu negocio en la instalación.",
+    "ejes": ["tiempo", "orden", "productividad"]
+  },
+
+  "canales": {
+    "vivos": ["telegram"],
+    "proximamente": ["whatsapp", "web"],
+    "nota": "WhatsApp Business API depende de la validación de Meta como Tech Provider (App Review enviado 2026-07-19). Hasta que Meta apruebe, WhatsApp SOLO se nombra como 'próximamente'."
+  },
+
+  "verticales": ["citas", "comercio", "inmobiliaria", "integraciones"],
+
+  "costoDeServir": {
+    "moneda": "USD",
+    "iaPorConversacion": { "min": 0.02, "max": 0.05, "modelo": "claude-haiku-4-5", "estado": "verificado" },
+    "infraPorClienteMes": { "min": 1, "max": 2, "nota": "VPS Hetzner CPX32 ~€20/mes compartido entre todos los tenants", "estado": "verificado" },
+    "modoSinIa": 0
+  },
+
+  "margenMinimo": {
+    "_doc": "Por línea, porque el costo es de naturaleza distinta: en suscripción el costo es infra+IA (marginal, escalable); en servicios el costo es tiempo del único desarrollador, que además es el único vendedor. Un servicio al 35% que consume 6 semanas cuesta más de lo que dice la tabla: cuesta la prospección que se detuvo.",
+    "suscripcion": 0.6,
+    "servicios": 0.35
+  },
+
+  "lineaServicios": {
+    "_fuente": "13-PLAN-12-CLIENTES.md §10 — reglas anti-trampa-de-agencia",
+    "pisoPrecio": 3000000,
+    "anticipo": 0.5,
+    "maxProyectosSimultaneos": 1,
+    "maxProyectosPorTrimestre": 1,
+    "excepcionPiso": "Solo si el proyecto abre la puerta a un cliente grande, y se anota como tal.",
+    "reglas": [
+      "La prospección no se suspende por un proyecto en curso.",
+      "Todo proyecto deja pieza reutilizable en platform/.",
+      "Todo cliente de servicio sale con propuesta de bot.",
+      "El titular público sigue siendo el bot: el servicio se ofrece, no se anuncia."
+    ]
+  },
+
+  "limitesMeta": {
+    "_fuente": "07-CAMPAIGN-BRIEF.md §4",
+    "texto": { "max": 125, "nota": "Meta trunca por encima en móvil" },
+    "titular": { "max": 40, "ideal": 27 },
+    "descripcion": { "max": 30 }
+  },
+
+  "utm": {
+    "_fuente": "08-TRACKING-SETUP.md §2",
+    "source": ["meta", "linkedin", "instagram", "tiktok", "youtube", "outbound", "organico"],
+    "medium": ["paid_social", "organic_social", "email", "referral", "directo"],
+    "formatoOrigin": "fuente_audiencia_creatividad",
+    "maxLargoStart": 64,
+    "regexStart": "^[A-Za-z0-9_-]{1,64}$",
+    "nota": "El `start` de Telegram solo admite A-Za-z0-9_- y hasta 64 caracteres. Es la clave de conciliación: si se rompe, se pierde el origen del lead."
+  },
+
+  "prohibiciones": {
+    "_doc": "Cada patrón se chequea contra las piezas de copy/. Los docs se saltan estas reglas salvo que se indique alcance 'todo': un doc puede (y debe) nombrar lo prohibido para explicarlo.",
+    "planesSuperados": {
+      "patrones": ["Starter\\s*\\$?\\s*49", "Growth\\s*\\$?\\s*149", "Pro\\s*\\$?\\s*399", "Starter\\s*/\\s*Growth\\s*/\\s*Pro"],
+      "alcance": "todo",
+      "porque": "Los planes USD Starter $49 / Growth $149 / Pro $399 están superados. OJO: 'Pro' a secas SÍ es válido — es el plan COP de $490.000.",
+      "exenciones": [
+        "prohibid", "superad", "no usar", "viejo", "anterior", "legacy", "descartad",
+        "ya no", "reemplaz", "sin referencia", "sin starter", "cero", "nunca",
+        "no existen", "no menciones", "no aparece"
+      ]
+    },
+    "whatsappComoPromesa": {
+      "patrones": [
+        "whatsapp business api",
+        "api de whatsapp",
+        "bot (en|por|para) (tu )?whatsapp",
+        "(atiende|atencion|responde|vende|agenda) (en|por) (tu )?whatsapp"
+      ],
+      "alcance": "copy",
+      "porque": "Meta aún no valida a SoltyAI como Tech Provider. El BOT no se promete en WhatsApp: solo 'próximamente'. (Ofrecer el WhatsApp humano de contacto —«escríbenos por WhatsApp»— sí es válido: esa CTA existe y la atiende una persona.)",
+      "exenciones": ["próximamente", "proximamente", "pendiente", "cuando", "aún no", "aun no"]
+    },
+    "angulosQuemados": {
+      "patrones": ["centraliza tu whatsapp", "crm para whatsapp", "todos tus chats en una bandeja"],
+      "alcance": "copy",
+      "porque": "03-competitor-analysis §3: ya los usan Whaticket, B2Chat, Leadsales. Sonar igual es regalar el clic.",
+      "exenciones": []
+    },
+    "pruebaSocialInventada": {
+      "patrones": ["\\+\\s*\\d{2,}\\s+(clientes|empresas|negocios|proyectos)", "l[ií]deres en", "el #\\s*1", "n[uú]mero 1 en", "miles de (clientes|negocios|empresas)"],
+      "alcance": "copy",
+      "porque": "Hoy solo podemos nombrar a Bucaradomi (piloto real, con permiso) y a Swisscontact (servicio). Todo lo demás es la mentira de '+100 proyectos exitosos' del swipe file.",
+      "exenciones": []
+    },
+    "absolutos": {
+      "patrones": ["ilimitad", "100% garantizado", "sin ning[uú]n costo", "gratis para siempre"],
+      "alcance": "copy",
+      "porque": "Los planes tienen tope de conversaciones y de IA. Prometer ilimitado contradice el pricing y quema el margen.",
+      "exenciones": []
+    }
+  }
+}

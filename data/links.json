@@ -1,0 +1,20 @@
+{
+  "_doc": "Registro de todo link publicado, con su origen de atribución. La cadena `origin` (fuente_audiencia_creatividad) es la clave que concilia el clic con el lead que entra por Telegram, WhatsApp o Calendly — ver 08-TRACKING-SETUP §2. Se genera con `npm run link nuevo`, nunca a mano: el `start` de Telegram tiene formato duro y si se rompe el lead llega sin fuente.",
+  "links": [
+    {
+      "origin": "meta_duenopyme_c2",
+      "fuente": "meta",
+      "medium": "paid_social",
+      "campana": "traffic_prospecting_co_2026q3",
+      "creatividad": "c2",
+      "audiencia": "duenopyme",
+      "vertical": "inmobiliaria",
+      "nota": "Concepto 2A done-for-you",
+      "creado": "2026-07-25",
+      "url": "https://soltyai.com/ir?utm_source=meta&utm_medium=paid_social&utm_campaign=traffic_prospecting_co_2026q3&utm_content=c2&utm_term=duenopyme&origin=meta_duenopyme_c2",
+      "telegram": "https://t.me/inmobiliaria_solty_bot?start=meta_duenopyme_c2",
+      "whatsapp": null,
+      "calendly": null
+    }
+  ]
+}

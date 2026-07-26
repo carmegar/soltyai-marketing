@@ -1,0 +1,21 @@
+{
+  "_doc": "FIXTURE — no es una pieza real, no se publica. Existe para probar que los guardrails muerden: acumula a propósito todos los errores que el linter debe cazar. Si algún día esta pieza pasa el linter, el linter está roto. Corre `npm run prueba`.",
+  "id": "_fixture-anuncio-malo",
+  "estado": "fixture",
+  "origin": "meta_inexistente_zz",
+
+  "texto": "Somos líderes en Colombia con +100 clientes felices. Tu bot en 40 días o no pagas, con conversaciones ilimitadas y atención por WhatsApp desde el primer día.",
+  "titular": "Este titular es larguísimo y se pasa del máximo de Meta",
+  "descripcion": "Esta descripción también se pasa de treinta",
+  "destino_titular": "Tu bot listo en 90 días",
+
+  "_esperados": [
+    "prohibicion:pruebaSocialInventada",
+    "prohibicion:absolutos",
+    "prohibicion:whatsappComoPromesa",
+    "copy:limite-meta",
+    "copy:coherencia-plazo",
+    "copy:garantia-sin-definir",
+    "copy:origen-sin-link"
+  ]
+}

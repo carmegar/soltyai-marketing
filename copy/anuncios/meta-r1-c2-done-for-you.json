@@ -1,0 +1,25 @@
+{
+  "_doc": "Pieza publicable, en formato máquina para que los guardrails la puedan verificar (largos de Meta, coherencia de plazos y precios, promesas prohibidas, origen de atribución registrado). El texto sale del copy deck de 07-CAMPAIGN-BRIEF.md §4 Concepto 2A; este archivo es la versión que se sube al ad manager.",
+  "id": "meta-r1-c2-done-for-you",
+  "fuente": "07-CAMPAIGN-BRIEF.md §4 · Concepto 2 variante 2A (PRINCIPAL)",
+  "estado": "borrador",
+  "plataforma": "meta",
+  "objetivo": "trafico",
+  "ronda": "r1",
+  "concepto": "done-for-you",
+  "vertical": null,
+  "origin": "meta_duenopyme_c2",
+
+  "texto": "Habla con el bot 1 minuto y míralo atender a tus clientes. Lo adaptamos a tu negocio, no lo armas tú.",
+  "titular": "Vive el producto hoy",
+  "descripcion": "Adaptado a tu negocio",
+  "cta": "Más información",
+
+  "creatividad": null,
+  "destino_titular": "Prueba el bot de SoltyAI",
+
+  "notas": [
+    "El destino es la landing puente /ir (08 §3), no un deep-link directo a t.me: el píxel tiene que ver el aterrizaje y qué CTA eligió el clic.",
+    "Sin creatividad asignada todavía. Cuando exista, el archivo va a redes/ o a out/ y se referencia aquí."
+  ]
+}

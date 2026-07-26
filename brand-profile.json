@@ -1,0 +1,86 @@
+{
+  "schema_version": "1.1",
+  "brand_name": "SoltyAI",
+  "website_url": "https://soltyai.com",
+  "extracted_at": "2026-06-17T00:00:00Z",
+  "updated_at": "2026-06-20T00:00:00Z",
+  "promise": {
+    "central": "Te devolvemos tiempo y ponemos orden en tu negocio: un asistente que atiende, vende y agenda 24/7 — adaptado a tu forma de trabajar.",
+    "tagline": "Más tiempo, más orden, más ventas — con un bot hecho a tu medida.",
+    "value_axes": ["tiempo", "orden", "productividad"],
+    "value_axes_detail": {
+      "tiempo": "atiende 24/7 sin contratar más gente",
+      "orden": "todo registrado, agendado, sin caos",
+      "productividad": "tus asesores dejan de repetir lo mismo"
+    }
+  },
+  "differentiator": {
+    "moat": "No te entregamos una herramienta para que la configures tú. La adaptamos a tu negocio en la instalación (done-for-you): tu catálogo, tus precios, tu forma de atender.",
+    "moat_short": "Done-for-you: lo adaptamos a tu negocio en la instalación, no te toca configurarlo.",
+    "justifies": "El setup fee ES la adaptación done-for-you, no una barrera de entrada.",
+    "pillars": [
+      "done-for-you (lo montamos y adaptamos nosotros)",
+      "vertical pre-entrenado por industria",
+      "IA incluida sin sorpresa de tokens (modo con/sin IA para controlar costo)",
+      "adaptación en la instalación con tus datos reales",
+      "soporte local en Colombia",
+      "3 opciones de entrada: prueba el bot / agenda demo / WhatsApp"
+    ]
+  },
+  "voice": {
+    "formal_casual": 8,
+    "rational_emotional": 5,
+    "playful_serious": 6,
+    "bold_subtle": 8,
+    "traditional_innovative": 9,
+    "expert_accessible": 7,
+    "descriptors": ["directa", "técnica-accesible", "orientada a resultados"]
+  },
+  "colors": {
+    "primary": "#0EA5E9",
+    "secondary": ["#10B981", "#22D3EE", "#67E8F9"],
+    "forbidden": ["#FFFFFF backgrounds (la marca es dark/navy)"],
+    "background": "#0A1628",
+    "text": "#CBD5E1"
+  },
+  "typography": {
+    "heading_font": "Inter",
+    "body_font": "Inter",
+    "pairing_descriptor": "Una sola familia (Inter Variable, self-hosted) en titulares y cuerpo; sans-serif geométrica neutra, look SaaS/tech limpio"
+  },
+  "imagery": {
+    "style": "flat design",
+    "subjects": ["abstracto / red neuronal", "datos y dashboards", "interfaz de producto / chat"],
+    "composition": "Minimal y limpia, mucho espacio negativo, grid sutil, orbes flotantes y líneas conectoras estilo red neuronal sobre fondo navy",
+    "forbidden": ["fotos de stock cursi", "lifestyle de consumo", "imágenes de personas genéricas sonriendo a cámara"]
+  },
+  "aesthetic": {
+    "mood_keywords": ["dark/navy tech", "minimal", "profesional"],
+    "texture": "minimal",
+    "negative_space": "generous"
+  },
+  "brand_values": ["devolver tiempo y poner orden (atiende, vende y agenda 24/7)", "done-for-you / hecho a tu medida (lo adaptamos en la instalación, no te toca configurar)", "honestidad y transparencia (sin permanencia, precios claros, IA incluida sin sorpresa de tokens, datos exportables, canal honesto Telegram hoy)"],
+  "channels": {
+    "live": ["Telegram"],
+    "coming_soon": ["WhatsApp Business API oficial", "web"],
+    "note": "Telegram vivo hoy; WhatsApp/web próximamente (Meta Tech Provider pendiente, requiere constituir la SAS). No prometer WhatsApp API."
+  },
+  "target_audience": {
+    "age_range": "30-55",
+    "profession": "Dueños y administradores de PYMEs en Colombia y LATAM (citas/servicios, comercio/domicilios, inmobiliaria, empresas con ERP/legacy) que atienden clientes por WhatsApp",
+    "pain_points": ["pierde tiempo atendiendo y repitiendo lo mismo; los asesores gastan el día en las mismas preguntas", "caos / falta de orden: citas que se chocan, pedidos sueltos, leads que se pierden fuera de horario", "contratar más personal no escala costos ni cubre 24/7 todos los canales", "las plataformas existentes te las entregan para configurarlas tú (fricción de montaje)"],
+    "aspirations": ["recuperar tiempo y orden sin contratar más gente", "tener algo ya adaptado a su negocio, no una herramienta genérica que toca armar", "vender y agendar 24/7 con costos predecibles (IA incluida, sin sorpresa de tokens)"]
+  },
+  "pricing_context": {
+    "model": "por producto (USD)",
+    "products": {
+      "agenda": {"subscription_usd": 65, "setup_usd": 250, "for": "peluquerías, barberías, spa, estética, uñas, consultorios"},
+      "pedidos": {"subscription_usd": 80, "setup_usd": 280, "for": "restaurantes de barrio, tiendas, domicilios"},
+      "inmobiliario_entry": {"subscription_usd": 249, "setup_usd": 600, "status": "propuesto (validar en ronda semilla)", "for": "inmobiliarias 3–15 agentes"},
+      "inmobiliario_full": {"subscription_usd": 650, "setup_usd": 1500, "for": "inventarios grandes / +15 agentes"},
+      "integraciones": {"subscription_usd_from": 180, "setup_usd_from": 3500, "for": "empresas con ERP/legacy"}
+    },
+    "bundle_discount": "-10% desde el 2º producto del mismo cliente",
+    "forbidden": ["planes Starter $49 / Growth $149 / Pro $399 (superados)"]
+  }
+}

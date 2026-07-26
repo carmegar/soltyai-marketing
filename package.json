@@ -1,0 +1,17 @@
+{
+  "name": "@soltyai/marketing",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Motor de marketing de SoltyAI: guardrails de mensaje, registro de links/atribución y catálogo de servicios con margen",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "guardrails": "node src/guardrails/index.js",
+    "prueba": "node src/guardrails/prueba.js",
+    "link": "node src/links/index.js",
+    "catalogo": "node src/catalogo/index.js",
+    "check": "node src/guardrails/prueba.js && node src/guardrails/index.js && node src/catalogo/index.js validar"
+  }
+}
