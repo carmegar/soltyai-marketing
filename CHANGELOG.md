@@ -1,5 +1,39 @@
 # Changelog · soltyai-marketing
 
+## 2026-07-26 — 🛡️ La garantía del ángulo G deja de ser una frase y se vuelve dato canónico
+
+- **`data/canon.json` → bloque `garantiaImplementacion` (nuevo).** El ángulo G venía con una deuda
+  escrita en el propio doc (*"falta definir qué cuenta como atendiendo y qué se devuelve"*). Queda
+  definido y auditable: plazo **7 días calendario**, "atendiendo" = bot en el canal del cliente con
+  su catálogo o flujo cargado y **al menos una conversación real completada**, el reloj arranca con
+  la información del onboarding completa y **se pausa** si falta algo, reclamo dentro de 15 días, y
+  alcance limitado a la implementación estándar del vertical (las integraciones a la medida quedan
+  fuera). Esto es lo que la regla `copy:garantia-sin-definir` del linter ya exigía a nivel de pieza:
+  ahora existe la fuente contra la cual escribirla.
+- **Escalonada por plan, no plana.** El 50% de anticipo del setup es fijo en los tres planes (es el
+  filtro que separa al que va en serio del curioso); lo que escala es qué recupera el cliente si
+  incumplimos: Esencial no se cobra el 50% restante · Pro además devuelve lo ya pagado · Premium
+  además no cobra el primer mes. Exposición de caja: $0 / $200.000 / $990.000.
+- **Por qué al revés del mercado, con la evidencia:** Cliengo, Whaticket y B2Chat dan prueba gratis
+  de 7–14 días y **ninguna garantía**; los que sí garantizan (Richpanel, ContentBot, Agent Builder)
+  devuelven **la suscripción** y **excluyen expresamente el setup y los servicios profesionales**.
+  Tiene sentido para ellos: producto self-service, sin trabajo humano. Acá la adaptación **es** el
+  trabajo humano y la suscripción es infra barata, así que garantizar la implementación es lo único
+  que nadie del clúster ofrece. La aritmética lo respalda con los números de `data/catalogo.json`:
+  regalar un setup completo se recupera en **1,4 / 1,0 / 0,7 meses** de margen según el plan.
+- **Lo que se anuncia y lo que no queda escrito en el canon** (`mensajePublico` / `noSeAnuncia`): en
+  pauta y en el toque 1 va solo *"arrancas pagando la mitad del setup, la otra mitad cuando tu bot
+  esté atendiendo"*; la devolución completa y el mes gratis son la carta de la objeción al cerrar
+  Pro o Premium, y de paso empujan al plan de arriba.
+- **`data/catalogo.json`:** el ítem `setup` gana las reglas `setup5050` y `garantiaImplementacion`,
+  ambas declaradas en el bloque `reglas` para que `npm run catalogo` las muestre al cotizar. La
+  garantía **no aplica** a la línea de servicios: ahí sigue rigiendo `anticipo50`.
+- **`03-competitor-analysis.md` §5, ángulo G reescrito:** sin la deuda abierta, con la comparación
+  de mercado y con la nota de por qué el anticipo nunca baja a cero.
+- Origen de la decisión: `business/22-decisiones-abiertas.md` A3 (cerrada 2026-07-26). `npm run check`
+  en verde; los ▲ de márgenes supuestos de `setup` y `desarrollo-a-medida` son previos y siguen
+  esperando la primera venta real.
+
 ## 2026-07-25 — 🚀 El paquete de marketing se vuelve repo y gana motor propio
 
 - **Repo nuevo `carmegar/soltyai-marketing`** (privado). Hasta hoy `marketing/` era una carpeta suelta

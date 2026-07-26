@@ -20,7 +20,7 @@
     { "id": "pro", "nombre": "Pro", "precioMes": 490000, "conversaciones": 500, "ia": true, "estado": "vigente" },
     { "id": "premium", "nombre": "Premium", "precioMes": 790000, "conversaciones": 1500, "ia": true, "estado": "vigente" }
   ],
-  "setup": { "precio": 400000, "nota": "Única vez. ES la adaptación done-for-you, no una barrera." },
+  "setup": { "precio": 400000, "anticipo": 0.5, "nota": "Única vez. ES la adaptación done-for-you, no una barrera. Se cobra 50% al firmar y 50% cuando el bot está atendiendo (ver garantiaImplementacion)." },
   "excedente": { "precio": 50000, "cada": 100, "unidad": "conversaciones" },
   "iva": 0.19,
   "descuentoPrimerosClientes": {
@@ -29,6 +29,24 @@
     "cupos": 5,
     "condicion": "caso de estudio",
     "estado": "autorizado"
+  },
+
+  "garantiaImplementacion": {
+    "_fuente": "business/22-decisiones-abiertas.md A3, decidida 2026-07-26. Mercado revisado en 03-competitor-analysis §5 ángulo G: el clúster PYME (Cliengo, Whaticket, B2Chat) da prueba gratis y no garantía; los que sí garantizan devuelven la SUSCRIPCIÓN y excluyen expresamente el setup (Richpanel). SoltyAI hace lo contrario porque aquí el setup ES el trabajo humano y la suscripción es infra barata.",
+    "plazoDias": 7,
+    "tipoDePlazo": "calendario",
+    "definicionAtendiendo": "Bot en el canal del cliente, con su catálogo o flujo cargado, y al menos una conversación real completada de punta a punta.",
+    "relojArranca": "Cuando el cliente entrega completa la información del onboarding. Se pausa mientras falte algo.",
+    "ventanaReclamoDias": 15,
+    "alcance": "Solo el setup estándar del vertical. Integraciones o desarrollos fuera del onboarding normal quedan fuera de la garantía y se cotizan aparte.",
+    "tiers": [
+      { "plan": "esencial", "siIncumple": "No se cobra el 50% restante del setup: el cliente no paga más hasta que el bot esté atendiendo.", "exposicionCaja": 0 },
+      { "plan": "pro", "siIncumple": "Lo del Esencial y además se devuelve el 50% ya pagado: el setup queda en cero.", "exposicionCaja": 200000 },
+      { "plan": "premium", "siIncumple": "Lo del Pro y además el primer mes de suscripción no se cobra.", "exposicionCaja": 990000 }
+    ],
+    "mensajePublico": "Arrancas pagando la mitad del setup. La otra mitad solo cuando tu bot esté atendiendo.",
+    "noSeAnuncia": "La devolución completa y el mes gratis NO van en anuncios ni en el toque 1 del outbound: son la carta que se juega en la objeción, cerrando Pro o Premium.",
+    "porQueEsBarata": "Regalar un setup completo se recupera en 1,4 meses de margen del Esencial, 1,0 del Pro y 0,7 del Premium (margen mensual de data/catalogo.json). El riesgo caro nunca fue la devolución: era no cerrar."
   },
 
   "promesa": {
