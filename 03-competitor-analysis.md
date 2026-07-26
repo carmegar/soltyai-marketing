@@ -189,13 +189,33 @@ adaptado a TU negocio (no te toca configurarlo)"**, más *"pruébalo ahora mismo
   eternas. Hecho y soportado en Colombia."* Contra los sales-led sin precio público (Keybe, Treble, Yalo).
 - **F — "Pruébalo con tus datos reales":** *"Te lo dejamos funcionando con TU negocio para que lo
   pruebes de verdad antes de pagar la mensualidad."* La oferta de conversión tester→cliente como ángulo.
-- **G — "Garantía con plazo" (agregado 2026-07-25):** *"Tu bot atendiendo en 7 días o no pagas."*
-  Contra las agencias de desarrollo a medida que cotizan a 40–90 días con riesgo de entrega; y contra
-  los sales-led de ciclo largo (Keybe, Treble, Yalo). **Nosotros sí lo podemos cumplir**: el producto
-  ya está construido, el setup es de días. Origen: anuncio de SyroxTech en el swipe file
-  (`14-SWIPE-FILE.md`, 2026-07-25) — que se contradice a sí mismo con el plazo y así quema su propia
-  garantía. **Antes de usarlo:** definir qué cuenta como "atendiendo" y qué se devuelve exactamente
-  (¿el setup?); una garantía vaga es peor que ninguna.
+- **G — "Garantía con plazo" (agregado 2026-07-25; tiers definidos 2026-07-26):** el mensaje público
+  es *"Arrancas pagando la mitad del setup. La otra mitad solo cuando tu bot esté atendiendo"*, con
+  plazo de **7 días calendario**. Contra las agencias de desarrollo a medida que cotizan a 40–90 días
+  con riesgo de entrega; y contra los sales-led de ciclo largo (Keybe, Treble, Yalo). **Nosotros sí
+  lo podemos cumplir**: el producto ya está construido y la implementación es de días. Origen:
+  anuncio de SyroxTech en el swipe file (`14-SWIPE-FILE.md`, 2026-07-25) — que se contradice a sí
+  mismo con el plazo y así quema su propia garantía.
+  - **Qué garantiza el mercado, y por qué acá es al revés:** Cliengo, Whaticket y B2Chat dan prueba
+    gratis de 7–14 días y ninguna garantía de devolución; los que sí garantizan (Richpanel,
+    ContentBot, Agent Builder) devuelven **la suscripción** y **excluyen expresamente la
+    implementación y los servicios profesionales**. Para ellos tiene sentido: su producto es
+    self-service, sin trabajo humano y con costo marginal casi cero. Acá es al contrario, la
+    adaptación ES el trabajo humano y la suscripción es infra barata, así que **garantizar la
+    implementación es lo único que nadie del clúster ofrece y a nosotros nos sale barato**.
+  - **Escalonada por plan** (definición completa y auditable en `data/canon.json`, bloque
+    `garantiaImplementacion`): Esencial, no se cobra la mitad restante · Pro, además se devuelve lo
+    ya pagado y la implementación queda en cero · Premium, además el primer mes no se cobra.
+    **La devolución completa NO se anuncia**: es la carta que se juega en la objeción, cerrando Pro
+    o Premium, y de paso empuja al plan de arriba.
+  - **Condiciones que la hacen cumplible:** "atendiendo" = bot en el canal del cliente, con su
+    catálogo o flujo cargado y al menos una conversación real completada · el reloj arranca cuando
+    el cliente entrega completa la información del onboarding y **se pausa** si falta algo · reclamo
+    dentro de los 15 días siguientes · cubre solo la implementación estándar del vertical, no
+    integraciones a la medida.
+  - **Por qué el anticipo nunca baja a cero:** es el filtro que separa al que va en serio del
+    curioso. Lo que escala entre planes no es cuánto pagan por adelantado, es cuánto recuperan si
+    incumplimos.
 
 ---
 

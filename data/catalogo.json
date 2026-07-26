@@ -50,7 +50,8 @@
       "estado": "supuesto",
       "fuente": "Precio verificado (ESTADO.md §Marketing). El COSTO es supuesto: 4 h de trabajo del fundador a tarifa interna.",
       "incluye": ["carga de catálogo/inventario", "ajuste de flujos y tono", "conexión del canal", "prueba con datos reales"],
-      "notas": "El setup financia el CAC. Si un setup real toma más de 4 h de forma sistemática, hay que subir el precio o simplificar el onboarding — medirlo desde el primer cliente."
+      "reglas": ["setup5050", "garantiaImplementacion"],
+      "notas": "El setup financia el CAC. Si un setup real toma más de 4 h de forma sistemática, hay que subir el precio o simplificar el onboarding — medirlo desde el primer cliente. Desde 2026-07-26 se cobra 50/50 con garantía de implementación escalonada por plan (canon.json → garantiaImplementacion): el 50% inicial es el filtro de seriedad y no baja a cero en ningún plan."
     },
     {
       "id": "excedente-conversaciones",
@@ -110,6 +111,8 @@
     "anticipo50": "50% de anticipo para agendar. Sin anticipo no entra al calendario (lección Swisscontact: $2,3M cobrados contra entrega).",
     "unoPorTrimestre": "Máximo un proyecto a la vez y uno por trimestre mientras la meta de 12 clientes esté viva.",
     "dejaPiezaReutilizable": "Si no deja módulo reutilizable en platform/, es trabajo por horas disfrazado.",
-    "saleConPropuestaDeBot": "Todo cliente de servicio recibe propuesta de suscripción. La puerta es el proyecto; la renta es el bot."
+    "saleConPropuestaDeBot": "Todo cliente de servicio recibe propuesta de suscripción. La puerta es el proyecto; la renta es el bot.",
+    "setup5050": "El setup se cobra 50% al aceptar la cotización y 50% cuando el bot queda atendiendo. El anticipo nunca baja a cero: es el filtro que separa al que va en serio del curioso.",
+    "garantiaImplementacion": "Plazo de 7 días calendario, escalonado por plan (canon.json → garantiaImplementacion). NO aplica a la línea de servicios: ahí rige anticipo50."
   }
 }
