@@ -1,0 +1,14 @@
+{
+  "_doc": "Tablero semanal del plan de 12 clientes (13-PLAN-12-CLIENTES.md §8). Una entrada por semana ISO; dentro, una fila por `origin` del registro de links.json. Lo llena el usuario los viernes con `npm run reportes registrar`. Cada métrica declara su `fuenteDato`: hoy varias son manuales y así se dice — el reporte no finge automatismo.",
+  "_campos": {
+    "semana": "ISO, formato AAAA-Wnn (la semana del viernes de cierre)",
+    "ronda": "R1 | R2 | R3 | null — la regla de corte se evalúa sobre la ronda completa",
+    "gasto": "COP invertidos en ese origin durante la semana",
+    "leads": "conversaciones nuevas atribuidas al origin",
+    "calificados": "leads que cumplen el filtro de la pre-calificación (negocio real + rol + presupuesto)",
+    "demos": "citas agendadas — el KPI que manda",
+    "cierres": "[{ servicio: <id de catalogo.json>, cantidad: n }]",
+    "fuenteDato": "de dónde salió cada número; valores válidos en canon.tablero.fuentesDeDato"
+  },
+  "semanas": []
+}

@@ -1,5 +1,60 @@
 # Changelog · soltyai-marketing
 
+## 2026-07-26 (cierre 2) — 📊 `src/reportes` construido + 🎬 guion del video demo
+
+### `src/reportes` — el tablero de los viernes deja de ser una hoja de cálculo
+
+Era el último módulo *diseñado sin construir* que el `13` §8 y §10 exigían para poder gobernar la
+pauta. Con él, la ronda 1 ya se puede evaluar el día que toca y no el día que se acabó la plata.
+
+- **Added** · `src/reportes/index.js` con cuatro comandos: `tablero` (semana), `ronda` (la regla de
+  corte sobre la ronda completa), `registrar` (lo que se llena el viernes en dos minutos) y
+  `validar`, que **corre en el CI** dentro de `npm run check`.
+- **Added** · `data/semanas.json` (memoria del tablero) y el bloque **`canon.tablero`**: KPI que
+  manda (`demos`, meta 2/semana), corte de **$25.000 por lead calificado**, fuentes de dato válidas,
+  fuentes pagadas y las **3 rondas** con su presupuesto ($1,2M / $1,3M / $1,5M).
+- **Decided** · **La regla de corte se calcula, no se estima.** Escrita en un doc, una regla de
+  "parar" se cumple cuando uno quiere. Calculada, aparece sola el viernes que toca pararse, con el
+  nombre de la regla y el número que la disparó. Es la diferencia entre una política y un guardrail.
+- **Decided** · **Se evalúa sobre la ronda, no sobre la semana.** Una semana mala no significa que la
+  oferta esté mal; esperar al cierre de la ronda para mirar significa haberla gastado completa antes
+  de saberlo. Por eso cada semana declara `ronda` y el veredicto se acumula.
+- **Decided** · **Sin denominador no hay veredicto.** Con gasto pero cero calificados medidos, el
+  comando dice *"sin datos suficientes"* en vez de declarar el corte. Declarar "parar" sin datos es
+  tan malo como no parar teniéndolos.
+- **Decided** · **Un cierre es un cliente, no una línea vendida.** El setup y los excedentes viajan
+  pegados a una suscripción: contarlos aparte partía el CAC por dos. Cuentan como cierre los
+  servicios `recurrente`, `mixto` y `proyecto`. **Lo cazó la prueba de humo**, que mostró CAC de
+  $150.000 donde el real era $300.000.
+- **Decided** · **Todo número declara `fuenteDato`, y el reporte imprime cuántos son manuales.** Era
+  el "hueco honesto" que el propio README del módulo pedía respetar: el conteo del lado del bot no es
+  automático, y un tablero que lo disimule vale menos que no tenerlo.
+- **Notes** · El CI también exige que cada `origin` exista en `data/links.json`. Un lead sin origen
+  registrado no se puede atribuir, que es toda la razón de ser de `src/links`. Sin semanas cargadas,
+  `validar` pasa: el CI no puede exigir datos que todavía no existen.
+- **Notes** · Margen y MRR salen de `data/catalogo.json` y arrastran el estado del costo, así que un
+  margen calculado con el `setup` (costo supuesto) sale marcado con ▲ en pantalla.
+
+### `redes/video-demo-guion.md` — el guion listo para grabar
+
+- **Added** · Guion de 75–90 s con 7 tomas (gancho a las 11:42 p.m. → el bot atiende → fotos → visita
+  → **aviso al asesor** → panel de leads → tarjeta final), versión corta de 30 s para el toque 1 del
+  outbound, preparación, reglas de grabación, qué medir y la tabla de **lo que no se dice** (que son
+  las prohibiciones que el CI ya hace cumplir).
+- **Decided** · **La pre-calificación sale del video.** `ESTADO.md` §3b la ponía de primera, pero es
+  *nuestra* compuerta de acceso a la demo, no una función del bot del cliente: mostrarla arriba hace
+  creer al prospecto que su bot va a interrogar a sus clientes antes de mostrarles un apartamento, y
+  además es la peor apertura posible para los 3 segundos que deciden si el video se ve. Va en la
+  tarjeta final, en una línea.
+- **Notes** · **Hallazgo que hay que resolver antes de grabar:** el aviso interno apunta a
+  `config.notify.telegramChatId = 1815166113`, que es el chat personal del usuario. Grabando así, el
+  "aviso al asesor" cae en la misma conversación donde se hace de cliente y la toma no se entiende.
+  La solución que además es la realista: un **grupo de Telegram** con el bot adentro y el
+  `telegramChatId` apuntando ahí. Toca sólo el tenant `demo-l0615`.
+- **Notes** · La cifra del "78% que escribe a otra inmobiliaria" quedó marcada como **condicional a
+  conseguir la fuente**, con reemplazo escrito sin dato. Cero métricas fabricadas también aplica a un
+  guion.
+
 ## 2026-07-26 — 🛡️ La garantía del ángulo G deja de ser una frase y se vuelve dato canónico
 
 - **`data/canon.json` → bloque `garantiaImplementacion` (nuevo).** El ángulo G venía con una deuda

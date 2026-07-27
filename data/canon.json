@@ -109,6 +109,22 @@
     "nota": "El `start` de Telegram solo admite A-Za-z0-9_- y hasta 64 caracteres. Es la clave de conciliación: si se rompe, se pierde el origen del lead."
   },
 
+  "tablero": {
+    "_fuente": "13-PLAN-12-CLIENTES.md §5 (rondas y regla de corte) y §8 (tablero semanal). Lo lee src/reportes: la regla de corte se CALCULA, no se estima a ojo.",
+    "kpiQueManda": "demos",
+    "metaDemosSemana": 2,
+    "cortePorLeadCalificado": 25000,
+    "notaCorte": "Regla de la ronda 1: si ningún ángulo baja de este costo por lead calificado, se para y se retrabaja la oferta ANTES de gastar la ronda siguiente. Se evalúa sobre la ronda completa, no sobre una semana suelta.",
+    "fuentesDeDato": ["export-meta", "export-linkedin", "calendly", "suite-mcp", "bot-log", "manual"],
+    "notaFuenteDato": "Toda métrica declara de dónde salió. Hoy varias son 'manual' y está bien: lo que no se vale es fingir que el dato es automático.",
+    "fuentesPagadas": ["meta", "linkedin", "tiktok", "youtube"],
+    "rondas": [
+      { "id": "R1", "presupuesto": 1200000, "cuando": "2026-08", "objetivo": "validación" },
+      { "id": "R2", "presupuesto": 1300000, "cuando": "2026-09", "objetivo": "escalar" },
+      { "id": "R3", "presupuesto": 1500000, "cuando": "2026-10/11", "objetivo": "sostener" }
+    ]
+  },
+
   "prohibiciones": {
     "_doc": "Cada patrón se chequea contra las piezas de copy/. Los docs se saltan estas reglas salvo que se indique alcance 'todo': un doc puede (y debe) nombrar lo prohibido para explicarlo.",
     "planesSuperados": {
