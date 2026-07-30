@@ -248,11 +248,25 @@ para saber cuál trae las citas.
 | Conversaciones reales | 5 | Bot + WhatsApp |
 | **Demos agendadas** | **2** | Calendly + bot |
 | Cierres | 0,6 (~2,4/mes) | Suite (propuestas firmadas) |
-| $/lead calificado (pauta) | < $25.000 | Hoja de conciliación |
+| $/lead calificado (pauta) | < $25.000 | `npm run reportes` |
 | Posts publicados | 2 | Calendario orgánico |
 
 **Semáforo:** 2 semanas seguidas con <2 demos → el problema es el **mensaje o la lista**, no el
 volumen: se reescribe el gancho antes de gastar más.
+
+**El tablero ya no es una hoja de cálculo.** Se llena y se lee con `src/reportes`:
+
+```
+npm run reportes registrar -- --semana=2026-W31 --ronda=R1 --origin=<origin> \
+    --gasto=300000 --leads=14 --calificados=6 --demos=2 --cierres=bot-pro:1,setup:1
+npm run reportes            # tablero de la semana: $/calificado, $/demo, CAC, MRR y margen
+npm run reportes ronda      # la regla de corte del §5, calculada sobre la ronda completa
+```
+
+Tres cosas que el programa hace y una hoja no: **calcula** la regla de corte de los $25.000 en vez de
+dejarla a criterio del viernes que toca parar; **exige** que cada `origin` exista en el registro de
+links (sin origen no hay atribución que evaluar); y **obliga a declarar de dónde salió cada número**,
+así que los datos manuales se ven como manuales en vez de pasar por automáticos.
 
 ---
 

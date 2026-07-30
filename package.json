@@ -12,6 +12,7 @@
     "prueba": "node src/guardrails/prueba.js",
     "link": "node src/links/index.js",
     "catalogo": "node src/catalogo/index.js",
-    "check": "node src/guardrails/prueba.js && node src/guardrails/index.js && node src/catalogo/index.js validar"
+    "reportes": "node src/reportes/index.js",
+    "check": "node src/guardrails/prueba.js && node src/guardrails/index.js && node src/catalogo/index.js validar && node src/reportes/index.js validar"
   }
 }
