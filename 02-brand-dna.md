@@ -17,7 +17,9 @@
 - **Qué es:** plataforma **SaaS multi-tenant de chatbots especializados por industria** para
   WhatsApp, Telegram y web, conectada al catálogo / agenda / CRM del negocio. **Done-for-you:**
   nosotros lo montamos y lo **adaptamos a la forma de trabajar del cliente**.
-- **Verticales vendibles hoy (4):** Citas · Domicilios/Comercio · Inmobiliaria · Integraciones a medida.
+- **Verticales vendibles hoy (5):** Citas · Comercio (pedidos por chat) · Domicilios (plataforma
+  operativa de despacho, sin chat automático) · Inmobiliaria · Integraciones a medida.
+  Detalle y por qué Domicilios va aparte de Comercio: `01-SOURCE-BRIEF.md`.
 - **Sede:** Bucaramanga, Colombia.
 - **Nota de honestidad para creatividades:** las demos hoy corren por **Telegram** (validación de
   Meta como Tech Provider pendiente). WhatsApp y web van como **"próximamente"**. No prometer WhatsApp API.

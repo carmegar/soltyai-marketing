@@ -16,9 +16,16 @@
 - **Qué vende:** plataforma **SaaS multi-tenant de chatbots especializados por industria**
   para WhatsApp, Telegram y web, conectados al catálogo / agenda / CRM del negocio.
   **Done-for-you:** nosotros lo montamos y lo **adaptamos a la forma de trabajar del cliente**.
-- **Verticales construidos y vendibles HOY** (4): **Citas, Domicilios/Comercio, Inmobiliaria,
-  Integraciones a medida.** (La estrategia de negocio lista más productos a futuro —POS, ERP DIAN,
-  Marketing IA—; **NO** se promocionan en esta ronda: aún no existen en el producto.)
+- **Verticales construidos y vendibles HOY** (5): **Citas, Comercio (pedidos por chat), Domicilios
+  (plataforma operativa de despacho), Inmobiliaria, Integraciones a medida.** (La estrategia de
+  negocio lista más productos a futuro —POS, ERP DIAN, Marketing IA—; **NO** se promocionan en esta
+  ronda: aún no existen en el producto.)
+- **Domicilios NO es lo mismo que Comercio**, y entró al canon el 2026-08-03 (decisión D3 de
+  `business/24-coherencia-producto-empresa.md`): Comercio es el **bot** que toma pedidos por chat;
+  Domicilios es la **plataforma operativa** de despacho (dashboard de operador + PWA del
+  domiciliario), **sin chat automático**. En el producto es `packages/vertical-logistica`, en la
+  suite el producto `08-domicilios-ops`, y en el catálogo el servicio `domicilios-ops`. Es la
+  **única línea con facturación recurrente hoy** (piloto Bucaradomi).
 - **Canales:** Telegram (vivo hoy), WhatsApp y web (**próximamente** — WhatsApp Business API
   oficial pendiente de validar Meta como Tech Provider; la SAS ya está constituida, solicitud desbloqueada).
 - **Modo con y sin IA:** el bot puede operar con IA (Claude Haiku 4.5) o en **modo determinista
@@ -64,6 +71,18 @@ y la demo se adaptan al rubro.
   validar en la ronda semilla**; el seed/landing hoy solo tienen el tier full ($650/$1.500). Marcar
   siempre como propuesto donde aparezca; no presentarlo como precio ya vigente.
 - **PROHIBIDO** usar los planes viejos **Starter $49 / Growth $149 / Pro $399**: están **superados**.
+
+### La línea en COP que ya factura (no estaba en ninguna tabla de este brief)
+
+| Producto | Para quién | Suscripción | Cobro inicial | Qué es |
+|---|---|---|---|---|
+| **SoltyAI Domicilios — Plan Operativo** (`08-domicilios-ops`) | operadores de domicilios y mensajería | **$370.000/mes, IVA incluido** (base $310.924,37 + IVA $59.075,63) | **$0** | Dashboard de operador + PWA del domiciliario, alojado y operado por SoltyAI. **Sin chat automático.** Contrato firmado `SAI-DOMIOPS-20260703-001`, cobrado con la factura electrónica `SOL1` |
+
+> ⚠️ **Ojo con el IVA, que aquí se mezclan dos convenciones.** Este es el **único** precio del brief
+> pactado **con IVA incluido**, porque así quedó en el contrato firmado. Todo lo demás (los 3 planes
+> COP del canon y la tabla de arriba) va **antes de IVA**. La regla escrita está en
+> `data/canon.json` → `ivaConvencion`; el costo de servir y el margen de esta línea, en
+> `data/catalogo.json` → `domicilios-ops`.
 
 ## Costo de servir (para unit economics — `06-BUDGET-PLAN.md`)
 
