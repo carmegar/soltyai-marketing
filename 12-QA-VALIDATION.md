@@ -64,8 +64,9 @@ Inmob entry $849 sí superan los $400 con 1 cierre). No es un problema de margen
 
 - **Validar el tier Inmobiliario entry** ($249/$600) en la ronda semilla (hoy seed/landing solo tienen
   el full $650/$1.500). Si se aprueba, reflejarlo en `suite/.../seed.ts` y `landing/.../plans.ts`.
-- **Reemplazar placeholders** antes de pautar (ver `11-PRE-LAUNCH-CHECKLIST`): handle del bot de Telegram,
-  `calendlyUrl`, `whatsappNumber`, `lead.endpoint` (Formspree), GA4 — todos en
+- **Reemplazar placeholders** antes de pautar (ver `11-PRE-LAUNCH-CHECKLIST`). ✅ Ya salieron el handle del
+  bot, `calendlyUrl` y `lead.endpoint` (endpoint propio en la suite, no Formspree); **quedan
+  `whatsappNumber`, `ga4MeasurementId` y `metaPixelId`** en
   `platform/apps/landing/src/data/site.ts`.
 - **Producción de creatividades** (imágenes/video) desde `07-CAMPAIGN-BRIEF` + cuentas Meta/píxel.
 - Decidir si versionar `marketing/` en git (hoy no es repo).

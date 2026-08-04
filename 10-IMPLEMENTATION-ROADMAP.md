@@ -37,11 +37,13 @@
       Consent Mode v2.
 - [ ] **Bot capturando el parámetro `start`** (o hoja de conteo manual lista como fallback).
 - [ ] 3 deep-links de Telegram con UTM + `start` armados (uno por ad set).
-- [ ] **Calendly** con UTMs en query + form que captura nombre/negocio/**rubro**/teléfono.
-- [ ] **`wa.me/<número>`** con `text` pre-rellenado que codifica el origen.
+- [x] **Calendly** con UTMs en query + form que captura nombre/negocio/**rubro**/teléfono. ✅ **3-ago**,
+      con el `a1` de atribución verificado en vivo. La **pregunta 1 no se puede reordenar** (ver `08` §4.2).
+- [ ] **`wa.me/<número>`** con `text` pre-rellenado que codifica el origen. 🔴 sin número el CTA no se pinta.
 - [ ] Hoja de conciliación (3 vías + columna `setup-prueba`) creada.
-- [ ] Placeholders de `site.ts` reemplazados (`saas.demoUrl`, `calendlyUrl`, `whatsappNumber`,
-      `lead.endpoint`, `analytics.ga4MeasurementId`) — ver `11-PRE-LAUNCH-CHECKLIST.md`.
+- [ ] Placeholders de `site.ts` reemplazados — ver `11-PRE-LAUNCH-CHECKLIST.md`. ✅ Ya salieron
+      `saas.demoUrl`, `calendlyUrl` y `lead.endpoint`; **quedan `whatsappNumber`, `ga4MeasurementId` y
+      `metaPixelId`**.
 
 **Creatividades** (specs/copy en `07-CAMPAIGN-BRIEF.md`)
 - [ ] 3 creatividades, una por pilar (ángulos/mensajes, no etapas). Marca **"SoltyAI"**.

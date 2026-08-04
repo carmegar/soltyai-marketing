@@ -63,18 +63,23 @@ Nada de esto es opcional: son las tuberías por donde va a correr todo lo demás
 | # | Qué | Dueño | Estado |
 |---|---|---|---|
 | 1 | **Video demo grabado** (pre-calificación → búsqueda con fotos → visita → aviso al asesor → vista de leads) | Usuario | ⏳ **bloquea LinkedIn y todo el orgánico**: es la prueba visible del canal |
-| 2 | **Calendly** creado (campos: nombre, negocio, **rubro**, teléfono) | Usuario | ⏳ **bloquea LinkedIn**: es el destino del video |
-| 3 | **Número de WhatsApp** definido para click-to-chat + outbound | Usuario | ⏳ |
+| 2 | **Calendly** creado (campos: nombre, negocio, **rubro**, teléfono) | Usuario | ✅ **3-ago** — `calendly.com/carlos-soltyai/30min`, con el `a1` de atribución verificado en vivo |
+| 3 | **Número de WhatsApp** definido para click-to-chat + outbound | Usuario | ⏳ **sin él el CTA de WhatsApp no se pinta**: hoy la landing ofrece 2 vías, no 3 |
 | 4 | **Píxel de Meta + GA4** creados → IDs a `site.ts` | Usuario crea, Claude integra | ⏳ **bloquea la pauta** |
-| 5 | **Formspree** (o equivalente) para el form de la landing | Usuario | ⏳ |
+| 5 | ~~**Formspree**~~ **Endpoint propio de captura** para el form de la landing | Claude | ✅ **3-ago** — `POST contratos.soltyai.com/api/leads` en la suite (que ya corre Next y ya tiene Resend), en vez de un servicio externo |
 | 6 | **LinkedIn de empresa** creado (§6) | Usuario, con los textos de abajo | ⏳ |
-| 7 | **Landing puente `/ir`** con las 3 CTAs + eventos `Lead` | Claude | por construir |
+| 7 | **Landing puente `/ir`** con las 3 CTAs + eventos `Lead` | Claude | ✅ construida y **desplegada el 3-ago** (2 CTAs vivas; la de WhatsApp espera el número) |
 | 8 | **Deep-links `?start=` por canal** y hoja de conciliación | Claude | por construir |
-| 9 | **Prueba E2E de las 3 vías** (clic → bot / Calendly / WhatsApp, con origen visible) | Ambos | 🔒 **gate: sin esto no se lanza pauta** |
+| 9 | **Prueba E2E de las 3 vías** (clic → bot / Calendly / WhatsApp, con origen visible) | Ambos | 🔒 **gate: sin esto no se lanza pauta** — la vía Calendly ya está probada; faltan Telegram y WhatsApp |
 
-> Los 5 IDs del punto 4–5 son los mismos placeholders que arrastra `platform/apps/landing/src/data/site.ts`.
-> Mientras estén en placeholder, **la pauta no se enciende**: pagar clics sin píxel es tirar la plata y
-> el aprendizaje.
+> **Lo que queda bloqueando la pauta son los IDs del punto 4** (`ga4MeasurementId`, `metaPixelId`) y el
+> número del punto 3. **Mientras estén en placeholder, la pauta no se enciende**: pagar clics sin píxel es
+> tirar la plata y el aprendizaje.
+>
+> 🔴 **Ojo con cómo se dejan esos placeholders.** `calendlyUrl` y `whatsappNumber` traían valores **con
+> forma de valor real** (`calendly.com/soltyai/demo`, `57XXXXXXXXXX`) y por eso los 8 CTAs de la landing
+> apuntaron a un 404 **desde el 24-jul hasta el 3-ago** sin que el build, el smoke test ni una revisión
+> visual lo notaran. Los que faltan están en vacío o en `G-XXXXXXXXXX` a propósito.
 
 ---
 

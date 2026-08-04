@@ -1,5 +1,38 @@
 # Changelog · soltyai-marketing
 
+## 2026-08-03 — ✅ La vía Calendly quedó montada, y cuatro checklists lo ignoraban
+
+Barrida de los docs de campaña contra lo que de verdad quedó en producción el 3-ago. Sin cambios de
+código ni de `canon.json`: sólo estado real donde había casillas sin marcar.
+
+- **Changed** · `08-TRACKING-SETUP.md` §4.2 y §9 — la vía Calendly pasa a ✅. El formulario captura
+  nombre, negocio, **rubro** (botones de opción, no texto libre, para que agrupe en el reporte) y
+  teléfono, y los UTMs/`origin` llegan por query. **Verificado en vivo con `?a1=prueba_soltyai`.**
+- **Notes** · 🔴 **Dos reglas nuevas del evento, que si se rompen se pierde la atribución en silencio:**
+  (1) **la pregunta 1 no se puede reordenar** — `/ir` inyecta `a1=<origen>` y Calendly prellena con eso la
+  respuesta a la pregunta 1, sea cual sea, así que si otra queda de primera el nombre del anuncio se
+  escribe adentro de ésa; (2) **no ponerle la variable "Preguntas y respuestas" a ningún correo del
+  evento** — viene por defecto y le devuelve al prospecto sus propias respuestas, **incluido el código
+  interno de la campaña**, escrito en su calendario para siempre.
+- **Changed** · §9 y §0: la vía Calendly **ya no depende de conteo manual para el origen**. El conteo
+  manual que queda es el de avance del prospecto (§5), no el de procedencia.
+- **Changed** · `11-PRE-LAUNCH-CHECKLIST.md` §A.1/§A.2 y la tabla de §A.4, que pasa de "lo que falta" a
+  **estado por campo**: ✅ `saas.demoUrl`, `calendlyUrl`, `lead.endpoint`, redes · 🔴 `whatsappNumber`,
+  `ga4MeasurementId`, `metaPixelId`. La landing principal quedó verificada **contra producción**: 23 CTAs
+  de Calendly vivos en 8 páginas.
+- **Changed** · `13-PLAN-12-CLIENTES.md` §semana 0: el punto 2 (Calendly), el 5 (**Formspree → endpoint
+  propio en la suite**) y el 7 (`/ir`) pasan a ✅. Lo que bloquea la pauta se reduce a los IDs del punto 4
+  y al número del punto 3.
+- **Changed** · `10-IMPLEMENTATION-ROADMAP.md` y `12-QA-VALIDATION.md`, alineados con lo mismo.
+- **Notes** · **`wa.me` no es un pendiente cosmético:** mientras `whatsappNumber` esté vacío, la landing
+  aplica *vacío = apagado* y **el CTA de WhatsApp no se pinta en ninguna página**. Hoy `/ir` ofrece
+  **2 vías, no 3**, y el reporte de conciliación (§6) tendrá dos columnas con datos, no tres. Los docs
+  decían "3 CTAs" sin la salvedad.
+- **Notes** · 🔴 **La lección que quedó escrita en `11` §A.4 y en `13`:** `calendlyUrl` y `whatsappNumber`
+  traían placeholders **con forma de valor real**, y por eso los 8 CTAs de "Agenda una demo" apuntaron a
+  un 404 **del 24-jul al 3-ago** sin que el build, el smoke test ni una revisión visual lo notaran. Los
+  que faltan están en vacío o en `G-XXXXXXXXXX` a propósito: **la ausencia tiene que ser detectable.**
+
 ## 2026-07-26 (cierre 2) — 📊 `src/reportes` construido + 🎬 guion del video demo
 
 ### `src/reportes` — el tablero de los viernes deja de ser una hoja de cálculo

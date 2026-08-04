@@ -18,16 +18,22 @@
       automatizar?) + ofrece demo, pre-entrenado por vertical.
 - [ ] **Deep-link con parámetro `start`** (`t.me/<bot>?start=meta_<adset>_<creativo>`) que el bot captura
       para marcar origen (puente de atribución Meta→Telegram — ver `08-TRACKING-SETUP.md`).
-- [ ] **Formulario / Calendly** configurado para "Agenda una demo": captura **nombre, negocio,
-      rubro/vertical, teléfono** + recibe UTMs por query.
+- [x] **Formulario / Calendly** configurado para "Agenda una demo": captura **nombre, negocio,
+      rubro/vertical, teléfono** + recibe UTMs por query. ✅ **3-ago.** Evento
+      `calendly.com/carlos-soltyai/30min` con las 4 preguntas en orden; la **pregunta 1 es "¿De dónde
+      nos conociste?"** porque `/ir` inyecta `a1=<origen>` y Calendly prellena con eso la respuesta a la
+      pregunta 1. Verificado en vivo con `?a1=prueba_soltyai`.
 - [ ] **Número de WhatsApp click-to-chat** (`wa.me/<número>`) con mensaje pre-rellenado que codifica el
       origen. (Es el mismo número/lógica que respalda el outbound manual.)
 
 ### A.2 Landing + tracking
 - [ ] **Cuenta Meta Business + píxel** instalado en la landing y en la landing puente.
-- [ ] **Landing puente `/ir`** con las **3 CTAs** (Telegram primario, Calendly secundario, WhatsApp
+- [x] **Landing puente `/ir`** con las **3 CTAs** (Telegram primario, Calendly secundario, WhatsApp
       terciario), que dispara `ViewContent` + un `Lead` por CTA y evita rechazos por destino externo.
-- [ ] **Landing principal con las 3 CTAs** verificada (ya existen en el producto, ver §A.4).
+      ✅ **3-ago** — con la salvedad de que **el CTA de WhatsApp no se pinta** hasta que haya número:
+      la landing aplica *vacío = apagado*, así que hoy `/ir` ofrece 2 vías, no 3.
+- [x] **Landing principal con las 3 CTAs** verificada ✅ **3-ago, contra producción**: **23 CTAs de
+      Calendly vivos en 8 páginas**. Antes de eso llevaban desde el 24-jul apuntando a un 404.
 - [ ] **Píxel respeta Consent Mode v2** (carga tras consentimiento).
 
 ### A.3 Creatividades + outbound
@@ -44,16 +50,22 @@
 En `platform/apps/landing/src/data/site.ts` (las 3 CTAs y el tracking ya existen como campos; faltan los
 valores reales):
 
-| Campo | Valor placeholder hoy | Reemplazar por |
+| Campo | Estado (2026-08-03) | Detalle |
 |---|---|---|
-| `saas.demoUrl` | `https://t.me/SoltyAIDemoBot` | handle **real** del bot demo de Telegram |
-| `calendlyUrl` | `https://calendly.com/soltyai/demo` | URL real de Calendly (con campos nombre/negocio/**rubro**/teléfono) |
-| `whatsappNumber` | `57XXXXXXXXXX` | número real en **E.164 sin `+`** |
-| `whatsappMessage` | (genérico) | opcional: ajustar; el origen se inyecta en `/ir` |
-| `lead.endpoint` | `''` (vacío) | URL de **Formspree** o equivalente (respaldo del form "Solicita tu demo") |
-| `analytics.ga4MeasurementId` | `G-XXXXXXXXXX` | ID real de GA4 |
-| `social.{facebook,linkedin,instagram,twitter}` | placeholders | handles reales |
+| `saas.demoUrl` | ✅ | `t.me/inmobiliaria_solty_bot`, el bot demo real en producción |
+| `calendlyUrl` | ✅ | `calendly.com/carlos-soltyai/30min`, con las 4 preguntas y el `a1` verificado |
+| `lead.endpoint` | ✅ | `contratos.soltyai.com/api/leads` — endpoint **propio en la suite**, no Formspree (la suite ya corre Next y ya tiene Resend). Avisa por correo con `reply_to` del prospecto y por Telegram |
+| `social.{facebook,instagram,tiktok,youtube,linkedin}` | ✅ | Perfiles verificados. `twitter` vacío a propósito |
+| `whatsappNumber` + `whatsappMessage` | 🔴 **vacío** | Espera **línea comercial nueva**, no el celular personal. Mientras esté vacío **el CTA de WhatsApp no se pinta** en ninguna página |
+| `analytics.ga4MeasurementId` | 🔴 `G-XXXXXXXXXX` | **Bloquea la pauta** |
+| `analytics.metaPixelId` | 🔴 vacío = píxel apagado | **Bloquea la pauta** |
 
+> 🔴 **La lección de este bloque, que se pagó con un mes de producción rota:** `calendlyUrl` y
+> `whatsappNumber` traían placeholders **con forma de valor real** (`calendly.com/soltyai/demo`,
+> `57XXXXXXXXXX`), indistinguibles de un valor bueno para el build, el smoke test y el ojo. Los 8 CTAs
+> de "Agenda una demo" llevaron a un 404 desde el 24-jul hasta el 3-ago **sin que ninguna señal fallara**.
+> Los que quedan están en vacío o en `G-XXXXXXXXXX` a propósito: **la ausencia tiene que ser detectable.**
+>
 > Si `lead.endpoint` queda vacío, el form **no simula éxito**: deriva al chat/agenda y muestra el
 > `fallbackEmail` (comportamiento ya implementado, ver `platform/apps/landing/CLAUDE.md`). No es bloqueante
 > para lanzar las 3 CTAs conversacionales, pero sí para capturar leads por email.
