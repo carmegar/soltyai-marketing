@@ -1,12 +1,13 @@
 {
   "_doc": "Hechos canónicos en formato máquina. Espejo de 01-SOURCE-BRIEF.md + ESTADO.md §Marketing. Si cambia el precio o la promesa, se cambia AQUÍ y en el doc, en el mismo commit. Los guardrails leen este archivo: es lo que hace que una decisión escrita se vuelva una regla que falla el CI.",
-  "actualizado": "2026-08-03",
+  "actualizado": "2026-08-04",
   "fuentes": [
     "01-SOURCE-BRIEF.md (promesa, verticales, canales, costo de servir)",
     "ESTADO.md §Marketing (pricing COP vigente, acordado 2026-07-22)",
     "ESTADO.md §Piloto Bucaradomi (línea domicilios: contrato SAI-DOMIOPS-20260703-001 y factura SOL1)",
     "13-PLAN-12-CLIENTES.md §10 (reglas de la línea de servicios)",
-    "03-competitor-analysis.md §3 (ángulos quemados del mercado)"
+    "03-competitor-analysis.md §3 (ángulos quemados del mercado)",
+    "business/estrategia/07-pricing.md §descuentos (ONG −25%, subido al canon 2026-08-04)"
   ],
 
   "moneda": "COP",
@@ -36,6 +37,19 @@
     "meses": 3,
     "cupos": 5,
     "condicion": "caso de estudio",
+    "estado": "autorizado"
+  },
+  "descuentoOng": {
+    "_fuente": "business/estrategia/07-pricing.md línea 69: «ONG / educación: −25% permanente, caso por caso». Subido al canon el 2026-08-04: hasta entonces vivía SOLO en el .md, así que la fuente de verdad no lo tenía y se citaba en cotizaciones como 'autorizado por política' sin política verificable — exactamente lo que la decisión D1 (business/24-coherencia-producto-empresa.md) vino a evitar.",
+    "porcentaje": 0.25,
+    "permanente": true,
+    "aplicaA": ["ONG", "ESAL", "educación"],
+    "condicion": "caso por caso: no es automático, se decide y se anota por cliente",
+    "estado": "autorizado"
+  },
+  "noAcumulacionDescuentos": {
+    "_doc": "Los descuentos son excluyentes: se aplica el mayor, nunca dos. Vale para ONG (−25%) y primeros clientes (−30%), y también contra cualquier precio de lista que ya venga rebajado a propósito (caso catalogo.json → web-redespliegue, que ya sale por debajo de lo que el cliente pagó antes).",
+    "excluyentes": ["descuentoOng", "descuentoPrimerosClientes", "precioYaRebajado"],
     "estado": "autorizado"
   },
 

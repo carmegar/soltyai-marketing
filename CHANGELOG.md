@@ -1,5 +1,46 @@
 # Changelog · soltyai-marketing
 
+## 2026-08-04 (catálogo) — 🌐 La web deja de ser una línea sola: rescate, cuidado recurrente y el ONG que vivía fuera del canon
+
+Salió de cotizarle a la Fundación Colombia Unida y Grande (caso TRACE / Hernán Linares) y de
+descubrir que el catálogo no sabía distinguir **construir** de **volver a publicar lo que ya
+existe** — con el agravante de que el cliente ya había pagado por ese código.
+
+- **Added** · `catalogo → web-redespliegue` (**$750.000**, costo 7 h = $420.000, margen 44%):
+  rescate y republicación cuando el código **ya existe**. Precio fijado a propósito **por debajo de
+  los $800.000** que ese mismo cliente pagó en 2025 por ese mismo código: el gesto ES el argumento de
+  venta. Lleva `noAcumulaDescuentos` porque aplicarle el −25% de ONG lo dejaría en $562.500 con
+  margen del 25%, **bajo el mínimo del 35%** de la línea de servicios.
+- **Added** · `catalogo → web-cuidada` (**$180.000/mes**, costo $55.000, margen 69%): hosting,
+  dominio renovado por nosotros, 2 buzones, 1 actualización al mes y monitoreo. Nace de que la
+  fundación **perdió su dominio** (vencido el 12-jun-2026, tomado por un tercero que hoy sirve un
+  casino): el producto ES la promesa de que no vuelva a pasar.
+- **Notes** · ⚠️ **El proveedor de correo decide si `web-cuidada` gana o pierde.** Con Zoho
+  (~$4.200/buzón/mes) el margen a precio ONG es ~59%; con **Google Workspace** (US$8,40 ≈ $33.600 a
+  TRM 4.000) dos buzones cuestan $67.200 y la línea da **margen negativo** a $135.000/mes. Queda en
+  `notas`, no escondido detrás del promedio.
+- **Fixed** · `catalogo → web-corporativa` decía *"Sin precio verificado"* cuando **sí había una
+  venta real**: $800.000 cobrados por el fundador **como freelance** en 2025. Queda registrada como
+  referencia, con la advertencia de que no es comparable de frente (persona natural, sin IVA ni
+  estructura de SAS). Se le agregó además que su costo de $900.000 **asume construir desde cero** —
+  usarlo sobre código propio existente era el error que inflaba el margen y hundía la credibilidad.
+- **Added** · `canon → descuentoOng` (**−25% permanente, caso por caso**). Existía desde siempre en
+  `business/estrategia/07-pricing.md` §69 y **nunca había subido al canon**, así que se citaba en
+  cotizaciones como "autorizado por política" sin política verificable por máquina: exactamente lo
+  que la decisión **D1** vino a evitar. Va con `noAcumulacionDescuentos` (ONG, primeros clientes y
+  precio ya rebajado son excluyentes: se aplica el mayor, nunca dos).
+- **Added** · Reglas nuevas del catálogo: **`dominioBajoAdministracion`** (el dominio se registra a
+  nombre del cliente pero en la cuenta de SoltyAI, con auto-renovación, alerta a 60 días y
+  transferencia sin costo al salir — la promesa no es cumplible si la renovación depende de que el
+  cliente se acuerde), **`buzonesTopados`**, **`excepcionPisoWeb`** y **`noAcumulaDescuentos`**.
+- **Notes** · Precios de mercado verificados el 2026-08-04 y citados en `fuente`: web institucional
+  $650k–$1,2M · corporativa en ciudades principales $2,5M–$6M · mantenimiento preventivo
+  $150k–$300k/mes · dominio `.co` $21.700–$60.000/año. El **`.org.co` no tiene precio público**
+  (Registro Colombia lo informa al presentar la solicitud): no prometerlo hasta cotizarlo.
+- **Notes** · `npm run check` verde. El validador cazó `web-redespliegue` por no declarar la
+  excepción al piso de $3M — la exención se declara con la frase literal *"Excepción explícita al
+  piso"* en `notas`, no con una regla en el array.
+
 ## 2026-08-03 (coherencia) — 🚚 Domicilios entra al canon, y los patrones de WhatsApp por fin muerden
 
 Los dos frentes que le tocaban a este repo de la auditoría `business/24-coherencia-producto-empresa.md`
