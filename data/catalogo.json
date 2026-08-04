@@ -1,7 +1,7 @@
 {
   "_doc": "Catálogo de todo lo que SoltyAI puede vender, con su costo real de servir y su margen. Es la fuente para cotizar (src/catalogo) y para gobernar el margen. Regla dura: si un precio o un costo NO está verificado contra una fuente, va con estado 'supuesto' y el CLI lo marca en amarillo en cada cotización. Nada de números inventados que después se presentan como hechos.",
   "_iva": "TODO `precio` de este archivo es la BASE, sin IVA: el 19% se suma encima al cotizar (canon.json → ivaConvencion). Si un contrato pactó el total con IVA incluido, `precio` sigue siendo la base y el total va en `precioConIva`. Hoy la única línea así es domicilios-ops: $370.000 con IVA = $310.924,37 + $59.075,63.",
-  "actualizado": "2026-08-03",
+  "actualizado": "2026-08-04",
   "moneda": "COP",
 
   "servicios": [
@@ -103,15 +103,47 @@
     },
     {
       "id": "web-corporativa",
-      "nombre": "Página web / landing corporativa",
+      "nombre": "Página web / landing corporativa (construcción nueva)",
       "linea": "servicios",
       "tipo": "proyecto",
       "precio": 1500000,
       "costoUnico": 900000,
       "estado": "supuesto",
-      "fuente": "Sin precio verificado. Supuesto a confirmar con la primera venta real.",
-      "reglas": ["anticipo50", "saleConPropuestaDeBot"],
-      "notas": "Excepción explícita al piso de $3M: la web es puerta de entrada barata a un cliente que después toma bot. Solo se toma si sale con propuesta de suscripción."
+      "fuente": "PRECIO respaldado por mercado (2026-08-04): web institucional de 1–3 secciones con formulario va de $650.000 a $1.200.000 y la corporativa profesional en ciudades principales —Bucaramanga incluida— de $2.500.000 a $6.000.000, así que $1.500.000 queda entre las dos bandas. Referencia propia real: $800.000 cobrados por el fundador COMO FREELANCE a la Fundación Colombia Unida y Grande (2025) — no es comparable de frente, era persona natural sin IVA ni estructura de SAS. COSTO SUPUESTO: 15 h a tarifa interna, y asume CONSTRUIR DESDE CERO.",
+      "reglas": ["anticipo50", "saleConPropuestaDeBot", "excepcionPisoWeb", "dominioBajoAdministracion", "buzonesTopados"],
+      "notas": "Excepción explícita al piso de $3M: la web es puerta de entrada barata a un cliente que después toma bot. Solo se toma si sale con propuesta de suscripción. ⚠️ El costo de $900.000 SOLO aplica a construcción desde cero: si ya existe código propio reutilizable, la línea que se cotiza es `web-redespliegue`, no esta — cobrar construcción sobre un activo que ya existe es donde se pierde la credibilidad, sobre todo si el cliente ya pagó por ese código. ⚠️ La web nunca se entrega sola: sale con `web-cuidada` (si no, el cliente vuelve a perder el dominio) y con propuesta de suscripción."
+    },
+    {
+      "id": "web-redespliegue",
+      "nombre": "Rescate y republicación de sitio existente",
+      "linea": "servicios",
+      "tipo": "proyecto",
+      "precio": 750000,
+      "costoUnico": 420000,
+      "estado": "supuesto",
+      "fuente": "Creado el 2026-08-04 (caso Fundación Colombia Unida y Grande). PRECIO: fijado a propósito POR DEBAJO de los $800.000 que el cliente ya pagó por ese mismo código, y dentro de la banda de mercado de web institucional ($650.000–$1.200.000). COSTO SUPUESTO: 7 h a tarifa interna = redespliegue 2–3 h + formulario nuevo 2–3 h + dominio/DNS/correos 1–2 h.",
+      "reglas": ["anticipo50", "saleConPropuestaDeBot", "excepcionPisoWeb", "dominioBajoAdministracion", "buzonesTopados", "noAcumulaDescuentos"],
+      "notas": "Excepción explícita al piso de $3M, por la misma razón que web-corporativa: es puerta de entrada, no proyecto a la medida. Para cuando el código del sitio YA EXISTE y es reutilizable: dominio nuevo, migración, actualización de contenido y las piezas que de verdad son nuevas (típicamente el formulario). ⚠️ Este precio NO lleva descuento ONG encima: ya viene rebajado por debajo de lo que el cliente pagó la primera vez, y ese gesto ES el argumento de venta. Aplicarle el −25% lo dejaría en $562.500 con margen del 25%, bajo el mínimo del 35% de la línea de servicios (canon → margenMinimo.servicios). ⚠️ Antes de cotizarlo hay que CONFIRMAR que el código existe, que el contenido no vivía solo en el hosting perdido y que despliega: sin eso los 7 h son una adivinanza."
+    },
+    {
+      "id": "web-cuidada",
+      "nombre": "Cuidado de sitio web (hosting, dominio y administración)",
+      "linea": "servicios",
+      "tipo": "recurrente",
+      "precio": 180000,
+      "costoMes": 55000,
+      "estado": "supuesto",
+      "fuente": "Creado el 2026-08-04. PRECIO respaldado por mercado (2026-08-04): el mantenimiento preventivo en Colombia va de $150.000 a $300.000/mes, así que $180.000 queda en la banda baja y con el −25% de ONG ($135.000) sigue por debajo del piso típico. COSTO SUPUESTO: dominio .co prorrateado ~$5.000/mes (mercado $21.700–$60.000/año) + 2 buzones Zoho ~$8.400/mes + 0,7 h de actualización a tarifa interna ~$42.000. Hosting estático ~$0 marginal: entra en el VPS que ya existe.",
+      "incluye": [
+        "Alojamiento del sitio en infraestructura de SoltyAI",
+        "Dominio registrado a nombre del cliente y renovado por nosotros, con auto-renovación y alerta a 60 días",
+        "2 buzones de correo con el dominio propio",
+        "1 actualización de contenido al mes (textos, fotos, una sección)",
+        "Monitoreo de disponibilidad y de vencimiento del dominio",
+        "Copia de seguridad del sitio"
+      ],
+      "reglas": ["dominioBajoAdministracion", "buzonesTopados", "excepcionPisoWeb", "saleConPropuestaDeBot"],
+      "notas": "Nace del caso Fundación Colombia Unida y Grande, que perdió su dominio por no renovarlo (vencido el 12-jun-2026, tomado por un tercero que hoy sirve un casino). El producto ES esa promesa: que no vuelva a pasar. ⚠️ Va en `servicios` y no en `suscripcion` a propósito: su costo dominante es la hora de actualización del fundador, no infra escalable, y por eso rige el margen mínimo del 35% y no el del 60% (canon → margenMinimo). ⚠️ EL PROVEEDOR DE CORREO DECIDE SI ESTA LÍNEA GANA O PIERDE: con Zoho (~$4.200/buzón/mes, gratis hasta 5 usuarios con restricciones de IMAP y almacenamiento que hay que verificar) el margen a precio ONG es ~59%; con Google Workspace Business Starter (US$8,40 ≈ $33.600/buzón/mes a TRM 4.000) dos buzones cuestan $67.200 y la línea da MARGEN NEGATIVO a $135.000/mes. Verificar el plan de Zoho antes de prometer buzones."
     },
     {
       "id": "integracion-erp",
@@ -135,6 +167,10 @@
     "unoPorTrimestre": "Máximo un proyecto a la vez y uno por trimestre mientras la meta de 12 clientes esté viva.",
     "dejaPiezaReutilizable": "Si no deja módulo reutilizable en platform/, es trabajo por horas disfrazado.",
     "saleConPropuestaDeBot": "Todo cliente de servicio recibe propuesta de suscripción. La puerta es el proyecto; la renta es el bot.",
+    "excepcionPisoWeb": "Las líneas de web (web-corporativa, web-redespliegue, web-cuidada) están exentas del piso de $3.000.000: son puerta de entrada barata, no proyectos a la medida. Anotado como excepción, no como olvido.",
+    "dominioBajoAdministracion": "Si vendemos cuidado del sitio, el dominio se registra A NOMBRE DEL CLIENTE pero en la cuenta de registrador de SoltyAI, con auto-renovación activa y alerta a 60 días, y con transferencia sin costo si el cliente se va. La promesa 'no le vuelve a pasar' NO es cumplible si la renovación depende de que el cliente se acuerde de pagar — que es exactamente lo que falló. El dominio va DENTRO del recurrente, nunca facturado aparte 'a costo'.",
+    "buzonesTopados": "Los correos con dominio propio se cotizan con número de buzones explícito y precio por buzón adicional. Ofrecer 'correos' sin tope es la fuga que puede volver negativa la línea: con Google Workspace, 8 buzones se comen el recurrente entero.",
+    "noAcumulaDescuentos": "Los descuentos no se suman: ONG (−25%), primeros clientes (−30%) y cualquier rebaja ya incorporada al precio de lista son excluyentes entre sí. Se aplica el mayor, nunca dos.",
     "setup5050": "El setup se cobra 50% al aceptar la cotización y 50% cuando el bot queda atendiendo. El anticipo nunca baja a cero: es el filtro que separa al que va en serio del curioso.",
     "garantiaImplementacion": "Plazo de 7 días calendario, escalonado por plan (canon.json → garantiaImplementacion). NO aplica a la línea de servicios: ahí rige anticipo50."
   }
