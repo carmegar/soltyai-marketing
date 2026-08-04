@@ -1,5 +1,42 @@
 # Changelog · soltyai-marketing
 
+## 2026-08-03 (coherencia) — 🚚 Domicilios entra al canon, y los patrones de WhatsApp por fin muerden
+
+Los dos frentes que le tocaban a este repo de la auditoría `business/24-coherencia-producto-empresa.md`
+(decisión **D3** y hallazgo **H3**).
+
+- **Added** · `data/canon.json → verticales` pasa de 4 a 5: entra **`domicilios`**. Era el hallazgo
+  **H2**: la única línea con facturación recurrente hoy no estaba en ninguna doc de empresa, así que
+  su margen no lo gobernaba nada. Va con `verticalesNota`, que fija la frontera que se venía
+  confundiendo: **`comercio` es el bot que toma pedidos por chat; `domicilios` es la plataforma
+  operativa de despacho, sin chat automático** (`vertical-logistica` ↔ `08-domicilios-ops`).
+- **Added** · `data/catalogo.json → domicilios-ops`: base **$310.924** + `precioConIva` **$370.000**
+  (verificado contra el contrato `SAI-DOMIOPS-20260703-001`, la factura `SOL1` y la serie recurrente).
+  Estado **`supuesto`** a propósito: el precio está verificado, **el costo no** — se usó la banda de
+  infra ya verificada, sin medir el despliegue real del piloto.
+- **Notes** · ⚠️ El margen del 97,4% que sale de ese costo **no incluye las horas de soporte en
+  horario hábil ni la operación**, que en esta línea son justamente lo que puede comerse el margen.
+  Queda escrito en `notas`, no escondido detrás de un número bonito.
+- **Added** · **`canon.ivaConvencion`** (+ `catalogo._iva` y un bloque en `01-SOURCE-BRIEF.md`): todo
+  precio del canon es **base, sin IVA**; la excepción se declara con `precioConIva` y su fuente. Sin
+  esa regla, la línea de domicilios se leería como comparable a los $290k/$490k/$790k y no lo es.
+- **Fixed** · `prohibiciones.whatsappComoPromesa` cazaba **1 de las 8** líneas de evidencia de H3: se
+  escapaban el par de canales sin verbo (*"WhatsApp y Telegram, con o sin IA"*), el verbo en plural
+  (*"Atienden por WhatsApp y Telegram"*), el sustantivo con adjetivo (*"bot inteligente de
+  WhatsApp"*) y **todo el inglés**. Ahora **8 de 8**, con `patronesEn`/`exencionesEn`, que es lo que
+  consume el chequeo nuevo de la landing.
+- **Notes** · **Cero falsos positivos** sobre 15 formas legítimas de prueba, incluidas las tres que
+  costarían caro: *"Escríbenos por WhatsApp"* (CTA humana), *"Teléfono / WhatsApp"* (label de
+  formulario) y la enumeración legal *"canales como WhatsApp, web, Telegram"*. Los patrones piden
+  **adyacencia**, y la CTA humana va en primera persona del plural mientras la promesa del bot va en
+  tercera.
+- **Notes** · Queda abierto: `src/catalogo/index.js:94` le suma el setup de $400.000 a **toda**
+  suscripción recurrente, y esta línea no lleva cobro inicial (cotizarla con `--sin-setup` mientras
+  tanto) · `patronesEn`/`exencionesEn` son **inertes** en el linter de este repo (`src/guardrails/
+  reglas.js` sólo lee `patrones`): hoy da igual porque todo `copy/` es español · **`05-PRICING.md`
+  sigue entero en el modelo USD superado** y necesita el mismo tratamiento que recibieron
+  `estrategia/03` y `07` en el repo `business`.
+
 ## 2026-08-03 — ✅ La vía Calendly quedó montada, y cuatro checklists lo ignoraban
 
 Barrida de los docs de campaña contra lo que de verdad quedó en producción el 3-ago. Sin cambios de
