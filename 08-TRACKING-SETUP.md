@@ -130,12 +130,26 @@ Anuncio → soltyai.com/ir?utm_source=meta&utm_content=c1...&origin=meta_duenopy
 > fallback = **conteo manual** (el operador anota cada conversación y su origen leyendo el `start` en el
 > log). Funciona para el volumen de la ronda (~50–300 conversaciones). Documentar el hueco, no taparlo.
 
-### 4.2 Vía Calendly — formulario de la reunión
-- [ ] El formulario de Calendly captura **nombre, negocio, rubro/vertical, teléfono** (campos custom) — ya
+### 4.2 Vía Calendly — formulario de la reunión ✅ **montada el 2026-08-03**
+- [x] El formulario de Calendly captura **nombre, negocio, rubro/vertical, teléfono** (campos custom) — ya
       es la fuente más rica de las tres: llega un lead **cualificado y con rubro**, listo para preparar la
-      demo done-for-you (§7).
-- [ ] Pasar los UTMs/`origin` como query a Calendly para que el evento guarde de qué anuncio vino.
+      demo done-for-you (§7). El rubro son **botones de opción** (Inmobiliaria · Restaurante o domicilios ·
+      Comercio o tienda · Citas y servicios · Otro), no texto libre, para que agrupe en el reporte.
+- [x] Pasar los UTMs/`origin` como query a Calendly para que el evento guarde de qué anuncio vino.
+      **Verificado en vivo** con `?a1=prueba_soltyai`.
 - [ ] Exportar las reuniones agendadas (CSV de Calendly) y cruzarlas por origen en la hoja (§6).
+      *(Se hace cuando haya reuniones que exportar.)*
+
+> 🔴 **La pregunta 1 del evento NO se puede reordenar.** `/ir` inyecta `a1=<origen>` y **Calendly usa
+> `a1` para prellenar la respuesta a la pregunta 1**, sea cual sea. Si otra pregunta queda de primera, el
+> nombre del anuncio se escribe adentro de ésa y la atribución se pierde en silencio. Por eso la 1 es
+> *"¿De dónde nos conociste?"* y va **sin obligatorio** (la llena la pauta; exigirla trabaría al visitante
+> orgánico).
+>
+> ⚠️ **Y no se le pone la variable "Preguntas y respuestas" a ningún correo del evento.** Viene por
+> defecto en la invitación del calendario y en el recordatorio, y le devuelve al prospecto sus propias
+> respuestas — **incluido el código interno de la campaña**, escrito en su calendario para siempre. Se
+> quitó de las dos el 3-ago. Las respuestas siguen disponibles en Calendly → Reuniones y en el export.
 
 ### 4.3 Vía WhatsApp — chat entrante
 - [ ] El mensaje pre-rellenado de `wa.me` trae el origen codificado en el `text`; el operador lo lee al
@@ -239,11 +253,20 @@ pierda nadie:
 - [ ] Eventos `ViewContent` + los 3 `Lead` (telegram/calendly/whatsapp) disparando en la landing puente.
 - [ ] Consent Mode v2 respetado (píxel carga tras consentimiento).
 - [ ] 3 deep-links de Telegram con UTM + `start` correctos, uno por ad set, probados con un clic real.
-- [ ] URL de Calendly con UTMs en query + form capturando nombre/negocio/**rubro**/teléfono.
-- [ ] `wa.me/<número>` con `text` pre-rellenado que codifica el origen.
+- [x] URL de Calendly con UTMs en query + form capturando nombre/negocio/**rubro**/teléfono. ✅ **3-ago**,
+      verificado con `?a1=prueba_soltyai` sobre el evento real.
+- [ ] `wa.me/<número>` con `text` pre-rellenado que codifica el origen. 🔴 **Sin número: el CTA de
+      WhatsApp no se pinta.** Hoy `/ir` ofrece 2 vías, no 3, y el reporte de §6 sólo tendrá dos columnas.
 - [ ] Bot capturando y persistiendo `start` (o hoja de conteo manual lista como fallback).
 - [ ] Hoja de conciliación (§6) creada, con la columna `setup-prueba` (§5), compartida con quien opere.
 - [ ] **Prueba end-to-end propia de las 3 vías:** clic en anuncio (preview) → landing puente → entrar por
       cada CTA → ver el origen llegar al otro lado (bot / Calendly / WhatsApp). **No lanzar sin esto.**
-- [ ] Placeholders de `site.ts` reemplazados (ver `11-PRE-LAUNCH-CHECKLIST.md`): `saas.demoUrl`,
-      `calendlyUrl`, `whatsappNumber`, `lead.endpoint`, `analytics.ga4MeasurementId`.
+      *(La vía Calendly ya está probada de punta a punta; faltan la de Telegram y la de WhatsApp.)*
+- [ ] Placeholders de `site.ts` reemplazados (ver `11-PRE-LAUNCH-CHECKLIST.md`). ✅ Ya salieron
+      `saas.demoUrl`, `calendlyUrl` y `lead.endpoint`; **quedan `whatsappNumber`, `ga4MeasurementId` y
+      `metaPixelId`**, que son los tres que de verdad bloquean la pauta.
+
+> ✅ **Lo que ya no es un hueco:** el §0 decía que la conversión ocurre fuera del píxel y que las 3 vías
+> se cosen a mano. Sigue siendo cierto para Telegram y WhatsApp, pero **la vía Calendly ya no depende de
+> conteo manual para el origen**: el `a1` viaja solo y queda escrito en el evento. El conteo manual que
+> queda es el de *avance* del prospecto (§5), no el de procedencia.
