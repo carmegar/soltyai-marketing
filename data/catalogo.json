@@ -1,6 +1,7 @@
 {
   "_doc": "Catálogo de todo lo que SoltyAI puede vender, con su costo real de servir y su margen. Es la fuente para cotizar (src/catalogo) y para gobernar el margen. Regla dura: si un precio o un costo NO está verificado contra una fuente, va con estado 'supuesto' y el CLI lo marca en amarillo en cada cotización. Nada de números inventados que después se presentan como hechos.",
-  "actualizado": "2026-07-25",
+  "_iva": "TODO `precio` de este archivo es la BASE, sin IVA: el 19% se suma encima al cotizar (canon.json → ivaConvencion). Si un contrato pactó el total con IVA incluido, `precio` sigue siendo la base y el total va en `precioConIva`. Hoy la única línea así es domicilios-ops: $370.000 con IVA = $310.924,37 + $59.075,63.",
+  "actualizado": "2026-08-03",
   "moneda": "COP",
 
   "servicios": [
@@ -39,6 +40,28 @@
       "fuente": "ESTADO.md §Marketing + 01-SOURCE-BRIEF §Costo de servir",
       "incluye": ["1.500 conversaciones/mes", "IA topada", "multi-sede"],
       "notas": "Costo = infra + IA 1.500 conv × US$0.035 × TRM 4.000 ≈ $210.000. Es el plan de margen porcentual más bajo: vigilarlo si el uso real se pega al tope."
+    },
+    {
+      "id": "domicilios-ops",
+      "nombre": "SoltyAI Domicilios — Plan Operativo",
+      "linea": "suscripcion",
+      "tipo": "recurrente",
+      "vertical": "domicilios",
+      "slugSuite": "08-domicilios-ops",
+      "precio": 310924,
+      "precioConIva": 370000,
+      "costoMes": 8000,
+      "estado": "supuesto",
+      "fuente": "PRECIO VERIFICADO: contrato firmado SAI-DOMIOPS-20260703-001 (Bucaradomi) y factura electrónica SOL1 del 26-jul-2026, $370.000/mes IVA incluido = base $310.924,37 + IVA $59.075,63; la serie de cobranza recurrente vive en la suite (cms0sk7kf000501pfvnadxf4t, día 20). Alcance y SLA: producto 08-domicilios-ops del catálogo de la suite. COSTO SUPUESTO: es la misma banda de infra que ya usan los planes de bot (canon → costoDeServir.infraPorClienteMes, US$1–2/cliente-mes × TRM 4.000), no una medición del despliegue real del piloto.",
+      "incluye": [
+        "Dashboard de operador: pedidos, asignación, estados en vivo, zonas y tarifas editables",
+        "PWA para domiciliarios: asignaciones, cambio de estado, evidencia de entrega",
+        "Alojamiento, operación y monitoreo en infraestructura de SoltyAI",
+        "Copias de seguridad diarias cifradas fuera del servidor",
+        "Soporte en horario hábil",
+        "Sin chat automático y sin IA por conversación (está fuera del alcance del plan)"
+      ],
+      "notas": "⚠️ Es la ÚNICA línea que factura hoy y por eso entra al catálogo (D3 de business/24-coherencia-producto-empresa.md): sin ella el margen de la caja real no lo gobernaba ninguna regla. ⚠️ El precio pactado es CON IVA incluido, distinto de los 3 planes, que son antes de IVA: el campo `precio` es la base y `precioConIva` el total del contrato (ver `_iva` arriba). El costo no lleva IA porque el plan no la incluye (plataforma operativa, sin chat automático), así que es casi puro infra. El margen del 97% que sale de estos números es OPTIMISTA a propósito de lo que mide: NO incluye las horas de soporte en horario hábil ni la operación del despliegue, que en esta línea son el costo que de verdad puede comerse el margen. Medirlas antes de pasar el estado a 'vigente'. ⚠️ Al cotizarlo hay que pasar `--sin-setup`: esta línea NO lleva cobro inicial (setup_fee_cop = 0 en la suite) y el CLI, por ser suscripción recurrente, se lo agrega por defecto."
     },
     {
       "id": "setup",

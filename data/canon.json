@@ -1,9 +1,10 @@
 {
   "_doc": "Hechos canónicos en formato máquina. Espejo de 01-SOURCE-BRIEF.md + ESTADO.md §Marketing. Si cambia el precio o la promesa, se cambia AQUÍ y en el doc, en el mismo commit. Los guardrails leen este archivo: es lo que hace que una decisión escrita se vuelva una regla que falla el CI.",
-  "actualizado": "2026-07-25",
+  "actualizado": "2026-08-03",
   "fuentes": [
     "01-SOURCE-BRIEF.md (promesa, verticales, canales, costo de servir)",
     "ESTADO.md §Marketing (pricing COP vigente, acordado 2026-07-22)",
+    "ESTADO.md §Piloto Bucaradomi (línea domicilios: contrato SAI-DOMIOPS-20260703-001 y factura SOL1)",
     "13-PLAN-12-CLIENTES.md §10 (reglas de la línea de servicios)",
     "03-competitor-analysis.md §3 (ángulos quemados del mercado)"
   ],
@@ -23,6 +24,13 @@
   "setup": { "precio": 400000, "anticipo": 0.5, "nota": "Única vez. ES la adaptación done-for-you, no una barrera. Se cobra 50% al firmar y 50% cuando el bot está atendiendo (ver garantiaImplementacion)." },
   "excedente": { "precio": 50000, "cada": 100, "unidad": "conversaciones" },
   "iva": 0.19,
+  "ivaConvencion": {
+    "_doc": "Regla de lectura del archivo, para que no se confundan dos cosas que se parecen: TODO precio de canon.json y de catalogo.json es ANTES de IVA, y el 19% se suma encima (así lo cotiza src/catalogo y así se derivan los importes con IVA en el chequeo de la landing). Una línea puede tener el precio pactado CON IVA incluido: entonces `precio` sigue siendo la base y el total va aparte, en `precioConIva`, con la fuente que lo fija.",
+    "preciosSinIva": true,
+    "excepciones": [
+      "catalogo.json → domicilios-ops: el contrato firmado fija $370.000/mes CON IVA incluido, o sea base $310.924,37 + IVA $59.075,63. En el catálogo va `precio` 310924 y `precioConIva` 370000."
+    ]
+  },
   "descuentoPrimerosClientes": {
     "porcentaje": 0.3,
     "meses": 3,
@@ -62,7 +70,16 @@
     "nota": "WhatsApp Business API depende de la validación de Meta como Tech Provider (App Review enviado 2026-07-19). Hasta que Meta apruebe, WhatsApp SOLO se nombra como 'próximamente'."
   },
 
-  "verticales": ["citas", "comercio", "inmobiliaria", "integraciones"],
+  "verticales": ["citas", "comercio", "domicilios", "inmobiliaria", "integraciones"],
+  "verticalesNota": {
+    "_doc": "`domicilios` entró el 2026-08-03 por la decisión D3 de business/24-coherencia-producto-empresa.md (hallazgo H2: la única línea que factura no estaba en ninguna doc de empresa). NO es lo mismo que `comercio`: comercio es el bot que toma pedidos por chat; domicilios es la plataforma operativa de despacho (dashboard de operador + PWA del domiciliario), sin chat automático.",
+    "domicilios": {
+      "producto": "packages/vertical-logistica (platform)",
+      "suite": "08-domicilios-ops",
+      "catalogo": "domicilios-ops (data/catalogo.json)",
+      "estado": "Única línea con facturación recurrente hoy: piloto Bucaradomi, contrato SAI-DOMIOPS-20260703-001."
+    }
+  },
 
   "costoDeServir": {
     "moneda": "USD",
@@ -138,15 +155,26 @@
       ]
     },
     "whatsappComoPromesa": {
+      "_doc": "Ampliada el 2026-08-03. Antes, de las 8 líneas de copy que el hallazgo H3 de business/24 encontró publicadas en la landing, los patrones cazaban UNA: pedían la conjugación exacta ('atiende por whatsapp') y el sustantivo pegado ('bot en whatsapp'), así que 'Atienden por WhatsApp y Telegram', 'WhatsApp y Telegram, con o sin IA', 'chatbot de WhatsApp' y todo el copy en inglés se escapaban. Las tres formas nuevas: el par de canales sin verbo ('whatsapp y telegram'), el verbo en plural o con objeto corto en medio, y el sustantivo con adjetivo ('bot inteligente de WhatsApp'). Lo que NO puede dar error, y por eso los patrones piden adyacencia: la CTA humana («escríbenos por WhatsApp»), la etiqueta de formulario («Teléfono / WhatsApp») y la enumeración legal de canales («WhatsApp, web, Telegram y otras redes»).",
       "patrones": [
         "whatsapp business api",
         "api de whatsapp",
-        "bot (en|por|para) (tu )?whatsapp",
-        "(atiende|atencion|responde|vende|agenda) (en|por) (tu )?whatsapp"
+        "(chat)?bots?( (inteligentes?|con ia|sin ia|especializados?|personalizados?))? (de|en|por|para) (tu |su |el )?whatsapp",
+        "(atiende|atienden|atencion|responde|responden|contesta|contestan|vende|venden|agenda|agendan|recibe|reciben)( \\w+){0,2} (en|por|desde) (tu |su |el )?whatsapp",
+        "whatsapp (y|o) telegram",
+        "telegram (y|o) whatsapp"
+      ],
+      "patronesEn": [
+        "whatsapp (and|or) telegram",
+        "telegram (and|or) whatsapp",
+        "(chat)?bots?( (smart|intelligent|custom|specialized|dedicated))? (for|on|in|over) (your )?whatsapp",
+        "(answers?|responds?|replies|handles?|sells?|books?|attends?)( \\w+){0,2} (on|in|via|through|over) (your )?whatsapp",
+        "whatsapp (chat)?bot"
       ],
       "alcance": "copy",
       "porque": "Meta aún no valida a SoltyAI como Tech Provider. El BOT no se promete en WhatsApp: solo 'próximamente'. (Ofrecer el WhatsApp humano de contacto —«escríbenos por WhatsApp»— sí es válido: esa CTA existe y la atiende una persona.)",
-      "exenciones": ["próximamente", "proximamente", "pendiente", "cuando", "aún no", "aun no"]
+      "exenciones": ["próximamente", "proximamente", "pendiente", "cuando", "aún no", "aun no"],
+      "exencionesEn": ["coming soon", "not yet", "pending", "once meta", "once activated", "once enabled", "awaiting", "while we"]
     },
     "angulosQuemados": {
       "patrones": ["centraliza tu whatsapp", "crm para whatsapp", "todos tus chats en una bandeja"],
