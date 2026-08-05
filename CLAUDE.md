@@ -46,4 +46,6 @@ exenciones se buscan en una ventana de ±1 línea y se ignoran los signos de én
   (estimación, sale marcado en cada cotización) · `legacy` (modelo USD viejo, sin reconciliar).
 - `data/` se versiona (memoria de la empresa). Las listas con datos personales **no** (Ley 1581).
 - Al cierre de sesión: `CHANGELOG.md` de este repo + lo que toque en `../ESTADO.md` y `../HISTORIAL.md`.
-- `push` a `main` lo ejecuta el usuario salvo autorización explícita de la sesión.
+- **Este repo no despliega nada**, así que su `main` es 🟢 en la política de `../CLAUDE.md`: Claude
+  commitea y pushea sin preguntar. Lo que sí se sigue respetando es la regla D1 — `data/canon.json`
+  lo toca **una sesión a la vez**, y el doc que lo explica cambia en el MISMO commit.
