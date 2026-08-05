@@ -1,5 +1,16 @@
 # Changelog · soltyai-marketing
 
+## 2026-08-05 (política) — El `main` de este repo pasa a 🟢: no despliega nada
+
+La regla de push deja de ser una línea igual para todo el monorepo y pasa a depender de **la
+consecuencia**: los repos cuyo `main` dispara un deploy piden ok, los que no —este— no. El control se
+movió al lugar donde importa, el environment `produccion` con revisor requerido en los 4 workflows que
+entran al VPS (`../infra/runbooks/aprobacion-de-deploys.md`). La política completa vive en
+`../CLAUDE.md`; acá quedó el puntero.
+
+La regla D1 **no** cambia: `data/canon.json` lo toca una sesión a la vez, y el doc que lo explica va en
+el mismo commit.
+
 ## 2026-08-04 (tooling) — El CHANGELOG fusiona solo; `canon.json` no, y a propósito
 
 `.gitattributes` gana `CHANGELOG.md merge=union`: cuando dos sesiones trabajan en paralelo, este es el
