@@ -1,5 +1,16 @@
 # Changelog · soltyai-marketing
 
+## 2026-08-04 (tooling) — El CHANGELOG fusiona solo; `canon.json` no, y a propósito
+
+`.gitattributes` gana `CHANGELOG.md merge=union`: cuando dos sesiones trabajan en paralelo, este es el
+único archivo que **las dos** tocan siempre. Con union, git se queda con las líneas de los dos lados en
+vez de marcar conflicto. ⚠️ Con el filo escrito al lado: **union nunca falla, así que tampoco avisa**.
+
+🔴 **`data/canon.json` queda fuera de union deliberadamente.** Es la fuente de verdad del precio (D1):
+ahí un conflicto es la señal **correcta** —dos versiones del canon tienen que resolverse a mano— y
+fusionarlas automáticamente dejaría un JSON roto o, peor, dos precios conviviendo sin que nadie se
+entere. La regla quedó escrita en el propio `.gitattributes` para que no se agregue por descuido.
+
 ## 2026-08-04 (catálogo) — 🌐 La web deja de ser una línea sola: rescate, cuidado recurrente y el ONG que vivía fuera del canon
 
 Salió de cotizarle a la Fundación Colombia Unida y Grande (caso TRACE / Hernán Linares) y de

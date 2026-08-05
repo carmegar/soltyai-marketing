@@ -2,3 +2,16 @@
 *.js text eol=lf
 *.json text eol=lf
 *.yml text eol=lf
+
+# El CHANGELOG se escribe añadiendo, nunca reescribiendo lo viejo. Con `merge=union` git se
+# queda con las líneas de LOS DOS lados en vez de marcar conflicto: dos sesiones en paralelo
+# dejan de chocar en el único archivo que ambas tocan siempre.
+#
+# ⚠️ Union nunca falla, así que tampoco avisa. Si dos entradas del mismo día se mezclaron,
+# el merge sale limpio con las dos pegadas: revisá el orden y que no haya quedado un
+# encabezado repetido. Cambia el conflicto ruidoso por una revisión corta, no lo elimina.
+#
+# 🔴 `data/canon.json` NO lleva union a propósito: es la fuente de verdad del precio (D1).
+# Ahí un conflicto es la señal correcta —dos versiones del canon tienen que resolverse a
+# mano—, y union las fusionaría dejando un JSON roto o, peor, dos precios conviviendo.
+CHANGELOG.md merge=union
