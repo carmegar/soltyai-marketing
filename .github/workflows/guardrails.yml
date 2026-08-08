@@ -16,6 +16,14 @@ jobs:
 
       # Sin dependencias a propósito: el linter tiene que correr en segundos y no puede
       # romperse por un npm install. Si algún día necesita una librería, revisar esa decisión.
+      #
+      # Ese "a propósito" era un comentario, y un comentario no es una guarda: el día que
+      # alguien agregara un paquete, nada avisaba — el CI no instala, así que el import
+      # reventaría en ejecución, sin lockfile y sin revisión. Ahora es un chequeo, y va
+      # PRIMERO porque si se rompió, lo de abajo no significa nada.
+      - name: Cero dependencias (o lockfile, si dejaron de ser cero)
+        run: node src/sin-dependencias.js
+
       - name: El linter muerde
         run: node src/guardrails/prueba.js
 

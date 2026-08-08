@@ -1,5 +1,29 @@
 # Changelog · soltyai-marketing
 
+## 2026-08-08 (seguridad) — «Sin dependencias a propósito» deja de ser un comentario
+
+El tablero traía un pendiente que decía que este repo *«no tiene lockfile commiteado, el build
+resuelve versiones que nadie aprobó»*. Al abrir el código, el hecho es otro: **este repo no tiene ni
+una dependencia**. `package.json` no declara ningún bloque, los `import` del `src/` son todos
+relativos o `node:`, y el workflow nunca corre un install. No había versiones sin aprobar porque no
+había versiones.
+
+Lo que sí era cierto es la otra mitad: la decisión de no tener dependencias vivía en **un comentario
+del workflow**, y un comentario no es una guarda. El día que alguien agregue una librería, nada
+avisa — el CI no instala, así que el `import` revienta en ejecución, y el repo entra a la política de
+dependencias por la puerta de atrás (`../security/politicas/dependencias.md`).
+
+**`src/sin-dependencias.js`** (nuevo) lo convierte en chequeo, mirando las dos caras del mismo hecho:
+
+- **lo declarado** — si aparece cualquier bloque de dependencias, exige lockfile commiteado;
+- **lo usado** — recorre los `import` del `src/` (estáticos y dinámicos) y falla ante cualquiera que
+  no sea relativo ni `node:`. Un paquete se puede usar sin declararlo, y ahí el `package.json` limpio
+  miente.
+
+Corre **primero** en el workflow y primero en `npm run check`: si eso se rompió, lo de abajo no
+significa nada. Probado en sus dos caminos —los cinco casos, incluido el verde con lockfile— porque
+un chequeo que nunca se vio fallar no es un chequeo.
+
 ## 2026-08-05 (política) — El `main` de este repo pasa a 🟢: no despliega nada
 
 La regla de push deja de ser una línea igual para todo el monorepo y pasa a depender de **la
