@@ -1,5 +1,33 @@
 # Changelog · soltyai-marketing
 
+## 2026-08-09 (outbound) — El playbook cotizaba en dólares y medía el correo con la vara de WhatsApp
+
+Preparando la tanda 1 del cold email aparecieron dos cosas en `09-OUTBOUND.md`, las dos en la
+**PARTE B**, que es justo la que se tiene abierta mientras se habla con un prospecto.
+
+**Los precios seguían en USD.** El banner de §B.3 avisaba que los mensajes estaban viejos y mandaba a
+`redes/outbound-mensajes.txt`, pero enumeraba lo que quedaba vigente —estrategia, priorización,
+cadencia, legal, conciliación— y **ni las objeciones ni el cierre estaban en esa lista**. Así que
+§B.5 y §B.6 quedaron en tierra de nadie cotizando `$249/mes + $600 setup` y `$650/$1.500`, contra la
+D1 que dice Esencial $290.000 · Pro $490.000 · Premium $790.000 · setup $400.000, todo antes de IVA.
+El `.txt` vigente no tiene precios, así que esas tablas eran el único lugar donde alguien buscaría un
+número en vivo. Corregidas a COP, con el pago partido del setup, los descuentos autorizados y la
+aclaración de que **«Pro» a secas sí existe** (es el plan COP; los que no existen son Starter y
+Growth — el doc decía lo contrario). También cayeron los productos por vertical (`SoltyAI Agenda
+$65/mes`, `SoltyAI Pedidos $80/mes`): hoy el plan es el mismo y lo que cambia es la vertical.
+
+**Y los benchmarks se estaban aplicando al canal equivocado.** §A.8 y §B.7 daban «responden 8–18 %»,
+que son tasas de **WhatsApp 1-a-1 manual**, el canal de ese documento. El umbral sano del correo en
+frío es **3–5 %** (`business/16` §8). Medir la tanda 1 de correo contra el 8–18 % habría hecho parecer
+fracasado un canal que está funcionando bien, y llevado a reescribir un gancho que sirve. Queda dicho
+que **el canal decide el umbral**.
+
+**`data/links.json`:** registrados los tres primeros origins del correo
+(`outbound_inmobiliarias_email1/2/3`, fuente `outbound`, medium `email`). Hasta hoy el registro tenía
+**uno solo** y era de Meta, así que un lead de la tanda 1 habría entrado sin fuente y el canal no se
+habría podido comparar contra la pauta — que es el punto entero de medirlo. De paso cada origin trae
+su deep-link de Telegram tagueado, que es el `{{link_demo}}` del toque 2.
+
 ## 2026-08-08 (seguridad) — «Sin dependencias a propósito» deja de ser un comentario
 
 El tablero traía un pendiente que decía que este repo *«no tiene lockfile commiteado, el build

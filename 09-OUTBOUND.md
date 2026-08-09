@@ -63,9 +63,10 @@
 producto distinto que cerrar (ver `05-PRICING.md`):
 
 - **Citas** (peluquerías, barberías, spas, estética, uñas, consultorios) → dolor agudo de agenda/no-shows →
-  producto **SoltyAI Agenda** ($65/mes + $250 setup).
-- **Domicilios / comercio** (restaurantes barrio, tiendas, distribuidoras) → catálogo + pedidos → producto
-  **SoltyAI Pedidos** ($80/mes + $280 setup). Probado en piloto real (Bucaradomi).
+  vertical **citas**, normalmente en **Esencial** (agendar y recordar no necesita IA, y sin IA el margen
+  es mejor).
+- **Domicilios / comercio** (restaurantes barrio, tiendas, distribuidoras) → catálogo + pedidos →
+  verticales **comercio** / **domicilios**, normalmente en **Pro**. Probado en piloto real (Bucaradomi).
 - **Automotor / servicios con agenda** → cotización/agenda → Agenda o Integraciones según el caso.
 
 Recomendación: **un rubro nuevo a la vez** (no disperses), prioriza donde el bot es más fuerte y el dolor
@@ -81,6 +82,13 @@ más claro (citas y comercio son apuestas altas). Mismo guion de 3 toques, mensa
 | Responden | 8–18 % |
 | Toman la demo | 3–8 % |
 | **Cierran** | **1–3 %** |
+
+> 🔴 **Estas tasas son de WhatsApp 1-a-1 manual, que es el canal de este documento. NO se le aplican
+> al cold email.** El correo en frío responde mucho menos por su naturaleza, y su umbral sano es
+> **3–5 % de respuestas** (`business/16-motor-cold-email.md` §8, junto con el resto del tablero de
+> entregabilidad: bounce <3 %, spam ~0). Medir la tanda 1 de correo contra el 8–18 % de acá haría
+> parecer fracasado un canal que está funcionando bien, y llevaría a reescribir un gancho que sirve.
+> Regla: **el canal decide el umbral** — WhatsApp manual mira esta tabla, el correo mira la de `16`.
 
 - **Por cada 100 prospectos bien trabajados → ~1–3 clientes (estimado).**
 - Sobre los **906**, techo teórico **~9–27 clientes** *si se trabajaran todos bien* (no realista de una;
@@ -171,11 +179,17 @@ más claro (citas y comercio son apuestas altas). Mismo guion de 3 toques, mensa
 > Vi que alcanzaste a probar el bot 🙌. ¿Qué te pareció? Si quieres, **te lo dejo configurado con los datos reales de [Inmobiliaria X]** (tus proyectos, precios, zonas) para que veas cómo atendería de verdad, sin compromiso.
 
 ### Toque 3 — Oferta + cierre (Día 5–7)
-> Hola [nombre], cierro el tema 🙂. Si te animas, lo montamos para [Inmobiliaria X] **esta semana**: setup desde **$600 USD** *(propuesto, lo dejamos andando con tu inventario)* y luego desde **$249/mes** *(propuesto)* todo incluido — IA + soporte, **sin sorpresas de tokens**. ¿Agendamos 10 min para dejarlo listo?
+> Hola [nombre], cierro el tema 🙂. Si te animas, lo montamos para [Inmobiliaria X] **esta semana**: setup de **$400.000** (lo dejamos andando con tu inventario, y pagas la mitad al firmar y el resto cuando ya esté atendiendo) y luego **$490.000/mes + IVA** todo incluido — IA + soporte, **sin sorpresas de tokens**. ¿Agendamos 10 min para dejarlo listo?
 
-> **Nota de precio:** el tier **Inmobiliario entry ($249/mes + $600 setup) está marcado "propuesto/validar"**
-> (ver `05-PRICING.md`); es más realista en frío que el tier full ($650/$1.500). Para inventarios grandes
-> (+15 agentes) sí va el full. **Nunca** menciones planes Starter/Growth/Pro: no existen.
+> 🔴 **Nota de precio (corregida 2026-08-09).** Los USD de arriba son del modelo viejo y **no se cotizan**.
+> El precio vigente sale de la **D1**: `marketing/data/canon.json` + `catalogo.json`, y ningún doc
+> —este incluido— lo define por su cuenta. Hoy: **Esencial $290.000/mes** (200 conversaciones, sin IA) ·
+> **Pro $490.000/mes** (500, con IA) · **Premium $790.000/mes** (1500, con IA) · **setup $400.000**
+> única vez (50 % al firmar, el resto cuando el bot ya atiende) · excedente **$50.000 por cada 100
+> conversaciones**. **Todo eso es ANTES de IVA: el 19 % se suma encima.** El caballo de batalla en frío
+> para una inmobiliaria PYME es **Pro**; Premium sólo con inventario grande o mucho volumen.
+> Los planes **Starter / Growth** no existen — pero ojo, **"Pro" a secas SÍ existe**: es el plan COP de
+> arriba, no el viejo tier en dólares.
 
 ## B.4 Cuando responden: conducir hacia la demo (mini-guion)
 
@@ -197,7 +211,7 @@ más claro (citas y comercio son apuestas altas). Mismo guion de 3 toques, mensa
 | # | Objeción del prospecto | Respuesta lista |
 |---|---|---|
 | 1 | **"No me interesa / no gracias"** | "Sin problema, gracias por responder 🙏. Te dejo el bot por si algún día quieres verlo [link]. ¡Éxitos!" → marca `descartado`. (No insistas.) |
-| 2 | **"¿Cuánto cuesta?"** (muy pronto) | "Depende de lo que necesites, pero para inmobiliaria arranca desde **$249/mes** *(propuesto)* todo incluido y un setup desde **$600** donde te lo dejamos andando con tu inventario. Antes de hablar de plata, ¿quieres verlo funcionando con tus datos? Te toma 1 min 👉 [link]." |
+| 2 | **"¿Cuánto cuesta?"** (muy pronto) | "Depende de lo que necesites, pero para inmobiliaria el plan que mejor encaja es **Pro: $490.000/mes + IVA** (500 conversaciones, con IA), más un **setup de $400.000** donde te lo dejamos andando con tu inventario, y del setup pagas **la mitad al firmar y la otra mitad cuando el bot ya esté atendiendo**. Antes de hablar de plata, ¿quieres verlo funcionando con tus datos? Te toma 1 min 👉 [link]." |
 | 3 | **"Está muy caro"** | "Te entiendo. Mira: un asesor cuesta $1.2M+/mes y no cubre 24/7. El bot responde **todos** los canales sin descanso por una fracción, e **incluimos la IA sin cobrarte tokens aparte**. Con que cierres **una venta extra** que hoy se te escapa de noche, ya se pagó. ¿Lo vemos con tus números?" |
 | 4 | **"Ya tengo a alguien que responde / una secretaria"** | "Perfecto, el bot no la reemplaza: le **quita las 10 preguntas repetitivas** y atiende cuando ella no está (noches, fines). Ella se enfoca en cerrar, el bot filtra y agenda. ¿Te muestro cómo se reparten el trabajo?" |
 | 5 | **"Ya uso WhatsApp Business / respuestas automáticas"** | "Esas son respuestas fijas; esto **entiende y conversa** como una persona: responde por precio, zona, disponibilidad y **agenda la visita solo**. Pruébalo 1 min y notas la diferencia 👉 [link]." |
@@ -215,10 +229,17 @@ más claro (citas y comercio son apuestas altas). Mismo guion de 3 toques, mensa
 ## B.6 Cierre (cuando hay interés real) — por producto
 
 1. **Agenda 10 min** (call o WhatsApp) para configurar.
-2. **Propón el paquete según el rubro** (ver `05-PRICING.md`). Para la lista actual (inmobiliarias):
-   - **SoltyAI Inmobiliario — entry** *(propuesto, validar)*: **$249/mes + $600 setup**. El caballo de
-     batalla en frío para PYME 3–15 agentes: RAG de inventario + pre-calificación + agenda de visitas.
-   - **SoltyAI Inmobiliario — full**: **$650/mes + $1.500 setup**. Solo para inventarios grandes / +15 agentes.
+2. **Propón el plan** — la fuente es la **D1** (`marketing/data/canon.json`), no este doc. Para la lista
+   actual (inmobiliarias), todo **antes de IVA**:
+   - **Pro — $490.000/mes + setup $400.000.** El caballo de batalla en frío para una PYME de 3–15
+     agentes: 500 conversaciones, con IA, RAG de inventario + pre-calificación + agenda de visitas.
+   - **Premium — $790.000/mes + setup $400.000.** 1500 conversaciones. Sólo para inventarios grandes
+     o mucho volumen de consultas.
+   - **Esencial — $290.000/mes + setup $400.000.** 200 conversaciones y **sin IA** (flujo fijo): la
+     salida cuando el presupuesto no da y el caso no necesita que el bot improvise.
+   - Excedente: **$50.000 por cada 100 conversaciones** de más.
+   - **Descuento autorizado:** primeros clientes **−30 % por 3 meses** (5 cupos, a cambio del caso de
+     estudio). ONG/educación −25 % permanente, caso por caso. **No se acumulan: se aplica el mayor.**
 3. **El setup ES la adaptación done-for-you** — se paga una vez, deja el bot andando con SU inventario, y
    es la prueba de valor que baja la barrera (no una barrera). El prospecto ve SU negocio funcionando antes
    de pagar mensualidad.
@@ -227,9 +248,10 @@ más claro (citas y comercio son apuestas altas). Mismo guion de 3 toques, mensa
 5. **Bundle:** si toma un 2º producto (p. ej. agrega Citas para su recepción), **−10% desde el 2º producto**.
 6. Marca `cliente` y pásalo a onboarding.
 
-> **Para otros rubros** (si diversificas, §A.7): cierra con **SoltyAI Agenda** ($65/mes + $250 setup) para
-> peluquerías/barberías/spas/consultorios, o **SoltyAI Pedidos** ($80/mes + $280 setup) para
-> tiendas/restaurantes/domicilios. **Nunca** Starter/Growth/Pro.
+> **Para otros rubros** (si diversificas, §A.7): **los planes son los mismos** — lo que cambia es la
+> vertical que se activa, no el precio. Una peluquería o un consultorio suele entrar por **Esencial**
+> ($290.000/mes, sin IA, flujo fijo: agendar y recordar no necesita que el bot improvise); una tienda o
+> un operador de domicilios con catálogo, por **Pro**. **Nunca** menciones Starter ni Growth: no existen.
 
 ## B.7 Hoja de conciliación (el tablero de conversión)
 
@@ -256,7 +278,8 @@ más claro (citas y comercio son apuestas altas). Mismo guion de 3 toques, mensa
 
 **Fórmulas:** `% Resp = Respondieron / Contactados` · `% Demo = Demos / Contactados` · `% Cierre = Cierres / Contactados`.
 
-**Benchmarks de referencia (estimado — B2B frío bien personalizado con demo en vivo):**
+**Benchmarks de referencia (estimado — B2B frío bien personalizado con demo en vivo, **por WhatsApp
+1-a-1 manual**; el cold email se mide contra `business/16` §8, ver el aviso de §A.8):**
 - Responden **8–18 %** · Toman la demo **3–8 %** · **Cierran 1–3 %**.
 - ≈ **1–3 clientes por cada 100 prospectos** bien trabajados (estimado).
 - Primer lote de ~150–200 (Bga + top Bogotá): **~2–6 clientes** (estimado).
