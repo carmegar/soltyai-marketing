@@ -28,6 +28,32 @@ Motor de marketing de SoltyAI: la estrategia escrita (`01`–`14`) y los program
   llega sin fuente y la ronda no se puede evaluar.
 - **Toda entrada del swipe file lleva su captura** en `swipe/`.
 
+## Las skills del plugin `marketing` (Anthropic) — cómo se usan acá
+
+Desde el 9-ago está instalado `marketing@knowledge-work-plugins`, que aporta `/draft-content`,
+`/campaign-plan`, `/brand-review`, `/competitive-brief`, `/seo-audit`, `/email-sequence` y
+`/performance-report`. Son plantillas de redacción genéricas y buenas, escritas en inglés y para
+cualquier empresa. Eso las hace útiles y peligrosas por el mismo motivo: **no saben qué vendemos.**
+
+Cuando se use cualquiera de ellas, en este orden:
+
+1. **La brand voice NO es la que la skill pida configurar.** Es `business/13-guia-estilo-y-prompting.md`
+   (sin rayas, sin tono de IA, español de Colombia, tuteo) y el tono de `01-SOURCE-BRIEF.md`. Si una
+   skill ofrece "tono autoritativo / inspiracional / técnico", se ignora la lista y se usa la guía.
+2. **Cualquier precio, plan, canal o garantía sale de `data/canon.json`.** Una skill que pida "tu
+   pricing" recibe el canon, no la memoria. La D1 no se negocia porque el borrador venga de un plugin.
+3. **El borrador pasa por `npm run guardrails` antes de mostrarse**, igual que el copy escrito a mano.
+   La skill escribe; el guardrail decide. Un borrador que no pasó el linter no está listo.
+4. **Nada se publica sin `origin`** (`npm run link nuevo`). Vale también para lo que salga de
+   `/draft-content`.
+5. **Sus 13 conectores MCP (Slack, HubSpot, Canva, Ahrefs…) no se autentican.** No los usamos, y
+   cada uno autenticado sería una salida de datos nueva. La aprobación cubre las skills, no los
+   conectores — condición registrada en `security/data/extensiones-aprobadas.json`.
+
+⚠️ **`/seo-audit` y `/performance-report` asumen herramientas que no tenemos** (Ahrefs, Amplitude,
+GA4). Hasta que el píxel y GA4 estén en la landing, lo que produzcan es una plantilla, no una
+medición: se usa como guion, y los números salen de `src/reportes`.
+
 ## Cómo se agrega una regla nueva
 
 Casi siempre es editar `data/canon.json` (patrones, exenciones, límites) — no hace falta tocar

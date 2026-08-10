@@ -1,5 +1,34 @@
 # Changelog · soltyai-marketing
 
+## 2026-08-09 (herramientas) — Entra el plugin de marketing de Anthropic, amarrado al canon
+
+Se buscó qué skills podían alimentar el frente y la respuesta útil fue incómoda: **lo que más
+faltaba ya estaba instalado y sin usar.** `claude-ads` lleva desde el 17-jun con 25 skills cubriendo
+pauta en 8 redes — sólo que más de la mitad **audita cuentas que todavía no existen**, así que hoy
+sirven `/ads dna`, `/ads plan`, `/ads create`, `/ads math`, `/ads competitor` y `/ads landing`, y las
+de auditoría esperan a que haya gasto.
+
+El hueco de verdad era el **orgánico**, que es justo donde `src/contenido/` dice *«diseñado, sin
+construir»*. Se instaló **`marketing@knowledge-work-plugins`** (Anthropic, 8 skills:
+`/draft-content`, `/campaign-plan`, `/brand-review`, `/competitive-brief`, `/seo-audit`,
+`/email-sequence`, `/performance-report`).
+
+**Added** · `CLAUDE.md` §*Las skills del plugin `marketing`*. Son plantillas genéricas, en inglés y
+para cualquier empresa: útiles y peligrosas por el mismo motivo — **no saben qué vendemos**. El
+amarre, en orden: la brand voice es `business/13`, no la que la skill ofrezca configurar; todo
+precio, plan o canal sale de `data/canon.json`; el borrador pasa por `npm run guardrails` antes de
+mostrarse; y nada se publica sin `origin`. **La skill escribe; el guardrail decide.**
+
+⚠️ Y lo que hay que saber antes de usarlas: **`/seo-audit` y `/performance-report` asumen Ahrefs,
+Amplitude y GA4**, que no tenemos. Hasta que el píxel y GA4 estén en la landing, lo que produzcan es
+un guion, no una medición.
+
+🔴 **El plugin trae 13 servidores MCP de terceros** (Slack, HubSpot, Canva, Figma, Ahrefs, Klaviyo…).
+**Ninguno se autentica**, y esa es una condición registrada, no un detalle: lo aprobado son las
+skills. Que el plugin sea de Anthropic responde por el plugin, no por Slack. Revisión completa en
+`security/data/extensiones-aprobadas.json`, bajo la política nueva
+`security/politicas/extensiones-del-agente.md`.
+
 ## 2026-08-09 (outbound) — El playbook cotizaba en dólares y medía el correo con la vara de WhatsApp
 
 Preparando la tanda 1 del cold email aparecieron dos cosas en `09-OUTBOUND.md`, las dos en la
