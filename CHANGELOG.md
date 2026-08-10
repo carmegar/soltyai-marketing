@@ -1,5 +1,52 @@
 # Changelog · soltyai-marketing
 
+## 2026-08-10 (mensaje) — Los 45 correos decían la verdad, pero los 45 la decían igual
+
+Primera vez que se usa `/brand-review` del plugin nuevo, con la voz de `business/13` y el canon como
+referencia en vez de la que la skill ofrece configurar. El encargo era que los correos **generaran
+ventas** y se leyeran **como un correo personal escrito después de encontrar al prospecto**, no como
+una campaña.
+
+El contenido estaba bien: gancho real por prospecto (cruzado contra `04-ia.json`), cero precios
+inventados, cero prueba social falsa, línea de supresión en los 45. **Lo que los delataba era la
+forma.** Tres cosas, todas medidas antes y después:
+
+- **La línea de Ley 1581 estaba en el primer párrafo de los 45.** *«le escribo a esta dirección
+  porque su web la publica como contacto comercial»*, y en 3 casos con el agravante de decir *«(lo
+  exige la ley de datos)»*. Nadie que te encontró en Google explica la base legal en la línea 2. No
+  se podía borrar —`business/16 §7` la adoptó como práctica— pero §7 exige *decir por qué escribís*,
+  **no** que sea lo segundo que se lee. Bajó al pie, junto a la de supresión, en los 45.
+- **El esqueleto era idéntico:** 43/45 *«responde al instante»*, 43/45 *«pregunta zona y
+  presupuesto»*, 41/45 *«agenda la visita»*, siempre en el mismo orden. Importa más acá que en otro
+  lado: dos de los correos mencionan que son miembros de **la Lonja y la Red MLS**, o sea que **se
+  conocen entre ellos**. Quedó en 16/45, 11/45 y 12/45, sin cuerpos repetidos.
+- **El narrador cambiaba de persona dentro del mismo correo** (*«Soy Carlos… Nosotros armamos…
+  Monto asistentes…»*) y 3 cerraban en plural. Todo a primera persona; SoltyAI sólo en la firma.
+
+**El hallazgo que más sirve:** el dato más "te busqué" ya estaba en los datos y no se usaba. El CSV
+original trae **rating y reseñas de Google Maps de toda la lista**, y sólo **1 de 45** lo citaba.
+Ahora lo hacen 23. Con una regla, porque el dato tiene filo: hay ratings de **1.7, 2.3 y 2.5** en la
+lista, y felicitar a alguien por sus 1.7 estrellas es un insulto. Se cita rating + número desde 4.3
+con 20 reseñas; sólo el número entre 3.5 y 4.2; y **nada** por debajo de 3.5.
+
+⚠️ **Lo que NO se pudo hacer y hay que decir:** los 45 leads traen `instagram: ""` y `facebook: ""`.
+No hay presencia de redes en los datos, así que los correos dicen la verdad de cómo se encontró al
+prospecto —Google Maps y su web— en vez de inventar un *«los vi en Instagram»*.
+
+🔴 **Y el bloqueador que apareció al preguntar qué debe hacer el prospecto después de leer:** el
+toque 2 manda a los 45 el mismo `t.me/inmobiliaria_solty_bot`, cargado con el tenant `demo-l0615` =
+**Serrano**, que es uno de los 45 y competidor de los otros 44. El toque 1 promete la demo con *sus*
+propiedades. Detalle y las tres salidas en `business/16 §6b`.
+
+**Y la decisión de embudo, que se tomó por la negativa:** no se arma el embudo ramificado para la
+tanda 1. Con 45 correos al umbral de §8 son 1-2 respuestas: no hay a quién ramificar, las ramas no
+se pueden diseñar sin leer respuestas, el video demo está bloqueado en cadena, y romper el máximo de
+1 link de §6 en dominios de 14 días es caro. Se ramifica **a mano después de responder**, con las 5
+respuestas guardadas en `tools/apps/prospeccion/RESPUESTAS-GUARDADAS.md`.
+
+**Added** · pendientes nuevos en el tablero: el bot compartido (11-ago), el guardrail que no mira
+`tools/`, y el embudo ramificado para cuando haya datos.
+
 ## 2026-08-09 (herramientas) — Entra el plugin de marketing de Anthropic, amarrado al canon
 
 Se buscó qué skills podían alimentar el frente y la respuesta útil fue incómoda: **lo que más
