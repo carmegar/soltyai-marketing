@@ -15,17 +15,35 @@ Motor de marketing de SoltyAI: la estrategia escrita (`01`–`14`) y los program
 
 ## Las reglas que el CI hace cumplir
 
-- **Un solo mensaje líder** (el bot). El desarrollo a la medida **se ofrece, no se anuncia**
-  (`13-PLAN-12-CLIENTES.md` §10).
-- **WhatsApp solo como "próximamente"** hasta que Meta valide a SoltyAI como Tech Provider. La CTA
-  de WhatsApp humano (`wa.me`) sí es válida: la atiende una persona.
+- **Un mensaje líder POR CANAL** (cambió el 2026-08-13). El **bot** es el titular en Meta, orgánico,
+  outbound y la landing; el **servicio a la medida** es el titular en Google Search y en el Google
+  Business Profile, porque ahí hay un carril pago propio y nadie ve los dos mensajes a la vez.
+  Dentro de una misma pieza sigue habiendo **uno solo**: "hacemos software a la medida, páginas web,
+  bots y marketing" en el mismo anuncio es la agencia genérica de la esquina. Mapa en
+  `canon.json → mensajeLiderPorCanal`; el porqué, en `15-CANALES-Y-SECUENCIA.md`.
+- **WhatsApp y Telegram se prometen; la web no.** WhatsApp quedó **vivo el 2026-08-07** (Meta aprobó
+  a SoltyAI como Tech Provider el 6-ago). La prohibición `whatsappComoPromesa` fue **retirada** — el
+  bloque quedó en el canon como registro, bajo una clave con `_` adelante, para que nadie la
+  reinvente creyendo que falta. Lo que la reemplaza y **no caduca**: `asistenteGeneralIa` (la
+  política de IA de WhatsApp prohíbe los bots de propósito general; vendemos bots de negocio
+  **estructurados** por vertical) y `webComoPromesa` (el widget web sigue sin existir).
 - **Pricing COP vigente:** Esencial $290.000 · Pro $490.000 · Premium $790.000 · setup $400.000 ·
   excedente $50.000/100 conversaciones. Los planes USD **Starter $49 / Growth $149 / Pro $399**
   están superados (ojo: "Pro" a secas SÍ es válido, es el plan COP).
 - **Prueba social solo verificable:** hoy son Bucaradomi (piloto, con permiso) y Swisscontact
   (servicio). Nada de "+100 clientes" ni "líderes en".
 - **Toda pieza publicable lleva `origin`** registrado con `npm run link nuevo`. Sin eso el lead
-  llega sin fuente y la ronda no se puede evaluar.
+  llega sin fuente y la ronda no se puede evaluar. Fuentes válidas en `canon.json → utm.source`; el
+  carril de Google agregó **`google`** (Search, pagado) y **`gbp`** (Business Profile, orgánico).
+  ⚠️ **`gbp` NO está en `fuentesPagadas` a propósito:** el veredicto de la regla de corte sólo mide
+  lo que cuesta plata. Es una decisión, no un olvido.
+- **La economía de adquisición se recalibró el 2026-08-13** y vive en el canon, no en la prosa:
+  corte por lead calificado **$120.000** (era $25.000), techo de CAC **$800.000** (era $400.000),
+  LTV bruto 12 meses **$5.080.000**. El corte viejo estaba anclado al **setup** en vez de al LTV, y
+  con CPLs B2B reales en Colombia de $80.000–$250.000 por lead hacía que la ronda se cortara sola.
+- **El orden de los canales lo manda `15-CANALES-Y-SECUENCIA.md`:** Google Business Profile →
+  orgánico a mano → Google Search → **Meta, relegado**. Ya no hay «3 rondas de Meta» ni
+  «Google Search = fase 2».
 - **Toda entrada del swipe file lleva su captura** en `swipe/`.
 
 ## Las skills del plugin `marketing` (Anthropic) — cómo se usan acá

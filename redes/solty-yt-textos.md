@@ -42,5 +42,16 @@ Aquí verás bots trabajando con casos reales: demos, detrás de cámaras y resu
 ## Reglas de marca (recordatorio)
 
 - Nombre SIEMPRE **SoltyAI** en textos.
-- Canal honesto: demos por **Telegram** hoy; WhatsApp se menciona como producto, no se promete fecha de API.
+- **Canal honesto, versión 2026-08-13:** la descripción de arriba dice "WhatsApp y Telegram" y **por
+  fin es cierta**: el bot atiende por la API oficial de Meta desde el **7-ago-2026** (SoltyAI es Tech
+  Provider aprobado). Los dos canales **se prometen**; **el widget web no**, sigue en *próximamente*.
+  La nota vieja de este pie —"WhatsApp se menciona como producto, no se promete fecha de API"— quedó
+  obsoleta y por eso se reemplazó.
+  - ⚠️ Se dice **que atiende por WhatsApp**; no se prometen **plazos de conexión**: el canal se probó
+    contra nuestro propio número y el primer WABA de cliente se registra en vivo, asistido por
+    nosotros (no hay autoservicio).
+- 🔴 **Nunca "un asistente de IA" a secas.** La política de IA de WhatsApp **prohíbe** los bots de
+  propósito general: se publica **bot de negocio por rubro**. Vale también para los títulos y las
+  descripciones de los videos, no sólo para el canal.
+- Precios, si aparecen: los del canon en **COP** (`data/canon.json`), nunca los de dólares.
 - CTA preferido: "escríbenos / escríbele al bot", no "agenda una demo".

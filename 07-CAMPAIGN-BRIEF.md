@@ -1,13 +1,30 @@
-# 07 · CAMPAIGN-BRIEF — Creatividades accionables (Meta, ronda US$400)
+# 07 · CAMPAIGN-BRIEF — Creatividades accionables (el carril de Meta)
 
-> Fuente canónica: `01-SOURCE-BRIEF.md`. Plataforma: **Meta (Facebook + Instagram)**, una sola ronda.
-> Objetivo de campaña Meta: **Tráfico** (no hay objetivo nativo de "mensajes a Telegram").
-> **3 conceptos = test de ÁNGULOS**, no etapas de funnel (con US$400 y cuenta fría no hay funnel
-> de 3 etapas — ver `04-STRATEGY.md`). Un solo nivel de conversión; el embudo se comprime en la oferta.
+> # ⚠️ CARRIL RELEGADO (2026-08-13) — y las creatividades hay que rehacerlas
+>
+> **Meta ya no es el primer carril pago.** La secuencia vigente está en **`15-CANALES-Y-SECUENCIA.md`**.
+> Este brief sirve como método, **no como copy listo para publicar**, por tres motivos concretos:
+>
+> 1. **El ángulo de categoría está muerto.** El Meta Business Agent (global desde el 3-jun-2026,
+>    gratis, un millón de negocios) hace *agendar citas y calificar leads* de fábrica. Cualquier
+>    concepto que venda "un chatbot con IA para tu negocio" compite contra un producto gratis del
+>    dueño de la plataforma. **Lo que queda vivo es el ángulo por vertical y ciudad**, con el
+>    done-for-you al frente: Meta te da la herramienta, no te la deja andando con tus 29 inmuebles.
+> 2. **Ahora se puede prometer WhatsApp**, y eso cambia la creatividad entera: el CTA deja de ser
+>    "prueba el bot en Telegram" y pasa a **Click-to-WhatsApp**, que no saca al prospecto de la app.
+> 3. **El anuncio no pide la venta: llena el Calendly.** El KPI es **reuniones agendadas**.
+>
+> Los presupuestos en US$400 y los cortes en dólares de este doc están **superados**: el carril de Meta
+> son **$1.200.000 COP** y el corte es **$120.000 por lead calificado** (`06-BUDGET-PLAN.md`).
+
+> Fuente canónica: `01-SOURCE-BRIEF.md`. Plataforma: **Meta (Facebook + Instagram)**.
+> **3 conceptos = test de ÁNGULOS**, no etapas de funnel. Un solo nivel de conversión; el embudo se
+> comprime en la oferta.
 >
 > **Honestidad de datos:** sin testimonios ni métricas de cuenta (cuenta nueva). Todo número de mercado
-> va etiquetado **(estimado)**. **Canal honesto:** la demo corre **en Telegram hoy**; WhatsApp y web
-> **próximamente**. No prometer WhatsApp Business API. Voz: español de Colombia, tuteo, directo.
+> va etiquetado **(estimado)**. **Canal:** WhatsApp y Telegram están **vivos**; sólo la **web** sigue
+> en "próximamente" y no se promete. Nunca se vende "un asistente de IA" abierto: la política de IA de
+> WhatsApp sólo permite **bots de negocio estructurados**. Voz: español de Colombia, tuteo, directo.
 
 ---
 

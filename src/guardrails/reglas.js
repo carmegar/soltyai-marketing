@@ -55,7 +55,14 @@ export function enlacesRotos() {
 const NOMBRES_PLAN = /(esencial|premium|setup)/i;
 
 // Cifras que legítimamente NO son el precio de un plan: promedios, sumas, metas, pisos.
-const CIFRA_AGREGADA = /(promedio|ticket|mezcla|mrr|caja|total|suma|piso|meta|acumul|a[ñn]o|anual|12 clientes)/;
+// Ampliado el 13-ago-2026 con el vocabulario de la economía de adquisición (ltv, cac, techo, corte,
+// calificado). Al recalibrar el CAC y el corte por lead aparecieron 4 avisos permanentes sobre
+// cifras correctas —el LTV de $5.080.000 y el techo de $800.000 caen al lado de la palabra
+// "setup"—, y un aviso que siempre está encendido y siempre se ignora deja de ser un aviso.
+// ⚠️ `meta` va con calificador a propósito. Suelto hacía match con **el nombre de la empresa Meta**,
+// así que toda línea que la mencionara quedaba exenta del chequeo de precios: un falso negativo
+// enorme, justo en los docs de pauta, que son los que más hablan de Meta y de plata a la vez.
+const CIFRA_AGREGADA = /(promedio|ticket|mezcla|mrr|caja|total|suma|piso|meta (semanal|mensual|anual|de)|acumul|a[ñn]o|anual|12 clientes|ltv|cac|techo|corte|calificad)/;
 
 export function preciosDePlan() {
   const hallazgos = [];
@@ -97,10 +104,17 @@ export function prohibiciones(piezas = PIEZAS()) {
     if (nombre.startsWith('_')) continue;
     const archivos = regla.alcance === 'todo' ? [...ARCHIVOS_MD(), ...piezas] : piezas;
 
+    // `patronesEn` y `exencionesEn` existen en el canon desde que se escribieron y NUNCA se
+    // leyeron: el bucle miraba sólo `patrones`, así que los patrones en inglés no protegían nada.
+    // Se unen acá (13-ago-2026). Una regla que declara cubrir el inglés y no lo cubre es peor que
+    // no tenerla: sugiere una cobertura que no existe, y así fue como el copy en inglés se coló.
+    const patrones = [...regla.patrones, ...(regla.patronesEn ?? [])];
+    const exenciones = [...(regla.exenciones ?? []), ...(regla.exencionesEn ?? [])];
+
     for (const archivo of archivos) {
       const bruto = leer(archivo);
       const lineas = bruto.split('\n');
-      for (const patron of regla.patrones) {
+      for (const patron of patrones) {
         const re = new RegExp(patron, 'i');
         lineas.forEach((linea, i) => {
           const plano = normalizar(linea);
@@ -110,9 +124,12 @@ export function prohibiciones(piezas = PIEZAS()) {
           // Se quitan los signos de énfasis: en markdown "ya **no** es Growth $149" rompería
           // cualquier búsqueda de frase.
           const ventana = normalizar(lineas.slice(Math.max(0, i - 1), i + 2).join(' ')).replace(/[*_`~]/g, '');
-          if (regla.exenciones?.some((e) => ventana.includes(normalizar(e)))) return;
+          if (exenciones.some((e) => ventana.includes(normalizar(e)))) return;
           hallazgos.push({
-            nivel: regla.alcance === 'todo' ? 'error' : 'error',
+            // Toda prohibición bloquea, sin importar el alcance. Antes acá había un ternario
+            // que devolvía 'error' en las dos ramas: la intención de que `copy` fuera aviso
+            // nunca existió en la práctica, y dejarla escrita confundía al leer.
+            nivel: 'error',
             regla: `prohibicion:${nombre}`,
             archivo,
             linea: i + 1,
@@ -284,6 +301,20 @@ export function registroDeLinks() {
         archivo: 'data/links.json',
         linea: 1,
         mensaje: `origin "${link.origin}" está repetido: dos piezas distintas contarían como la misma fuente`,
+      });
+    }
+    // Hueco cerrado el 13-ago-2026: el CI validaba el formato del origin y los duplicados, pero
+    // NUNCA que la fuente existiera en el canon. Un links.json con una fuente inventada pasaba
+    // limpio, y el lead quedaba sin carril al que imputarse. Con dos carriles nuevos (google, gbp)
+    // el error de dedo deja de ser hipotético.
+    const fuente = String(link.origin ?? '').split('_')[0];
+    if (fuente && !canon.utm.source.includes(fuente)) {
+      hallazgos.push({
+        nivel: 'error',
+        regla: 'links:fuente-desconocida',
+        archivo: 'data/links.json',
+        linea: 1,
+        mensaje: `la fuente "${fuente}" del origin "${link.origin}" no está en canon.utm.source (${canon.utm.source.join(' · ')}): el lead llegaría sin carril al que imputarse`,
       });
     }
     vistos.add(link.origin);

@@ -8,12 +8,18 @@
 > Reescrito 2026-06-20 para alinear la marca con la **promesa única** y el **diferenciador
 > done-for-you** (la versión anterior usaba el tagline "califican leads y venden 24/7" y el
 > pricing Starter/Growth/Pro, ya superados).
+>
+> **Parche 2026-08-13:** se actualizaron tres cosas que quedaron falsas, y nada más. La empresa ya
+> no está "en constitución"; **WhatsApp dejó de ser "próximamente" y hoy se promete**; y el pricing
+> de contexto pasó de USD a **COP** (el canon manda). Voz, paleta, tipografía y público se dejaron
+> intactos: siguen vigentes.
 
 ---
 
 ## Marca
 
-- **Nombre:** SoltyAI (SIEMPRE con "AI"). Empresa SoltyAI SAS, en constitución.
+- **Nombre:** SoltyAI (SIEMPRE con "AI"). **SoltyAI S.A.S.**, constituida el 2026-07-02, NIT
+  902081265-3, habilitada para facturar electrónicamente ante la DIAN.
 - **Qué es:** plataforma **SaaS multi-tenant de chatbots especializados por industria** para
   WhatsApp, Telegram y web, conectada al catálogo / agenda / CRM del negocio. **Done-for-you:**
   nosotros lo montamos y lo **adaptamos a la forma de trabajar del cliente**.
@@ -21,8 +27,19 @@
   operativa de despacho, sin chat automático) · Inmobiliaria · Integraciones a medida.
   Detalle y por qué Domicilios va aparte de Comercio: `01-SOURCE-BRIEF.md`.
 - **Sede:** Bucaramanga, Colombia.
-- **Nota de honestidad para creatividades:** las demos hoy corren por **Telegram** (validación de
-  Meta como Tech Provider pendiente). WhatsApp y web van como **"próximamente"**. No prometer WhatsApp API.
+- **Nota de honestidad para creatividades (actualizada 2026-08-13):** el bot **ya atiende por
+  WhatsApp** —Business API oficial, con SoltyAI como Tech Provider aprobado por Meta el 6-ago y la
+  app en Live desde el 7-ago— y por **Telegram**. Los dos canales **sí se prometen**. El widget
+  **web no se promete: sigue en "próximamente"**.
+  - ⚠️ El canal se probó contra **nuestro propio número**: el primer WABA de un cliente real se
+    registra en vivo, así que no se prometen plazos de conexión al día. La conexión va por el
+    **camino A (asistida)** —el cliente nos agrega como socio y lo registramos nosotros—, no hay
+    autoservicio. En la venta eso no es una limitación: es el moat (**lo conectamos nosotros**).
+  - 🔴 Nunca se vende "un asistente de IA" abierto ni un bot que conteste lo que sea: la política de
+    IA de WhatsApp (rige 15-ene-2026) **prohíbe** los chatbots de propósito general. Lo que se
+    ofrece son **bots de negocio estructurados** por vertical: soporte, pedidos, reservas,
+    recordatorios, calificación y ruteo de leads. Vale también en Telegram, para no rediseñar el
+    mensaje al migrar un cliente.
 
 ---
 
@@ -113,7 +130,8 @@
 - **Devolver tiempo y poner orden** (la promesa central: el bot atiende, vende y agenda 24/7).
 - **Done-for-you / hecho a tu medida** (lo adaptamos a tu negocio en la instalación; no te toca configurar).
 - **Honestidad/transparencia** (sin permanencia, precios claros, IA incluida sin sorpresa de tokens,
-  exportas tus datos — Ley 1581; canal honesto: Telegram hoy, WhatsApp/web próximamente).
+  exportas tus datos — Ley 1581; canal honesto: WhatsApp y Telegram sí se prometen, el widget
+  web no, sigue en **próximamente**).
 
 ---
 
@@ -137,9 +155,19 @@
 
 ## Pricing de contexto (para mensajes, no inventar)
 
-Pricing **por producto** (USD, ver `03-competitor-analysis.md` y `05-PRICING.md`):
-**Agenda** $65/mes + $250 setup · **Pedidos** $80/mes + $280 setup · **Inmobiliario** $249/mes + $600
-setup *(entry propuesto, validar)* o $650/mes + $1.500 setup *(full)* · **Integraciones** desde $180/mes
-+ desde $3.500 setup. Bundle −10% desde el 2º producto. Sin permanencia, mensual, datos exportables.
+> 🔴 La fuente es **`data/canon.json`** (decisión D1). Esto es su espejo legible: si difieren, gana
+> el canon. Todo va **antes de IVA**; el 19% se suma encima.
 
-> ⚠️ **PROHIBIDO** usar los planes viejos **Starter $49 / Growth $149 / Pro $399**: están superados.
+Pricing **COP vigente**: **Esencial $290.000/mes** (200 conversaciones, sin IA) ·
+**Pro $490.000/mes** (500 conversaciones, con IA) · **Premium $790.000/mes** (1.500 conversaciones,
+con IA) · **setup $400.000** única vez, 50% al firmar y 50% cuando el bot ya esté atendiendo ·
+**excedente $50.000 por cada 100 conversaciones** de más.
+
+Sin permanencia, mensual, datos exportables (Ley 1581). Descuentos autorizados, **no acumulables**
+(se aplica el mayor): primeros clientes −30% por 3 meses, 5 cupos, a cambio del caso de estudio ·
+ONG y educación −25% permanente, caso por caso.
+
+> ⚠️ **PROHIBIDO** citar el pricing en dólares, que quedó **superado** por el canon COP: ni los
+> planes **Starter $49 / Growth $149 / Pro $399**, ni el catálogo por producto (Agenda $65/$250,
+> Pedidos $80/$280, Inmobiliario $249/$600 y $650/$1.500, Integraciones $180/$3.500).
+> Ojo: **"Pro" a secas SÍ es válido** — es el plan COP de $490.000.

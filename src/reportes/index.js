@@ -1,15 +1,17 @@
 #!/usr/bin/env node
 /**
- * Tablero semanal: costo por lead calificado, costo por demo, CAC y margen real.
+ * Tablero semanal: costo por lead calificado, costo por reunión, CAC y margen real.
  *
  * Cierra el círculo de 08-TRACKING-SETUP §6 y alimenta el tablero de los viernes
  * (13-PLAN-12-CLIENTES §8) con números, no con impresiones.
  *
  * Lo que hace que esto no sea una hoja de cálculo con más pasos:
  *
- *  1. La **regla de corte** de la ronda ($25.000 por lead calificado) se CALCULA y sale en rojo.
- *     Escrita en un doc, esa regla se cumple cuando uno quiere; calculada, aparece sola el viernes
- *     que toca parar.
+ *  1. Los **dos cortes** se CALCULAN y salen en rojo: el costo por lead calificado
+ *     (`tablero.cortePorLeadCalificado`) y el **techo de CAC** (`tablero.techoCac`). Escritas en un
+ *     doc, esas reglas se cumplen cuando uno quiere; calculadas, aparecen solas el viernes que toca
+ *     parar. Los umbrales NO se escriben acá: se leen del canon, para que cambiarlos sea una
+ *     decisión registrada y no una edición de código.
  *  2. Todo número declara su **fuenteDato**. Hoy varios son `manual` y así se imprime: el hueco
  *     honesto del README de este módulo era precisamente no fingir que el conteo del bot es
  *     automático.
@@ -171,6 +173,10 @@ function imprimirSemana(semana) {
   for (const canal of canales) {
     const m = metricas(canal);
     const alerta = esPagada(canal.origin) && m.porCalificado !== null && m.porCalificado > T.cortePorLeadCalificado;
+    // El techo de CAC es el otro corte, y hasta el 13-ago-2026 no existía: la columna CAC se
+    // imprimía sin veredicto. Un número sin umbral al lado no para nada, y era justamente el
+    // número que decidía si la adquisición tenía negocio o no.
+    const alertaCac = esPagada(canal.origin) && m.cac !== null && m.cac > T.techoCac;
     console.log(
       '  ' +
         fila(
@@ -183,7 +189,7 @@ function imprimirSemana(semana) {
             m.cierres,
             money(m.porCalificado) + (alerta ? ' ▲' : ''),
             money(m.porDemo),
-            money(m.cac),
+            money(m.cac) + (alertaCac ? ' ▲' : ''),
           ],
           ANCHOS,
         ),
@@ -214,12 +220,24 @@ function imprimirSemana(semana) {
       ),
   );
 
-  // El KPI que manda no es el gasto: son las demos.
+  // El KPI que manda no es el gasto: son las reuniones agendadas. La clave del registro se sigue
+  // llamando `demos` (13-ago-2026): es el mismo número —una cita en el Calendly— con el nombre
+  // viejo, y el renombre se hace en canon, código y README a la vez, no a medias.
   const meta = T.metaDemosSemana;
   const señal = total.demos >= meta ? '✓' : '✖';
   console.log(
-    `\n  ${señal} demos agendadas: ${total.demos} / ${meta} de meta semanal  ← el KPI que manda (13 §8)`,
+    `\n  ${señal} reuniones agendadas: ${total.demos} / ${meta} de meta semanal  ← el KPI que manda (13 §8)`,
   );
+
+  // El techo de CAC, sobre el total pagado de la semana.
+  const cacTotal = porUnidad(total.gasto, total.cierres);
+  if (cacTotal !== null) {
+    const okCac = cacTotal <= T.techoCac;
+    console.log(
+      `  ${okCac ? '✓' : '✖'} CAC de la semana: ${cop(cacTotal)} contra un techo de ${cop(T.techoCac)}` +
+        (okCac ? '' : '  ← por encima del techo no hay negocio: se para el carril'),
+    );
+  }
   if (total.mrr > 0) {
     const recupero = total.margenMes > 0 ? total.gasto / total.margenMes : null;
     console.log(
@@ -329,7 +347,22 @@ function ronda() {
     const usado = gastoTotal / cfg.presupuesto;
     console.log(`\n  ejecutado: ${cop(gastoTotal)} de ${cop(cfg.presupuesto)} (${pct(usado)})`);
   }
-  console.log(`  demos agendadas en la ronda: ${demosTotal}`);
+  console.log(`  reuniones agendadas en la ronda: ${demosTotal}`);
+
+  // El techo de CAC sobre la ronda completa. Mismo criterio que la regla de corte: sin denominador
+  // no hay veredicto. Con cero cierres el CAC es infinito, y eso no es "malo", es "todavía no se sabe".
+  const cierresPagados = pagados.reduce((a, [, x]) => a + x.cierres, 0);
+  const gastoPagado = pagados.reduce((a, [, x]) => a + x.gasto, 0);
+  if (gastoPagado > 0 && cierresPagados > 0) {
+    const cacRonda = gastoPagado / cierresPagados;
+    const okCac = cacRonda <= T.techoCac;
+    console.log(
+      `  ${okCac ? '✓' : '🔴'} CAC de la ronda: ${cop(cacRonda)} contra un techo de ${cop(T.techoCac)}` +
+        (okCac ? '' : ' — por encima del techo la adquisición no tiene negocio.'),
+    );
+  } else if (gastoPagado > 0) {
+    console.log(`  ⋯ CAC de la ronda: sin cierres todavía, no hay denominador (techo: ${cop(T.techoCac)}).`);
+  }
 
   // La regla, calculada. Solo cuenta si hay gasto pagado con calificados medidos: sin denominador
   // no hay veredicto, y declarar "parar" sin datos es tan malo como no parar con ellos.

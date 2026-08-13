@@ -149,12 +149,20 @@ Estas no son sugerencias de estilo, son reglas que el CI hace cumplir (`CLAUDE.m
 
 | No decir | Por qué | Qué decir en cambio |
 |---|---|---|
-| "Inteligencia artificial", "IA", "GPT" | No es el beneficio, y el modo determinista es parte del producto | "Atiende", "responde", "asistente" |
-| "WhatsApp" como algo disponible | Meta aún no valida a SoltyAI como Tech Provider | Nada, o "próximamente en WhatsApp" |
+| "Inteligencia artificial", "IA", "GPT" | No es el beneficio, el modo determinista es parte del producto, y la política de IA de WhatsApp **prohíbe** posicionarse como bot de propósito general | "Atiende", "responde", "agenda", "bot para inmobiliarias" |
 | Precios | El video vende la cita, no el plan; el ancla la pone la conversación | — |
 | "+100 clientes", "líderes en" | Prueba social solo verificable (hoy: Bucaradomi y Swisscontact, con permiso) | — |
 | "En 7 días o no pagas" | La garantía se anuncia en su versión suave y en la cotización, no acá | — |
+| El bot **en la web** del cliente | El widget web no existe: sigue en **próximamente** | Nada |
 | Cualquier cifra sin fuente | Regla de la casa: cero métricas fabricadas | Quitar la cifra |
+
+> ✅ **Salió de esta tabla el 2026-08-13: "WhatsApp".** La fila decía que no se podía nombrar WhatsApp
+> como disponible porque Meta no había validado a SoltyAI como Tech Provider. **Meta validó el 6-ago
+> y el bot atiende por la API oficial desde el 7-ago:** la regla pasó de proteger a mentir.
+> **WhatsApp sí se puede nombrar**, y conviene: es el canal que la pyme colombiana usa, y decirlo
+> arregla la objeción de fondo del video, que muestra Telegram. Se nombra como canal **disponible**;
+> lo que **no** se promete es un plazo de conexión (el primer WABA de cliente se registra en vivo).
+> Lo que sigue prohibido, y por eso quedó como fila propia, es el **bot en la web**.
 
 ---
 
@@ -176,7 +184,10 @@ Estas no son sugerencias de estilo, son reglas que el CI hace cumplir (`CLAUDE.m
 |---|---|---|
 | Retención a los 3 s | Analítica de LinkedIn / IG | Si cae, el problema es la toma 1 |
 | Clics al Calendly | `origin` del enlace | Es el único número que importa |
-| **Demos agendadas / semana** | Calendly | El KPI del plan (meta: 2) |
+| **Reuniones agendadas / semana** | Calendly | El KPI que manda (meta: 2) |
+
+> El KPI dejó de ser "demos" el 2026-08-13: lo que se cuenta es **la cita en el Calendly**, no que
+> alguien haya entrado al bot. Es el mismo número con el nombre correcto.
 
 Impresiones y "me gusta" **no** son métricas de este video.
 

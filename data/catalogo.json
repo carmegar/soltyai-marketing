@@ -14,7 +14,7 @@
       "costoMes": 8000,
       "estado": "vigente",
       "fuente": "ESTADO.md §Marketing (acordado 2026-07-22)",
-      "incluye": ["200 conversaciones/mes", "modo determinista sin IA", "1 canal (Telegram hoy)"],
+      "incluye": ["200 conversaciones/mes", "modo determinista sin IA", "1 canal: WhatsApp o Telegram"],
       "notas": "El costo es casi puro infra: sin IA el costo marginal por conversación es ~0. Es el plan que más protege el margen."
     },
     {
@@ -26,7 +26,7 @@
       "costoMes": 78000,
       "estado": "vigente",
       "fuente": "ESTADO.md §Marketing + 01-SOURCE-BRIEF §Costo de servir",
-      "incluye": ["500 conversaciones/mes", "IA Claude Haiku 4.5 dentro del tope", "1 canal"],
+      "incluye": ["500 conversaciones/mes", "IA Claude Haiku 4.5 dentro del tope", "1 canal: WhatsApp o Telegram"],
       "notas": "Costo = infra (~$8.000) + IA 500 conv × US$0.035 × TRM 4.000 ≈ $70.000. El tope de conversaciones es lo que sostiene el margen; pasado el tope se cobra excedente."
     },
     {

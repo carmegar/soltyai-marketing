@@ -1,10 +1,22 @@
-# 08 · TRACKING-SETUP — Medición y conciliación de la ronda US$400
+# 08 · TRACKING-SETUP — Medición y conciliación de los carriles de adquisición
 
-> Cómo medir y conciliar las **3 vías de entrada** del prospecto (no solo Telegram). La conversión
+> Cómo medir y conciliar las **vías de entrada** del prospecto (no solo Telegram). La conversión
 > verdadera ocurre **fuera del píxel** (en Telegram, en Calendly, en WhatsApp): aquí cosemos a mano lo
-> que Meta sí ve con lo que pasa al otro lado. Señalamos los huecos en vez de fingir un funnel cerrado.
+> que la plataforma sí ve con lo que pasa al otro lado. Señalamos los huecos en vez de fingir un
+> funnel cerrado.
 >
-> Autoridad: `01-SOURCE-BRIEF.md`. Cruces: `04-STRATEGY.md` (embudo), `07-CAMPAIGN-BRIEF.md` (creatividades),
+> **Actualizado 2026-08-13, tres cambios que mueven este documento entero:**
+> 1. **Entra el carril de Google.** Search (pagado) y el Business Profile (orgánico) suman las fuentes
+>    `google` y `gbp` y los mediums `paid_search` y `organic_local`. Meta quedó **relegado**
+>    (`15-CANALES-Y-SECUENCIA.md`), así que este doc dejó de ser "el tracking de la ronda de Meta".
+> 2. **WhatsApp dejó de ser sólo click-to-chat humano.** Desde el 7-ago el bot atiende por WhatsApp
+>    Business API, o sea que WhatsApp es a la vez **CTA** y **canal de producto**, y hay que medirlo
+>    como los dos (§4.3).
+> 3. **El KPI que manda pasó a ser reuniones agendadas**, con **$/reunión** como su costo. El
+>    $/calificado no se borra: sigue siendo la métrica de **poda** por ángulo y keyword (§6).
+>
+> Autoridad: `01-SOURCE-BRIEF.md`. Cruces: `15-CANALES-Y-SECUENCIA.md` (el orden de los carriles),
+> `04-STRATEGY.md` (embudo de Meta, para cuando entre), `07-CAMPAIGN-BRIEF.md` (creatividades),
 > `09-OUTBOUND.md` (conciliación del canal manual), `11-PRE-LAUNCH-CHECKLIST.md` (prerrequisitos).
 
 ---
@@ -29,8 +41,17 @@ conversación de WhatsApp. Por eso el tracking tiene **dos mitades que hay que c
    qué anuncio/origen vino la conversación). Es la columna vertebral de la atribución.
 2. **Calendly** → los **campos del formulario** (nombre, negocio, **rubro/vertical**, teléfono) **+ UTMs
    pasados como query** que Calendly guarda en el evento.
-3. **WhatsApp click-to-chat** → el **mensaje pre-rellenado** de `wa.me` (codifica el origen) + el conteo
+3. **WhatsApp** → el **mensaje pre-rellenado** de `wa.me` (codifica el origen) + el conteo
    del evento `Lead`/`Contact` que dispara el clic en la landing.
+
+> **Lo que cambió en la vía 3 (2026-08-07):** WhatsApp ya no es sólo el click-to-chat que atiende una
+> persona. El bot **atiende por WhatsApp Business API**, así que la misma vía puede terminar en un
+> humano o en el producto, y el conteo tiene que decir en cuál de los dos (§4.3). El píxel ve igual
+> de poco en ambos casos: sigue midiendo la **intención de ir**, no la conversación.
+>
+> **Y lo que entra desde el carril de Google:** el Search manda tráfico a una **landing de servicio**
+> —otra página, otro mensaje líder, el mismo Calendly— y el Business Profile manda llamadas, chats y
+> clics al sitio desde Maps. Los dos se atribuyen por UTM/`origin` como cualquier otra fuente (§2).
 
 > Nada de esto reemplaza la **hoja de conciliación manual** (§6): es la que une las 3 vías con el gasto
 > de Meta y con los cierres reales.
@@ -62,10 +83,10 @@ conversación de WhatsApp. Por eso el tracking tiene **dos mitades que hay que c
 
 ## 2. UTMs y parámetros de origen (la nomenclatura que concilia todo)
 
-Cada anuncio lleva una URL con UTMs **y** los parámetros de origen que se reinyectan en cada CTA. Replican
-el nombre del ad set / pilar de creatividad (ver `07-CAMPAIGN-BRIEF.md`). Convención:
+Cada pieza publicable lleva una URL con UTMs **y** los parámetros de origen que se reinyectan en cada
+CTA. Replican el nombre del ad set / grupo de anuncios / pilar de creatividad. Convención:
 
-| Parámetro | Valor (ejemplo ad set A) | Para qué |
+| Parámetro | Valor (ejemplo ad set A de Meta) | Para qué |
 |---|---|---|
 | `utm_source` | `meta` | estándar |
 | `utm_medium` | `paid_social` | estándar |
@@ -76,9 +97,42 @@ el nombre del ad set / pilar de creatividad (ver `07-CAMPAIGN-BRIEF.md`). Conven
 | **WhatsApp `text`** | `Hola, vengo de Meta (duenopyme_c1)…` | viaja DENTRO de WhatsApp |
 | **Calendly query** | `?utm_source=meta&utm_content=c1...` | Calendly los guarda en el evento |
 
+### 2.1 · Las fuentes válidas (la lista la manda `canon.json → utm`)
+
+Un `utm_source` que no esté acá **no existe** para el reporte: `src/reportes validar` lo rechaza y el
+lead queda sin fuente. Se agregaron `google` y `gbp` el 2026-08-13, al abrir el carril de Google, y se
+agregaron **antes** de la primera pieza a propósito: una ronda sin origen registrado no se puede leer.
+
+| `utm_source` | `utm_medium` | Qué es | ¿Cuesta plata? |
+|---|---|---|---|
+| **`google`** | **`paid_search`** | **Google Search**, la línea de **servicio a la medida** | **Sí** — está en `fuentesPagadas` |
+| **`gbp`** | **`organic_local`** | **Google Business Profile**: Maps, pack local, reseñas | **No** — y por eso **NO** está en `fuentesPagadas` |
+| `meta` | `paid_social` | Facebook / Instagram, el bot por vertical | Sí |
+| `linkedin` · `instagram` · `tiktok` · `youtube` | `paid_social` / `organic_social` | según se pague o no | según el caso |
+| `outbound` | `email` / `directo` | correo en frío y WhatsApp 1-a-1 manual | No (sin CAC) |
+| `organico` | `organic_social` | contenido a mano, 2 posts/semana | No |
+
+> 🔴 **`gbp` fuera de `fuentesPagadas` es una decisión, no un olvido.** El Business Profile no cobra,
+> así que meterlo ahí le inventaría un costo por lead y ensuciaría la única regla que decide si un
+> carril se corta. Trae leads y hay que atribuirlos; simplemente no entra al reparto del gasto.
+
+**Ejemplos de origen por carril** (mismo formato `fuente_audiencia_creatividad`, mismo registro en
+`npm run link nuevo`):
+
+| Carril | `origin` de ejemplo | Dónde vive |
+|---|---|---|
+| Google Search | `google_softwaremedida_lp1` | landing de servicio + Calendly |
+| Google Business Profile | `gbp_maps_perfil` | enlace del perfil y de cada publicación |
+| Meta | `meta_duenopyme_c1` | landing puente `/ir` + `start` de Telegram |
+| Outbound | `outbound_inmo_bga` | `start` del bot y firma del correo |
+
 > Los UTMs **se pierden al saltar** a Telegram o a WhatsApp. Por eso cada vía tiene su propio puente
 > codificado: el `start` del bot, el `text` pre-rellenado de WhatsApp, y los UTMs que Calendly sí persiste.
 > La cadena `fuente_audiencia_creatividad` (p. ej. `meta_duenopyme_c1`) es **la clave de conciliación**.
+>
+> ⚠️ **El `start` de Telegram sólo admite `A-Za-z0-9_-` y 64 caracteres.** Vale para los origins de
+> Google igual que para los de Meta: nada de puntos, tildes ni espacios, o Telegram descarta el resto
+> sin avisar.
 
 ---
 
@@ -151,14 +205,34 @@ Anuncio → soltyai.com/ir?utm_source=meta&utm_content=c1...&origin=meta_duenopy
 > respuestas — **incluido el código interno de la campaña**, escrito en su calendario para siempre. Se
 > quitó de las dos el 3-ago. Las respuestas siguen disponibles en Calendly → Reuniones y en el export.
 
-### 4.3 Vía WhatsApp — chat entrante
+### 4.3 Vía WhatsApp — chat entrante *(reescrita 2026-08-13: ya son dos cosas, no una)*
+
+Desde el 7-ago WhatsApp es **canal de producto**, no sólo un botón hacia una persona. La vía se parte
+en dos y el conteo tiene que decir por cuál entró cada chat, porque miden cosas distintas:
+
+| | **`wa.me` — click-to-chat humano** | **Bot en WhatsApp Business API** |
+|---|---|---|
+| Quién contesta | una persona | el bot, como en Telegram |
+| Estado | 🔴 **bloqueado: falta el número propio de SoltyAI** | **vivo** desde el 7-ago (Tech Provider aprobado) |
+| Cómo llega el origen | `text` pre-rellenado de `wa.me` | igual que el `start` de Telegram: parámetro en el enlace, leído al primer mensaje |
+| Conteo | manual | automatizable por el mismo camino que Telegram |
+
 - [ ] El mensaje pre-rellenado de `wa.me` trae el origen codificado en el `text`; el operador lo lee al
       recibir el primer mensaje y lo anota.
-- [ ] Registrar manualmente cada chat entrante: origen, timestamp, avance (calificado → demo → cierre).
+- [ ] Registrar cada chat entrante: origen, **cuál de las dos vías**, timestamp, avance
+      (calificado → reunión → cierre).
+- [ ] Para el bot en WhatsApp, persistir el origen en la ingesta igual que el `start` de Telegram
+      (mismo cambio, otro canal).
 
-> **Decisión simplificadora:** para WhatsApp y Calendly el conteo es **manual desde el día 1** (no hay
-> instrumentación automática barata en SSG). Solo Telegram puede automatizarse vía `start`. Es aceptable
-> al volumen de la ronda.
+> ⚠️ **Lo que todavía no está probado, y hay que medirlo desde el primer cliente:** el canal se validó
+> contra **nuestro propio número**. El registro del WABA de un cliente real se hace **en vivo**, por el
+> **camino A (asistida)** —el cliente nos agrega como socio y lo registramos con
+> `tools/scripts/registrar-waba.mjs`—; no hay autoservicio. Anotar cuánto tarda ese registro es dato de
+> operación, no de marketing, pero es lo que después permite (o no) prometer plazos de conexión.
+
+> **Decisión simplificadora:** para el `wa.me` humano y para Calendly el conteo es **manual desde el
+> día 1** (no hay instrumentación automática barata en SSG). Telegram y el bot de WhatsApp sí se
+> pueden automatizar por el parámetro del enlace. Es aceptable al volumen actual.
 
 ---
 
@@ -184,36 +258,68 @@ iniciada/contacto → calificada → demo (probó el bot) → setup-prueba (conf
 
 ## 6. Hoja de conciliación (el reporte de la ronda)
 
-Una sola hoja que cruza lo de Meta (mitad 1) con lo del otro lado (mitad 2). Se llena a diario.
+Una sola hoja que cruza lo que ve la plataforma (mitad 1) con lo del otro lado (mitad 2). Se llena a
+diario. **Una fila por `origin`, no por canal:** así conviven Google, Meta, el orgánico y el outbound
+en la misma tabla sin pelearse.
 
-### 6.1 Por ad set / origen
+### 6.1 Por origen
 
-| Origen (`start`/UTM) | Ad set | Gasto (Meta) | Clics (Meta) | Telegram (chats) | Calendly (reuniones) | WhatsApp (chats) | Calificados | Setup-prueba | Cierres | $/lead* | $/calificado | $/cierre |
-|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| `meta_duenopyme_c1` | A | … | … | … | … | … | … | … | … | … | … | … |
-| `meta_operativo_c2` | B | … | … | … | … | … | … | … | … | … | … | … |
-| `meta_vertical_c3` | C | … | … | … | … | … | … | … | … | … | … | … |
-| **Total** | | **$400** | | | | | | | | | | |
+| Origen (`start`/UTM) | Carril | Gasto | Clics | Telegram (chats) | **Calendly (reuniones)** | WhatsApp (chats) | Calificados | Setup-prueba | Cierres | $/lead* | **$/reunión** | $/calificado | $/cierre |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| `google_softwaremedida_lp1` | **Google Search** | … | … | — | … | … | … | … | … | … | … | … | … |
+| `gbp_maps_perfil` | **GBP** (orgánico, gasto $0) | **$0** | … | — | … | … | … | … | … | — | — | — | — |
+| `outbound_inmo_bga` | Outbound (gasto $0) | **$0** | — | … | … | … | … | … | … | — | — | — | — |
+| `meta_duenopyme_c1` | Meta *(cuando entre)* | … | … | … | … | … | … | … | … | … | … | … | … |
+| **Total** | | | | | | | | | | | | | |
 
-\* **$/lead** = Gasto ÷ (Telegram + Calendly + WhatsApp). Un "lead" aquí = entró por cualquiera de las 3
-vías. **$/calificado** es el KPI norte (ver `04-STRATEGY.md`).
+\* **$/lead** = Gasto ÷ (Telegram + Calendly + WhatsApp). Un "lead" aquí = entró por cualquiera de las
+vías.
 
-- **Gasto / Clics** salen de Meta Ads Manager (filtrar por ad set).
+> 🔴 **El KPI que manda es REUNIONES AGENDADAS, y su costo es el `$/reunión`** (meta: **2 por semana**).
+> Cambió el 2026-08-13, cuando el cold email dejó de entregar demos y pasó a pedir 15 minutos: la
+> demo dejó de ser el evento que se cuenta, y la cita en el Calendly ocupó su lugar.
+>
+> **El `$/calificado` no se borra ni baja de categoría: cambió de oficio.** Dejó de ser el norte y pasó
+> a ser **la métrica de poda** — la que decide, ángulo por ángulo y keyword por keyword, qué se apaga.
+> Los umbrales viven en `canon.json → tablero` y los calcula `src/reportes`, no el ojo:
+> **corte $120.000 · advertencia $180.000 a las 48 h · matar $250.000 · escalar por debajo de $80.000**
+> (+20% por paso, nunca más). El corte viejo de $25.000 estaba anclado al setup en vez de al LTV.
+>
+> Las dos métricas se leen juntas y en ese orden: **el $/reunión dice si el carril sirve; el
+> $/calificado dice qué parte del carril se corta.**
+
+- **Gasto / Clics** salen del panel del carril: **Google Ads** para `google`, Meta Ads Manager para
+  `meta`. Los carriles de **gasto $0** (GBP, orgánico, outbound) van con **$0 escrito**, no con la
+  celda vacía: en blanco parece un dato que falta, y en $0 es lo que es.
 - **Telegram** sale del bot/panel/conteo manual (por `start`). **Calendly** del export de reuniones.
-  **WhatsApp** del conteo manual de chats entrantes con origen.
+  **WhatsApp** del conteo manual de chats entrantes con origen (§4.3).
 - **Setup-prueba / Cierres** se actualizan a mano según el avance de cada prospecto (§5).
+- Cada número declara su **fuente de dato** (`export-meta`, `export-google`, `gbp`, `calendly`,
+  `suite-mcp`, `manual`). Que un dato sea manual está bien; fingir que es automático, no.
 
 ### 6.2 Tasa de salto (clic → lead) por vía
 
-| Vía | Clics al botón (Meta `Lead`) | Llegaron al otro lado | Tasa salto | Si está muy baja (<15% est.)… |
+| Vía | Clics al botón (`Lead` del píxel) | Llegaron al otro lado | Tasa salto | Si está muy baja (<15% est.)… |
 |---|---|---|---|---|
 | Telegram | … | … chats con `start` | … | fricción del salto a la app / rechazo |
 | Calendly | … | … reuniones | … | el form pide demasiado / fricción de agendar |
 | WhatsApp | … | … chats entrantes | … | número mal puesto / desconfianza |
 
-> Comparar el clic en la landing (Meta) contra lo que llega del otro lado es el número **más incierto y
+> Comparar el clic en la landing contra lo que llega del otro lado es el número **más incierto y
 > el que más caro cuesta no medir**. Vigilarlo por vía: dice si el problema es la creatividad (poco clic)
 > o el salto (mucho clic, poco arribo).
+
+### 6.3 Cada carril se juzga con su propia métrica
+
+Confundirlas hace que un carril sano parezca un fracaso y se apague antes de tiempo
+(`15-CANALES-Y-SECUENCIA.md` §2):
+
+| Carril | Métrica que lo juzga | Paga en |
+|---|---|---|
+| **Google Search + GBP** | **reuniones agendadas** y **$/reunión** | semanas |
+| **Meta** *(relegado)* | $/lead calificado | meses |
+| **Orgánico** | publicaciones sostenidas primero, alcance después | 6–12 meses |
+| **Outbound** | reuniones agendadas (sin CAC) | días |
 
 ---
 
@@ -248,6 +354,19 @@ pierda nadie:
 ---
 
 ## 9. Checklist de "listo para lanzar" (tracking)
+
+**9.a · Carril de Google (es el que se abre primero)**
+
+- [ ] **GA4 vivo** (`analytics.ga4MeasurementId` sigue en `G-XXXXXXXXXX`) — bloquea los dos carriles.
+- [ ] **Conversión de Google Ads = "reunión agendada"**, no clic ni formulario descargable. Es el KPI
+      que manda; medir otra cosa hace que Search se optimice hacia el número equivocado.
+- [ ] **Landing de servicio** con su propio `origin` (`google_...`) y el mismo Calendly.
+- [ ] **`origin` del Business Profile** registrado (`gbp_...`) en el enlace del perfil y en cada
+      publicación, para que el pack local no llegue como "directo".
+- [ ] Fuentes `google` y `gbp` y mediums `paid_search` / `organic_local` usados tal cual (§2.1): si no
+      están en `canon.json → utm`, `src/reportes validar` los rechaza.
+
+**9.b · Carril de Meta (relegado: esto se completa cuando entre, no antes)**
 
 - [ ] Píxel instalado y verificado con Pixel Helper en `/` y `/ir`.
 - [ ] Eventos `ViewContent` + los 3 `Lead` (telegram/calendly/whatsapp) disparando en la landing puente.

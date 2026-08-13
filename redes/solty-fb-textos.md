@@ -61,6 +61,17 @@ Si tu WhatsApp ya es un cuello de botella, escríbenos. Miramos tu caso y te dec
 ## Reglas de marca al publicar (recordatorio)
 
 - Nombre SIEMPRE **SoltyAI** en textos (el "Solty AI" con espacio es solo el label de FB).
-- Canal honesto: demos por **Telegram** hoy; WhatsApp se menciona como producto, no se promete fecha de API.
+- **Canal honesto, versión 2026-08-13:** la bio y la descripción de arriba dicen "WhatsApp y Telegram"
+  y **por fin son ciertas**: el bot atiende por la API oficial de Meta desde el **7-ago-2026**
+  (SoltyAI es Tech Provider aprobado). Los dos canales **se prometen**. **Lo que no se promete es el
+  widget web**, que sigue en *próximamente*. La nota vieja de este pie —"WhatsApp se menciona como
+  producto, no se promete fecha de API"— quedó obsoleta y por eso se reemplazó.
+  - ⚠️ Se puede decir **que atiende por WhatsApp**; no se prometen **plazos de conexión**. El canal se
+    probó contra nuestro propio número y el primer WABA de cliente se registra en vivo, con el
+    cliente agregándonos como socio (no hay autoservicio).
+- 🔴 **Nunca "un asistente de IA" a secas.** La política de IA de WhatsApp **prohíbe** los bots de
+  propósito general: se publica **bot de negocio por rubro** —pedidos, reservas, citas, respuestas
+  del catálogo—, que además es lo que de verdad se vende.
 - Nunca los planes viejos Starter/Growth/Pro ni los ángulos quemados ("atiende 24/7" a secas, "CRM para WhatsApp").
+- Precios, si aparecen: los del canon en **COP** (`data/canon.json`), nunca los de dólares.
 - CTA preferido: "escríbenos / escríbele al bot", no "agenda una demo".

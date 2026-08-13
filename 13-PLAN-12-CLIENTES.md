@@ -25,7 +25,15 @@ Con el pricing vigente en Colombia (`ESTADO.md` §Marketing — manda sobre el U
 | **Caja del mes 1 por cliente** | **~$790.000** |
 | 12 clientes → **MRR a diciembre** | **~$4.700.000/mes** |
 | 12 clientes → **caja de setups** | **~$4.800.000** (una vez) |
-| **CAC máximo tolerable** | **~$400.000** (el setup solo paga la adquisición) |
+| **LTV bruto 12 meses** | **~$5.080.000** ($400.000 + $390.000 × 12) |
+| **Techo de CAC** | **~$800.000** (2× el setup: se recupera en el mes 2) |
+
+> 🔴 **Corregido el 2026-08-13, y el error valía plata.** Acá decía *«CAC máximo tolerable ~$400.000
+> (el setup solo paga la adquisición)»*. Estaba **anclado a la métrica equivocada**: exigía que la
+> caja del mes 1 pagara toda la adquisición. Con CPLs B2B reales en Colombia de **$80.000–$250.000
+> por lead**, la suscripción sola **no puede pagar tráfico pago**. Se ancla al LTV y se acepta que el
+> payback se corra al **mes 2–3**. Detalle en `06-BUDGET-PLAN.md`; los números en máquina, en
+> `data/canon.json → tablero`.
 
 > Con los primeros 3–5 al **−30% × 3 meses** (política ya autorizada, a cambio del caso de estudio),
 > el MRR de diciembre baja ~$400k. Se acepta: el caso de estudio es lo que abarata los 7 siguientes.
@@ -33,26 +41,40 @@ Con el pricing vigente en Colombia (`ESTADO.md` §Marketing — manda sobre el U
 **Embudo que hay que sostener cada semana** *(supuestos etiquetados, se corrigen con datos reales)*:
 
 ```
-20 contactos outbound + tráfico pago  →  ~5 conversaciones reales
-~5 conversaciones                     →  ~2 demos agendadas
-~2 demos/semana × 4 semanas = 8 demos →  ~2,4 cierres/mes  (tasa demo→cierre ~30% (supuesto))
+20 contactos outbound + tráfico pago     →  ~5 conversaciones reales
+~5 conversaciones                        →  ~2 reuniones agendadas
+~2 reuniones/semana × 4 = 8 reuniones    →  ~2,4 cierres/mes  (tasa reunión→cierre ~30% (supuesto))
 ```
 
-El número que hay que vigilar **no** es el gasto ni los seguidores: son **demos agendadas por semana**.
-Menos de 2/semana = el mes no se cumple, sin importar qué digan las impresiones.
+El número que hay que vigilar **no** es el gasto ni los seguidores: son **reuniones agendadas por
+semana**. Menos de 2/semana = el mes no se cumple, sin importar qué digan las impresiones.
+
+> **Por qué dejó de ser «demos» (2026-08-13):** el cold email pivotó a pedir **15 minutos** en vez de
+> entregar una demo, y la venta se cierra en esa reunión (`business/16 §6c`). El número es el mismo
+> —una cita en el Calendly— pero el nombre viejo hacía pensar que había que entregar algo antes de
+> hablar. ⚠️ En `data/canon.json` y en `src/reportes` la clave **todavía se llama `demos`**: el
+> renombre se hace en canon, código y README a la vez, no a medias.
 
 ---
 
 ## 2. De dónde salen los 12 (mix por canal)
 
+> **Reordenado el 2026-08-13.** Antes este mix era «outbound + **pauta Meta** + orgánico», con Meta
+> como único carril pago. Meta quedó **relegado** y entraron dos carriles de Google. El porqué
+> completo está en **`15-CANALES-Y-SECUENCIA.md`**, que manda sobre esta tabla.
+
 | Canal | Clientes esperados | Costo | Por qué |
 |---|---|---|---|
-| **A · Outbound directo** (inmobiliarias + domis) | **5–6** | ~$0 (tiempo) | Lista de 906 ya scrapeada, demo viva, control total del ritmo. Es el motor. |
-| **B · Pauta Meta** | **3–4** | $4.000.000 | Compra volumen y aprendizaje; sin él no hay tope de crecimiento. |
-| **C · Orgánico + referidos** | **2–3** | ~$0 (tiempo) | LinkedIn/IG/TikTok + el piloto Bucaradomi como prueba social. Madura lento, cierra barato. Flujo: **video demo → agendar cita** (§6), no al bot. |
+| **A · Outbound directo** (inmobiliarias + domis) | **4–5** | ~$0 (tiempo) | 865 prospectos vivos en producción, demo viva, control total del ritmo. Es el motor de corto plazo. |
+| **B · Google Search + Business Profile** | **3–4** | $400.000 + $0 | Captura intención que **ya existe**. Titular: la línea de **servicio a la medida**, que es la que hoy factura. Con piso de $3.000.000, un cierre paga la ronda entera. |
+| **C · Orgánico + referidos** | **2–3** | ~$0 (tiempo) | LinkedIn/IG/TikTok + Bucaradomi y Swisscontact como prueba social. Madura lento, cierra barato y **compone**. Flujo: video → agendar cita, no al bot. |
+| **D · Pauta Meta** | **1–2** | $1.200.000 | **Relegado.** Genera demanda por vertical + ciudad cuando los otros no den volumen. Necesita píxel, GA4, número propio y creatividad por vertical. |
 
-**Ninguno solo llega a 12.** El outbound sin pauta no escala; la pauta sin outbound quema plata
-mientras aprende; el orgánico solo no llega a tiempo.
+**Ninguno solo llega a 12.** El outbound no escala; Google captura sólo lo que ya se busca; el
+orgánico no llega a tiempo por sí solo; y Meta, hoy, es el más caro de encender.
+
+**Si algo se tiene que caer, que se caiga D.** Es el más caro, el más lento y el que más preparación
+pide. B y C cuestan $0 o casi, y arrancan esta semana.
 
 ---
 
@@ -72,9 +94,21 @@ Nada de esto es opcional: son las tuberías por donde va a correr todo lo demás
 | 8 | **Deep-links `?start=` por canal** y hoja de conciliación | Claude | por construir |
 | 9 | **Prueba E2E de las 3 vías** (clic → bot / Calendly / WhatsApp, con origen visible) | Ambos | 🔒 **gate: sin esto no se lanza pauta** — la vía Calendly ya está probada; faltan Telegram y WhatsApp |
 
-> **Lo que queda bloqueando la pauta son los IDs del punto 4** (`ga4MeasurementId`, `metaPixelId`) y el
-> número del punto 3. **Mientras estén en placeholder, la pauta no se enciende**: pagar clics sin píxel es
-> tirar la plata y el aprendizaje.
+| 10 | **Google Business Profile creado y verificado** | Usuario | ⏳ **es lo primero, y es gratis** (`15-CANALES-Y-SECUENCIA.md §4`) |
+| 11 | **Landing propia de servicio a la medida** (no la home del bot) | Claude | ⏳ bloquea el carril de Google Search |
+
+> **Lo que bloquea qué, después del 2026-08-13 — y ya no es lo mismo para todos los carriles:**
+>
+> - **Meta** sigue colgando de los IDs del punto 4 (`ga4MeasurementId`, `metaPixelId`) y del número
+>   del punto 3. Mientras estén en placeholder, **no se enciende**: pagar clics sin píxel es tirar la
+>   plata y el aprendizaje. Como Meta quedó **relegado**, eso ya no bloquea el plan entero.
+> - **El Google Business Profile no depende de nada de eso** y cuesta $0. Por eso va primero: cada
+>   semana que no existe es una semana de maduración perdida que hoy no cuesta nada recuperar.
+> - **El número propio de SoltyAI (punto 3) subió de prioridad**, no bajó: además de la tercera CTA,
+>   el GBP quiere un teléfono que conteste, y sin línea propia no hay **contestador de muestra 24/7**
+>   —que va sin IA, cuesta $0 y es el mejor anuncio que existe, porque el prospecto le escribe al
+>   producto que le estás vendiendo. Y poner ahí el personal repite el problema de datos personales
+>   que se está corrigiendo.
 >
 > 🔴 **Ojo con cómo se dejan esos placeholders.** `calendlyUrl` y `whatsappNumber` traían valores **con
 > forma de valor real** (`calendly.com/soltyai/demo`, `57XXXXXXXXXX`) y por eso los 8 CTAs de la landing
@@ -88,7 +122,7 @@ Nada de esto es opcional: son las tuberías por donde va a correr todo lo demás
 **Objetivo: 20 contactos nuevos/semana, 80/mes.** No más: la calidad del primer mensaje decide todo.
 
 **Cómo:**
-1. **Tandas de 20–30** de la lista de 906 inmobiliarias (`09-OUTBOUND.md`), ordenadas por ciudad
+1. **Tandas de 20–30** de los 865 prospectos vivos en producción (`09-OUTBOUND.md`), ordenadas por ciudad
    (Bucaramanga y área primero: se puede ofrecer visita presencial).
 2. **Mensaje 1 — el gancho es la demo, no la explicación.** *"Le armé un bot con SUS inmuebles reales,
    pruébelo aquí"* pega más que cualquier descripción del producto. La demo `demo-l0615` con 29
@@ -106,34 +140,61 @@ necesita esas 4–6 semanas sin sobresaltos.
 
 ---
 
-## 5. Canal B — Pauta Meta ($4.000.000 en 3 rondas)
+## 5. Los carriles pagos ($4.000.000, y **no** en 3 rondas de Meta)
 
-**No se gastan de golpe.** Cada ronda tiene que ganarse la siguiente.
+> **Cambio del 2026-08-13.** Acá había un calendario fijo de 3 rondas de Meta ($1,2M agosto · $1,3M
+> septiembre · $1,5M oct-nov). **Se descartó.** El detalle y el porqué están en
+> `15-CANALES-Y-SECUENCIA.md`; esto es el resumen operativo.
 
-| Ronda | Cuándo | Monto | Objetivo | Regla de corte |
+| Ronda | Carril | Cuándo | Monto | Objetivo |
 |---|---|---|---|---|
-| **R1 — Validación** | Agosto (7–10 días) | **$1.200.000** | 3 ángulos × 1 audiencia, objetivo **Tráfico** a la landing puente | Si ningún ángulo baja de **~$25.000/lead calificado**, se para y se re-trabaja la oferta |
-| **R2 — Escalar el ganador** | Septiembre | **$1.300.000** | Subir el ganador ≤20% cada 2–3 días + retargeting de visitantes | Si el $/calificado sube >50% al escalar, se vuelve al presupuesto anterior |
-| **R3 — Sostener + 2ª vertical** | Oct–Nov | **$1.500.000** | Mantener el ganador + probar la vertical domicilios con el caso Bucaradomi | Diciembre se decide con caja real, no con presupuesto |
+| **G1** | Google Search | tras el GBP | **$400.000** | Validar el carril de servicio a la medida. 3–4 keywords de intención, geo Bucaramanga y área metropolitana |
+| **R1** | Meta | cuando haga falta volumen | **$1.200.000** | Una vertical, 3 ángulos, objetivo **cita en el Calendly** |
+| — | sin asignar | — | **$2.400.000** | **A propósito.** Se asignan contra resultados, no contra un plan escrito en agosto |
 
-**Reglas que no se negocian** (de `10-IMPLEMENTATION-ROADMAP.md`, ya escritas ahí):
-- Los primeros 2–3 días **no se toca nada** salvo plomería rota (Meta está aprendiendo).
-- **3x Kill Rule:** ad set que gasta 3× el costo objetivo por calificado sin entregar → se pausa.
+**Reglas de corte, recalibradas** (`canon.json → tablero`):
+
+| Señal | Acción |
+|---|---|
+| Costo por lead calificado **> $180.000** a las 48 h | Advertencia: revisar creatividad o audiencia |
+| **> $250.000** por calificado, o **3× el mejor** | **Matar** ese ad set o esa keyword |
+| **< $80.000** por calificado y con volumen | **Escalar +20%**, nunca más por paso |
+| CAC efectivo **> $800.000** | Se para el carril: por encima del techo no hay negocio |
+
+**Reglas que no se negocian:**
+- Los primeros 2–3 días **no se toca nada** salvo plomería rota (la plataforma está aprendiendo).
 - Excluir **Audience Network** si entra tráfico basura.
-- **Nunca prometer WhatsApp API** en la creatividad (sigue pendiente Meta Tech Provider).
+- **Nunca vender «un asistente de IA»** abierto: la política de IA de WhatsApp sólo permite bots de
+  negocio estructurados, y romperla no cuesta un anuncio, cuesta el canal.
+- **Nunca subir los teléfonos del outbound** a Meta como audiencia (ToS + Ley 1581).
+- En Google: **negativos desde el día 1** («gratis», «curso», «aprender», «empleo», «wordpress
+  barato»). En Search la plata se va por ahí, no por el CPC.
+- Si entran **2 proyectos a medida a la vez**, se pausa el carril de Google. No se contrata.
 
-**Lo que se mide** (hoja de conciliación, porque Meta no ve el salto a Telegram): clics → entradas por
-vía → **leads calificados** → demos → cierres. El KPI que manda es **$/lead calificado**, no el CPC.
+**Lo que se mide:** clics → entradas por vía → **leads calificados** → **reuniones** → cierres. El KPI
+que manda es **reuniones agendadas**; el de poda, **$/lead calificado**. El CPC no manda nunca.
+
+**Lo que ya se puede prometer, y antes no:** el bot **por WhatsApp**. Eso arregla el problema de
+fondo que tenía la creatividad de Meta —vender un bot de Telegram a pymes colombianas que no usan
+Telegram— y es la razón por la que Meta pasa de *bloqueado y sin sentido* a *relegado y viable*.
 
 ---
 
-## 6. Canal C — Orgánico + **LinkedIn de empresa** (falta crearlo)
+## 6. Canal C — Orgánico + LinkedIn de empresa
 
-Las demás redes ya están montadas (FB, IG + Threads, TikTok, X reservado, YouTube). **Falta la página
-de empresa de LinkedIn** — y es justo la red donde está el decisor B2B.
+✅ **La página de empresa de LinkedIn existe desde el 2026-07-25.** Este § decía «falta crearla» y
+quedó viejo; los datos de abajo se conservan porque son la ficha con la que se creó y sirven para
+mantenerla al día. Las demás redes también están montadas (FB, IG + Threads, TikTok, X reservado,
+YouTube).
 
-**Cómo crearla** (15 min, usuario): LinkedIn → *Para empresas* → **Crear una página de empresa** →
-*Empresa pequeña*. Requiere que el perfil personal de Carlos esté completo.
+**La regla nueva del orgánico (2026-08-13):** **2 posts/semana a mano durante 8 semanas antes de
+construir la máquina de contenido.** Se automatiza un proceso que existe, nunca uno que no — la misma
+lógica con la que se pospuso el Embedded Signup hasta tener 3 clientes. El insumo escaso no es
+publicar: es tener algo que decir, y eso son 20 minutos del fundador por semana contando lo que de
+verdad pasó. Detalle en `15-CANALES-Y-SECUENCIA.md §5`.
+
+**La ficha con la que se creó** (se conserva para mantenerla): LinkedIn → *Para empresas* →
+**Crear una página de empresa** → *Empresa pequeña*.
 
 **Datos listos para pegar:**
 
@@ -234,10 +295,10 @@ para saber cuál trae las citas.
 
 | Mes | Foco | Meta de cierres | Acumulado |
 |---|---|---|---|
-| **Agosto** | Semana 0 + outbound a full + **R1 de pauta** + LinkedIn vivo | **2** | 2 |
-| **Septiembre** | **R2** (escalar ganador) + outbound domis con caso Bucaradomi | **2–3** | 4–5 |
-| **Octubre** | **R3** + primeros casos de estudio publicados | **3** | 7–8 |
-| **Noviembre** | Referidos de los primeros clientes + retargeting | **3** | 10–11 |
+| **Agosto** | **GBP creado** + outbound a full + orgánico a mano arranca + experimento 15/30 del cold email | **2** | 2 |
+| **Septiembre** | **G1 de Google Search** + landing de servicio + outbound domis con caso Bucaradomi | **2–3** | 4–5 |
+| **Octubre** | Escalar lo que rindió + primeros casos de estudio publicados + **8 semanas de orgánico cumplidas** | **3** | 7–8 |
+| **Noviembre** | Referidos + **máquina de contenido** (si el orgánico a mano sobrevivió) + **Meta si hace falta volumen** | **3** | 10–11 |
 | **Diciembre** | Cierre de año (mes corto: la 2ª quincena no vende) | **1–2** | **12** ✅ |
 
 > **Diciembre es medio mes hábil.** Por eso el plan carga el peso en oct–nov: llegar a 10 en noviembre
@@ -251,13 +312,15 @@ para saber cuál trae las citas.
 |---|---|---|
 | Contactos outbound nuevos | 20 | Hoja/CRM |
 | Conversaciones reales | 5 | Bot + WhatsApp |
-| **Demos agendadas** | **2** | Calendly + bot |
+| **Reuniones agendadas** | **2** | Calendly |
 | Cierres | 0,6 (~2,4/mes) | Suite (propuestas firmadas) |
-| $/lead calificado (pauta) | < $25.000 | `npm run reportes` |
+| $/lead calificado (pauta) | **< $120.000** | `npm run reportes` |
 | Posts publicados | 2 | Calendario orgánico |
 
-**Semáforo:** 2 semanas seguidas con <2 demos → el problema es el **mensaje o la lista**, no el
-volumen: se reescribe el gancho antes de gastar más.
+**Semáforo:** 2 semanas seguidas con <2 reuniones → el problema es el **mensaje o la lista**, no el
+volumen: se reescribe el gancho antes de gastar más. 2 semanas seguidas **sin publicar** → la
+cadencia estaba mal calibrada: se baja a 1 post/semana antes que dejar de publicar, porque un carril
+que compone sólo funciona si no se corta.
 
 **El tablero ya no es una hoja de cálculo.** Se llena y se lee con `src/reportes`:
 
@@ -268,10 +331,11 @@ npm run reportes            # tablero de la semana: $/calificado, $/demo, CAC, M
 npm run reportes ronda      # la regla de corte del §5, calculada sobre la ronda completa
 ```
 
-Tres cosas que el programa hace y una hoja no: **calcula** la regla de corte de los $25.000 en vez de
-dejarla a criterio del viernes que toca parar; **exige** que cada `origin` exista en el registro de
-links (sin origen no hay atribución que evaluar); y **obliga a declarar de dónde salió cada número**,
-así que los datos manuales se ven como manuales en vez de pasar por automáticos.
+Tres cosas que el programa hace y una hoja no: **calcula** la regla de corte (hoy **$120.000** por
+lead calificado, leída de `canon.json`) en vez de dejarla a criterio del viernes que toca parar;
+**exige** que cada `origin` exista en el registro de links (sin origen no hay atribución que
+evaluar); y **obliga a declarar de dónde salió cada número**, así que los datos manuales se ven como
+manuales en vez de pasar por automáticos.
 
 ---
 
@@ -323,7 +387,7 @@ software chicas que la falta de clientes.
    Excepción: un proyecto chico que abra la puerta a un cliente grande, y se anota como tal.
 3. **50% de anticipo** para arrancar. Sin anticipo no se agenda (a Swisscontact se le cobró contra
    entrega y hoy son $2,3M esperando factura: no se repite).
-4. **La prospección no se suspende.** Los 20 contactos y las 2 demos por semana del §8 se sostienen
+4. **La prospección no se suspende.** Los 20 contactos y las 2 reuniones por semana del §8 se sostienen
    aunque haya proyecto en curso. Si un proyecto obliga a bajarlos, es que estaba mal cotizado.
 5. **Todo proyecto deja pieza reutilizable.** Lo que se construya a medida vuelve al `platform/` como
    módulo cuando aplique. Si no deja nada reutilizable, es trabajo por horas disfrazado.
@@ -332,14 +396,24 @@ software chicas que la falta de clientes.
 
 ### Cómo se comunica (esto es lo que más se equivoca)
 
-- **El titular sigue siendo el bot.** En la landing, en LinkedIn y en la pauta, el mensaje es uno solo.
-  Decir "hacemos software a la medida, páginas web, bots y marketing" convierte la marca en la agencia
-  genérica de la esquina, que compite por precio contra veinte iguales.
-- **El servicio se ofrece, no se anuncia:** una sección en la web para quien pregunta, y en ventas
-  como respuesta a lo que el cliente pide. Nadie que llegue por un bot debe salir confundido sobre a
-  qué nos dedicamos.
-- **En la conversación sí se usa como palanca:** *"además del bot les montamos la página / la
+> 🔄 **Esta sección cambió el 2026-08-13.** Decía *«el servicio se ofrece, no se anuncia»*. Ya no:
+> se abrió un carril pago para el servicio, en Google. Lo que **no** cambió es el riesgo que esa
+> regla protegía, y por eso la nueva es más precisa, no más laxa.
+
+- **Un mensaje líder POR CANAL, no un solo mensaje.** El **bot** es el titular en Meta, en orgánico,
+  en outbound y en la landing. El **servicio a la medida** es el titular en **Google Search y en el
+  Google Business Profile**, y sólo ahí. Nadie ve los dos a la vez, así que no confunde a nadie.
+- **Por qué Google y no Meta:** el servicio es demanda que **ya existe** y se expresa en una
+  búsqueda. Nadie busca «chatbot», pero sí se busca «desarrollo de software Bucaramanga». Y con piso
+  de $3.000.000 y 50% de anticipo, **un cierre paga la ronda entera** y financia el carril del bot.
+- **Dentro de una misma pieza sigue habiendo UNO.** Decir "hacemos software a la medida, páginas web,
+  bots y marketing" en el mismo anuncio convierte la marca en la agencia genérica de la esquina, que
+  compite por precio contra veinte iguales. Ese riesgo no desapareció: sólo dejó de resolverse
+  callando una línea entera de negocio que **es la que más factura hoy**.
+- **En la conversación sigue siendo palanca:** *"además del bot les montamos la página / la
   integración con su sistema"* cierra proyectos grandes con clientes que ya confían.
+- **Todo cliente de servicio sale con propuesta de bot.** La web es la puerta; la suscripción es la
+  renta. Un cliente que ya pagó y quedó contento es el lead más barato que existe.
 
 ### Métrica de gobierno
 

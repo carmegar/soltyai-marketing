@@ -78,8 +78,25 @@ function nuevo() {
       `  fuentes conocidas: ${canon.utm.source.join(' · ')}`);
     process.exit(1);
   }
+  // Antes esto era un `console.error` sin salida: avisaba y registraba igual. Con un carril nuevo
+  // (Google) el riesgo de tipear "googl" y quedarse con un origin huérfano deja de ser teórico, y un
+  // lead sin fuente válida no se puede evaluar — que es toda la razón de ser de este módulo.
   if (!canon.utm.source.includes(limpiar(fuente))) {
-    console.error(`⚠ "${fuente}" no está en canon.utm.source (${canon.utm.source.join(' · ')}). Si es una fuente nueva, agrégala a data/canon.json en el mismo commit.`);
+    console.error(
+      `✖ "${fuente}" no está en canon.utm.source (${canon.utm.source.join(' · ')}).\n` +
+        '  Si es una fuente nueva, agrégala a data/canon.json EN EL MISMO COMMIT y volvé a correr esto.',
+    );
+    process.exit(1);
+  }
+
+  // El medium por defecto depende del carril: `paid_social` era correcto cuando la única plataforma
+  // pagada era Meta. Google Search es `paid_search` y el Business Profile es `organic_local`;
+  // heredar `paid_social` ahí produce un dato falso que después nadie revisa.
+  const MEDIUM_POR_FUENTE = { google: 'paid_search', gbp: 'organic_local', outbound: 'email', organico: 'organic_social' };
+  const medium = flag('medium', MEDIUM_POR_FUENTE[limpiar(fuente)] ?? 'paid_social');
+  if (!canon.utm.medium.includes(medium)) {
+    console.error(`✖ medium "${medium}" no está en canon.utm.medium (${canon.utm.medium.join(' · ')}).`);
+    process.exit(1);
   }
 
   const link = construir({
@@ -87,7 +104,7 @@ function nuevo() {
     audiencia,
     creatividad,
     campana: flag('campana', `traffic_${new Date().getFullYear()}`),
-    medium: flag('medium', 'paid_social'),
+    medium,
     destino: flag('destino'),
     nota: flag('nota'),
     vertical: flag('vertical'),

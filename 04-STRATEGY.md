@@ -1,6 +1,26 @@
-# 04 · STRATEGY — Ronda semilla US$400 en Meta (SoltyAI)
+# 04 · STRATEGY — El carril de Meta (SoltyAI)
 
-> Estrategia + arquitectura de paid media para la **ronda 1 de validación** de SoltyAI.
+> # ⚠️ ESTE CARRIL ESTÁ RELEGADO (2026-08-13)
+>
+> **Meta ya no es el primer carril pago, ni el único.** La secuencia vigente es
+> **Google Business Profile → orgánico a mano → Google Search → Meta**, y vive en
+> **`15-CANALES-Y-SECUENCIA.md`**, que **manda sobre este documento**.
+>
+> Este doc **no se archiva**: es el playbook de Meta y sirve tal cual el día que Meta entre. Lo que
+> cambió, y hay que leer con eso en la cabeza:
+>
+> - **El presupuesto ya no es US$400.** Es **$1.200.000 COP** para la ronda de Meta, dentro de un
+>   total de $4.000.000 del que **$2.400.000 quedan sin asignar a propósito**. Donde el doc diga
+>   US$400 / $280 / $80 / $40, la proporción 70/20/10 sigue valiendo; la cifra no.
+> - **El corte por lead calificado ya no es ~$10 USD ni $25.000 COP: es $120.000 COP**, con
+>   advertencia en $180.000 y muerte en $250.000. Techo de CAC **$800.000**. El porqué, en
+>   `06-BUDGET-PLAN.md` y en `15 §8`.
+> - **WhatsApp está VIVO** (ver §2, que cambió de raíz).
+> - **El KPI que manda es reuniones agendadas**, no demos entregadas.
+> - **Google Search dejó de ser "fase 2"**: es el carril que va **antes** que este.
+> - El pricing por producto en USD que este doc cita quedó **superado**: manda el canon COP.
+
+> Estrategia + arquitectura de paid media para el carril de Meta de SoltyAI.
 > Fuente de verdad: `01-SOURCE-BRIEF.md` (manda sobre todo). Este doc fusiona y actualiza
 > la estrategia y la estructura de cuenta en uno solo. Unit economics → `06-BUDGET-PLAN.md`.
 > Copy y specs → `07-CAMPAIGN-BRIEF.md`. Tracking/atribución → `08-TRACKING-SETUP.md`.
@@ -38,16 +58,32 @@ clientes, no de escala. NO inflar.
 
 ## 2. Objetivo de campaña en Meta (la sutileza, explicada)
 
-### El problema
-El embudo deseado es conversacional. En Meta eso normalmente se hace con el objetivo **Interacción →
-Mensajes (Engagement / Messages)**, que abre un hilo dentro de un canal de Meta (Messenger, Instagram
-Direct o WhatsApp). **Telegram NO es uno de esos canales**, y WhatsApp API oficial **todavía no está
-disponible** para nosotros (Tech Provider de Meta pendiente de validación; la SAS ya está constituida). Si elegimos
-"Mensajes", Meta nos obliga a conectar Messenger/IG/WhatsApp, no `t.me`.
+### El problema — y cómo se disolvió el 2026-08-07
+
+> 🔄 **Esta sección cambió de raíz.** Decía que WhatsApp API oficial **no estaba disponible** para
+> nosotros y que por eso el objetivo tenía que ser **Tráfico**. Meta aprobó a SoltyAI como Tech
+> Provider el 6-ago-2026 y el bot contesta por WhatsApp desde el 7-ago. **La restricción que
+> justificaba toda esta sección ya no existe.**
+
+El embudo deseado es conversacional. En Meta eso se hace con el objetivo **Interacción → Mensajes**,
+que abre un hilo dentro de un canal de Meta (Messenger, Instagram Direct o **WhatsApp**). **Telegram
+sigue sin ser uno de esos canales** — eso no cambió y no va a cambiar. Lo que cambió es que **WhatsApp
+sí lo es, y ahora lo tenemos.**
+
+**Consecuencia práctica, y es la mejor noticia que trajo el cambio de canal para este carril:** el
+**Click-to-WhatsApp** pasó de imposible a disponible. Es el formato que mejor convierte en LATAM
+porque elimina el salto fuera de la app: el prospecto toca el anuncio y ya está escribiendo, sin
+landing intermedia, sin fricción, y del otro lado contesta el mismo bot que le estamos vendiendo.
+
+**Y arregla el problema de fondo que tenía la creatividad:** antes esto era vender un bot de Telegram
+a pymes colombianas que **no usan Telegram para su negocio**. Ningún ángulo salvaba eso. Por eso Meta
+pasó de *bloqueado y sin sentido* a *relegado y viable*.
 
 ### La decisión
-Para mandar gente al destino (deep-link al bot de Telegram y/o landing puente con las 3 opciones de
-entrada), el anuncio es **tráfico con un enlace saliente**:
+
+**Cuando Meta entre, el objetivo por defecto es Mensajes → WhatsApp**, y Tráfico queda como
+alternativa cuando se quiera medir con píxel propio o mandar a la landing de servicio. La tabla de
+abajo se conserva porque su razonamiento sigue siendo correcto para el caso Tráfico:
 
 | Capa | Elección | Por qué |
 |---|---|---|
@@ -71,9 +107,12 @@ entrada), el anuncio es **tráfico con un enlace saliente**:
 - **Donde está la PYME colombiana.** Dueños y administradores de pequeños negocios (peluquerías,
   restaurantes/tiendas, inmobiliarias) viven en Facebook e Instagram y gestionan ahí su presencia.
   Reach barato y segmentación por intereses de negocio decente para B2B-PYME local.
-- **US$400 no alcanza para dispersar.** Repartir entre Meta + Google + TikTok deja a cada plataforma
-  sin señal estadística. **Concentrar = aprender.** Google Search (alta intención) queda explícitamente
-  para **fase 2**, cuando haya caja.
+- **Un presupuesto chico no alcanza para dispersar.** Repartir entre Meta + Google + TikTok a la vez
+  deja a cada plataforma sin señal estadística. **Concentrar = aprender.**
+  🔄 **Lo que cambió el 13-ago:** concentrar sigue siendo correcto, pero **la plataforma en la que se
+  concentra primero ya no es Meta**. Google Search captura intención que ya existe y Meta la genera;
+  para servicios B2B en Colombia el mix recomendado es ~65% Google / 35% Meta. Google dejó de ser
+  "fase 2": es la **fase 1**. Meta entra después, y con **una sola vertical**, no con tres.
 - **El formato encaja.** Tráfico conversacional es nativo de Meta y se alinea con un producto cuyo
   gancho es "habla con el bot ahora mismo" / "míralo con tus datos".
 - **Atribución manejable.** Una sola plataforma = un solo píxel, un solo set de UTMs, un solo panel
@@ -115,9 +154,11 @@ Las 3 creatividades NO son etapas: son **ángulos distintos** apuntando a la mis
 - **La landing puente es funcional, no decorativa.** Aloja el píxel, da las 3 opciones y limpia la
   atribución (mide el clic a Telegram con un evento). Recomendada como **default** sobre el deep-link
   directo (ver `08-TRACKING-SETUP.md`).
-- **Canal honesto.** La demo corre **por Telegram hoy**; WhatsApp/web son **"próximamente"**. El copy
-  promociona el *servicio* SaaS (que ofrecerá WhatsApp), pero la prueba viva es Telegram. No prometer
-  WhatsApp API.
+- **Canal honesto, versión 2026-08.** La demo corre por **WhatsApp y Telegram**, los dos vivos; sólo
+  la **web** sigue en "próximamente". Lo que no se promete son **plazos de conexión al día**: el canal
+  se probó contra nuestro propio número y el primer WABA de cliente real se registra en vivo. Y nunca
+  se vende "un asistente de IA" abierto: la política de IA de WhatsApp sólo permite bots de negocio
+  estructurados.
 - **El onboarding "con tus datos reales" es la palanca de cierre.** Convierte testers en clientes:
   el setup deja de ser una barrera y pasa a ser la prueba de valor (ver promesa en `01-SOURCE-BRIEF.md`).
 
@@ -152,8 +193,9 @@ Intereses: *Inmobiliaria, Agente inmobiliario, Bienes raíces, Arriendo/venta de
 Finca raíz, CRM inmobiliario*.
 **Dolor:** asesores repitiendo lo mismo, leads sin calificar, agenda de visitas desordenada.
 **Promesa:** **pre-califica leads, responde del inventario (RAG) y agenda visitas** sola. → Producto
-**SoltyAI Inmobiliario** (cierre realista con el tier **entry propuesto** $249/$600 para PYME, marcado
-como propuesto; full para inventarios grandes; ver `05-PRICING.md`).
+el **vertical inmobiliaria**, que se vende con los planes del canon: **Esencial $290.000 / Pro
+$490.000 / Premium $790.000** al mes + setup $400.000, antes de IVA (`05-PRICING.md`). El tier
+"entry" en USD que decía acá quedó **superado** con el resto del catálogo por producto.
 
 > **Audiencia D — "dueño-general" (de respaldo, NO un 4º ad set):** intereses de propietario
 > (*Emprendimiento, Pequeña empresa, Propietario de empresa, Herramientas/software de negocios*) bajo
@@ -283,18 +325,22 @@ El copy fino con conteo de caracteres lo cierra `07-CAMPAIGN-BRIEF.md`; aquí va
 Marco 70/20/10 del skill `ads-plan`, adaptado a una sola plataforma y a "semilla, no recurrente":
 repartimos entre **probado / escalado / reserva** dentro de Meta.
 
-| Tramo | % de US$400 | Monto | Uso |
+| Tramo | % | Monto (sobre los **$1.200.000 COP** de la ronda de Meta) | Uso |
 |---|---|---|---|
-| **Corrida inicial (test de 3 verticales)** | ~70% | **~$280** | 3 ad sets en paralelo, ~$93 c/u durante ~7 días (≈ $13/día por ad set). |
-| **Escalado del ganador** | ~20% | **~$80** | Subir budget del ad set/ángulo ganador tras la lectura, +20% por paso. |
-| **Reserva de prueba** | ~10% | **~$40** | Variante de creatividad, nuevo ángulo o nueva ciudad según lo aprendido. |
+| **Corrida inicial** | ~70% | **$840.000** | 3 ad sets en paralelo, $280.000 c/u durante ~7 días (≈ $40.000/día por ad set). |
+| **Escalado del ganador** | ~20% | **$240.000** | Subir budget del ad set/ángulo ganador tras la lectura, +20% por paso. |
+| **Reserva de prueba** | ~10% | **$120.000** | Variante de creatividad, nuevo ángulo o nueva ciudad según lo aprendido. |
+
+> 🔄 **Convertido el 13-ago.** Acá el reparto estaba en US$400 / $280 / $80 / $40. La **proporción**
+> 70/20/10 es lo que valía y se conserva; las cifras eran del presupuesto viejo. Y el test ya no es
+> "de 3 verticales": cuando Meta entre, es **una sola vertical** con 3 **ángulos** (`15 §7`).
 
 > **Mínimo de Meta:** el piso por ad set es ~US$1–2/día; ~$13/día por ad set queda holgado sobre el
 > mínimo. Si Meta exige más volumen para salir de aprendizaje, **se consolida de 3 a 2 ad sets** antes
 > que bajar el diario por debajo de ~$10/día/ad set (que arruina la entrega).
 
 > **Upside sin CAC de pauta — el outbound.** En paralelo corre el canal **outbound gratis**
-> (`09-OUTBOUND.md`): WhatsApp 1-a-1 manual a la lista de **906 inmobiliarias** scrapeadas, con demo en
+> (`09-OUTBOUND.md`): contacto 1-a-1 **manual** sobre los **865 prospectos vivos en producción**, con demo en
 > Telegram, cerrando con el producto Inmobiliario (tier entry propuesto para PYME pequeña). Esos cierres
 > **no cargan CAC de pauta** y mejoran la economía global de la ronda. **No subir esos teléfonos a Meta**
 > (viola ToS + Ley 1581).
@@ -338,7 +384,7 @@ CTR sano → hay señal para reinvertir.
 - **Anuncio inmobiliario y categoría especial.** Vendemos *software para inmobiliarias*, no vivienda;
   aun así Meta puede marcarlo. Si el review exige "categoría especial: vivienda", reformular el copy
   hacia "herramienta para agentes" y, si persiste, mover ese budget a la audiencia de respaldo D.
-- **WhatsApp aún no.** No se promete en la demo. Tech Provider de Meta pendiente de validación (la SAS ya está constituida; solicitud desbloqueada).
+- ✅ **WhatsApp SÍ.** Meta aprobó a SoltyAI como Tech Provider el 6-ago-2026 y el bot contesta desde el 7-ago. Lo que sigue sin prometerse: **plazos de conexión al día** y el canal **web**.
 - **Cuenta nueva = sin histórico.** Los KPIs son estimados de industria; la verdad la da la corrida.
 - **Presupuesto chico = aprendizaje caro.** Meta penaliza ad sets famélicos. Por eso 3 ad sets, no 8;
   y optimización a clic, no a conversión.

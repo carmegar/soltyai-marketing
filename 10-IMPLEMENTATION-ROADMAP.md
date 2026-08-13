@@ -1,11 +1,23 @@
-# 10 · IMPLEMENTATION-ROADMAP — Ronda semilla US$400 en Meta (compacto)
+# 10 · IMPLEMENTATION-ROADMAP — El día a día de una ronda de Meta (compacto)
 
-> Roadmap **compactado** a la ronda de validación: no es el plan de 12 semanas del skill, sino una
+> # ⚠️ CARRIL RELEGADO (2026-08-13)
+>
+> **Este roadmap es el día a día de una ronda de Meta, y Meta ya no va primero.** El calendario
+> vigente vive en **`15-CANALES-Y-SECUENCIA.md §3`**: Google Business Profile → orgánico a mano →
+> Google Search → Meta. Este doc **no se archiva**: la mecánica de correr una ronda (preparar, lanzar,
+> no tocar nada 48 h, leer, podar, escalar) sirve igual, y sirve también para el carril de Google.
+>
+> Lo que quedó viejo acá: **US$400 / $280 / $80 / $40** (el carril de Meta son **$1.200.000 COP**), el
+> corte de **~$10 por calificado** (hoy **$120.000 COP**), y **"Google Search en el backlog de fase 2"**
+> — Google va **antes**, no después.
+
+> Roadmap **compactado** a una ronda de validación: no es el plan de 12 semanas del skill, sino una
 > corrida de **~2 semanas de punta a punta** (preparación → lanzamiento → 5–7 días de gasto → lectura →
 > reinversión).
 >
-> Autoridad: `01-SOURCE-BRIEF.md`. Cruces: `04-STRATEGY.md`, `06-BUDGET-PLAN.md`, `07-CAMPAIGN-BRIEF.md`,
-> `08-TRACKING-SETUP.md`, `11-PRE-LAUNCH-CHECKLIST.md`.
+> Autoridad: `01-SOURCE-BRIEF.md`. Cruces: **`15-CANALES-Y-SECUENCIA.md`** (manda sobre el orden),
+> `04-STRATEGY.md`, `06-BUDGET-PLAN.md`, `07-CAMPAIGN-BRIEF.md`, `08-TRACKING-SETUP.md`,
+> `11-PRE-LAUNCH-CHECKLIST.md`.
 
 ---
 

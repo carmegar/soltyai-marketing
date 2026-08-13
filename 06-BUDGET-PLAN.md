@@ -1,433 +1,426 @@
-# 06 · BUDGET-PLAN — Economía de la ronda semilla US$400 en Meta (SoltyAI)
+# 06 · BUDGET-PLAN — La economía de adquisición en COP (recalibrada 2026-08-13)
 
-> Modelo financiero de paid media para la **ronda 1 de validación**, recalculado contra el
-> **pricing POR PRODUCTO** (`01-SOURCE-BRIEF.md` + `05-PRICING.md`). La versión anterior estaba
-> anclada a planes Starter/Growth/Pro — **superados y prohibidos**. Metodología: skill `ads-math`
-> (Break-Even, LTV:CAC, Budget Forecasting, CPL/CPA, payback) — fórmulas con números.
+> Modelo financiero de la pauta, en **pesos**, contra el **pricing COP vigente** (`05-PRICING.md`) y
+> la **secuencia de canales** que manda (`15-CANALES-Y-SECUENCIA.md`). Metodología: skill `ads-math`
+> (break-even, LTV:CAC, payback, forecasting), fórmulas con números a la vista.
 >
-> **Regla de honestidad:** la cuenta es nueva, no hay histórico. Toda tasa de conversión o benchmark va
-> etiquetada **(estimado)** o **(supuesto)**. Con US$400 y B2B-PYME el resultado base realista es
-> **1–4 cierres (base ~2)**: este documento **no infla**. Rangos pesimista/base/optimista, no promesas.
+> **Reescrito el 2026-08-13, y no fue un ajuste de cifras: fue un cambio de anclaje.** La versión
+> anterior modelaba una ronda de **US$400 en Meta** sobre un catálogo USD por producto que ya no
+> existe, y anclaba el CAC máximo a la **caja del mes 1**. Decía textualmente *"la ronda paga su CAC
+> con la caja del mes 1 sin tocar el LTV"*. Eso era el error, y §1 explica qué rompía.
+>
+> **Regla de honestidad:** la cuenta publicitaria es **nueva y no tiene histórico**. Cada tasa de
+> conversión va marcada **(supuesto)**; los CPL vienen de **benchmarks externos verificados**, no de
+> nuestra cuenta. Acá no se infla nada: los escenarios base salen chicos a propósito.
 
 ---
 
-## 0. Resumen ejecutivo (los números que importan)
+## 0. Resumen ejecutivo
 
-> El "cliente de referencia del modelo" ya **no** es Growth $149. Modelamos sobre los **productos reales**
-> y tomamos como **caso base de planeación el producto de ticket más bajo, SoltyAI Agenda** ($65/mes +
-> $250 setup), para no inflar la economía. Los demás productos son **upside** (§7).
-
-| Indicador (caso base = **Agenda**) | Valor | Cómo se obtiene |
+| Indicador | Valor | De dónde sale |
 |---|---|---|
-| **Caja mes 1 (Agenda)** | **$315** | Setup $250 + mensualidad $65 |
-| **CAC máximo tolerable (break-even caja mes 1)** | **≈ $315** | = caja mes 1 del producto más barato |
-| **CAC máx ajustado por margen 75%** | **≈ $236** | $315 × 0,75 |
-| **LTV bruto (Agenda, 12 m)** | **$1.030** | $250 + $65 × 12 |
-| **LTV:CAC base (CAC $200)** | **≈ 5,2 : 1** | $1.030 ÷ $200 |
-| **Payback** | **< 1 mes (inmediato)** | Setup $250 ≥ CAC base $100–$200 |
-| **Cierres para break-even de los $400** | **2 clientes Agenda** (caja $630 > $400) · **1** si es Pedidos/Inmobiliario | $400 ÷ caja mes 1 |
-| **Presupuesto diario recomendado** | **$40/día × ~7 días** (corrida) | $280 corrida ÷ 7 |
-| **Resultado base esperado** | **~120 calificados → ~2 cierres** (mezcla de productos) | Embudo base (§4) |
+| Ticket promedio mensual | **$390.000** *(supuesto: mezcla Esencial/Pro)* | canon |
+| Caja del mes 1 por cliente | **$790.000** | adaptación $400.000 más el primer mes |
+| **LTV bruto a 12 meses** | **$5.080.000** | $400.000 más $390.000 × 12 |
+| **Techo de CAC** | **$800.000** | 2 veces el cobro inicial; se recupera con la caja acumulada del mes 2 |
+| **Corte por lead calificado** | **$120.000** | techo $800.000 ÷ 6,7 calificados por cierre *(supuesto)* |
+| Advertencia · matar · escalar | **$180.000** · **$250.000** · **menos de $80.000** | §5 |
+| **Payback** | **mes 2 a 3** | ya **no** es inmediato, y eso es lo correcto |
+| Margen mínimo por línea | suscripción **60%**, servicios **35%** | canon, y no se cruza |
+| KPI que manda | **reuniones agendadas**, meta **2 por semana** | el correo pivotó a reunión |
+| Presupuesto total de pauta | **$4.000.000** | $400.000 Google · $1.200.000 Meta · **$2.400.000 sin asignar** |
 
-**Conclusión de una línea:** el **setup fee** convierte cada cierre en **caja positiva el mismo mes**.
-Con el producto más barato (Agenda) hacen falta **2 cierres** para recuperar los $400; con Pedidos
-($360), Inmobiliario entry ($849) o full ($2.150), **basta 1 cierre**. El escenario base (~2 cierres,
-mezcla realista) **deja caja para la ronda 2 sin meter capital nuevo**.
+**Conclusión de una línea:** con CPL B2B reales en Colombia, **la suscripción sola no puede pagar
+tráfico pago dentro del mes**. Se ancla al LTV, se acepta payback al mes 2 o 3, y **se entra por el
+carril que produce caja rápido**: un cierre de servicio de $3.000.000 con 50% de anticipo pone
+$1.500.000 en la cuenta y financia varias rondas de bot.
 
 ---
 
-## 1. Supuestos del modelo (todos explícitos)
+## 1. Por qué cambió el anclaje: del cobro inicial al LTV
 
-### 1.1 Pricing real POR PRODUCTO (hecho, no supuesto) — `05-PRICING.md`
+Esta sección es el motivo de la reescritura. Sin ella, los números nuevos parecen optimismo.
 
-| Producto | Mensualidad | Setup único | Caja mes 1 (setup + mes) |
-|---|---|---|---|
-| **SoltyAI Agenda** (Citas) | $65/mes | $250 | **$315** |
-| **SoltyAI Pedidos** (Comercio/domicilios) | $80/mes | $280 | **$360** |
-| **SoltyAI Inmobiliario — entry** *(propuesto, validar)* | $249/mes | $600 | **$849** |
-| **SoltyAI Inmobiliario — full** | $650/mes | $1.500 | **$2.150** |
-| **Integraciones a medida** | desde $180/mes | desde $3.500 | **desde $3.680** |
+### 1.1 El anclaje viejo
 
-- **Bundle:** **−10% desde el 2º producto** del mismo cliente. Ignorado en el modelo base (upside).
-- ⚠️ El tier **Inmobiliario entry ($249/$600) es propuesto a validar** en esta ronda; el seed/landing hoy
-  solo tienen el full. Lo usamos para el cierre outbound de PYME pequeña (`09-OUTBOUND.md`), marcado.
-- **PROHIBIDO** modelar con Starter $49 / Growth $149 / Pro $399 — superados.
-
-### 1.2 Caja del mes 1, LTV y costo de servir
-
-> **Eje financiero de la ronda.** El mes 1 cobra setup + mensualidad juntos. El **setup financia el CAC**.
+El modelo anterior decía: **CAC máximo = caja del mes 1**. Como la caja del mes 1 es cobro inicial más
+mensualidad, en la práctica el techo era **el cobro inicial**. De ahí salían dos números:
 
 ```
-Caja mes 1          = Setup + Mensualidad
-Caja mes N (N≥2)    = Mensualidad
-LTV bruto (vida = N meses) = Setup + Mensualidad × N
+Techo de CAC viejo  = $400.000            (el cobro inicial, y nada más)
+Corte por lead      = $400.000 ÷ ~16 calificados por cierre = $25.000
 ```
 
-| Producto | Caja mes 1 | LTV bruto 8 m | LTV bruto 12 m | LTV bruto 18 m |
-|---|---|---|---|---|
-| **Agenda** ($65 + $250) | **$315** | $250 + $65×8 = **$770** | **$1.030** | **$1.420** |
-| **Pedidos** ($80 + $280) | **$360** | $250… → $280 + $80×8 = **$920** | **$1.240** | **$1.720** |
-| **Inmob. entry** ($249 + $600) *(propuesto)* | **$849** | **$2.592** | **$3.588** | **$5.082** |
-| **Inmob. full** ($650 + $1.500) | **$2.150** | **$6.700** | **$9.300** | **$13.200** |
+*(La reconstrucción del ÷16 sale del embudo que asumía la versión vieja: no era un dato medido.)*
 
-**Costo de servir (de `01-SOURCE-BRIEF.md` §"Costo de servir") — sostiene margen ~75%:**
+### 1.2 Qué se rompía, en orden de gravedad
 
-- **IA (Claude Haiku 4.5):** ~**$0.02–0.05 por conversación** con caché. 500 conv/mes ≈ $15–25;
-  1.000 conv/mes ≈ $30–50. El **modo sin IA (0 tokens)** baja esto a ~0.
-- **Infra:** VPS Hetzner CPX32 ~€20/mes **compartido** entre tenants → **~$1–2/cliente** a escala.
-- **WhatsApp (cuando se active, Colombia):** primeras 1.000 conv/mes **gratis**; hoy el canal es
-  Telegram = **$0**.
-- **Conclusión:** márgenes **65–85%** en todos los productos. **Margen bruto del modelo = ~75%**
-  *(supuesto, dentro de rango)*. El costo NO es la restricción; el precio se fija por valor/mercado.
+1. **El corte estaba de 3 a 10 veces por debajo del piso del mercado.** El benchmark externo
+   verificado para CPL B2B en Colombia es **$80.000 a $250.000 por lead**. Un corte de $25.000 no lo
+   cumple ninguna campaña, ni bien hecha ni mal hecha.
+2. **Consecuencia mecánica: la ronda se cortaba sola.** La primera lectura de cualquier carril daba
+   "matar" antes de que hubiera nada que leer. El umbral no filtraba campañas malas: filtraba
+   **todas**.
+3. **Y el informe habría dicho "la pauta no sirve".** Ese es el daño real. Es el peor tipo de error de
+   medición: el que produce una conclusión **con forma de dato**, con toda la autoridad de una regla
+   escrita, sobre una pregunta que nunca se llegó a hacer.
+4. **El error de fondo: pedirle al cobro inicial que pagara la adquisición.** Los $400.000 están
+   dimensionados para cubrir la implementación (unas 4 horas de trabajo), no para ser el presupuesto
+   de marketing de un negocio B2B con ciclo de venta de semanas.
+5. **Bonus, y no es menor: "lead calificado" cambió de significado.** En el modelo viejo era cualquiera
+   que entrara al bot y pasara el filtro de rubro, y costaba US$2 a US$8. En el modelo nuevo, a
+   $120.000 (≈ US$30), es un **SQL B2B**, que es exactamente lo que miden los benchmarks (US$25 a
+   US$80 por SQL en software). Comparar los dos números como si fueran la misma cosa era parte del
+   error.
 
-### 1.3 Supuestos de negocio (etiquetados)
+### 1.3 El anclaje nuevo
 
-| Supuesto | Valor | Justificación |
+```
+Techo de CAC = 2 × cobro inicial = $800.000
+Comprobación por LTV:  $5.080.000 ÷ $800.000 = 6,4 : 1 bruto  ·  4,8 : 1 con margen 75%
+Comprobación por caja: caja acumulada del mes 2 = $1.180.000 > $800.000  → payback mes 2
+Corte por lead = $800.000 ÷ 6,7 calificados por cierre = $120.000
+```
+
+**Qué cambia en la práctica:**
+
+- El cobro inicial deja de ser el presupuesto de adquisición y pasa a ser **lo que amortigua el
+  payback**. Sin él, la caja acumulada solo llegaría a $1.170.000 en el mes 3: el payback del techo
+  sería mes 3 en vez de mes 2. Ese es su verdadero aporte financiero, y es grande.
+- **Se acepta que el payback se corra al mes 2 o 3.** Es el precio de jugar en un mercado con CPL
+  reales, y **exige caja para flotarlo**. Por eso el carril de servicio en Google entra primero.
+
+**Qué NO cambia, y conviene decirlo fuerte:** anclar al LTV **no es gastar lo que sea**. El techo sigue
+existiendo, solo que ahora está calculado en vez de heredado, y descansa sobre un supuesto de vida
+media que **no está medido** (§7).
+
+---
+
+## 2. Supuestos del modelo, todos explícitos
+
+### 2.1 Hechos (no supuestos), de `05-PRICING.md` y del canon
+
+| Dato | Valor |
+|---|---|
+| Planes vigentes | Esencial $290.000 · Pro $490.000 · Premium $790.000, antes de IVA |
+| Adaptación inicial | $400.000 única vez, 50% al firmar y 50% cuando el bot atiende |
+| Excedente | $50.000 cada 100 conversaciones |
+| Piso de la línea de servicio | $3.000.000, con 50% de anticipo para agendar |
+| Costo de servir | IA US$0,02 a US$0,05 por conversación · infra US$1 a US$2 por cliente al mes · modo sin IA = 0 |
+| Márgenes reales por plan | 65% a 85% *(la banda que se comunica)* |
+
+### 2.2 Supuestos de negocio, etiquetados
+
+| Supuesto | Valor | Por qué |
 |---|---|---|
-| **Vida media del cliente** | **8 / 12 / 18 meses** (pesim./base/optim.) *(supuesto)* | SaaS PYME LATAM nuevo, sin churn medido. 12 m = ~8% churn mensual, conservador para B2B con setup invertido. |
-| **Margen bruto** | **~75%** *(supuesto)* | Único costo variable relevante = API de IA (Haiku 4.5). Modo sin IA + topes por plan sostienen margen alto; SaaS típico 70–85%. |
-| **Producto de cierre base** | **Agenda ($65/$250)** *(supuesto conservador)* | Ticket más bajo de la cartera → no infla la economía. Los demás son upside. |
-| **% de cierres que pagan setup** | **100%** *(supuesto)* | El setup es la adaptación done-for-you, obligatoria. En promos podría descontarse — riesgo a la baja anotado. |
+| Ticket promedio | **$390.000/mes** *(supuesto)* | Mezcla de Esencial y Pro. Queda entre los dos planes que de verdad se van a vender. |
+| Vida media del cliente | **12 meses** *(supuesto)* | **El número más frágil del documento.** No hay churn medido: la única línea recurrente lleva un mes de facturación. Sensibilidad en §7. |
+| Margen de suscripción para modelar | **75%** *(supuesto, dentro del rango verificado 65% a 85%)* | Piso que no se cruza: 60%. |
+| Calificado → reunión agendada | **50%** *(supuesto)* | Un calificado a $120.000 ya es un SQL, no un curioso. |
+| Reunión → cierre | **30%** *(supuesto)* | B2B, decisión de dueño, marca nueva con dos referencias verificables. |
+| **Calificados por cierre** | **6,7** *(derivado)* | 1 ÷ (0,50 × 0,30). Es el número que convierte el techo de CAC en el corte por lead. |
+| CPL por lead calificado | **$80.000 a $250.000** *(benchmark externo verificado, no nuestro)* | CPL B2B Colombia. Base de planeación: $120.000. |
 
-### 1.4 Supuestos del embudo (los más inciertos — todos `(supuesto)`)
-
-> Embudo de `04-STRATEGY.md §4`: **anuncio → clic → destino (3 opciones) → conversación/lead calificado
-> → demo → cierre.** Tasas = **hipótesis a validar con la corrida**, no hechos. Rangos compatibles con
-> `04-STRATEGY.md §9` (CPC $0,10–$0,50; ~800–4.000 clics; clic→entrada 25–50%; calificados ~50–300;
-> costo/calificado $2–$8).
-
-| Paso del embudo | Pesimista | **Base** | Optimista | Nota / justificación |
-|---|---|---|---|---|
-| **CPC (clic en enlace)** | $0,40 | **$0,25** | $0,12 | Benchmark LATAM B2B-PYME, tráfico Meta *(estimado, no cuenta real)*. |
-| **CTR (link)** | 0,8% | 1,3% | 2,0% | Solo informativo; el modelo parte del CPC. |
-| **Clic → entrada** (chat/agenda/WhatsApp) | 20% | **30%** | 45% | **El número más frágil** (brecha de atribución + fricción de salir al destino). 3 opciones de entrada lo suben vs. solo-Telegram. |
-| **Entrada → lead calificado** | 50% | **65%** | 80% | El bot/formulario descarta curiosos/no-PYME; califica rubro + intención. |
-| **Lead calificado → demo** | 40% | **55%** | 70% | La demo es el propio bot / "te lo dejamos con tus datos" → fricción casi nula. |
-| **Demo → cierre** | 3% | **5%** | 9% | B2B, decisión de dueño, marca nueva sin testimonios *(supuesto conservador)*. |
-
-> **Por qué "demo → cierre" tan bajo:** cerrar exige confianza en una marca nueva sin testimonios
-> todavía. Inflar este número sería el error más caro del modelo.
+> ⚠️ **Las dos tasas del embudo son las cifras más inciertas y se multiplican entre sí.** Si
+> reunión→cierre resulta ser 15% en vez de 30%, los calificados por cierre suben a 13,3 y el corte
+> real cae a **$60.000**, que está por debajo del piso de mercado. **Ese es el escenario que mata la
+> tesis**, y es lo primero que hay que medir con reuniones reales, no con clics.
 
 ---
 
-## 2. Break-even — CPA / CAC máximo tolerable
-
-**Fórmulas (skill ads-math, Break-Even):**
+## 3. Las fórmulas
 
 ```
-CAC máx (break-even por caja mes 1) = Caja mes 1 del cliente
-CAC máx (sano, regla 3:1)           = LTV bruto ÷ 3
-Break-even con margen               = Caja mes 1 × Margen bruto
+Caja mes 1            = Cobro inicial + Ticket
+Caja acumulada mes N  = Cobro inicial + Ticket × N
+LTV bruto (N meses)   = Cobro inicial + Ticket × N
+LTV neto              = LTV bruto × Margen
+
+Calificados           = Presupuesto ÷ CPL
+Reuniones agendadas   = Calificados × (calificado→reunión)
+Cierres               = Reuniones × (reunión→cierre)
+
+CAC                   = Presupuesto ÷ Cierres  =  CPL × Calificados por cierre
+LTV:CAC               = LTV ÷ CAC
+Payback               = primer mes en que la caja acumulada ≥ CAC
+Break-even de la ronda= Presupuesto ÷ Caja mes 1  =  cierres necesarios
 ```
 
-### 2.1 Break-even por caja del mes 1 (el umbral que de verdad manda en la ronda)
-
-Como setup + primer mes entran el mismo mes, la ronda es rentable **en caja** si adquirir un cliente
-cuesta menos que lo que paga el mes 1:
-
-| Producto | Caja mes 1 | **CAC máx (caja)** | CAC máx (×margen 75%) |
-|---|---|---|---|
-| **Agenda** (base) | **$315** | **$315** | **$236** |
-| **Pedidos** | $360 | **$360** | $270 |
-| **Inmob. entry** *(propuesto)* | $849 | **$849** | $637 |
-| **Inmob. full** | $2.150 | **$2.150** | $1.613 |
-
-### 2.2 Break-even por LTV (techo "sano" para escalar, no para validar)
+**Los cuatro números aplicados:**
 
 ```
-LTV bruto Agenda 12 m = $1.030
-CAC máx 3:1           = $1.030 ÷ 3 = $343   (bruto)
-CAC máx 3:1 ×margen   = $343 × 0,75 = $257
-```
-
-**Interpretación:** la ronda paga su CAC con la **caja del mes 1** sin tocar el LTV. El LTV solo amplía
-el techo si más adelante quieres escalar con CAC más alto.
-
-**Resultado:** el **CAC máximo tolerable de la ronda es ≈ $236–$315 por cliente Agenda** (margen vs. caja
-bruta); **mucho mayor** si cierra Pedidos/Inmobiliario. Como el CAC efectivo esperado es **$100–$400**
-(`04-STRATEGY.md §9`), estamos **dentro del umbral en el caso base, y holgados** si el mix sube de Agenda.
-⚠️ **Matiz nuevo vs. la versión vieja:** con el producto más barato (Agenda, $315 de caja), el escenario
-malo de **1 solo cierre gastando todo el budget ($400) NO da break-even de caja inmediata** (CAC $400 >
-caja $315). Por eso el bot/asesor debe **calificar hacia el producto correcto** y, en frío PYME, el
-**Inmobiliario entry ($849)** o **Pedidos ($360)** salvan el break-even con 1 cierre.
-
----
-
-## 3. LTV:CAC y payback
-
-**Fórmulas (skill ads-math, LTV:CAC):**
-
-```
-CAC          = Gasto total en ads ÷ Clientes nuevos
-LTV bruto    = Caja mes 1 + Mensualidad × (Vida − 1)
-LTV:CAC      = LTV ÷ CAC
-Payback (m)  = CAC ÷ Caja del primer mes que lo cubre
-```
-
-### 3.1 LTV:CAC con 3 supuestos de vida media (caso base Agenda, CAC = $200)
-
-> CAC base $200 = $400 ÷ **2 cierres** (escenario base, §4).
-
-| Vida media *(supuesto)* | LTV bruto (Agenda) | LTV:CAC (CAC $200) | LTV:CAC (×margen 75%) | Lectura |
-|---|---|---|---|---|
-| **8 meses** (pesimista) | $770 | **3,9 : 1** | 2,9 : 1 | Sano (≈3:1); justo en el filo con margen. |
-| **12 meses** (base) | $1.030 | **5,2 : 1** | 3,9 : 1 | Sano, margen para reinvertir. |
-| **18 meses** (optimista) | $1.420 | **7,1 : 1** | 5,3 : 1 | Techo amplio. |
-
-> Benchmark SaaS: 3:1 = sano, 5:1+ = posible sub-inversión. **Con Agenda (el ticket más bajo) la
-> economía es sana pero ajustada**; con cualquier otro producto sube fuerte: p.ej. **Inmob. entry 12 m =
-> $3.588 → LTV:CAC 17,9:1** (CAC $200). El cuello de botella **no es** la economía unitaria, es el
-> **volumen de cierres** con $400 (§4).
-
-### 3.2 Payback — **casi siempre < 1 mes** (destacado)
-
-```
-CAC base (2 cierres)      = $400 ÷ 2 = $200/cliente
-Caja del mes 1 (Agenda)   = $315
-Payback = $200 ÷ $315 < 1 mes  → SE RECUPERA EL MISMO MES DEL CIERRE
-```
-
-| Escenario (cierres con $400) | CAC efectivo | Caja mes 1 (Agenda) | **Payback** |
-|---|---|---|---|
-| 1 cierre (pesimista) | $400 | $315 | **caja NO cubre el CAC el mes 1** (déficit $85) → cubierto en mes 2 con la mensualidad, o evitado cerrando Pedidos/Inmob. |
-| 2 cierres (base) | $200 | $315 | **< 1 mes** (caja $315 > CAC $200) |
-| 4 cierres (optimista) | $100 | $315 | **< 1 mes** |
-
-**El setup fee hace el payback inmediato en el base y el optimista.** Solo el escenario pesimista (1
-cierre Agenda con todo el budget) deja un pequeño déficit de caja inmediata que el recurrente cubre en
-semanas — **y se evita** si ese único cierre es Pedidos ($360) o Inmobiliario ($849+), donde **1 cierre
-recupera los $400 de sobra**.
-
----
-
-## 4. Escenarios con US$400 — embudo completo
-
-**Fórmulas (skill ads-math, CPL/CPA + Budget Forecasting):**
-
-```
-Clics            = Presupuesto ÷ CPC
-Entradas         = Clics × (clic→entrada)
-Leads calific.   = Entradas × (entrada→lead)
-Demos            = Leads × (lead→demo)
-Cierres          = Demos × (demo→cierre)
-Costo/calificado = Presupuesto ÷ Leads calificados
-Caja generada    = Cierres × Caja mes 1 (mezcla de productos)
-```
-
-> Se aplica el embudo de §1.4 sobre **los $400 completos**. Cifras redondeadas.
-
-### 4.1 Tabla de escenarios
-
-| Paso | Pesimista | **Base** | Optimista |
-|---|---|---|---|
-| Presupuesto | $400 | $400 | $400 |
-| CPC | $0,40 | $0,25 | $0,12 |
-| **Clics** | **1.000** | **1.600** | **3.333** |
-| Clic→entrada | 20% | 30% | 45% |
-| **Entradas** | **200** | **480** | **1.500** |
-| Entrada→lead calificado | 50% | 65% | 80% |
-| **Leads calificados** | **100** | **~312** | **1.200** |
-| **Costo por calificado** | **$4,00** | **$1,28** | **$0,33** |
-| Lead→demo | 40% | 55% | 70% |
-| **Demos** | **40** | **~172** | **840** |
-| Demo→cierre | 3% | 5% | 9% |
-| **CIERRES (mecánica)** | **~1–2** | **~9** | **~76** |
-| **CIERRES (planeación realista)** | **1** | **~2** | **~4** |
-
-> **Nota de honestidad — el "76 cierres" es IRREAL, se descarta explícitamente.** La multiplicación de
-> tasas optimistas produce cifras absurdas (el optimista "≈76 cierres con $400" **no es creíble** para
-> B2B y una marca nueva). La aritmética del embudo **se rompe en los extremos** porque cada tasa es
-> incierta y los errores se multiplican. **Anclamos el resultado realista al rango del brief y de
-> `04-STRATEGY.md`: 1–4 cierres con $400, base ~2.** Las filas "mecánica" muestran cómo opera el embudo;
-> **la cifra de planeación es 1–4 (base ~2)**, no el producto literal de las tasas.
-
-### 4.2 Caja generada (mezcla realista de productos)
-
-El base de planeación = **~2 cierres**. La caja depende de qué se cierra. Tres mezclas plausibles:
-
-| Mezcla de los ~2 cierres base | Caja mes 1 generada | Menos $400 ronda 1 | Lectura |
-|---|---|---|---|
-| 2 × Agenda ($315 c/u) | **$630** | **+$230** | Mezcla más pobre; aún en negro. |
-| 1 Agenda + 1 Pedidos ($315 + $360) | **$675** | **+$275** | Mezcla típica esperada. |
-| 1 Pedidos + 1 Inmob. entry ($360 + $849) *(entry propuesto)* | **$1.209** | **+$809** | Si entra un inmobiliario; financia bien la ronda 2. |
-
-### 4.3 Cierres necesarios para break-even de los $400
-
-```
-Caja mes 1 por cierre:
-  Agenda     $315  → 2 cierres ($630 > $400)
-  Pedidos    $360  → 2 cierres ($720 > $400); 1 cierre ($360) queda a −$40, casi
-  Inmob entry $849 → 1 cierre (sobra)
-  Inmob full $2.150 → 1 cierre (paga ronda 1 y 2 de un tiro)
-```
-
-- **El producto cambia el umbral.** Con **Agenda** hacen falta **2 cierres**; con **Inmobiliario** basta
-  **1**. **Implicación táctica:** el asesor/bot debe **calificar hacia el producto que el negocio
-  necesita** y no subvender — un inmobiliario cerrado vale como 3 Agendas para el break-even de la ronda.
-
-### 4.4 ¿Se autofinancia la ronda 2?
-
-| Escenario | Cierres | Caja generada (mezcla típica) | Menos $400 | **Caja libre para ronda 2** |
-|---|---|---|---|---|
-| Pesimista | 1 (Agenda) | $315 | −$400 | **−$85** (cubierto en mes 2 con recurrente); en negro si el cierre es Pedidos/Inmob. |
-| **Base** | **2 (Agenda + Pedidos)** | **$675** | −$400 | **$275** (+ recurrente $145/mes) → **sí autofinancia** |
-| Optimista | 4 (mezcla con 1 inmob.) | $1.500–$2.000 (estimado) | −$400 | **$1.100–$1.600** (3–4× el budget inicial) |
-
-**Veredicto:** en el **base (2 cierres, mezcla típica)** la ronda **genera más caja de la que costó** y
-deja **~$275 + recurrente** para la ronda 2. En el **pesimista (1 cierre Agenda)** queda un pequeño
-déficit inmediato que el recurrente ($65/mes) y el LTV ($770+) cubren en semanas — **y se evita** si ese
-cierre es Pedidos/Inmobiliario. **Upside del outbound** (§8): cada cierre del canal gratis no resta de
-los $400 → mejora todas estas filas.
-
----
-
-## 5. Presupuesto diario y duración — velocidad vs. aprendizaje
-
-> Tramo de **corrida inicial = $280** (70% de $400, `04-STRATEGY.md §8`). Aquí decidimos el **ritmo**.
-
-**Fórmula:** `Días = Presupuesto corrida ÷ Gasto diario`
-
-| Opción | Gasto/día | Días | $/día por ad set (3 ABO) | Trade-off |
-|---|---|---|---|---|
-| A — Rápida | $40/día | 7 días | ~$13 | Aprendizaje veloz; menos margen para leer. |
-| **B — Recomendada** | **$40/día** | **~7 días + relectura** | **~$13** | Equilibrio: cada ad set sobre el mínimo de Meta, datos en 1 semana. |
-| C — Lenta | $25/día | ~11 días | ~$8 | Más días de lectura, pero ~$8/ad set **roza el piso** donde Meta entrega mal. |
-
-**Recomendación: $40/día durante ~7 días en la corrida ($280), luego decidir.**
-
-- **Aprendizaje de Meta:** con optimización a **clic** (no conversión) el umbral es alcanzable con poco
-  budget, pero **por debajo de ~$10/día por ad set la entrega se degrada**. $40/día ÷ 3 = ~$13/ad set
-  queda holgado.
-- **Si falta volumen, antes que bajar el diario, consolidar de 3 a 2 ad sets** (consistente con
-  `04-STRATEGY.md §8`).
-- **No gastar los $400 de golpe:** $280 en la corrida, **leer a las 48 h y al cierre**, y recién entonces
-  entran los $80 de escalado y los $40 de reserva (§6) sobre el ganador.
-
-```
-Corrida:   $280 ÷ $40/día = 7 días   (≈ $13/día/ad set × 3)
-Escalado:  $80  sobre el ad set ganador, +20%/vez (§6)
-Reserva:   $40  para una variante/ángulo/ciudad según lo aprendido
+Caja mes 1     = $400.000 + $390.000 = $790.000
+Caja acumulada = m1 $790.000 · m2 $1.180.000 · m3 $1.570.000 · m4 $1.960.000
+LTV bruto 12 m = $400.000 + $390.000 × 12 = $5.080.000
+LTV neto 12 m  = $5.080.000 × 0,75 = $3.810.000   (supuesto de margen)
 ```
 
 ---
 
-## 6. Reparto de los $400 + reglas de poda y escalado
+## 4. Break-even y techo de CAC
 
-Estructura: **3 ad sets (ABO), 1 creatividad-ángulo por ad set** (`04-STRATEGY.md §6`). El marco
-70/20/10 del skill se adapta a **probado / escalado / reserva** dentro de Meta.
+### 4.1 El techo, por los dos caminos
 
-### 6.1 Reparto
+| Camino | Cálculo | Techo |
+|---|---|---|
+| **Por caja** (el que manda para decidir si se puede flotar) | primer mes en que la caja acumulada cubre el CAC | **$800.000** se cubre en el **mes 2** |
+| **Por LTV, regla 3:1 sobre el bruto** | $5.080.000 ÷ 3 | $1.693.000 |
+| **Por LTV neto, regla 3:1 sobre el margen** | $3.810.000 ÷ 3 | $1.270.000 |
 
-| Tramo | % | Monto | Uso |
-|---|---|---|---|
-| **Corrida inicial (test 3 verticales)** | 70% | **$280** | 3 ad sets en paralelo, **~$93 c/u** durante ~7 días (~$13/día/ad set). |
-| **Escalado del ganador** | 20% | **$80** | Subir budget del ad set/ángulo ganador tras leer datos, +20%/paso. |
-| **Reserva de prueba** | 10% | **$40** | Variante de creatividad / ángulo / ciudad / activar audiencia de respaldo D. |
+**Se adopta $800.000**, que es el más conservador de los tres y además tiene una lectura simple: **dos
+veces el cobro inicial, recuperado en el mes 2**. Los otros dos techos existen para saber cuánta
+holgura hay antes de que la economía deje de ser sana, no para gastar hasta ahí.
 
-> **Reparto inicial parejo entre los 3** ($93 c/u) **a propósito**: el objetivo es *leer qué vertical↔
-> mensaje rinde*, no optimizar caja todavía. Por eso ABO (a mano) y no CBO (Meta concentraría y mataría
-> el test).
+### 4.2 Cierres para recuperar cada ronda
 
-### 6.2 Regla de poda (3x Kill Rule del skill, métrica = costo por calificado)
+```
+Break-even de la ronda = Presupuesto ÷ Caja mes 1
 
-> Métrica de poda = **costo por conversación/lead calificado** (KPI primario), no CPC ni CTR sueltos.
-> Techo de break-even por calificado: con demo→cierre 5% y lead→demo 55%, **~36 calificados = 1 cierre**.
-> A CAC máx **$315 (Agenda)** ⇒ **~$8,75 por calificado** es el techo absoluto con el producto más barato
-> (con Pedidos/Inmobiliario el techo sube). Podamos **muy por debajo** de eso.
+Google Search $400.000    ÷ $1.500.000 (anticipo de un cierre de servicio) = 0,27 cierres
+Meta          $1.200.000  ÷ $790.000   (caja mes 1 de un cliente de bot)   = 1,52 → 2 cierres
+```
 
-| Señal del ad set (48 h y al cierre) | Acción |
-|---|---|
-| Costo/calificado **> $8** (techo del rango estimado) | **Advertencia** — revisar creatividad/audiencia. |
-| Costo/calificado **> 3× el del mejor ad set** | **Matar** ese ad set (3x Kill Rule); reasignar al ganador o activar audiencia D. |
-| CTR (link) **< 0,6%** sostenido | Creatividad floja → pausar el **anuncio**, no solo el ad set. |
-| Costo/calificado **> ~$9** (techo de break-even con Agenda) | **Matar inmediato** — no rentable ni con caja mes 1 del producto más barato. |
-| Audience Network trae tráfico basura (rebote, 0 entradas) | Excluir Audience Network del placement. |
-
-### 6.3 Regla de escalado (20% del skill)
-
-| Señal del ad set ganador | Acción |
-|---|---|
-| Costo/calificado **< $2** (piso del rango) **y** CTR sano | **Escalar +20%** de budget (nunca >+20% por vez, para no resetear aprendizaje). |
-| Costo/calificado **$2–$8** estable | **Mantener**; mover reserva ($40) a una variante del ganador. |
-| Un ad set domina claramente tras 48 h | Volcar el tramo de **escalado ($80)** ahí, +20% por paso. |
+- **Google:** un solo cierre paga la ronda **3,75 veces con el anticipo**, y 7,5 veces con el contrato
+  completo. Incluso al margen mínimo de servicios (35%), un cierre deja **$1.050.000** de margen, que
+  son **2,6 rondas**.
+- **Meta:** hacen falta **2 cierres para recuperar la ronda dentro del mes 1**. El caso base son 1,5
+  cierres, así que la ronda **no se recupera en el mes en que se gasta**: se recupera en el mes 2 o 3.
+  Eso no es un defecto del carril, es exactamente lo que dice el anclaje nuevo.
 
 ---
 
-## 7. Sensibilidad por producto de cierre
+## 5. La escalera del corte: LTV:CAC y payback en cada umbral
 
-| Producto que cierra | Caja mes 1 | Cierres p/ break-even $400 | LTV 12 m | LTV:CAC (CAC $200) | Lectura |
+Todos los umbrales del tablero salen de una sola tabla. **El corte no es una opinión: es la fila donde
+el LTV:CAC deja de ser sano.**
+
+| CPL por calificado | CAC = CPL × 6,67 | LTV:CAC bruto | LTV:CAC neto *(margen 75%)* | Payback | Decisión |
 |---|---|---|---|---|---|
-| **Agenda $65/$250** (base) | **$315** | **2** | $1.030 | **5,2:1** | **Caso del modelo.** Sano pero exige 2 cierres. |
-| Pedidos $80/$280 | $360 | 2 (≈1) | $1.240 | 6,2:1 | Mejor que Agenda; 1 cierre queda casi en break-even. |
-| Inmob. entry $249/$600 *(propuesto)* | $849 | **1** | $3.588 | 17,9:1 | Un cierre paga la ronda y deja caja. |
-| Inmob. full $650/$1.500 | $2.150 | **1** (sobra) | $9.300 | 46,5:1 | Un solo full paga la ronda 1 **y** la 2. |
-| Integraciones $180+/$3.500+ | $3.680+ | 1 (sobra) | $5.660+ | 28:1+ | Raro en ronda fría; gran upside si entra. |
+| **menos de $80.000** | menos de $533.000 | más de 9,5 : 1 | más de 7,1 : 1 | **mes 1** | **escalar +20%**, nunca más por paso |
+| $80.000 a $120.000 | $533.000 a $800.000 | 9,5 a 6,4 : 1 | 7,1 a 4,8 : 1 | mes 1 a 2 | **mantener** |
+| **$120.000 (corte)** | **$800.000 (techo)** | **6,4 : 1** | **4,8 : 1** | **mes 2** | **es el límite, no la meta** |
+| **$180.000 (advertencia)** | $1.200.000 | 4,2 : 1 | **3,2 : 1** | mes 3 | revisar creatividad, keyword o audiencia |
+| **$250.000 (matar)** | $1.667.000 | 3,0 : 1 | **2,3 : 1** | mes 4 | **matar** ese ad set o esa keyword |
 
-**Implicación táctica:** el bot/asesor debe **calificar hacia el producto que el negocio necesita** (no
-subvender a Agenda por reflejo). Para el break-even de la ronda, **un inmobiliario o un Pedidos valen
-mucho más que un Agenda**. El **bundle (−10% desde el 2º producto)** es upside adicional si un cliente
-toma 2 verticales.
+**Cómo leer la escalera, que es lo que hace falta en la operación:**
+
+- **El corte de $120.000 es el límite, no el objetivo.** Operar justo en el corte significa operar
+  **justo en el techo de CAC**: cero holgura. La meta de verdad es $80.000, donde el payback vuelve al
+  mes 1.
+- **La advertencia a $180.000 está puesta donde está por una razón:** el LTV:CAC neto cruza el 3:1
+  sano en un CPL de **$190.500** *(calculado: $3.810.000 ÷ 3 ÷ 6,67)*. La advertencia se dispara justo
+  antes de cruzarlo, no después.
+- **Se evalúa sobre la ronda completa, no sobre una semana suelta.** Una semana mala con n de 3 leads
+  no es una señal, es ruido.
+- ⚠️ **El payback de esta tabla usa caja bruta.** Con márgenes reales por línea se corre un mes: ver
+  el riesgo anotado en §7.3.
 
 ---
 
-## 8. Upside no modelado (mencionado, no contado en el base)
+## 6. Escenarios por carril
 
-- **Outbound (canal gratis paralelo) — el upside más concreto.** WhatsApp 1-a-1 manual a **906
-  inmobiliarias** (`09-OUTBOUND.md`), demo en Telegram, cierre con Inmobiliario (entry propuesto para
-  PYME pequeña). **Cada cierre outbound NO carga CAC de pauta** → mejora la economía global de la ronda
-  sin gastar de los $400. **No subir esos teléfonos a Meta** (ToS + Ley 1581).
-- **Bundle (−10% desde el 2º producto):** un cliente que toma 2 verticales sube su caja mes 1 y su LTV.
-- **Overage / uso intensivo de IA:** la suscripción incluye un tope; el uso por encima es margen
-  incremental (o palanca para subir de plan). El **modo sin IA** protege el margen en flujos repetitivos.
-- **Recurrencia más allá del mes 1:** el break-even usa solo caja mes 1; cada cliente que sobreviva
-  aporta su mensualidad ($65–$650/mes) no contada en "cierres para break-even".
-- **Lookalike + retargeting (fase 2):** las audiencias sembradas en ronda 1 (`04-STRATEGY.md §11`)
-  abaratan el CAC de la ronda 2 → LTV:CAC sube sin tocar el modelo.
-- **Testimonios:** el primer cierre produce prueba social que **levanta demo→cierre** en rondas
-  siguientes (no asumido aquí).
+El presupuesto **no se reparte entre productos** (eso era el modelo viejo), se reparte **entre
+carriles**, porque cada carril vende una línea distinta, a un ticket distinto y con un reloj distinto.
+
+### 6.1 Carril Google Search: $400.000, línea de servicio a la medida
+
+**Qué se anuncia:** desarrollo a la medida, integraciones y web. **No el bot.** Es el único carril
+donde el servicio es el titular.
+
+| | Pesimista | **Base** | Optimista |
+|---|---|---|---|
+| CPL *(benchmark externo)* | $250.000 | **$120.000** | $80.000 |
+| Leads calificados | 1,6 | **3,3** | 5,0 |
+| Reuniones agendadas | 0,8 | **1,7** | 2,5 |
+| Cierres de servicio | 0,24 | **0,50** | 0,75 |
+| Anticipo esperado *(50% del piso)* | $360.000 | **$750.000** | $1.125.000 |
+
+> 🔴 **Lo que esta ronda NO puede responder.** Con $400.000 se compran **3 leads** en el caso base.
+> Tres leads no dicen nada sobre la tasa de cierre, ni sobre el ticket, ni sobre la línea. La
+> aritmética de arriba es esperanza matemática sobre una muestra menor que 1: **no es una predicción,
+> es la razón por la que la apuesta es barata.**
+>
+> **La única pregunta que sí responde en dos semanas:** ¿las keywords traen a la persona correcta
+> (rubro, tamaño, ciudad) y a qué precio? Eso se lee con 3 leads. Lo demás, no.
+
+**Reglas propias del carril:**
+
+- **Objetivo: reuniones agendadas.** No clics, no formularios descargables, no descargas de PDF.
+- **3 o 4 keywords de intención**, exactas o de frase, **nunca amplias**. Geo: Bucaramanga y área
+  metropolitana primero.
+- **Negativos desde el día 1:** "gratis", "curso", "aprender", "empleo", "plantilla", "wordpress
+  barato". En Search la plata se va por ahí, no por el CPC.
+- **Landing propia de servicio**, no la home del bot, con el mismo Calendly y su `origin` registrado.
+- **Corte del carril:** se corta a las 2 semanas si el costo por calificado pasa $250.000 **o** si
+  ninguno de los leads que llegaron es del perfil.
+- **Si entran 2 proyectos a la vez, se pausa el carril.** La regla de 1 proyecto simultáneo no se
+  rompe por tener demanda.
+
+**Por qué este carril va primero pese a ser el más chico:** es el que produce caja rápido, y la caja es
+lo que permite flotar el payback de mes 2 a 3 del otro carril. Además, el techo de CAC del servicio es
+**más alto** que el del bot (margen mínimo de un proyecto piso = $1.050.000), así que aplicarle el
+mismo corte de $120.000 es el criterio conservador, no el laxo.
+
+### 6.2 Carril Meta: $1.200.000, línea de bot, y entra relegado
+
+**Cuándo entra:** cuando haga falta volumen que los otros carriles no den, y **nunca antes** de tener
+las cuatro cosas: píxel y GA4 vivos, número propio de WhatsApp, geo redirect en producción, y
+creatividad por vertical.
+
+| | Pesimista | **Base** | Optimista |
+|---|---|---|---|
+| CPL *(benchmark externo)* | $250.000 | **$120.000** | $80.000 |
+| Leads calificados | 4,8 | **10** | 15 |
+| Reuniones agendadas | 2,4 | **5** | 7,5 |
+| Cierres | 0,72 | **1,50** | 2,25 |
+| **CAC efectivo** | $1.667.000 | **$800.000** | $533.000 |
+| Caja generada en el mes 1 | $568.800 | **$1.185.000** | $1.777.500 |
+| Recuperación de la ronda | no se recupera | **mes 2** | mes 1 |
+| LTV:CAC neto | 2,3 : 1 ✖ | **4,8 : 1** ✓ | 7,1 : 1 ✓ |
+
+> 🔴 **El hallazgo que hay que tener presente: en el caso base, Meta empata exactamente con el techo.**
+> $1.200.000 ÷ 1,5 cierres = **$800.000**, que es el techo de CAC, ni un peso de holgura. No es
+> casualidad aritmética: el corte de $120.000 se derivó del techo, así que **operar en el corte es
+> operar en el techo**. Un carril que en su escenario base empata con su propio límite es un carril
+> que solo vale la pena **por debajo del corte**, y esa es la razón económica (además de las cuatro
+> razones estratégicas de `15-CANALES-Y-SECUENCIA.md`) por la que Meta va relegado.
+
+**Y la otra lectura incómoda:** 5 reuniones en toda la ronda del caso base, contra una meta de **2
+reuniones por semana**. Meta no es el motor de reuniones ni pretende serlo: **el motor de corto plazo
+es el outbound**, que no carga CAC.
+
+**Cómo entra cuando entre:** una sola vertical, 3 ángulos en ABO con presupuesto parejo a propósito
+(la ronda es para leer qué ángulo rinde, no para optimizar caja), el anuncio **llena el Calendly** en
+vez de pedir la venta, nunca "un asistente de IA", y **nunca subir los teléfonos del outbound** como
+audiencia (ToS y Ley 1581).
+
+### 6.3 Los carriles que cuestan $0 y van antes que los dos
+
+No entran en este modelo porque **no tienen CAC**, pero sí cambian el resultado de los que sí:
+
+| Carril | Presupuesto | Su trabajo | Paga en |
+|---|---|---|---|
+| **Google Business Profile** | $0 | Pack local y reseñas verificables | semanas |
+| **Contenido orgánico a mano** | $0 | Construir el activo que prospecta sin manos | 6 a 12 meses |
+| **Outbound** | $0 | El motor de corto plazo, sin CAC | días |
+
+**Nunca se juzga un carril con la métrica de otro.** El orgánico no se mide por leads de la semana ni
+Google por alcance. Un carril evaluado con la métrica ajena siempre parece un fracaso.
+
+### 6.4 Los $2.400.000 sin asignar
+
+De los $4.000.000 quedan **$2.400.000 sin repartir, y es a propósito**, no un olvido ni una reserva
+ociosa. Se asignan **contra resultados**, no contra un plan escrito en agosto.
+
+- Van **al carril que baje del corte**, y solo a ese.
+- **Máximo +20% por paso**, nunca más, para no resetear el aprendizaje de la plataforma.
+- Lo que sobra del carril que no rinda **se mueve al que sí**, en vez de "darle una oportunidad más".
+
+---
+
+## 7. Sensibilidad y riesgos anotados
+
+### 7.1 Si la vida media no es 12 meses
+
+Es el supuesto que sostiene todo el anclaje nuevo, y **no está medido**.
+
+| Vida media *(supuesto)* | LTV bruto | LTV:CAC con CAC $800.000 | Neto *(margen 75%)* | Lectura |
+|---|---|---|---|---|
+| **6 meses** | $2.740.000 | 3,4 : 1 | **2,6 : 1** ⚠ | El techo queda apretado: habría que bajarlo a ~$685.000 y el corte a ~$102.000 |
+| **12 meses (base)** | $5.080.000 | 6,4 : 1 | **4,8 : 1** ✓ | Sano, con holgura para reinvertir |
+| **18 meses** | $7.420.000 | 9,3 : 1 | **7,0 : 1** ✓ | Holgado |
+
+**Qué hacer con esto:** la vida media no se adivina, se mide. El primer dato real llega cuando el
+cliente recurrente cumpla 6 meses de facturación. Hasta entonces, el techo de $800.000 se usa **con la
+consciencia de que descansa sobre un supuesto**, y no se escala por encima de él por ningún motivo.
+
+### 7.2 Si reunión → cierre es la mitad de lo supuesto
+
+Ya está dicho en §2.2 y se repite porque es el otro punto de quiebre: con 15% en vez de 30%, los
+calificados por cierre pasan de 6,7 a 13,3 y **el corte real cae a $60.000**, por debajo del piso de
+mercado. Si eso pasa, el problema no es la pauta: es que la oferta no cierra, y se retrabaja la oferta
+antes de comprar más tráfico.
+
+### 7.3 El margen del cobro inicial no es el de la suscripción *(riesgo anotado)*
+
+El 75% aplica a la suscripción, donde el costo es infra e IA. El catálogo estima el margen de la
+adaptación en **40%**: precio $400.000 contra un costo supuesto de $240.000 (4 horas del fundador).
+Con caja **neta** en vez de bruta, el mes 1 aporta $452.500 y el acumulado del mes 2 llega a $745.000:
+el payback del techo se corre del **mes 2 al mes 3**. No cambia ninguna decisión de la tabla de §5,
+pero sí cambia cuánta caja hay que tener guardada para flotarlo.
+
+### 7.4 Riesgos operativos que no son financieros
+
+- **Un fundador solo** es el único desarrollador, el único vendedor y el que entrega. Tres carriles a
+  la vez es la trampa de agencia aplicada al marketing. **Si algo se tiene que caer, que se caiga
+  Meta:** es el más caro, el más lento y el que más preparación pide.
+- **El primer registro de un WABA de cliente real será en vivo** (hasta hoy solo se probó contra
+  nuestro propio número). No prometer plazos de conexión al día en ninguna pieza.
+- **Sin `origin` registrado el lead llega sin fuente** y la ronda entera deja de ser evaluable. Es la
+  falla que convierte todo este documento en decoración.
+
+---
+
+## 8. Upside no modelado
+
+Nada de esto entra en los escenarios de §6, y todo mejora el resultado si aparece:
+
+- **Outbound.** Cada cierre de ese carril **no carga CAC de pauta**. Hoy es el único motor con reuniones
+  de verdad, y baja el CAC promedio de toda la operación sin gastar un peso de los $4.000.000.
+- **Todo cliente de servicio sale con propuesta de bot.** Un cierre de Google puede convertirse en
+  suscripción sin CAC adicional: el LTV del cliente pasa a ser proyecto **más** recurrente.
+- **Reseñas del Google Business Profile.** Prueba social verificable de origen externo, gratis, que
+  levanta la conversión de todos los carriles a la vez.
+- **Excedentes de conversaciones.** El uso por encima del tope es margen incremental, o la excusa
+  natural para subir de plan.
+- **Recurrencia más allá del mes 12.** El LTV del modelo se corta en 12 meses por prudencia, no porque
+  el cliente se vaya ese día.
+- **Retargeting y lookalike** sobre las audiencias que siembre la primera ronda, cuando Meta entre.
 
 ---
 
 ## 9. Consistencia con los otros documentos
 
-- **Reparto 70/20/10 ($280/$80/$40)** y **3 ad sets ABO** → idéntico a `04-STRATEGY.md §6/§8`.
-- **CPC $0,10–$0,50, ~800–4.000 clics, calificados ~50–300, costo/calificado $2–$8, 1–4 cierres,
-  CAC $100–$400** → rangos compatibles con `04-STRATEGY.md §9`. (Aquí CPC base $0,25 y costo/calificado
-  base ~$1,28, **dentro** de esos rangos; el "~76 cierres" optimista se **descarta** por irreal, §4.1.)
-- **Pricing por producto** → `05-PRICING.md` (Agenda/Pedidos/Inmobiliario entry-propuesto y full/
-  Integraciones; bundle −10%). **Cero Starter/Growth/Pro.**
-- **Costo de servir / margen ~75%** → `01-SOURCE-BRIEF.md` §"Costo de servir".
-- **Embudo anuncio→clic→entrada→lead→demo→cierre** → mismo de `04-STRATEGY.md §4`.
+- **Pricing, planes, descuentos, garantía y márgenes** → `05-PRICING.md` y `data/canon.json`. Cero
+  catálogo USD.
+- **Secuencia de carriles, presupuestos y reglas de corte** → `15-CANALES-Y-SECUENCIA.md` §3 y §8. Los
+  umbrales de §5 de este doc son los mismos, acá con la derivación completa.
+- **Benchmarks externos de CPL, CPM y mix Google/Meta** → `01-SOURCE-BRIEF.md` §Mercado.
+- **Reglas de la línea de servicios** (piso, anticipo, 1 por trimestre) → `13-PLAN-12-CLIENTES.md` §10.
+- **Outbound y por qué no carga CAC** → `09-OUTBOUND.md`.
+- **`04-STRATEGY.md` está desactualizado en su premisa** (asume Meta como primer carril y presupuesto
+  en USD). Se mantiene como el detalle táctico de Meta **para cuando entre**, no como el plan.
 
 ---
 
-> ## RECUADRO — Reglas de decisión de la ronda
+> ## RECUADRO — Reglas de decisión
 >
-> **Antes de lanzar**
-> - Budget total $400 → **$280 corrida (70%) / $80 escalado (20%) / $40 reserva (10%)**.
-> - Diario corrida: **$40/día × ~7 días**, ABO, ~$13/día por ad set. Nunca bajar de ~$10/día/ad set:
->   antes consolidar de 3 a 2 ad sets.
+> **Antes de gastar**
+> - Presupuesto total de pauta **$4.000.000**: **$400.000** Google Search · **$1.200.000** Meta cuando
+>   entre · **$2.400.000 sin asignar a propósito**, se reparten contra resultados.
+> - **Primero lo que cuesta $0:** Google Business Profile y contenido a mano. Después Google Search.
+>   Meta de último.
+> - **Ninguna pieza sale sin `origin` registrado.** Sin fuente, el lead no cuenta.
 >
-> **CAC y break-even (memorizar) — POR PRODUCTO**
-> - **Caja mes 1:** Agenda **$315** · Pedidos **$360** · Inmob. entry **$849** *(propuesto)* · full **$2.150**.
-> - **CAC máx tolerable (caja) = caja mes 1 del producto** (con margen 75%, ×0,75).
-> - **Break-even de los $400:** **2 cierres Agenda** · **1 cierre** Pedidos(≈)/Inmobiliario. Califica hacia
->   el producto correcto: 1 inmobiliario > 3 Agendas para la ronda.
-> - **Payback < 1 mes** en base/optimista (setup fee). Solo el pesimista (1 Agenda) deja déficit chico
->   que el recurrente cubre — se evita cerrando Pedidos/Inmobiliario.
+> **Los números que se memorizan**
+> - Caja del mes 1 por cliente: **$790.000**. LTV bruto a 12 meses: **$5.080.000** *(supuesto de vida
+>   media)*.
+> - **Techo de CAC $800.000.** **Corte por lead calificado $120.000**, y es el límite, no la meta.
+> - **Payback esperado: mes 2 a 3.** Ya no es inmediato, y esperar que lo sea es el error viejo.
+> - **6,7 calificados por cierre** *(supuesto)* es el número que traduce techo de CAC a corte por lead.
 >
-> **Durante la corrida — poda (48 h y al cierre)**
-> - Métrica norte = **costo por calificado**.
-> - **> $8** → advertencia · **> 3× el mejor** → **matar** ese ad set (3x Kill Rule) · **> ~$9** → **matar ya**.
-> - CTR link **< 0,6%** sostenido → pausar el **anuncio**. · Audience Network basura → excluir del placement.
->
-> **Durante la corrida — escalado**
-> - Costo/calificado **< $2** + CTR sano → **escalar +20%** (jamás >20% por vez).
-> - $2–$8 estable → **mantener** y mover reserva a una variante del ganador.
+> **Durante la ronda** *(métrica norte: costo por lead calificado · KPI: reuniones agendadas, meta 2 por semana)*
+> - **Menos de $80.000** y con volumen → **escalar +20%**, jamás más por paso.
+> - **$80.000 a $120.000** → **mantener**.
+> - **Más de $180.000** a las 48 horas → **advertencia**: revisar creatividad, keyword o audiencia.
+> - **Más de $250.000** → **matar** ese ad set o esa keyword.
+> - Se evalúa sobre **la ronda completa**, nunca sobre una semana suelta.
 >
 > **Cierre de la ronda**
-> - Éxito mínimo: **≥1 cierre** + costo/calificado en rango + ≥1 ad set con CTR sano → **reinvertir**.
-> - Corte: ningún ad set baja de ~$10/calificado y CTR <0,6% tras el gasto de aprendizaje → **pausar y
->   re-trabajar oferta/creatividad** antes de gastar más.
-> - **Base esperado realista: ~2 cierres (mezcla típica ≈$675 de caja), ~$275 libres + recurrente para
->   la ronda 2** (se autofinancia). **Outbound** suma cierres sin CAC de pauta.
+> - **Google:** se corta a las 2 semanas si el costo por calificado pasa $250.000 o si ninguno de los
+>   leads es del perfil. Un solo cierre paga la ronda 3,75 veces con el anticipo.
+> - **Meta:** en el caso base **empata con el techo**. Si no baja del corte, **no se escala**.
+> - **Si ningún ángulo baja del corte, se para y se retrabaja la oferta** antes de gastar la ronda
+>   siguiente. El problema entonces no es el tráfico.
+> - **Toda métrica declara de dónde salió** (`export-google`, `export-meta`, `gbp`, `calendly`,
+>   `suite-mcp`, `manual`). Que un dato sea manual está bien; fingir que es automático, no.

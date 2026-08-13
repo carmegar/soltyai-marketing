@@ -79,9 +79,12 @@
   },
 
   "canales": {
-    "vivos": ["telegram"],
-    "proximamente": ["whatsapp", "web"],
-    "nota": "WhatsApp Business API depende de la validación de Meta como Tech Provider (App Review enviado 2026-07-19). Hasta que Meta apruebe, WhatsApp SOLO se nombra como 'próximamente'."
+    "_cambio": "2026-08-13: WhatsApp pasó de 'proximamente' a 'vivos'. Meta aprobó el App Review el 6-ago-2026, la app 'SoltyAI Platform' quedó en Live el 7-ago y el bot contestó E2E contra el tenant demo-l0615 (1,26 s). Hasta hoy el canon seguía diciendo 'próximamente' aunque el hecho técnico tenía una semana: era el hueco que el pendiente cmsmkaidp000y01s52wcy9sc4 venía marcando. Con este cambio deja de ser mentira el copy YA PUBLICADO de redes/solty-fb-textos.md y redes/solty-yt-textos.md, que decía 'WhatsApp y Telegram' y hacía fallar el CI.",
+    "vivos": ["whatsapp", "telegram"],
+    "proximamente": ["web"],
+    "nota": "WhatsApp Business API oficial, con SoltyAI como Tech Provider aprobado por Meta. La conexión de cada cliente va por el camino A (asistida): el cliente nos agrega como socio a su WABA y lo registramos con tools/scripts/registrar-waba.mjs. NO hay autoservicio: el Embedded Signup exige el permiso business_management, que NO quedó aprobado, y se construye con 3+ clientes. El cliente paga su propio uso de la API; SoltyAI cobra la suscripción.",
+    "notaRiesgo": "El canal se probó contra NUESTRO propio número. El primer registro de un WABA de cliente real será en vivo: no prometer plazos de conexión al día.",
+    "web": "No se promete. Sigue siendo 'próximamente' y por eso conserva su prohibición."
   },
 
   "verticales": ["citas", "comercio", "domicilios", "inmobiliaria", "integraciones"],
@@ -119,8 +122,18 @@
       "La prospección no se suspende por un proyecto en curso.",
       "Todo proyecto deja pieza reutilizable en platform/.",
       "Todo cliente de servicio sale con propuesta de bot.",
-      "El titular público sigue siendo el bot: el servicio se ofrece, no se anuncia."
-    ]
+      "Un mensaje líder POR CANAL: el bot en Meta, orgánico, outbound y la landing; el servicio en Google Search y el Google Business Profile.",
+      "Dentro de una misma pieza sigue habiendo UN solo mensaje: nunca 'hacemos software a la medida, páginas web, bots y marketing' en el mismo anuncio.",
+      "Si entran 2 proyectos a la vez se pausa el carril de Google, no se contrata."
+    ],
+    "_cambioRegla": "2026-08-13: cae «el servicio se ofrece, no se anuncia» y la reemplaza «un mensaje líder POR CANAL». El motivo: se abre un carril pago de Google para la línea que HOY factura (Swisscontact $2,3M, Chalá $800k, Zaranda), porque Google captura intención que ya existe y con piso de $3.000.000 un solo cierre paga la ronda entera. Nadie ve los dos mensajes a la vez, así que no confunde a nadie. Lo que NO cambió y sigue siendo el riesgo real: mezclar las dos líneas DENTRO de una pieza convierte la marca en la agencia genérica de la esquina."
+  },
+
+  "mensajeLiderPorCanal": {
+    "_fuente": "15-CANALES-Y-SECUENCIA.md §Por qué cambió el orden. Es la regla que el guardrail hace cumplir sobre copy/.",
+    "bot": ["meta", "organico", "outbound", "landing", "linkedin", "instagram", "tiktok", "youtube"],
+    "servicio": ["google", "gbp"],
+    "nota": "El carril de Google es el ÚNICO donde el servicio a la medida puede ser el titular. En cualquier otro canal el titular es el bot y el servicio se menciona sólo en la conversación, como palanca."
   },
 
   "limitesMeta": {
@@ -132,8 +145,9 @@
 
   "utm": {
     "_fuente": "08-TRACKING-SETUP.md §2",
-    "source": ["meta", "linkedin", "instagram", "tiktok", "youtube", "outbound", "organico"],
-    "medium": ["paid_social", "organic_social", "email", "referral", "directo"],
+    "source": ["google", "gbp", "meta", "linkedin", "instagram", "tiktok", "youtube", "outbound", "organico"],
+    "_cambioSource": "2026-08-13: entran `google` (Search) y `gbp` (Google Business Profile) al abrirse el carril de Google. Sin origen registrado el lead llega sin fuente y la ronda no se puede evaluar, así que el carril nuevo necesitaba su source ANTES de la primera pieza.",
+    "medium": ["paid_search", "paid_social", "organic_social", "organic_local", "email", "referral", "directo"],
     "formatoOrigin": "fuente_audiencia_creatividad",
     "maxLargoStart": 64,
     "regexStart": "^[A-Za-z0-9_-]{1,64}$",
@@ -144,16 +158,41 @@
     "_fuente": "13-PLAN-12-CLIENTES.md §5 (rondas y regla de corte) y §8 (tablero semanal). Lo lee src/reportes: la regla de corte se CALCULA, no se estima a ojo.",
     "kpiQueManda": "demos",
     "metaDemosSemana": 2,
-    "cortePorLeadCalificado": 25000,
-    "notaCorte": "Regla de la ronda 1: si ningún ángulo baja de este costo por lead calificado, se para y se retrabaja la oferta ANTES de gastar la ronda siguiente. Se evalúa sobre la ronda completa, no sobre una semana suelta.",
-    "fuentesDeDato": ["export-meta", "export-linkedin", "calendly", "suite-mcp", "bot-log", "manual"],
+    "_notaKpi": "El KPI pasó a ser REUNIONES AGENDADAS (el cold email dejó de entregar demos y pide 15 minutos, business/16 §6c). La clave sigue llamándose 'demos' porque así la leen src/reportes y su registro; es el mismo número —una cita en el Calendly— con el nombre viejo. El renombre se hace en canon + código + README a la vez, no a medias.",
+
+    "cortePorLeadCalificado": 120000,
+    "_cambioCorte": "2026-08-13: subió de 25.000 a 120.000 COP. No era optimismo: era un error de ANCLAJE. Los 25.000 salían de exigir que el setup ($400.000) pagara toda la adquisición. El benchmark B2B real en Colombia es 80.000–250.000 COP por lead (ver 01-SOURCE-BRIEF §Mercado), así que la suscripción SOLA no puede pagar tráfico pago: hay que anclar al LTV y aceptar que el payback se corre al mes 2–3. Con el corte viejo, la ronda 1 se cortaba sola y se leía como 'la pauta no sirve' cuando el que estaba mal era el umbral.",
+    "notaCorte": "Se evalúa sobre la ronda completa, no sobre una semana suelta. Si ningún ángulo baja del corte, se para y se retrabaja la oferta ANTES de gastar la ronda siguiente.",
+    "advertenciaPorLeadCalificado": 180000,
+    "matarPorLeadCalificado": 250000,
+    "escalarPorLeadCalificado": 80000,
+    "escalarPasoMaximo": 0.2,
+
+    "techoCac": 800000,
+    "_notaCac": "2× el setup: se recupera en el mes 2. Antes era 400.000 (el setup solo). Derivado del LTV bruto de 12 meses = 5.080.000 (setup 400.000 + 390.000 × 12, con ticket promedio supuesto de mezcla Esencial/Pro).",
+    "ltvBruto12m": 5080000,
+    "ticketPromedioSupuesto": 390000,
+    "cajaMes1": 790000,
+
+    "fuentesDeDato": ["export-meta", "export-google", "export-linkedin", "gbp", "calendly", "suite-mcp", "bot-log", "manual"],
     "notaFuenteDato": "Toda métrica declara de dónde salió. Hoy varias son 'manual' y está bien: lo que no se vale es fingir que el dato es automático.",
-    "fuentesPagadas": ["meta", "linkedin", "tiktok", "youtube"],
+    "fuentesPagadas": ["google", "meta", "linkedin", "tiktok", "youtube"],
+
+    "carriles": {
+      "_fuente": "15-CANALES-Y-SECUENCIA.md — decidido 2026-08-13. Cada carril tiene un trabajo distinto y un reloj distinto: juzgar uno con la métrica de otro lo hace parecer un fracaso.",
+      "gbp": { "orden": 1, "presupuesto": 0, "trabajo": "pack local + reseñas verificables", "pagaEn": "semanas", "estado": "por-crear" },
+      "organico": { "orden": 2, "presupuesto": 0, "trabajo": "construir el activo que prospecta sin manos", "pagaEn": "6-12 meses", "estado": "a-mano" },
+      "google-search": { "orden": 3, "presupuesto": 400000, "trabajo": "capturar intención existente de la línea de servicio", "pagaEn": "semanas", "estado": "por-abrir" },
+      "meta": { "orden": 4, "presupuesto": 1200000, "trabajo": "generar demanda por vertical y ciudad", "pagaEn": "meses", "estado": "relegado" },
+      "outbound": { "orden": 0, "presupuesto": 0, "trabajo": "el motor de corto plazo, sin CAC", "pagaEn": "días", "estado": "corriendo" }
+    },
+    "presupuestoTotalPauta": 4000000,
+    "_notaPresupuesto": "De los 4.000.000: 400.000 a Google Search y 1.200.000 a Meta cuando entre. Los 2.400.000 restantes quedan SIN ASIGNAR a propósito: se asignan contra resultados, no contra un plan escrito en agosto.",
     "rondas": [
-      { "id": "R1", "presupuesto": 1200000, "cuando": "2026-08", "objetivo": "validación" },
-      { "id": "R2", "presupuesto": 1300000, "cuando": "2026-09", "objetivo": "escalar" },
-      { "id": "R3", "presupuesto": 1500000, "cuando": "2026-10/11", "objetivo": "sostener" }
-    ]
+      { "id": "G1", "carril": "google-search", "presupuesto": 400000, "cuando": "2026-08/09", "objetivo": "validar el carril de servicio a la medida" },
+      { "id": "R1", "carril": "meta", "presupuesto": 1200000, "cuando": "cuando haga falta volumen", "objetivo": "validación por vertical" }
+    ],
+    "_rondasViejas": "El plan viejo eran 3 rondas de Meta (1,2M ago / 1,3M sep / 1,5M oct-nov). Se descartó el 13-ago: Meta queda relegado y el calendario de rondas deja de existir como plan fijo."
   },
 
   "prohibiciones": {
@@ -168,27 +207,46 @@
         "no existen", "no menciones", "no aparece"
       ]
     },
-    "whatsappComoPromesa": {
-      "_doc": "Ampliada el 2026-08-03. Antes, de las 8 líneas de copy que el hallazgo H3 de business/24 encontró publicadas en la landing, los patrones cazaban UNA: pedían la conjugación exacta ('atiende por whatsapp') y el sustantivo pegado ('bot en whatsapp'), así que 'Atienden por WhatsApp y Telegram', 'WhatsApp y Telegram, con o sin IA', 'chatbot de WhatsApp' y todo el copy en inglés se escapaban. Las tres formas nuevas: el par de canales sin verbo ('whatsapp y telegram'), el verbo en plural o con objeto corto en medio, y el sustantivo con adjetivo ('bot inteligente de WhatsApp'). Lo que NO puede dar error, y por eso los patrones piden adyacencia: la CTA humana («escríbenos por WhatsApp»), la etiqueta de formulario («Teléfono / WhatsApp») y la enumeración legal de canales («WhatsApp, web, Telegram y otras redes»).",
+    "_whatsappComoPromesa_RETIRADA": {
+      "_doc": "RETIRADA el 2026-08-13, no relajada por descuido. Nació el 2026-06 y se amplió el 2026-08-03 (hallazgo H3 de business/24) para impedir prometer el bot en WhatsApp mientras Meta no validara a SoltyAI como Tech Provider. Meta aprobó el 6-ago, la app quedó Live el 7-ago y el bot contestó E2E: la regla pasó de proteger a mentir, y de hecho hacía fallar el CI sobre copy YA PUBLICADO y ahora cierto (redes/solty-fb-textos.md:23,31 y redes/solty-yt-textos.md:21, que dicen «WhatsApp y Telegram»). Se conserva el bloque como registro para que nadie la reinvente creyendo que falta. Lo que SÍ sigue restringido quedó en dos reglas nuevas: `asistenteGeneralIa` (la política de IA de WhatsApp, que es una restricción de plataforma y no de disponibilidad) y `webComoPromesa` (la web sí sigue siendo 'próximamente').",
+      "retiradaEn": "2026-08-13",
+      "activa": false
+    },
+    "asistenteGeneralIa": {
+      "_doc": "Nace el 2026-08-13, al abrir WhatsApp. Es la restricción que REEMPLAZA a whatsappComoPromesa, y es más importante que ella porque no caduca: la política de IA de WhatsApp (rige desde el 15-ene-2026) prohíbe los chatbots de IA de PROPÓSITO GENERAL en la plataforma. Vender o posicionar 'un asistente de IA que responde lo que sea' puede costar la cuenta de WhatsApp Business, que es el canal que acabamos de habilitar. Se aplica también al copy de Telegram, para no rediseñar el mensaje al migrar un cliente. Lo que SÍ se puede decir: bots de negocio estructurados por vertical (soporte, pedidos, reservas, recordatorios, calificación y ruteo de leads). Ojo con los falsos positivos legítimos: la promesa central dice «un asistente que atiende, vende y agenda», sin 'de IA' y con las tres tareas acotadas — eso es exactamente lo permitido y por eso los patrones piden la marca de generalidad.",
       "patrones": [
-        "whatsapp business api",
-        "api de whatsapp",
-        "(chat)?bots?( (inteligentes?|con ia|sin ia|especializados?|personalizados?))? (de|en|por|para) (tu |su |el )?whatsapp",
-        "(atiende|atienden|atencion|responde|responden|contesta|contestan|vende|venden|agenda|agendan|recibe|reciben)( \\w+){0,2} (en|por|desde) (tu |su |el )?whatsapp",
-        "whatsapp (y|o) telegram",
-        "telegram (y|o) whatsapp"
+        "asistente (virtual )?de (ia|inteligencia artificial)",
+        "ia de prop[oó]sito general",
+        "chatgpt (para|en|de) (tu |su )?(negocio|empresa|whatsapp)",
+        "responde (a )?(cualquier|toda|todas las) (cosa|pregunta|preguntas)",
+        "preg[uú]ntale lo que (sea|quieras)",
+        "contesta lo que sea",
+        "un chatgpt para"
       ],
       "patronesEn": [
-        "whatsapp (and|or) telegram",
-        "telegram (and|or) whatsapp",
-        "(chat)?bots?( (smart|intelligent|custom|specialized|dedicated))? (for|on|in|over) (your )?whatsapp",
-        "(answers?|responds?|replies|handles?|sells?|books?|attends?)( \\w+){0,2} (on|in|via|through|over) (your )?whatsapp",
-        "whatsapp (chat)?bot"
+        "general[- ]purpose (ai|assistant|chatbot)",
+        "ai assistant that answers anything",
+        "ask it anything",
+        "your own chatgpt"
       ],
       "alcance": "copy",
-      "porque": "Meta aún no valida a SoltyAI como Tech Provider. El BOT no se promete en WhatsApp: solo 'próximamente'. (Ofrecer el WhatsApp humano de contacto —«escríbenos por WhatsApp»— sí es válido: esa CTA existe y la atiende una persona.)",
-      "exenciones": ["próximamente", "proximamente", "pendiente", "cuando", "aún no", "aun no"],
-      "exencionesEn": ["coming soon", "not yet", "pending", "once meta", "once activated", "once enabled", "awaiting", "while we"]
+      "porque": "Política de IA de WhatsApp (15-ene-2026): la plataforma prohíbe chatbots de IA de propósito general. SoltyAI vende bots de negocio ESTRUCTURADOS por vertical. Romper esto no cuesta un anuncio: cuesta el canal.",
+      "exenciones": ["prohib", "no vendemos", "nunca", "a diferencia", "no somos", "no ofrecemos"],
+      "_notaExenciones": "A propósito NO se incluye «no es»: la exención se busca por substring en una ventana de ±1 línea, así que un «no es» cualquiera en el renglón vecino apagaría la regla entera. Es el mismo defecto que tiene «cuando» en planesSuperados, y no se repite acá.",
+      "exencionesEn": ["prohibit", "we do not", "never", "unlike", "not a"]
+    },
+    "webComoPromesa": {
+      "_doc": "Lo que queda vivo de la vieja whatsappComoPromesa. El canal `web` (widget en el sitio del cliente) sigue en `canales.proximamente`: no está construido y no se promete. Los patrones piden adyacencia para no cazar 'nuestra página web', 'visita el sitio web' ni la enumeración legal de canales.",
+      "patrones": [
+        "(chat|bot|widget|asistente)( \\w+){0,2} (en|para|de) (tu |su )?(sitio|p[aá]gina) web",
+        "(chat|bot|widget) web",
+        "atiende( \\w+){0,2} (en|desde) (tu |su )?(sitio|p[aá]gina)"
+      ],
+      "patronesEn": ["web (chat|bot|widget)", "(chat|bot|widget) on your (site|website)"],
+      "alcance": "copy",
+      "porque": "El widget web no existe todavía. WhatsApp y Telegram sí se prometen; la web no.",
+      "exenciones": ["próximamente", "proximamente", "pendiente", "aún no", "aun no", "en camino"],
+      "exencionesEn": ["coming soon", "not yet", "pending"]
     },
     "angulosQuemados": {
       "patrones": ["centraliza tu whatsapp", "crm para whatsapp", "todos tus chats en una bandeja"],

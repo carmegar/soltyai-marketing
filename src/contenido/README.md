@@ -11,8 +11,39 @@ anti-slop de `business/13-guia-estilo-y-prompting.md`.
 4. Pedir un link de atribución a `src/links` por pieza publicada y dejarlo en el calendario.
 5. Dejar el borrador en `out/` para revisión humana. **Nunca publica solo.**
 
+## 🔴 La regla que decide CUÁNDO se construye: 8 semanas a mano primero
+
+**Esto no se construye hasta que la versión a mano haya corrido 8 semanas seguidas = 16 posts**
+(2 por semana), y queda **bloqueado en el tablero** hasta entonces
+(`15-CANALES-Y-SECUENCIA.md` §5). Se automatiza un proceso que existe, **nunca uno que no**.
+
+**Por qué la regla y no "construyámosla ya":** una máquina de contenido es un proyecto de código
+precioso, divertido y bajo control total del fundador. Es exactamente la clase de trabajo que se come
+tres semanas mientras los WhatsApp del sábado siguen sin responder. **El costo de equivocarse acá no
+es el código: es el mes de prospección que no pasó.** Es la misma lógica con la que se pospuso el
+Embedded Signup de WhatsApp hasta tener 3 clientes.
+
+**Y cuando exista, no escribe: reformatea y distribuye.** El insumo son **20 minutos del fundador por
+semana** contando lo que de verdad pasó —el motor contable que arma 90 de 92 asientos DIAN sin gastar
+un token, el RCE contenido con su post-mortem, el tren de facturación electrónica cerrado por una
+empresa de una persona—. Eso es material que un generador no produce, y es la razón exacta por la que
+el contenido automatizado del competidor no alcanza. Una máquina que **escriba** produce el mismo
+relleno que todos; una que **reformatee y distribuya** multiplica lo único que no se puede copiar.
+
 **Decisiones ya tomadas que hay que respetar**
 - El link al bot NO va en posts abiertos: la compuerta `accessMode: request` entrega una
   pre-calificación, no una demo (`ESTADO.md` §Marketing). El CTA es el video y el Calendly.
 - Sin rayas (—) ni tono de IA: lo dice `business/13` y el linter de estilo va aquí.
-- Un solo mensaje líder. Los servicios a medida no se anuncian (`13-PLAN-12-CLIENTES` §10).
+- **Un mensaje líder POR CANAL** (cambió el 2026-08-13). El **bot** es el titular en orgánico, Meta,
+  outbound y la landing; el **servicio a la medida** es el titular sólo en **Google Search y el
+  Google Business Profile**, que es donde se abrió su carril pago. Como este motor produce orgánico,
+  lo que sale de acá lleva **el bot**. El mapa está en `canon.mensajeLiderPorCanal`; el porqué, en
+  `15-CANALES-Y-SECUENCIA.md`.
+- **Dentro de una misma pieza sigue habiendo UN solo mensaje.** Nunca "hacemos software a la medida,
+  páginas web, bots y marketing" en el mismo post: eso convierte la marca en la agencia genérica de
+  la esquina, que compite por precio contra veinte iguales.
+- El video sube **nativo a cada red** (todas castigan el link que saca gente de la plataforma): el
+  CTA de agendar va en el texto y en el comentario fijado, con `origin` por canal.
+- Cadencia: **2 posts/semana, no más.** 1 de build-in-public + 1 de demo/caso. Dos semanas seguidas
+  sin publicar significa que la cadencia estaba mal calibrada, no que falte disciplina: se baja a 1
+  por semana antes que dejar de publicar.

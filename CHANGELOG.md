@@ -1,5 +1,69 @@
 # Changelog · soltyai-marketing
 
+## 2026-08-13 (estrategia) — Meta dejó de ir primero, y el corte por lead estaba anclado al número equivocado
+
+Reconciliación completa del paquete de marketing después de cuatro decisiones del fundador: mover
+WhatsApp a canal vivo, abrir un carril pago para la línea de servicio a la medida, crear el Google
+Business Profile, y recalibrar el costo por lead calificado. Sale un doc nuevo, **`15-CANALES-Y-SECUENCIA.md`**,
+que manda sobre la premisa de `04-STRATEGY` y `13 §5`.
+
+**El hallazgo que dio vuelta el plan: Meta lanzó nuestro producto, gratis, dentro de la app donde
+íbamos a pautar.** El Meta Business Agent salió global el 3-jun-2026: se activa en minutos y hace
+textualmente responder preguntas, recomendar productos, **agendar citas, calificar leads** y escalar a
+un humano. Más de un millón de negocios instalados, y desde el 1-ago cobra por tokens. Pautar "te armo
+un chatbot de WhatsApp" **dentro de Meta** es pagarle a Meta por una audiencia que Meta está
+convirtiendo a su propio producto en la misma pantalla: **el mensaje genérico de categoría está
+muerto ahí.** Sobrevive el ángulo por vertical y ciudad, que es más caro de construir y todavía no
+existe. Sumado a que Meta no captura intención B2B (el mix recomendado en Colombia es ~65% Google /
+35% Meta) y a que es el carril **más bloqueado** que tenemos —píxel, GA4, número propio, creatividad—,
+el orden quedó: **GBP (gratis) → orgánico a mano → Google Search → Meta**.
+
+**El error que costaba más: el corte por lead calificado no estaba bajo, estaba mal anclado.** Los
+$25.000 salían de exigir que el **setup** ($400.000) pagara toda la adquisición. Con CPLs B2B reales
+en Colombia de **$80.000–$250.000 por lead**, la suscripción sola **no puede pagar tráfico pago**. Se
+ancla al LTV ($5.080.000 a 12 meses), el techo de CAC sube a **$800.000** y el corte a **$120.000**, y
+el payback se acepta en el mes 2–3. Con el umbral viejo, la ronda 1 se cortaba sola y se iba a leer
+como *"la pauta no sirve"* cuando el que estaba mal era el umbral.
+
+**Lo que cambió en el canon** (`data/canon.json`, D1, en el mismo commit que los docs):
+
+- `canales`: WhatsApp pasó de `proximamente` a `vivos`. La **web sigue en `proximamente`** y no se promete.
+- `prohibiciones.whatsappComoPromesa` **retirada**, y el bloque conservado bajo una clave con `_`
+  adelante para que nadie la reinvente creyendo que falta. **Llevaba una semana haciendo fallar el CI
+  sobre copy publicado y cierto:** `redes/solty-fb-textos.md:23,31` y `redes/solty-yt-textos.md:21`
+  dicen "WhatsApp y Telegram" desde antes de la aprobación. La regla pasó de proteger a mentir.
+- Dos reglas nuevas que **no caducan**: `asistenteGeneralIa` (la política de IA de WhatsApp prohíbe
+  los bots de propósito general; vendemos bots de negocio **estructurados**, y romper eso no cuesta un
+  anuncio, cuesta el canal) y `webComoPromesa`.
+- `tablero`: corte $120.000, techo de CAC $800.000, advertencia $180.000, matar $250.000, LTV, los
+  carriles con su reloj, y el presupuesto con **$2.400.000 sin asignar a propósito**.
+- `utm.source` suma `google` y `gbp`; `fuentesPagadas` suma `google` **y no `gbp`** — el veredicto de
+  corte sólo mide lo que cuesta plata, y eso fue una decisión, no un olvido.
+- `lineaServicios.reglas`: cae *"el servicio se ofrece, no se anuncia"* y entra **un mensaje líder por
+  canal** (`mensajeLiderPorCanal`), porque nadie ve los dos mensajes a la vez.
+
+**Cuatro huecos del propio linter, encontrados al tocarlo:**
+
+1. **`patronesEn` y `exencionesEn` nunca se leían.** El bucle de `prohibiciones()` iteraba sólo
+   `patrones`, así que los 5 patrones en inglés del canon **no protegían nada desde que se
+   escribieron**. Ahora se unen. Una regla que declara cubrir el inglés y no lo cubre es peor que no
+   tenerla: sugiere una cobertura que no existe.
+2. **`registroDeLinks` no validaba la fuente.** Validaba el formato del `origin` y los duplicados,
+   pero un `links.json` con una fuente inventada pasaba el CI limpio y el lead quedaba sin carril al
+   que imputarse. Con dos carriles nuevos el error de dedo deja de ser hipotético.
+3. **`npm run link nuevo` avisaba y registraba igual** (`console.error` sin salida), y su medium por
+   defecto era `paid_social` para todo — falso para Google Search y para el GBP. Ahora falla, y el
+   medium se deriva de la fuente.
+4. **El CAC se imprimía sin veredicto.** `reportes` calculaba el CAC y no lo comparaba con nada, y
+   `ronda()` ni siquiera lo agregaba. Un número sin umbral al lado no para nada, y era justo el número
+   que decide si la adquisición tiene negocio.
+
+**Lo que NO se pudo cerrar acá:** `src/lib/io.js` sigue ignorando `redes/` y sólo lee una extensión a
+la vez, así que **el copy realmente publicado nunca pasa por un guardrail**. Es la razón por la que
+esas 4 líneas vivieron meses fuera de la regla sin que el CI dijera nada. Queda anotado.
+
+---
+
 ## 2026-08-10 (mensaje) — Los 45 correos decían la verdad, pero los 45 la decían igual
 
 Primera vez que se usa `/brand-review` del plugin nuevo, con la voz de `business/13` y el canon como

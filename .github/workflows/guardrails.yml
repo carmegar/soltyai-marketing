@@ -32,3 +32,10 @@ jobs:
 
       - name: Catálogo y márgenes
         run: node src/catalogo/index.js validar
+
+      # Faltaba: `npm run check` corre cinco cosas y este workflow corría cuatro. Mientras
+      # `data/semanas.json` estuvo vacío daba igual, pero con la ronda cargada esta validación
+      # es la que caza un origin sin registrar o una semana con cierres y sin gasto. Se agrega
+      # ahora, antes de que haya datos, que es cuando arreglarlo es gratis.
+      - name: Consistencia de los reportes
+        run: node src/reportes/index.js validar
