@@ -1,5 +1,28 @@
 # Changelog · soltyai-marketing
 
+## 2026-08-13 (noche) — el sello de frescura del canon derivó, y el hook publicaba esa deriva en cada sesión
+
+`data/canon.json`: `actualizado` pasa de **`2026-08-04`** a **`2026-08-13`**, que es lo que el archivo
+era desde la mañana. Contenía `canales._cambio` y `_whatsappComoPromesa_RETIRADA`, los dos fechados el
+13, mientras el sello seguía diciendo el 4.
+
+**El daño no era el campo, era quién lo leía.** `scripts/contexto-sesion.mjs` lo inyecta al arrancar
+CADA sesión como *«Canon actualizado: 2026-08-04 (hace 9 días)»*, o sea que le decía al agente
+**desconfía de esto** sobre un canon que estaba al día. Es el anti-patrón 2 al revés: el de siempre
+hace citar de memoria un dato viejo; éste hace ir a rehacer un dato que ya estaba bien.
+
+**La guarda quedó en código, no en la costumbre:** desde hoy el hook toma la fecha del **último commit
+del archivo** (`git log -1 --format=%cI -- marketing/data/canon.json`), manda la más reciente de las
+dos, y si el campo se queda atrás lo dice en 🟡 con las dos fechas a la vista. git no puede derivar —
+el commit existe aunque nadie lo declare—, así que el sello a mano queda como lo que siempre fue: la
+anotación de cuándo se revisó a conciencia, no la de cuándo cambió un byte. Se sigue actualizando.
+
+⚠️ Y en el mismo hook se borró una línea que **transcribía a mano un hecho comercial**: la advertencia
+«el BOT no se promete en WhatsApp hasta que Meta valide a SoltyAI» estaba escrita en el `.mjs`, era
+falsa desde el 7-ago, y salía pegada al `vivos: whatsapp` que sí leía del canon. Ahora de `canales`
+sólo se imprime lo que `canales` diga (`nota`, `notaRiesgo`, `web`). **Una advertencia nueva se escribe
+en `canon.json`, nunca en el script** — si no, el hook vuelve a ser un plano paralelo de la D1.
+
 ## 2026-08-13 (tarde) — Chalá murió, y al archivarlo se cayó una «referencia real» que era un borrador propio
 
 El dueño de Distribuciones El Charaleño le dijo a Carlos que el proyecto del canal digital no se va a
