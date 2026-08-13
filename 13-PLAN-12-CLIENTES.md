@@ -1,20 +1,35 @@
 # 13 · PLAN 12 CLIENTES — de aquí a diciembre de 2026
 
-> **Meta declarada por el fundador (2026-07-25): +12 clientes fijos antes de que acabe el año**,
-> prospectando en serio por todos los canales (orgánico + tráfico pago).
+> 🔴 **RECORTADO EL 2026-08-13: la meta ya no son 12 suscripciones. Son 6 suscripciones + 2 proyectos
+> de servicio.** El nombre del archivo se conserva a propósito (lo citan `data/canon.json → fuentes`,
+> `CLAUDE.md`, `marketing/CLAUDE.md` y media docena de docs); renombrarlo rompería más de lo que
+> aclara. **El título miente y este bloque es la corrección.**
+>
+> **Por qué se recortó, en la decisión del fundador:** 12 suscripciones exigen 2,4 cierres al mes
+> sostenidos de agosto a diciembre. Al 13-ago hay **1** cliente de suscripción (Bucaradomi), 4 meses y
+> medio de ventana, y **una sola persona que es a la vez el único vendedor y el único desarrollador**,
+> con 8 pendientes vencidos que son casi todos de seguridad. El plan no falla por falta de ambición:
+> falla porque la aritmética pedía un equipo que no existe.
+>
+> **Y el detonante fue de evidencia, no de ánimo.** El mismo día murió Chalá, y al archivarlo se vio
+> que el «Chalá $800.000» que este doc citaba en §10 como prueba de que la línea de servicio factura
+> **era una propuesta en DRAFT que nunca se envió**. La tesis se sostenía sobre dos casos y en realidad
+> tenía uno.
+>
+> **Meta declarada originalmente (2026-07-25):** +12 clientes fijos antes de que acabe el año.
 > **Presupuesto:** $4.000.000 COP del crédito personal, que se queda en la cuenta de Carlos y se
 > gasta directo en pauta y prospección (ver §9 — figura contable).
 >
 > Este doc es el **plan de ejecución**. La estrategia creativa y el copy están en `07-CAMPAIGN-BRIEF.md`;
 > la economía unitaria, en `06-BUDGET-PLAN.md`; el outbound, en `09-OUTBOUND.md`.
-> Fecha: 2026-07-25 · Ventana real: **agosto → diciembre (5 meses)**.
+> Fecha: 2026-07-25 · **Recorte: 2026-08-13** · Ventana real: **agosto → diciembre (5 meses)**.
 
 ---
 
-## 1. Qué significa "12 clientes" (la aritmética, sin inflar)
+## 1. Qué significa la meta nueva: **6 suscripciones + 2 proyectos** (la aritmética, sin inflar)
 
-**Ritmo necesario: ~2,4 clientes nuevos/mes.** Es exigente pero está dentro de lo que ya se
-había fijado como techo realista para un fundador solo (2–3/mes).
+**Ritmo necesario: ~1,2 suscripciones nuevas/mes + 1 proyecto de servicio por trimestre.** Contra las
+2,4/mes del plan viejo, que nunca se acercó a cumplirse.
 
 Con el pricing vigente en Colombia (`ESTADO.md` §Marketing — manda sobre el USD del paquete viejo):
 
@@ -23,10 +38,38 @@ Con el pricing vigente en Colombia (`ESTADO.md` §Marketing — manda sobre el U
 | Ticket promedio supuesto | **$390.000/mes** (mezcla Esencial $290k / Pro $490k) |
 | Setup único | **$400.000** |
 | **Caja del mes 1 por cliente** | **~$790.000** |
-| 12 clientes → **MRR a diciembre** | **~$4.700.000/mes** |
-| 12 clientes → **caja de setups** | **~$4.800.000** (una vez) |
-| **LTV bruto 12 meses** | **~$5.080.000** ($400.000 + $390.000 × 12) |
+| 6 suscripciones → **MRR a diciembre** | **~$2.340.000/mes** |
+| 6 suscripciones → **caja de setups** | **~$2.400.000** (una vez) |
+| 2 proyectos de servicio → **caja** | **~$6.000.000** (piso $3.000.000 c/u, 50% de anticipo) |
+| **LTV bruto 12 meses (suscripción)** | **~$5.080.000** ($400.000 + $390.000 × 12) |
 | **Techo de CAC** | **~$800.000** (2× el setup: se recupera en el mes 2) |
+
+### Por qué recortar a la mitad no cuesta la mitad de la caja
+
+Esta es la razón de fondo del recorte, y es la que lo vuelve una decisión y no una rendición:
+
+| | Plan viejo (12 subs) | **Plan nuevo (6 + 2)** |
+|---|---|---|
+| Cierres necesarios | **12** | **8** |
+| Caja de setups | ~$4.800.000 | ~$2.400.000 |
+| Caja de servicio | $0 (no estaba en el plan) | **~$6.000.000** |
+| MRR a diciembre | ~$4.700.000 | ~$2.340.000 |
+| **Caja total del semestre** | **alta, pero exige 12 cierres** | **comparable, con 8** |
+
+Dos proyectos de servicio a piso de $3.000.000 aportan más caja en 2026 que seis suscripciones,
+**porque la suscripción cobra por meses y el proyecto cobra de una.** La suscripción no está acá por
+la caja de este año: está porque es lo único que sigue facturando sin horas nuevas.
+
+> 🔴 **Lo que el recorte cambia de verdad: se mueve el cuello de botella.** Con 12 suscripciones el
+> límite era **conseguir clientes**. Con 6 + 2 el límite pasa a ser **las semanas de Carlos**: un
+> proyecto de $3.000.000 se come 3 a 6 semanas del único desarrollador, y dos proyectos entre agosto y
+> diciembre ya rozan la regla propia de *1 simultáneo, máximo 1 por trimestre* (§10). Esto **no es un
+> plan más fácil, es un plan distinto**: si algo lo hace fracasar ya no va a ser la falta de leads, va
+> a ser aceptar un tercer proyecto o dejar que la entrega devore la prospección.
+
+**El embudo que hay que sostener cada semana no baja en la misma proporción**, y es a propósito: las
+2 reuniones semanales del §8 se mantienen. Con 8 cierres en vez de 12 sobra margen de conversión, y
+ese margen es lo que permite **decir que no** a un mal encaje en vez de tomarlo por necesidad.
 
 > 🔴 **Corregido el 2026-08-13, y el error valía plata.** Acá decía *«CAC máximo tolerable ~$400.000
 > (el setup solo paga la adquisición)»*. Estaba **anclado a la métrica equivocada**: exigía que la
@@ -43,8 +86,14 @@ Con el pricing vigente en Colombia (`ESTADO.md` §Marketing — manda sobre el U
 ```
 20 contactos outbound + tráfico pago     →  ~5 conversaciones reales
 ~5 conversaciones                        →  ~2 reuniones agendadas
-~2 reuniones/semana × 4 = 8 reuniones    →  ~2,4 cierres/mes  (tasa reunión→cierre ~30% (supuesto))
+~2 reuniones/semana × 4 = 8 reuniones    →  ~1,2 suscripciones/mes  (tasa reunión→cierre ~15% (supuesto))
 ```
+
+> **Ojo con este supuesto (recorte del 13-ago):** el plan viejo asumía **~30%** de reunión→cierre para
+> justificar 2,4 cierres/mes. Ese 30% **no está medido**: sale de un cierre real en toda la historia de
+> la empresa. Acá se baja a **15%**, que es lo normal en B2B frío, y aun así alcanza para 1,2/mes. Si
+> las primeras 8 reuniones cierran mejor que eso, se sube el número **con el dato en la mano**, no
+> antes. Es la misma disciplina que impuso la muerte de Chalá: una cifra vale cuando está cerrada.
 
 El número que hay que vigilar **no** es el gasto ni los seguidores: son **reuniones agendadas por
 semana**. Menos de 2/semana = el mes no se cumple, sin importar qué digan las impresiones.
@@ -63,18 +112,24 @@ semana**. Menos de 2/semana = el mes no se cumple, sin importar qué digan las i
 > como único carril pago. Meta quedó **relegado** y entraron dos carriles de Google. El porqué
 > completo está en **`15-CANALES-Y-SECUENCIA.md`**, que manda sobre esta tabla.
 
-| Canal | Clientes esperados | Costo | Por qué |
-|---|---|---|---|
-| **A · Outbound directo** (inmobiliarias + domis) | **4–5** | ~$0 (tiempo) | 865 prospectos vivos en producción, demo viva, control total del ritmo. Es el motor de corto plazo. |
-| **B · Google Search + Business Profile** | **3–4** | $400.000 + $0 | Captura intención que **ya existe**. Titular: la línea de **servicio a la medida**, que es la que hoy factura. Con piso de $3.000.000, un cierre paga la ronda entera. |
-| **C · Orgánico + referidos** | **2–3** | ~$0 (tiempo) | LinkedIn/IG/TikTok + Bucaradomi y Swisscontact como prueba social. Madura lento, cierra barato y **compone**. Flujo: video → agendar cita, no al bot. |
-| **D · Pauta Meta** | **1–2** | $1.200.000 | **Relegado.** Genera demanda por vertical + ciudad cuando los otros no den volumen. Necesita píxel, GA4, número propio y creatividad por vertical. |
+| Canal | Suscripciones | Proyectos | Costo | Por qué |
+|---|---|---|---|---|
+| **A · Outbound directo** (inmobiliarias + domis) | **2–3** | — | ~$0 (tiempo) | 865 prospectos vivos en producción, demo viva, control total del ritmo. Es el motor de corto plazo. |
+| **B · Google Search + Business Profile** | — | **1** | $400.000 + $0 | Captura intención que **ya existe**. Titular: la línea de **servicio a la medida**. Con piso de $3.000.000, un cierre paga la ronda entera. |
+| **C · Orgánico + referidos + clientes propios** | **2–3** | **1** | ~$0 (tiempo) | El canal más barato y el **peor aprovechado**: TRACE entró referido, y ni Bucaradomi ni Swisscontact tienen encima una propuesta de bot pese a que la regla 6 del §10 lo exige desde que se escribió. |
+| **D · Pauta Meta** | **0–1** | — | $1.200.000 | **Relegado.** Genera demanda por vertical + ciudad cuando los otros no den volumen. Necesita píxel, GA4, número propio y creatividad por vertical. |
 
-**Ninguno solo llega a 12.** El outbound no escala; Google captura sólo lo que ya se busca; el
-orgánico no llega a tiempo por sí solo; y Meta, hoy, es el más caro de encender.
+**Ninguno solo llega.** El outbound no escala; Google captura sólo lo que ya se busca; el orgánico no
+llega a tiempo por sí solo; y Meta, hoy, es el más caro de encender.
 
 **Si algo se tiene que caer, que se caiga D.** Es el más caro, el más lento y el que más preparación
 pide. B y C cuestan $0 o casi, y arrancan esta semana.
+
+> 🆕 **El recorte cambió quién es el favorito: ahora es C.** En el plan de 12, el outbound cargaba con
+> 4–5 clientes porque hacía falta volumen a como diera lugar. Con 8 cierres en vez de 12, **el canal
+> más rentable pasa a ser el que ya tienes y no usas**: clientes propios y referidos. TRACE llegó así,
+> es hoy la oportunidad de servicio más grande viva, y no costó un peso de adquisición. La acción
+> concreta que falta no es un canal nuevo, es **ejecutar la regla 6** con los clientes que ya pagaron.
 
 ---
 
@@ -293,16 +348,22 @@ para saber cuál trae las citas.
 
 ## 7. Calendario agosto → diciembre
 
-| Mes | Foco | Meta de cierres | Acumulado |
-|---|---|---|---|
-| **Agosto** | **GBP creado** + outbound a full + orgánico a mano arranca + experimento 15/30 del cold email | **2** | 2 |
-| **Septiembre** | **G1 de Google Search** + landing de servicio + outbound domis con caso Bucaradomi | **2–3** | 4–5 |
-| **Octubre** | Escalar lo que rindió + primeros casos de estudio publicados + **8 semanas de orgánico cumplidas** | **3** | 7–8 |
-| **Noviembre** | Referidos + **máquina de contenido** (si el orgánico a mano sobrevivió) + **Meta si hace falta volumen** | **3** | 10–11 |
-| **Diciembre** | Cierre de año (mes corto: la 2ª quincena no vende) | **1–2** | **12** ✅ |
+| Mes | Foco | Suscripciones | Proyectos | Acumulado |
+|---|---|---|---|---|
+| **Agosto** | **Cobrar Swisscontact** + **cerrar TRACE** + GBP creado + Launch del cold email | **0–1** | **1** | 1 sub · 1 proy |
+| **Septiembre** | Entrega del proyecto 1 + **G1 de Google Search** + landing de servicio + outbound domis con caso Bucaradomi | **1** | — | 2 · 1 |
+| **Octubre** | Escalar lo que rindió + primeros casos de estudio + **8 semanas de orgánico cumplidas** + **regla 6 sobre los clientes propios** | **2** | — | 4 · 1 |
+| **Noviembre** | **Proyecto 2** (el que traiga Google o un referido) + máquina de contenido si el orgánico sobrevivió + Meta si hace falta volumen | **1–2** | **1** | 5–6 · 2 |
+| **Diciembre** | Cierre de año (mes corto: la 2ª quincena no vende) | **0–1** | — | **6 · 2** ✅ |
 
-> **Diciembre es medio mes hábil.** Por eso el plan carga el peso en oct–nov: llegar a 10 en noviembre
-> es lo que hace que 12 sea alcanzable.
+> **Diciembre es medio mes hábil**, y el peso sigue cargado en oct–nov por lo mismo de siempre.
+>
+> 🔴 **Lo que hay que vigilar en este calendario ya no son los cierres, son los choques.** El proyecto
+> de agosto y el de noviembre están puestos **separados a propósito**: si el segundo se adelanta a
+> septiembre u octubre, choca con la entrega del primero y rompe la regla de *1 simultáneo* del §10.
+> Cuando eso pase —y va a pasar, porque la demanda no consulta el calendario— **la respuesta es correr
+> el proyecto, no contratar y no tomar los dos.** Es la misma regla que ya dice «si entran 2 proyectos
+> a la vez, se pausa el carril de Google».
 
 ---
 
@@ -313,9 +374,16 @@ para saber cuál trae las citas.
 | Contactos outbound nuevos | 20 | Hoja/CRM |
 | Conversaciones reales | 5 | Bot + WhatsApp |
 | **Reuniones agendadas** | **2** | Calendly |
-| Cierres | 0,6 (~2,4/mes) | Suite (propuestas firmadas) |
+| Cierres de suscripción | 0,3 (~1,2/mes) | Suite (propuestas firmadas) |
+| **Semanas de Carlos comprometidas en entrega** | **≤ 3 de 4** | Honesto, a ojo, el viernes |
 | $/lead calificado (pauta) | **< $120.000** | `npm run reportes` |
 | Posts publicados | 2 | Calendario orgánico |
+
+> 🆕 **La fila nueva es la que importa después del recorte** (13-ago). Con 6 + 2, el plan no se cae por
+> falta de leads: se cae porque la entrega se come al vendedor. **Cuatro semanas de cuatro
+> comprometidas en entregar = cero prospección = un enero sin pipeline**, y eso no lo detecta ninguna
+> de las otras filas hasta que ya pasó. Se estima a ojo y se anota igual: un número honesto y crudo
+> vale más que uno preciso que nadie llena.
 
 **Semáforo:** 2 semanas seguidas con <2 reuniones → el problema es el **mensaje o la lista**, no el
 volumen: se reescribe el gancho antes de gastar más. 2 semanas seguidas **sin publicar** → la
@@ -351,7 +419,16 @@ del art. 35 ET — ver `business/18` §2). Se pagan directo desde la cuenta de C
    nota *"pagado por el socio — por reembolsar"*, y la fila entra al inventario de `business/18` §3.
 3. **La SAS reembolsa cuando haya caja**, por transferencia con concepto explícito.
 
-Con 12 clientes cerrados, la caja de setups (~$4,8M) cubre el reembolso completo del crédito.
+🔴 **Corregido con el recorte del 13-ago, y cambia quién paga el crédito.** Acá decía *«Con 12 clientes
+cerrados, la caja de setups (~$4,8M) cubre el reembolso completo del crédito»*. Con **6**
+suscripciones la caja de setups es **~$2.400.000**, o sea **poco más de la mitad** de los $4.000.000.
+Quien repaga el crédito pasa a ser **la línea de servicio**: los 2 proyectos a piso de $3.000.000
+aportan ~$6.000.000 y lo cubren solos, con el 50% de anticipo entrando antes de terminar la entrega.
+
+**Consecuencia práctica, y no es menor:** si los 2 proyectos no se cierran, **el crédito personal
+queda descubierto** aunque las 6 suscripciones sí entren. Eso convierte a los proyectos de "meta
+deseable" en "obligación de caja", y es una razón más para no gastar los $2.400.000 sin asignar del
+§5 hasta que el primero esté firmado y con anticipo recibido.
 
 ---
 
@@ -374,7 +451,7 @@ un plan que no se parece a la caja real.
 | Línea | Qué hace | Qué NO hace |
 |---|---|---|
 | **Desarrollo a la medida y web** | Paga las cuentas **ya**: tickets de $800k a $5M, cobrados contra entrega | No construye patrimonio: se acaba cuando se entrega, y depende de las horas de Carlos |
-| **Bots por suscripción** | Acumula MRR: el negocio vale por esto y sigue facturando sin horas nuevas | No paga las cuentas de mañana: 12 clientes son ~$4,7M/mes, pero recién en diciembre |
+| **Bots por suscripción** | Acumula MRR: el negocio vale por esto y sigue facturando sin horas nuevas | No paga las cuentas de mañana: 6 clientes son ~$2,34M/mes, y recién en diciembre |
 
 **El servicio financia, la suscripción acumula.** Sin la primera no hay con qué vivir mientras la
 segunda crece; sin la segunda, esto es una agencia que depende de que Carlos facture horas para
@@ -390,7 +467,9 @@ software chicas que la falta de clientes.
 ### Reglas para que financie sin canibalizar
 
 1. **Un proyecto a medida en ejecución a la vez.** Máximo **uno por trimestre** mientras la meta de
-   los 12 clientes esté viva.
+   suscripciones esté viva. ⚠️ **Con el recorte del 13-ago esta regla dejó de ser una precaución y
+   pasó a ser el corazón del plan:** los 2 proyectos ahora **son la meta**, no una distracción tolerada,
+   y aun así siguen topados en 1 simultáneo. Que estén en el plan no autoriza un tercero.
 2. **Piso de precio: $3.000.000.** Menos que eso no compensa parar el motor de suscripciones.
    Excepción: un proyecto chico que abra la puerta a un cliente grande, y se anota como tal.
 3. **50% de anticipo** para arrancar. Sin anticipo no se agenda (a Swisscontact se le cobró contra
@@ -429,9 +508,15 @@ Se revisa cada mes junto al tablero del §8:
 
 | Indicador | Meta a diciembre 2026 |
 |---|---|
-| Ingresos recurrentes (MRR) | ~$4.700.000/mes (los 12 clientes) |
-| Ingresos por servicio | 2 o 3 proyectos en el semestre, no más |
+| Ingresos recurrentes (MRR) | **~$2.340.000/mes** (las 6 suscripciones) |
+| Ingresos por servicio | **2 proyectos cerrados y cobrados**, no más |
 | **% de costos fijos cubierto por MRR** | **100%** (VPS, API, herramientas, contador) |
+
+> **La fila que no se movió es la que manda.** El recorte bajó el MRR objetivo a la mitad, pero
+> **«100% de los costos fijos cubiertos por MRR» sigue igual**, y es el verdadero indicador de si esto
+> es una empresa o un empleo disfrazado. Con ~$2.340.000/mes de MRR esa meta es **más fácil**, no más
+> difícil: los costos fijos hoy son VPS, API, Workspace, Instantly y contador, no $4.700.000. El plan
+> de 12 confundía «MRR grande» con «MRR suficiente».
 
 Cuando el MRR cubra los costos fijos **y** los honorarios base del fundador, el servicio a medida
 pasa a ser opcional: se toma solo si el proyecto es bueno, no porque haga falta la plata. Ese es el
