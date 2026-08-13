@@ -223,8 +223,12 @@ Business Profile**. En Meta, orgánico, outbound y la landing el titular sigue s
 dominio) y con propuesta de suscripción. Y **los buzones van topados**: ofrecer "correos" sin número
 explícito es la fuga que puede volver negativa esa línea.
 
-**Referencias reales:** Swisscontact **$2.300.000** (módulo Zaranda, factura `SOL3`), Chalá **$800.000**
-(cotización), Zaranda adición C **$300.000**.
+**Referencias reales:** Swisscontact **$2.300.000** (módulo Zaranda, factura `SOL3`), Zaranda adición
+C **$300.000**.
+
+> 🔴 **2026-08-13: se retiró «Chalá $800.000 (cotización)».** El proyecto murió por decisión del
+> dueño, y de paso quedó claro que esa cifra era una propuesta **en DRAFT y nunca enviada**. Una
+> referencia sólo cuenta si se envió y se aceptó. Detalle en `01-SOURCE-BRIEF.md` (que manda).
 
 ⚠️ **Integraciones a ERP o sistema legacy:** el ítem `integracion-erp` del catálogo sigue en el modelo
 USD **legacy** y **no está reconciliado** con el pricing COP. Hasta que se le fije precio en pesos, una

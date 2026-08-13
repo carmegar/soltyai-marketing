@@ -25,7 +25,14 @@ caro de construir y necesita creatividad que todavía no existe.
 **2. Meta no captura intención B2B; Google sí.** El mix recomendado para servicios B2B en Colombia es
 ~65% Google / 35% Meta. Meta tiene el alcance (los decisores pasan 1h47 al día ahí, contra 23 min en
 LinkedIn) pero no la intención. Y la línea que **hoy factura** —servicio a la medida, $2,3M de
-Swisscontact, $800k de Chalá— es exactamente el tipo de compra que la gente **busca**.
+Swisscontact— es exactamente el tipo de compra que la gente **busca**.
+
+> 🔴 **2026-08-13, el mismo día:** esta razón citaba también *«$800k de Chalá»*. Chalá murió por
+> decisión del dueño, y esa cifra era una propuesta **en DRAFT nunca enviada**. La razón 2 **sigue en
+> pie** (la intención B2B se expresa en una búsqueda, y eso no dependía de Chalá), pero se sostiene
+> ahora sobre **un caso**, no dos. Consecuencia práctica para el §3: el carril de Google Search
+> ($400.000) pasa a ser una **apuesta con una sola prueba detrás**, no con dos. No lo cancela —el GBP
+> es gratis y va igual— pero sí sube el valor de cerrar el segundo caso de servicio antes de escalarlo.
 
 **3. Meta es el carril más bloqueado que tenemos.** Píxel y GA4 siguen en `G-XXXXXXXXXX`, no hay
 número propio de WhatsApp para la tercera CTA, el geo-redirect no corre en producción, y no hay

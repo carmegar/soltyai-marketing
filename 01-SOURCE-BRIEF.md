@@ -168,8 +168,16 @@ Contrato firmado `SAI-DOMIOPS-20260703-001`, cobrado con la factura electrónica
 | **Deja pieza reutilizable** | Lo que se construya vuelve a `platform/` como módulo. Si no deja nada, es trabajo por horas disfrazado |
 | **Sale con propuesta de bot** | Siempre |
 
-Referencias reales: Swisscontact **$2.300.000** (módulo Zaranda, factura `SOL3`), Chalá **$800.000**
-(cotización), Zaranda adición C **$300.000**.
+Referencias reales: Swisscontact **$2.300.000** (módulo Zaranda, factura `SOL3`), Zaranda adición C
+**$300.000**.
+
+> 🔴 **Corregido el 2026-08-13: se cayó Chalá, y con él el 26% de esta lista.** Acá decía además
+> «Chalá **$800.000** (cotización)». El dueño dio el proyecto por terminado, así que se retira. Y al
+> retirarlo salió algo peor que la pérdida: **ese $800.000 era una propuesta en DRAFT que nunca se
+> envió** (`SAI-PEDIDOS-20260708-001`, hoy REJECTED). Se estaba citando un borrador como referencia
+> real. **La regla que queda:** una cifra entra a esta lista cuando está **enviada y aceptada**, no
+> cuando está escrita. Hoy la línea de servicio a la medida tiene **una sola** referencia cerrada
+> (Swisscontact), y ni siquiera está facturada: en la suite no hay ninguna cuenta de cobro.
 
 > ⚠️ **PROHIBIDO** modelar o citar los planes USD **superados**: Starter $49 / Growth $149 / Pro $399,
 > y el catálogo por producto Agenda $65/$250, Pedidos $80/$280, Inmobiliario $249/$600 y $650/$1.500,

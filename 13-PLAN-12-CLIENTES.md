@@ -358,8 +358,16 @@ Con 12 clientes cerrados, la caja de setups (~$4,8M) cubre el reembolso completo
 ## 10. La otra línea: desarrollo a la medida y web
 
 **Ya es la realidad, no una idea:** el ingreso más grande de la empresa hoy es **Swisscontact
-($2.300.000, módulo Zaranda)**, que es desarrollo a la medida. La cotización de Chalá ($800.000)
-también. Negarlo en la estrategia sería escribir un plan que no se parece a la caja real.
+($2.300.000, módulo Zaranda)**, que es desarrollo a la medida. Negarlo en la estrategia sería escribir
+un plan que no se parece a la caja real.
+
+> 🔴 **Corregido el 2026-08-13, y la corrección incomoda.** Acá decía además *«La cotización de Chalá
+> ($800.000) también»*. Chalá murió (el dueño terminó el proyecto) y esa cifra **nunca fue una venta:
+> era una propuesta en DRAFT que jamás se envió**. Entonces la frase «la línea de servicio es la que
+> hoy factura» se apoya en **un solo caso**, no en dos, y ese caso **todavía no está facturado** (cero
+> cuentas de cobro en la suite; el SOL3 vence el 3-sep). La conclusión del §10 no cambia —el servicio
+> sigue siendo lo único que ha movido plata de este tamaño— pero la evidencia es **la mitad de
+> gruesa** de lo que este doc decía, y eso se lee antes de apostarle $400.000 al carril de Google.
 
 **El papel de cada línea, y no se invierte:**
 

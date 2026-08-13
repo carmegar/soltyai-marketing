@@ -1,5 +1,34 @@
 # Changelog · soltyai-marketing
 
+## 2026-08-13 (tarde) — Chalá murió, y al archivarlo se cayó una «referencia real» que era un borrador propio
+
+El dueño de Distribuciones El Charaleño le dijo a Carlos que el proyecto del canal digital no se va a
+hacer. Se archiva: cliente en **EX_CLIENTE**, `COT-SOLTYA-20260708-001` y `SAI-PEDIDOS-20260708-001`
+en **REJECTED** con motivo escrito (ninguna de las dos se envió nunca), expediente conservado entero
+en `clients/charala/` por si el dueño vuelve. **No había ningún pendiente del tablero asociado**, así
+que no se quitó ninguno.
+
+**Lo que importa acá no es la pérdida, es lo que destapó.** Cuatro documentos citaban «Chalá
+**$800.000**» como *referencia real* de la línea de servicio a la medida: `01-SOURCE-BRIEF §
+referencias`, `05-PRICING`, `13-PLAN-12-CLIENTES §10` y `15-CANALES-Y-SECUENCIA §1`, además del
+`_cambioRegla` del canon. Ese $800.000 **era una propuesta en DRAFT que jamás salió de la suite**. Se
+estaba usando un borrador propio como evidencia de mercado, y encima como uno de los dos pilares del
+argumento con el que **esa misma mañana** se decidió abrir el carril pago de Google.
+
+**La regla que queda, y vale más que la corrección:** una cifra entra a «referencias reales» cuando
+está **enviada y aceptada**, no cuando está escrita. Con eso aplicado, la línea de servicio a la
+medida tiene hoy **un solo** caso (Swisscontact $2.300.000) y ni ese está facturado: la suite no
+tiene **ninguna** cuenta de cobro emitida, y el `SOL3` vence el 3-sep.
+
+**Qué NO cambia:** la decisión de `15-CANALES-Y-SECUENCIA` sigue en pie. Meta relegado y el GBP
+primero no dependían de Chalá, y el GBP es gratis. Lo que cambia es el peso de la apuesta: los
+$400.000 de Google Search se apoyan ahora en una prueba, no en dos, así que **cerrar el segundo caso
+de servicio vale más que escalar el carril**.
+
+Corregidos en el mismo commit: los cuatro docs + `data/canon.json` (`_correccionMismoDia`). Los
+`canon.snapshot.json` de `platform` y `suite` quedan sin regenerar a propósito: ambos repos están en
+ramas con PR abierto (#21, #41) y el campo tocado es narrativo, no un precio ni una promesa publicada.
+
 ## 2026-08-13 (estrategia) — Meta dejó de ir primero, y el corte por lead estaba anclado al número equivocado
 
 Reconciliación completa del paquete de marketing después de cuatro decisiones del fundador: mover
