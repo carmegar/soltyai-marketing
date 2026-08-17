@@ -15,12 +15,19 @@ Motor de marketing de SoltyAI: la estrategia escrita (`01`–`14`) y los program
 
 ## Las reglas que el CI hace cumplir
 
-- **Un mensaje líder POR CANAL** (cambió el 2026-08-13). El **bot** es el titular en Meta, orgánico,
-  outbound y la landing; el **servicio a la medida** es el titular en Google Search y en el Google
-  Business Profile, porque ahí hay un carril pago propio y nadie ve los dos mensajes a la vez.
+- **Un mensaje líder POR CANAL** (cambió el 2026-08-13, **y otra vez el 2026-08-17**). El **bot** es
+  el titular en Meta, outbound y la landing; el **servicio a la medida** es el titular en Google
+  Search, el Google Business Profile **y todo el orgánico** (linkedin, instagram, tiktok, youtube).
+  El orgánico se movió el 17-ago porque el servicio es la línea que hoy factura y sostiene el
+  runway; el porqué largo está en `16-CONTENIDO-VIDEO.md` y en `15-CANALES-Y-SECUENCIA.md §5`.
   Dentro de una misma pieza sigue habiendo **uno solo**: "hacemos software a la medida, páginas web,
   bots y marketing" en el mismo anuncio es la agencia genérica de la esquina. Mapa en
-  `canon.json → mensajeLiderPorCanal`; el porqué, en `15-CANALES-Y-SECUENCIA.md`.
+  `canon.json → mensajeLiderPorCanal`.
+  ⚠️ **Esta regla NO la hace cumplir el CI, y hasta el 17-ago esta misma sección decía que sí.**
+  `mensajeLiderPorCanal` no lo lee ninguna regla de `src/guardrails/` (grep: cero usos): es dato que
+  se consulta a mano. Escribirlo acá como "regla que el CI hace cumplir" era el anti-patrón 3 del
+  `ESQUEMA-MEMORIA.md`, y es peor que no tenerla porque sugiere una cobertura que no existe.
+  Implementarla es un pendiente del tablero.
 - **WhatsApp y Telegram se prometen; la web no.** WhatsApp quedó **vivo el 2026-08-07** (Meta aprobó
   a SoltyAI como Tech Provider el 6-ago). La prohibición `whatsappComoPromesa` fue **retirada** — el
   bloque quedó en el canon como registro, bajo una clave con `_` adelante, para que nadie la
@@ -88,6 +95,11 @@ exenciones se buscan en una ventana de ±1 línea y se ignoran los signos de én
 - Node 20, ESM, **sin dependencias**. Si algo necesita una librería, se discute primero.
 - Los números del catálogo llevan `estado`: `vigente` (verificado, con fuente) · `supuesto`
   (estimación, sale marcado en cada cotización) · `legacy` (modelo USD viejo, sin reconciliar).
+- **El banco de dolores (`data/dolores.json`) hereda esa disciplina y la endurece.** Cada frecuencia
+  lleva `estado` + `base` (de dónde sale el número) o `npm run dolores validar` falla. Y mientras
+  `parametros.costoHoraOperativa` siga en `supuesto`, **los videos hablan en horas, no en pesos**:
+  las horas son aritmética que el espectador verifica contra su propio negocio, los pesos serían una
+  cifra nuestra sin verificar. Proceso completo en `16-CONTENIDO-VIDEO.md`.
 - `data/` se versiona (memoria de la empresa). Las listas con datos personales **no** (Ley 1581).
 - Al cierre de sesión: `CHANGELOG.md` de este repo + lo que toque en `../ESTADO.md` y `../HISTORIAL.md`.
 - **Este repo no despliega nada**, así que su `main` es 🟢 en la política de `../CLAUDE.md`: Claude

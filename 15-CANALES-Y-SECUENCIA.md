@@ -156,6 +156,26 @@ el comentario fijado, con `origin` por canal.
 **Semáforo:** 2 semanas seguidas sin publicar = la cadencia estaba mal calibrada, no falta disciplina.
 Se baja a 1 post/semana antes que dejar de publicar. Un carril que compone solo funciona si no se corta.
 
+### 🔄 2026-08-17: el orgánico cambia de mensaje líder, y se le da formato
+
+Cuatro días después de escribir este doc, el fundador pidió arrancar el carril orgánico en serio y
+puso una condición sobre la regla: *«no pongamos reglas que nos impidan obtener beneficios a nivel de
+empresa, hoy por hoy lo que nos tiene con vida es justamente el desarrollo a la medida»*. Dos cambios:
+
+1. **El orgánico entero pasa de `bot` a `servicio`** en `canon.mensajeLiderPorCanal` (linkedin,
+   instagram, tiktok, youtube, organico). El razonamiento del 13-ago no se cae, se completa: se
+   relegó Meta porque el mensaje genérico de categoría está muerto ahí, y la conclusión coherente
+   con eso es que el orgánico tampoco puede liderar con el producto que Meta regala. Lidera con lo
+   que sí factura y nadie regala. **Lo que no cambia:** dentro de una pieza sigue habiendo un solo
+   mensaje.
+2. **El orgánico deja de ser «2 posts/semana» a secas y pasa a tener formato, banco y proceso**:
+   video de 45-60 s con plantilla fija, sobre un banco de 54 tareas manuales reales.
+   Doc: **`16-CONTENIDO-VIDEO.md`**. Datos: `data/dolores.json`.
+
+⚠️ **La regla de las 8 semanas a mano NO se levantó.** El banco de dolores y su CLI no escriben, no
+llaman a ninguna API y no publican: ordenan la materia prima. La máquina 1-idea→3-canales sigue
+bloqueada en el tablero hasta las 16 publicaciones.
+
 ---
 
 ## 6. Carril 3 — Google Search para la línea de servicio {#google-search}

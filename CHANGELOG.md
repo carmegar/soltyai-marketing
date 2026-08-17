@@ -1,5 +1,56 @@
 # Changelog · soltyai-marketing
 
+## 2026-08-17 — arranca el carril de video, y el orgánico cambia de mensaje líder
+
+El fundador pidió una máquina para producir video de buena calidad **rápido**, para LinkedIn primero,
+con el objetivo de traer flujo mientras la línea grande madura. Y puso una condición sobre la regla
+del 13-ago: *«no pongamos reglas que nos impidan obtener beneficios a nivel de empresa, hoy por hoy
+lo que nos tiene con vida es justamente el desarrollo a la medida»*.
+
+**El cambio de la D1 (canon + los cinco docs, en este commit):** `mensajeLiderPorCanal` mueve
+**todo el orgánico** (`linkedin`, `instagram`, `tiktok`, `youtube`, `organico`) de `bot` a
+`servicio`. El `bot` queda liderando en Meta, outbound y la landing, que son embudos de oferta
+cerrada. El razonamiento del 13-ago no se cae, se completa: si Meta se relegó porque **regala**
+nuestro producto adentro de la app, el orgánico tampoco puede liderar con ese producto. Lidera con
+la línea que factura. Lo que **no** cambió: dentro de una pieza sigue habiendo un solo mensaje.
+Planos movidos: `data/canon.json` (`mensajeLiderPorCanal` + `lineaServicios.reglas`),
+`15-CANALES-Y-SECUENCIA.md §5`, `CLAUDE.md` de este repo, `src/contenido/README.md` y el `CLAUDE.md`
+de la raíz.
+
+**`data/dolores.json` — el banco de dolores (54 filas, 9 sectores).** La unidad del contenido no es
+«un tema», es **una tarea manual concreta que un negocio hace hoy**: copiar los pedidos del chat a un
+cuaderno, dictarle la dirección al domiciliario, mandar la misma ficha del apartamento veinte veces,
+digitar facturas que ya vienen en XML. Cada fila trae la escena de 0-3 s, la frecuencia, el costo
+oculto y cómo se resuelve. Cada fila es un video.
+
+🔴 **La regla que sostiene la honestidad de la serie: se habla en HORAS, no en pesos.** Las horas
+salen de aritmética sobre un supuesto declarado (*«si haces esto 25 veces al día a 2 minutos»*), y
+el espectador la verifica contra su propio negocio. Los pesos exigirían un costo-hora que hoy está
+en `parametros.costoHoraOperativa` marcado `supuesto` y sin fuente, y decirlo en cámara sería una
+cifra inventada con apariencia de dato. `npm run dolores validar` **falla** si una frecuencia no
+trae `estado` + `base`, y avisa en cada corrida mientras el costo-hora siga sin verificar.
+
+**`src/contenido/dolores.js` — el CLI** (`listar`, `validar`, `tanda`, `ver`), sin dependencias y
+sin API, agregado a `npm run check`. `tanda` decide qué se graba primero con dos criterios: lo que
+tiene **evidencia propia** (el motor contable sobre documentos DIAN reales, las cuentas de cobro, la
+firma electrónica, el piloto de domicilios) va arriba porque nadie más puede grabarlo, y después se
+rota por sector, porque 10 videos del mismo sector son un canal de nicho, no una serie.
+
+**`16-CONTENIDO-VIDEO.md`** — el doc: las 4 piezas, la plantilla de 4 golpes (0-3 s la escena · 3-15 s
+el costo · 15-40 s cómo se hace sin jerga · 40-55 s el número y la puerta), el lote de una tarde = tres
+semanas publicando, y la métrica: **conversaciones iniciadas por semana, no vistas**.
+
+⚠️ **Hallazgo de paso, y es de los que importan: `mensajeLiderPorCanal` no lo hace cumplir ninguna
+regla.** Grep en todo `src/`: cero usos. El `CLAUDE.md` de este repo lo listaba bajo *«las reglas que
+el CI hace cumplir»* desde el 13-ago. Es el anti-patrón 3, y es peor que no tener la regla porque
+sugiere una cobertura que no existe, que es exactamente el diagnóstico que este mismo repo escribió
+en agosto sobre `patronesEn`. La frase quedó corregida; la regla quedó como pendiente del tablero.
+
+⚠️ **Lo que NO se levantó: la regla de las 8 semanas a mano.** El banco y su CLI no escriben, no
+llaman a ninguna API y no publican: ordenan la materia prima. La máquina 1-idea→3-canales sigue
+bloqueada, y el `README.md` de `src/contenido/` ahora lo dice arriba para que nadie confunda los dos
+archivos que viven en la misma carpeta.
+
 ## 2026-08-13 (noche) — el sello de frescura del canon derivó, y el hook publicaba esa deriva en cada sesión
 
 `data/canon.json`: `actualizado` pasa de **`2026-08-04`** a **`2026-08-13`**, que es lo que el archivo

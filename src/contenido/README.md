@@ -1,5 +1,10 @@
 # src/contenido — motor 1 idea → 3 canales *(diseñado, sin construir)*
 
+> ⚠️ **`dolores.js`, en esta misma carpeta, NO es este motor y no lo desbloquea** (17-ago-2026).
+> Valida el banco de `data/dolores.json` y arma las tandas de grabación: no escribe, no llama a
+> ninguna API y no publica. Lo que está bloqueado abajo es **generar** contenido, no ordenar la
+> materia prima. El proceso a mano que usa ese banco está en `../../16-CONTENIDO-VIDEO.md`.
+
 Automatiza el playbook orgánico de `business/14-estrategia-organico-social.md`: una idea núcleo
 produce el ancla de LinkedIn + la versión de Instagram + el guion de TikTok, escritos con la guía
 anti-slop de `business/13-guia-estilo-y-prompting.md`.
@@ -34,11 +39,11 @@ relleno que todos; una que **reformatee y distribuya** multiplica lo único que 
 - El link al bot NO va en posts abiertos: la compuerta `accessMode: request` entrega una
   pre-calificación, no una demo (`ESTADO.md` §Marketing). El CTA es el video y el Calendly.
 - Sin rayas (—) ni tono de IA: lo dice `business/13` y el linter de estilo va aquí.
-- **Un mensaje líder POR CANAL** (cambió el 2026-08-13). El **bot** es el titular en orgánico, Meta,
-  outbound y la landing; el **servicio a la medida** es el titular sólo en **Google Search y el
-  Google Business Profile**, que es donde se abrió su carril pago. Como este motor produce orgánico,
-  lo que sale de acá lleva **el bot**. El mapa está en `canon.mensajeLiderPorCanal`; el porqué, en
-  `15-CANALES-Y-SECUENCIA.md`.
+- **Un mensaje líder POR CANAL** (cambió el 2026-08-13 y **otra vez el 2026-08-17**). El **bot** es
+  el titular en Meta, outbound y la landing; el **servicio a la medida** es el titular en Google
+  Search, el Google Business Profile **y todo el orgánico**. Como este motor produce orgánico, lo
+  que salga de acá lleva **el servicio**, no el bot. El mapa está en `canon.mensajeLiderPorCanal`;
+  el porqué, en `../../16-CONTENIDO-VIDEO.md` y `../../15-CANALES-Y-SECUENCIA.md §5`.
 - **Dentro de una misma pieza sigue habiendo UN solo mensaje.** Nunca "hacemos software a la medida,
   páginas web, bots y marketing" en el mismo post: eso convierte la marca en la agencia genérica de
   la esquina, que compite por precio contra veinte iguales.

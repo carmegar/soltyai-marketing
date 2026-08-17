@@ -123,7 +123,7 @@
       "La prospección no se suspende por un proyecto en curso.",
       "Todo proyecto deja pieza reutilizable en platform/.",
       "Todo cliente de servicio sale con propuesta de bot.",
-      "Un mensaje líder POR CANAL: el bot en Meta, orgánico, outbound y la landing; el servicio en Google Search y el Google Business Profile.",
+      "Un mensaje líder POR CANAL: el bot en Meta, outbound y la landing; el servicio en Google Search, el Google Business Profile y TODO el orgánico (cambió el 2026-08-17, ver mensajeLiderPorCanal._cambio).",
       "Dentro de una misma pieza sigue habiendo UN solo mensaje: nunca 'hacemos software a la medida, páginas web, bots y marketing' en el mismo anuncio.",
       "Si entran 2 proyectos a la vez se pausa el carril de Google, no se contrata."
     ],
@@ -132,10 +132,11 @@
   },
 
   "mensajeLiderPorCanal": {
-    "_fuente": "15-CANALES-Y-SECUENCIA.md §Por qué cambió el orden. Es la regla que el guardrail hace cumplir sobre copy/.",
-    "bot": ["meta", "organico", "outbound", "landing", "linkedin", "instagram", "tiktok", "youtube"],
-    "servicio": ["google", "gbp"],
-    "nota": "El carril de Google es el ÚNICO donde el servicio a la medida puede ser el titular. En cualquier otro canal el titular es el bot y el servicio se menciona sólo en la conversación, como palanca."
+    "_fuente": "15-CANALES-Y-SECUENCIA.md §Por qué cambió el orden y §11. ⚠️ NO lo hace cumplir ningún guardrail todavía: es dato que se lee a mano. La corrección de esa frase y el pendiente están en el CHANGELOG del 2026-08-17.",
+    "bot": ["meta", "outbound", "landing"],
+    "servicio": ["google", "gbp", "linkedin", "instagram", "tiktok", "youtube", "organico"],
+    "nota": "El carril pago de Meta, el outbound y la landing van con el bot: son embudos de oferta cerrada. Google, el GBP y TODO el orgánico van con el servicio a la medida. Dentro de una misma pieza sigue habiendo UN solo mensaje: un video sobre un dolor que resuelve un bot nombra el bot, y nunca los dos.",
+    "_cambio": "2026-08-17: el orgánico entero (linkedin, instagram, tiktok, youtube, organico) pasa de `bot` a `servicio`. Motivo del fundador, textual: «no pongamos reglas que nos impidan obtener beneficios a nivel de empresa, hoy por hoy lo que nos tiene con vida es justamente el desarrollo a la medida». Es la línea que factura (Swisscontact $2,3M) y la que sostiene el runway. El programa de contenido que estrena esta decisión es la serie de video de `16-CONTENIDO-VIDEO.md`: enseña qué hace el software por un negocio, sobre el banco de `data/dolores.json`. Lo que NO cambió y sigue siendo el riesgo real: mezclar las dos líneas DENTRO de una pieza."
   },
 
   "limitesMeta": {

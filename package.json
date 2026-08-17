@@ -12,8 +12,9 @@
     "prueba": "node src/guardrails/prueba.js",
     "link": "node src/links/index.js",
     "catalogo": "node src/catalogo/index.js",
+    "dolores": "node src/contenido/dolores.js",
     "reportes": "node src/reportes/index.js",
     "sin-dependencias": "node src/sin-dependencias.js",
-    "check": "node src/sin-dependencias.js && node src/guardrails/prueba.js && node src/guardrails/index.js && node src/catalogo/index.js validar && node src/reportes/index.js validar"
+    "check": "node src/sin-dependencias.js && node src/guardrails/prueba.js && node src/guardrails/index.js && node src/catalogo/index.js validar && node src/contenido/dolores.js validar && node src/reportes/index.js validar"
   }
 }
