@@ -151,7 +151,7 @@ Estas no son sugerencias de estilo, son reglas que el CI hace cumplir (`CLAUDE.m
 |---|---|---|
 | "Inteligencia artificial", "IA", "GPT" | No es el beneficio, el modo determinista es parte del producto, y la política de IA de WhatsApp **prohíbe** posicionarse como bot de propósito general | "Atiende", "responde", "agenda", "bot para inmobiliarias" |
 | Precios | El video vende la cita, no el plan; el ancla la pone la conversación | — |
-| "+100 clientes", "líderes en" | Prueba social solo verificable (hoy: Bucaradomi y Swisscontact, con permiso) | — |
+| "+100 clientes", "líderes en" | Prueba social solo verificable (hoy: Bucaradomi y Swisscontact, con permiso) | — | <!-- guardrail:ignorar -->
 | "En 7 días o no pagas" | La garantía se anuncia en su versión suave y en la cotización, no acá | — |
 | El bot **en la web** del cliente | El widget web no existe: sigue en **próximamente** | Nada |
 | Cualquier cifra sin fuente | Regla de la casa: cero métricas fabricadas | Quitar la cifra |

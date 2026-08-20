@@ -132,9 +132,14 @@
   },
 
   "mensajeLiderPorCanal": {
-    "_fuente": "15-CANALES-Y-SECUENCIA.md §Por qué cambió el orden y §11. ⚠️ NO lo hace cumplir ningún guardrail todavía: es dato que se lee a mano. La corrección de esa frase y el pendiente están en el CHANGELOG del 2026-08-17.",
+    "_fuente": "15-CANALES-Y-SECUENCIA.md §Por qué cambió el orden y §11. ✅ Desde el 2026-08-20 SÍ lo hace cumplir un guardrail: la regla `mensajeLider` de src/guardrails/reglas.js. Antes era dato que se leía a mano, y el CLAUDE.md del repo llegó a decir que el CI lo aplicaba cuando no.",
     "bot": ["meta", "outbound", "landing"],
     "servicio": ["google", "gbp", "linkedin", "instagram", "tiktok", "youtube", "organico"],
+    "vocabulario": {
+      "_doc": "Con qué se reconoce cada línea dentro de una pieza. Vive en el canon y no en el código porque es una decisión comercial, igual que un precio: si mañana cambia cómo se llama la línea, cambia acá y la regla lo hace cumplir sola. Son fragmentos; se buscan normalizados (sin tildes, sin distinguir mayúsculas).",
+      "bot": ["bot", "chatbot", "asistente de whatsapp", "atiende solo", "contesta solo", "responde solo", "plan esencial", "plan pro", "plan premium", "suscripcion mensual"],
+      "servicio": ["a la medida", "a su medida", "desarrollo a la medida", "software a la medida", "automatizacion a la medida", "integracion a la medida", "estudio de desarrollo", "proyecto a la medida"]
+    },
     "nota": "El carril pago de Meta, el outbound y la landing van con el bot: son embudos de oferta cerrada. Google, el GBP y TODO el orgánico van con el servicio a la medida. Dentro de una misma pieza sigue habiendo UN solo mensaje: un video sobre un dolor que resuelve un bot nombra el bot, y nunca los dos.",
     "_cambio": "2026-08-17: el orgánico entero (linkedin, instagram, tiktok, youtube, organico) pasa de `bot` a `servicio`. Motivo del fundador, textual: «no pongamos reglas que nos impidan obtener beneficios a nivel de empresa, hoy por hoy lo que nos tiene con vida es justamente el desarrollo a la medida». Es la línea que factura (Swisscontact $2,3M) y la que sostiene el runway. El programa de contenido que estrena esta decisión es la serie de video de `16-CONTENIDO-VIDEO.md`: enseña qué hace el software por un negocio, sobre el banco de `data/dolores.json`. Lo que NO cambió y sigue siendo el riesgo real: mezclar las dos líneas DENTRO de una pieza."
   },

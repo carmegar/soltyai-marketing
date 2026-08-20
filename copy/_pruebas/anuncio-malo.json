@@ -4,12 +4,10 @@
   "id": "_fixture-anuncio-malo",
   "estado": "fixture",
   "origin": "meta_inexistente_zz",
-
-  "texto": "Somos líderes en Colombia con +100 clientes felices. Tu bot en 40 días o no pagas, con conversaciones ilimitadas, un asistente de IA que responde cualquier pregunta y un bot para tu página web.",
+  "texto": "Somos líderes en Colombia con +100 clientes felices. Tu bot en 40 días o no pagas, con conversaciones ilimitadas, un asistente de IA que responde cualquier pregunta y un bot para tu página web. Y si prefieres, tambien hacemos desarrollo a la medida para tu empresa.",
   "titular": "Este titular es larguísimo y se pasa del máximo de Meta",
   "descripcion": "Esta descripción también se pasa de treinta",
   "destino_titular": "Tu bot listo en 90 días",
-
   "_esperados": [
     "prohibicion:pruebaSocialInventada",
     "prohibicion:absolutos",
@@ -18,6 +16,9 @@
     "copy:limite-meta",
     "copy:coherencia-plazo",
     "copy:garantia-sin-definir",
-    "copy:origen-sin-link"
-  ]
+    "copy:origen-sin-link",
+    "canal:mezcla-de-lineas"
+  ],
+  "_cambio2": "2026-08-20: entra la regla mensajeLider. Se le agrega plataforma \"meta\" (que segun el canon lleva la linea del BOT) y una frase de la OTRA linea, para que el fixture mezcle las dos y la regla canal:mezcla-de-lineas tenga contra que probarse. Sin esto la regla nacia sin test, que es como nacio mensajeLiderPorCanal en el canon: un dato que nadie hace cumplir.",
+  "plataforma": "meta"
 }

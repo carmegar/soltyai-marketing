@@ -4,7 +4,20 @@ import { fileURLToPath } from 'node:url';
 
 export const RAIZ = resolve(dirname(fileURLToPath(import.meta.url)), '..', '..');
 
-const IGNORADOS = new Set(['node_modules', '.git', '.github', 'out', 'swipe', 'redes']);
+/**
+ * Lo que el linter NO recorre.
+ *
+ * 🔴 `redes` SALIÓ de esta lista el 20-ago, y era el hueco más grande que tenía el guardrail:
+ * ahí vive **el copy que de verdad se publica** —la descripción de LinkedIn, los textos de
+ * Facebook y de YouTube, los mensajes de outbound, los guiones de video— y por estar acá adentro
+ * NUNCA pasó por una regla. El linter cuidaba `copy/`, que son las piezas de anuncio, mientras la
+ * biografía que lee todo el que llega al perfil no la miraba nadie.
+ *
+ * `swipe` SÍ se queda, y por un motivo distinto que conviene no confundir: es copy **de la
+ * competencia**, guardado para estudiarlo. Aplicarle nuestras prohibiciones sería absurdo — no es
+ * nuestro y no lo vamos a publicar.
+ */
+const IGNORADOS = new Set(['node_modules', '.git', '.github', 'out', 'swipe']);
 
 /** Lista recursiva de archivos con una extensión, relativos a la raíz del repo. */
 export function listar(ext, desde = RAIZ) {

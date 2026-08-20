@@ -1,5 +1,57 @@
 # Changelog · soltyai-marketing
 
+## 2026-08-20 — el guardrail deja de mirar para otro lado, y los 10 guiones de la tanda 1
+
+### El hueco grande: el copy publicado nunca pasó por el linter
+
+`redes/` estaba en la lista de `IGNORADOS` de `src/lib/io.js` y los `.txt` no se listaban. O sea
+que la descripción del perfil de LinkedIn, los textos de Facebook y YouTube, los mensajes de
+outbound y el guion del video demo —el copy que de verdad lee el cliente— no lo miraba **ninguna**
+regla, mientras el linter cuidaba las piezas de `copy/`, que hoy están congeladas.
+
+Y abrir la carpeta no alcanzaba: de las 7 prohibiciones sólo UNA tenía `alcance: todo`. Ahora hay
+**tres alcances** y no dos: `copy/` (piezas), `redes/` (copy publicado) y el resto de `.md`
+(documentación, que debe poder nombrar lo prohibido para explicarlo).
+
+Los 3 errores que saltaron al abrirla eran los 3 falsos positivos de ese tipo: líneas dentro de
+tablas de «no decir». Los archivos de `redes/` son **mixtos** (textos para pegar + reglas de
+estilo en el mismo archivo), así que la exención quedó **por línea**, con el mismo idioma que la
+bitácora: `<!-- guardrail:ignorar -->`. Es una declaración que se ve en el diff, no un silenciador.
+
+Probado en los dos sentidos: con un archivo sembrado en `redes/` el linter muerde (2 errores), y
+sin él vuelve a verde.
+
+### `mensajeLiderPorCanal` deja de ser un dato que nadie hace cumplir
+
+Existía desde el 13-ago y **cero reglas lo leían**. El propio canon lo confesaba en su `_fuente`,
+y el `CLAUDE.md` de este repo llegó a decir que el CI lo aplicaba cuando no.
+
+La regla nueva (`mensajeLider`) hace cumplir sólo lo que no admite interpretación:
+
+- 🔴 **error** si una pieza nombra las DOS líneas (`canal:mezcla-de-lineas`) — el riesgo que el
+  cambio del 17-ago marcó como el real.
+- 🟡 **aviso** si la pieza sólo nombra la línea que a su canal no le toca.
+
+El vocabulario de cada línea entró a `canon.json → mensajeLiderPorCanal.vocabulario`: es una
+decisión comercial, igual que un precio, así que vive en el canon y no en el código. Y el fixture
+`copy/_pruebas/anuncio-malo.json` la cubre, porque una regla sin prueba se apaga sola en el primer
+refactor.
+
+No cubre `redes/`: ahí el canal habría que adivinarlo por el nombre del archivo, y adivinar es cómo
+un linter empieza a dar veredictos que nadie puede defender.
+
+### Los 10 guiones de la tanda 1
+
+`redes/guiones-tanda-1.md` — la sesión A de `16-CONTENIDO-VIDEO.md` §4, que desbloquea grabar,
+subir y publicar. Los 10 dolores salen de `npm run dolores tanda --n=10`, en el orden que pone
+arriba las fichas con evidencia propia. Cada uno con sus 4 golpes, ~140 palabras, el supuesto
+declarado, en horas y nunca en pesos, y la primera línea del post aparte (LinkedIn corta en «ver
+más» y esa línea decide si alguien pone play). Los tres sin evidencia se cuentan como dolor y
+nunca como caso.
+
+Pasaron el linter — que es lo que ahora significa algo, porque viven en `redes/`.
+
+
 ## 2026-08-17 — arranca el carril de video, y el orgánico cambia de mensaje líder
 
 El fundador pidió una máquina para producir video de buena calidad **rápido**, para LinkedIn primero,

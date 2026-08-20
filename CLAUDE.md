@@ -23,11 +23,19 @@ Motor de marketing de SoltyAI: la estrategia escrita (`01`–`14`) y los program
   Dentro de una misma pieza sigue habiendo **uno solo**: "hacemos software a la medida, páginas web,
   bots y marketing" en el mismo anuncio es la agencia genérica de la esquina. Mapa en
   `canon.json → mensajeLiderPorCanal`.
-  ⚠️ **Esta regla NO la hace cumplir el CI, y hasta el 17-ago esta misma sección decía que sí.**
-  `mensajeLiderPorCanal` no lo lee ninguna regla de `src/guardrails/` (grep: cero usos): es dato que
-  se consulta a mano. Escribirlo acá como "regla que el CI hace cumplir" era el anti-patrón 3 del
-  `ESQUEMA-MEMORIA.md`, y es peor que no tenerla porque sugiere una cobertura que no existe.
-  Implementarla es un pendiente del tablero.
+  ✅ **Desde el 2026-08-20 el CI SÍ la hace cumplir** (regla `mensajeLider`). Antes era dato que se
+  consultaba a mano, y esta misma sección llegó a decir que el CI la aplicaba cuando no: el
+  anti-patrón 3 del `ESQUEMA-MEMORIA.md`, peor que no tener la regla porque sugiere una cobertura
+  que no existe. Lo que hace cumplir, y sólo eso:
+  - 🔴 **error** si una pieza nombra **las dos líneas** (`canal:mezcla-de-lineas`). Es la parte que
+    no admite interpretación, y el `_cambio` del 17-ago la marca como el riesgo real.
+  - 🟡 **aviso** si la pieza sólo nombra la línea que a su canal **no** le toca. Hay bordes
+    legítimos (una mención de paso), así que no bloquea.
+  - El vocabulario de cada línea vive en `canon.json → mensajeLiderPorCanal.vocabulario`, no en el
+    código: es una decisión comercial, igual que un precio.
+  - Alcance: las piezas de `copy/` que declaran `plataforma`. **`redes/` queda fuera a propósito**
+    porque ahí el canal habría que adivinarlo por el nombre del archivo, y adivinar es cómo un
+    linter empieza a dar veredictos que nadie puede defender.
 - **WhatsApp y Telegram se prometen; la web no.** WhatsApp quedó **vivo el 2026-08-07** (Meta aprobó
   a SoltyAI como Tech Provider el 6-ago). La prohibición `whatsappComoPromesa` fue **retirada** — el
   bloque quedó en el canon como registro, bajo una clave con `_` adelante, para que nadie la
@@ -87,8 +95,35 @@ fixture `copy/_pruebas/anuncio-malo.json` con su nombre en `_esperados`: una reg
 apaga sola en el primer refactor.
 
 Al ajustar patrones, revisar los **falsos positivos** contra los docs: un doc puede (y debe) nombrar
-lo prohibido para explicarlo. Por eso las prohibiciones de mensaje solo aplican a `copy/`, las
-exenciones se buscan en una ventana de ±1 línea y se ignoran los signos de énfasis de markdown.
+lo prohibido para explicarlo. Las exenciones se buscan en una ventana de ±1 línea y se ignoran los
+signos de énfasis de markdown.
+
+### Los tres alcances (cambió el 2026-08-20)
+
+Eran dos —`copy/` y «todo»— y en el medio se colaba la categoría más importante:
+
+| Alcance | Qué es | Se le aplican las prohibiciones |
+|---|---|---|
+| `copy/*.json` | piezas de anuncio | ✅ |
+| **`redes/**`** | **el copy que de verdad se publica**: la bio de LinkedIn, los textos de Facebook y YouTube, el outbound, los guiones de video | ✅ **desde el 20-ago** |
+| el resto de `.md` | documentación | ❌ y con razón: un doc tiene que poder nombrar lo prohibido |
+
+🔴 **`redes/` estuvo fuera desde siempre**, y era el hueco más grande: estaba en la lista de
+`IGNORADOS` de `src/lib/io.js`, y encima los `.txt` no se listaban. O sea que la biografía que lee
+todo el que llega al perfil podía prometer lo que quisiera, mientras el linter cuidaba los anuncios.
+
+Sus archivos son **mixtos** —`solty-fb-textos.md` trae a la vez los textos para pegar y una tabla de
+«nunca digas esto»—, así que la exención es **por línea** y no por archivo:
+
+```markdown
+- Nunca los ángulos quemados ("CRM para WhatsApp"). <!-- guardrail:ignorar -->
+```
+
+Es una **declaración, no un silenciador**: se ve en el diff y se cuenta con
+`grep -rn "guardrail:ignorar" redes/`. Ponerlo sobre copy real es apagar la guarda a mano.
+Mismo idioma que `<!-- archivo:ignorar -->` en la bitácora, a propósito.
+
+`swipe/` sigue ignorado, y es otra cosa: es copy **de la competencia**, guardado para estudiarlo.
 
 ## Convenciones
 

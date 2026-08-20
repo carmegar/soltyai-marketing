@@ -7,7 +7,7 @@
  * debe cazar, y declara en `_esperados` cuáles. La prueba falla si alguno deja de dispararse.
  */
 import { leerJson, listar } from '../lib/io.js';
-import { piezasDeCopy, prohibiciones } from './reglas.js';
+import { mensajeLider, piezasDeCopy, prohibiciones } from './reglas.js';
 
 const fixtures = listar('.json').filter((f) => f.startsWith('copy/_pruebas/'));
 if (!fixtures.length) {
@@ -19,7 +19,7 @@ let fallos = 0;
 
 for (const archivo of fixtures) {
   const esperados = leerJson(archivo)._esperados ?? [];
-  const hallazgos = [...piezasDeCopy([archivo]), ...prohibiciones([archivo])];
+  const hallazgos = [...piezasDeCopy([archivo]), ...prohibiciones([archivo]), ...mensajeLider([archivo])];
   const reglasQueDispararon = new Set(hallazgos.map((h) => h.regla));
 
   console.log(`\n  ${archivo}`);

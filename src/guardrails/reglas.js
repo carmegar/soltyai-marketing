@@ -15,7 +15,43 @@ import { cop, largo, montosCop, normalizar, plazosEnDias } from '../lib/texto.js
  * salvo las reglas marcadas alcance 'todo' en canon.json.
  */
 
-const ARCHIVOS_MD = () => listar('.md');
+/**
+ * Todo el texto en prosa del repo.
+ *
+ * 🔴 Los `.txt` entraron el 20-ago. Antes esto era sólo `.md`, y el copy publicado en `.txt`
+ * —`redes/soltyai-linkedin-descripcion.txt`, `redes/outbound-mensajes.txt`— no lo miraba ninguna
+ * regla. Un guardrail que se salta un archivo por su extensión es un guardrail con una puerta
+ * abierta que nadie ve, porque desde afuera se lee igual de verde.
+ */
+const ARCHIVOS_MD = () => [...listar('.md'), ...listar('.txt')];
+
+/**
+ * El copy que se PUBLICA y no vive en `copy/`: la descripción del perfil de LinkedIn, los textos
+ * de Facebook y YouTube, los mensajes de outbound, los guiones de video. Lo lee más gente que
+ * cualquier anuncio, y hasta el 20-ago no lo miraba ninguna prohibición.
+ *
+ * Es una categoría propia a propósito. No es `copy/` (no son piezas de anuncio) y no es doc (un
+ * doc puede nombrar lo prohibido para explicarlo; una bio de perfil, no).
+ */
+const PUBLICADO = () => ARCHIVOS_MD().filter((f) => f.startsWith('redes/'));
+
+/**
+ * Exención POR LÍNEA, no por archivo.
+ *
+ * Los archivos de `redes/` son mixtos y esa es la razón de que sea por línea: `solty-fb-textos.md`
+ * trae a la vez los **textos listos para pegar** (copy de verdad) y una tabla de **«nunca digas
+ * esto»** que, para prohibirlo, tiene que nombrarlo. Un marcador de archivo exentaría las dos
+ * mitades y dejaría el copy real sin vigilar, que es justo el agujero que este trabajo cierra.
+ *
+ * Se descubrió el 20-ago al abrir `redes/` por primera vez: los 3 errores que saltaron eran los
+ * 3 de ese tipo, ni uno de copy real.
+ *
+ * 🔴 Es una DECLARACIÓN, no un silenciador. Va en la línea, se ve en el diff, y se cuenta con
+ * `grep -rn "guardrail:ignorar" redes/`. Ponerlo sobre copy real es apagar la guarda a mano, y se
+ * nota. Mismo idioma que `<!-- archivo:ignorar -->` en la bitácora, a propósito: una convención
+ * nueva por cada caso es cómo se llega a que nadie recuerde ninguna.
+ */
+const EXENTA_LA_LINEA = /<!--\s*guardrail:ignorar\s*-->/;
 // Las carpetas que empiezan por "_" son fixtures de la prueba del propio linter: no son piezas reales.
 const PIEZAS = () => listar('.json').filter((f) => f.startsWith('copy/') && !f.includes('/_'));
 
@@ -102,7 +138,21 @@ export function prohibiciones(piezas = PIEZAS()) {
 
   for (const [nombre, regla] of Object.entries(canon.prohibiciones)) {
     if (nombre.startsWith('_')) continue;
-    const archivos = regla.alcance === 'todo' ? [...ARCHIVOS_MD(), ...piezas] : piezas;
+    // 🔴 Tres alcances, no dos (20-ago). Antes eran `copy/` y «todo», y en el medio se coló la
+    // categoría más importante: **el copy que de verdad se publica y no vive en `copy/`**.
+    //
+    //   piezas      copy/*.json      las piezas de anuncio
+    //   PUBLICADO   redes/**         la bio de LinkedIn, los textos de FB y YouTube, el outbound,
+    //                                los guiones de video. Se lee más que cualquier anuncio.
+    //   docs        el resto de .md  NO se les aplica, y con razón: un doc tiene que poder NOMBRAR
+    //                                lo prohibido para explicarlo. Ese es el motivo original de la
+    //                                exclusión, y sigue siendo correcto.
+    //
+    // El error era meter `redes/` en el saco de los docs. No es documentación: es lo que el
+    // cliente lee. De las 7 prohibiciones sólo UNA tenía alcance «todo», así que hasta hoy la
+    // biografía del perfil podía prometer lo que quisiera.
+    const archivos =
+      regla.alcance === 'todo' ? [...ARCHIVOS_MD(), ...piezas] : [...PUBLICADO(), ...piezas];
 
     // `patronesEn` y `exencionesEn` existen en el canon desde que se escribieron y NUNCA se
     // leyeron: el bucle miraba sólo `patrones`, así que los patrones en inglés no protegían nada.
@@ -119,6 +169,8 @@ export function prohibiciones(piezas = PIEZAS()) {
         lineas.forEach((linea, i) => {
           const plano = normalizar(linea);
           if (!re.test(plano)) return;
+          // La línea se declara a sí misma como «acá nombro lo prohibido para prohibirlo».
+          if (EXENTA_LA_LINEA.test(linea)) return;
           // La exención se busca en una ventana de ±1 línea: en markdown el "Prohibido" queda
           // muchas veces al final del renglón anterior al que nombra lo prohibido.
           // Se quitan los signos de énfasis: en markdown "ya **no** es Growth $149" rompería
@@ -322,6 +374,99 @@ export function registroDeLinks() {
   return hallazgos;
 }
 
+// ─────────────────────────────────────────────────────────────────────────────
+// 7 · Mensaje líder por canal (decisión del 13-ago, recalibrada el 17-ago)
+// ─────────────────────────────────────────────────────────────────────────────
+
+/**
+ * `canon.mensajeLiderPorCanal` existía desde el 13-ago y **no lo leía ninguna regla**: era un dato
+ * que alguien tenía que recordar. El propio canon lo confesaba en su `_fuente` («NO lo hace cumplir
+ * ningún guardrail todavía»), que es la versión honesta de una guarda que no existe — y la casa ya
+ * sabe cómo termina eso: una guarda mencionada en un doc no es una guarda.
+ *
+ * QUÉ HACE CUMPLIR, y por qué sólo esto:
+ *
+ *   1. 🔴 **Una pieza nunca nombra las DOS líneas.** Es la parte de la decisión que no admite
+ *      interpretación —el canon dice literal «dentro de una misma pieza sigue habiendo UN solo
+ *      mensaje… nombra el bot, y nunca los dos»— y es además el riesgo que el `_cambio` del 17-ago
+ *      marca como «el riesgo real». Error.
+ *   2. 🟡 **Una pieza no lidera con la línea que su canal no tiene asignada.** Acá sí hay casos
+ *      legítimos de borde (una mención de paso, una comparación), así que es aviso y no error.
+ *
+ * Lo que NO intenta adivinar: cuál de las dos «lidera» cuando aparecen las dos. Si aparecen las
+ * dos ya falló por la regla 1, y pedirle al linter que ordene por prominencia sería fabricar una
+ * precisión que no tiene.
+ *
+ * Alcance: las piezas de `copy/` que declaran `plataforma`. ⚠️ `redes/` queda FUERA a propósito:
+ * ahí el canal se tendría que adivinar por el nombre del archivo, y adivinar es cómo un linter
+ * empieza a dar veredictos que nadie puede defender. Si algún día esos archivos declaran su canal,
+ * entran solos.
+ */
+export function mensajeLider(piezas = PIEZAS()) {
+  const hallazgos = [];
+  const cfg = canon.mensajeLiderPorCanal ?? {};
+  const vocab = cfg.vocabulario;
+  if (!vocab) return hallazgos;
+
+  // canal → línea que le toca ('bot' | 'servicio')
+  const lineaDeCanal = new Map();
+  for (const linea of ['bot', 'servicio']) {
+    for (const canal of cfg[linea] ?? []) lineaDeCanal.set(canal, linea);
+  }
+
+  const nombra = (texto, linea) =>
+    (vocab[linea] ?? []).filter((frase) => normalizar(texto).includes(normalizar(frase)));
+
+  for (const archivo of piezas) {
+    const pieza = leerJson(archivo);
+    const canal = pieza.plataforma;
+    if (!canal) continue;
+    const meToca = lineaDeCanal.get(canal);
+
+    // El texto de la pieza, sin los campos de metadatos: un `_congelado` que EXPLICA por qué se
+    // relegó el carril nombra las dos líneas a propósito, y no es copy.
+    const texto = Object.entries(pieza)
+      .filter(([k]) => !k.startsWith('_') && k !== 'fuente')
+      .map(([, v]) => (typeof v === 'string' ? v : JSON.stringify(v)))
+      .join(' \n ');
+
+    const delBot = nombra(texto, 'bot');
+    const delServicio = nombra(texto, 'servicio');
+
+    if (delBot.length && delServicio.length) {
+      hallazgos.push({
+        nivel: 'error',
+        regla: 'canal:mezcla-de-lineas',
+        archivo,
+        linea: 0,
+        mensaje:
+          `la pieza nombra LAS DOS líneas ("${delBot[0]}" y "${delServicio[0]}"). ` +
+          'El canon es explícito: dentro de una misma pieza hay UN solo mensaje. ' +
+          'Mezclarlas es el riesgo que el cambio del 17-ago marcó como el real.',
+      });
+      continue;
+    }
+
+    if (!meToca) continue;
+    const otra = meToca === 'bot' ? 'servicio' : 'bot';
+    const nombraLaOtra = meToca === 'bot' ? delServicio : delBot;
+    const nombraLaSuya = meToca === 'bot' ? delBot : delServicio;
+
+    if (nombraLaOtra.length && !nombraLaSuya.length) {
+      hallazgos.push({
+        nivel: 'aviso',
+        regla: 'canal:linea-que-no-le-toca',
+        archivo,
+        linea: 0,
+        mensaje:
+          `canal "${canal}" lleva la línea "${meToca}" y esta pieza sólo nombra "${otra}" ` +
+          `(por "${nombraLaOtra[0]}"). Revisar contra 15-CANALES-Y-SECUENCIA.md, o cambiar el canal.`,
+      });
+    }
+  }
+  return hallazgos;
+}
+
 export const TODAS = [
   enlacesRotos,
   preciosDePlan,
@@ -329,4 +474,5 @@ export const TODAS = [
   piezasDeCopy,
   swipeConEvidencia,
   registroDeLinks,
+  mensajeLider,
 ];

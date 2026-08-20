@@ -72,6 +72,6 @@ Si tu WhatsApp ya es un cuello de botella, escríbenos. Miramos tu caso y te dec
 - 🔴 **Nunca "un asistente de IA" a secas.** La política de IA de WhatsApp **prohíbe** los bots de
   propósito general: se publica **bot de negocio por rubro** —pedidos, reservas, citas, respuestas
   del catálogo—, que además es lo que de verdad se vende.
-- Nunca los planes viejos Starter/Growth/Pro ni los ángulos quemados ("atiende 24/7" a secas, "CRM para WhatsApp").
+- Nunca los planes viejos Starter/Growth/Pro ni los ángulos quemados ("atiende 24/7" a secas, "CRM para WhatsApp"). <!-- guardrail:ignorar -->
 - Precios, si aparecen: los del canon en **COP** (`data/canon.json`), nunca los de dólares.
 - CTA preferido: "escríbenos / escríbele al bot", no "agenda una demo".
