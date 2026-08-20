@@ -1,6 +1,6 @@
 {
   "_doc": "Hechos canónicos en formato máquina. Espejo de 01-SOURCE-BRIEF.md + ESTADO.md §Marketing. Si cambia el precio o la promesa, se cambia AQUÍ y en el doc, en el mismo commit. Los guardrails leen este archivo: es lo que hace que una decisión escrita se vuelva una regla que falla el CI.",
-  "actualizado": "2026-08-13",
+  "actualizado": "2026-08-20",
   "_actualizado": "Este sello lo pone una persona y por eso derivó: hasta el 13-ago decía 2026-08-04 dentro de un archivo que ya contenía `canales._cambio` y `_whatsappComoPromesa_RETIRADA`, los dos del 13. El hook anunciaba «canon actualizado hace 9 días» de un canon que estaba al día. Desde hoy `scripts/contexto-sesion.mjs` toma la fecha del último commit del archivo y avisa cuando este campo se queda atrás: manda git, que no puede derivar. Actualizalo igual — es la anotación de cuándo se revisó a conciencia, no la de cuándo cambió un byte.",
   "fuentes": [
     "01-SOURCE-BRIEF.md (promesa, verticales, canales, costo de servir)",
