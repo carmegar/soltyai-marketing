@@ -1,5 +1,68 @@
 # Changelog · soltyai-marketing
 
+## 2026-08-21 — la auditoría de reconciliación: nueve hallazgos, y un caso de éxito que era falso
+
+Nace de una sospecha del fundador (*«la página y algunos otros espacios entre la documentación no
+están conciliados bajo la misma estrategia»*) y de `investigacion_de_venta.md`, una investigación
+de mercado que aportó él. La sospecha era correcta y se quedaba corta: salieron **nueve**
+hallazgos, en `17-RECONCILIACION-CONTENIDO.md`.
+
+### El peor no era una incoherencia
+
+La landing publicaba, desde junio, un caso de éxito de **Promatel** con cuatro métricas (85% de
+reducción en tiempo de respuesta, +200 consultas por semana, 4 horas/día recuperadas) y un
+**testimonial entre comillas** firmado «Equipo Comercial, Promatel».
+
+Promatel **nunca entró en producción**. `business/estrategia/02-portafolio.md:16` lo describe como
+«70% completo, bloqueado en credenciales del cliente» y `business/24:44` lista su carpeta entre los
+proyectos muertos. Métricas de un sistema que jamás atendió a nadie, y palabras que el equipo de
+una empresa real nunca dijo. Se arregló en `platform`; acá quedó la regla.
+
+**Y el motivo por el que sobrevivió tres meses es lo que hay que recordar:** el guardrail de la
+landing corre en cada build, pero el patrón de `pruebaSocialInventada` dice
+`(clientes|empresas|negocios|proyectos)` y la pieza decía «flujos» y «consultas». La regla estaba;
+el patrón no la alcanzaba. Es la versión de contenido del backup del 18-ago: no preguntar «¿corrió
+el chequeo?» sino «¿existe hoy el resultado que el chequeo debía producir?».
+
+### Los dos escalones que faltaban en el catálogo
+
+Entre la suscripción más cara ($790.000/mes) y el piso del proyecto ($3.000.000) no había nada, y
+el proyecto no tenía **ninguna** línea recurrente detrás: Swisscontact entregó $2.300.000 y después
+$0/mes. Las agencias sin ingreso recurrente son no rentables ~60% del tiempo.
+
+- **`diagnostico-automatizacion`** — $600.000, se descuenta 100% del proyecto si contratan en 30
+  días. Su trabajo no es facturar: es **descalificar barato**. Una propuesta escrita para alguien
+  que nunca iba a pagar cuesta medio día del único vendedor.
+- **`soporte-evolutivo`** — $490.000/mes. Alojamiento, monitoreo, respaldos, 3 horas/mes topadas y
+  una revisión mensual agendada.
+
+Los dos entran como **`supuesto`**: nadie los ha pagado. La construcción de cada precio está en su
+campo `fuente`, incluida la razón por la que **no** se usó la banda internacional de la
+investigación (US$300–1.500 para el diagnóstico): son rate cards para cliente de EE.UU., no
+disposición a pagar de una pyme de Bucaramanga.
+
+### Reglas nuevas en el canon
+
+- **`servicioFantasma`** y **`diagnosticoGratis`**, las dos con su caso en el fixture. La primera
+  cazó, el mismo día en que se escribió, un «Growth Marketing» que llevaba tres meses publicado en
+  el FAQ de la landing — una línea de negocio entera que no estaba en ningún catálogo y que
+  prometía gestionar pauta mientras nuestro propio píxel sigue en `G-XXXXXXXXXX`.
+- **`tablero.cortePorVertical`**: 4% de respuesta a los 90 días sobre 150+ contactados, o se cambia
+  de vertical. Había reglas de corte para la plata y **ninguna** para el nicho: las 906
+  inmobiliarias podían comerse tres meses sin que nada dijera basta.
+- **`lineaServicios.escaleraDeValor`** y tres reglas: nada se entrega sin proponer el recurrente,
+  nada gratis que consuma tiempo del fundador, **nada se cotiza si no está en `catalogo.json`**.
+- **`_alcanceDelPiso`**: el piso de $3.000.000 aplica a `desarrollo-a-medida`, no a las líneas de
+  web. El catálogo ya tenía la excepción escrita; el canon no, así que se contradecían a la vista
+  de cualquiera que leyera sólo uno. No cambió ningún precio.
+
+### Lo que queda abierto
+
+El catálogo de producción de la suite sigue sin recibir la D1 (los 3 planes del canon no existen
+como producto, 7 legacy en USD siguen cotizables, y `05-marketing-starter` a US$480/mes sigue
+activo). Es el único plano que escribe en datos reales, así que va con aviso previo y aprobación.
+
+
 ## 2026-08-20 — el guardrail deja de mirar para otro lado, y los 10 guiones de la tanda 1
 
 ### El hueco grande: el copy publicado nunca pasó por el linter
