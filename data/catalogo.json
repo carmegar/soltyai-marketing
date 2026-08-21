@@ -1,7 +1,7 @@
 {
   "_doc": "Catálogo de todo lo que SoltyAI puede vender, con su costo real de servir y su margen. Es la fuente para cotizar (src/catalogo) y para gobernar el margen. Regla dura: si un precio o un costo NO está verificado contra una fuente, va con estado 'supuesto' y el CLI lo marca en amarillo en cada cotización. Nada de números inventados que después se presentan como hechos.",
   "_iva": "TODO `precio` de este archivo es la BASE, sin IVA: el 19% se suma encima al cotizar (canon.json → ivaConvencion). Si un contrato pactó el total con IVA incluido, `precio` sigue siendo la base y el total va en `precioConIva`. Hoy la única línea así es domicilios-ops: $370.000 con IVA = $310.924,37 + $59.075,63.",
-  "actualizado": "2026-08-04",
+  "actualizado": "2026-08-21",
   "moneda": "COP",
 
   "servicios": [
@@ -102,6 +102,52 @@
       "notas": "El precio del catálogo es el PISO, no el precio: cada proyecto se cotiza por alcance. El costo real es tiempo del único desarrollador, que es también el único vendedor — por eso el margen contable engaña: el costo de oportunidad es la prospección que se detiene."
     },
     {
+      "id": "diagnostico-automatizacion",
+      "nombre": "Diagnóstico de automatización",
+      "linea": "servicios",
+      "tipo": "entrada",
+      "precio": 600000,
+      "costoUnico": 0,
+      "estado": "supuesto",
+      "fuente": "PRECIO NO VERIFICADO — decisión comercial del 2026-08-21, sin un solo caso vendido detrás. Construcción: (a) es ~1 día del fundador mapeando el proceso y escribiendo el entregable; (b) queda por debajo de la barrera psicológica del millón; (c) se descuenta 100% del proyecto, así que para quien sí contrata el riesgo neto es cero. La banda internacional que cita investigacion_de_venta §3 (US$300–1.500) da $1,2M–6M COP y NO se usó: es rate card de agencia para cliente de EE.UU., no disposición a pagar de una pyme de Bucaramanga. Se queda en 'supuesto' hasta que se venda uno.",
+      "reglas": ["anticipo100", "seDescuentaDelProyecto", "entregableEscrito"],
+      "incluye": [
+        "Sesión de descubrimiento de 60-90 min sobre el proceso real (guion: business/26-guion-de-descubrimiento.md)",
+        "Mapa del proceso actual, con los pasos manuales y su costo en horas",
+        "Documento escrito con las oportunidades de automatización priorizadas por impacto",
+        "Estimación de alcance y precio del proyecto que resolvería las 2 primeras"
+      ],
+      "excluye": [
+        "Escribir código, configurar integraciones o dejar nada andando: eso es el proyecto.",
+        "Auditoría de seguridad o de infraestructura del cliente.",
+        "Más de una ronda de preguntas después de entregado el documento."
+      ],
+      "notas": "Es el escalón que faltaba entre la suscripción más cara ($790.000/mes) y el piso del proyecto ($3.000.000). Su trabajo NO es facturar: es descalificar barato. Una propuesta escrita para alguien que nunca iba a pagar cuesta medio día del único vendedor; este diagnóstico cobra ese medio día por adelantado y filtra en la primera llamada. ⚠️ El costo unitario está en 0 a propósito y es MENTIRA contable: el costo es un día del fundador, el mismo recurso escaso de toda la línea de servicios. Se deja en 0 porque no hay tarifa interna verificada (no existe en ningún doc) y poner una inventada sería peor. Medirlo con el primero que se venda."
+    },
+    {
+      "id": "soporte-evolutivo",
+      "nombre": "Soporte y evolución de sistema a la medida",
+      "linea": "servicios",
+      "tipo": "recurrente",
+      "precio": 490000,
+      "costoMes": 8000,
+      "estado": "supuesto",
+      "fuente": "PRECIO NO VERIFICADO — decisión comercial del 2026-08-21, ningún cliente lo ha pagado. Anclaje: el soporte de un sistema a la medida no puede costar MENOS que la suscripción estándar del bot (bot-pro, $490.000), porque no hay infra compartida que amortizar y las horas son del mismo desarrollador único. El precedente propio de recurrente sobre un entregable es web-cuidada ($180.000/mes), que cubre alojamiento y una actualización de contenido — mucho menos alcance que esto.",
+      "reglas": ["seProponeAntesDeEntregar", "horasTopadas", "fueraDeAlcanceEsOrdenDeCambio"],
+      "incluye": [
+        "Alojamiento, monitoreo y copias de seguridad cifradas fuera del servidor",
+        "Hasta 3 horas/mes de ajustes y evolución (no se acumulan de un mes a otro)",
+        "Soporte prioritario en horario hábil",
+        "Revisión mensual de resultados con el cliente: 30 minutos, agendados"
+      ],
+      "excluye": [
+        "Módulos o funcionalidades nuevas: se cotizan como orden de cambio aparte.",
+        "Horas por encima de las 3 incluidas.",
+        "Migraciones a infraestructura de terceros."
+      ],
+      "notas": "⚠️ El costoMes de $8.000 es SÓLO la infra (misma banda que canon → costoDeServir.infraPorClienteMes) y por eso el margen que sale de estos números es falso: las 3 horas incluidas son el costo que de verdad puede comerse la línea. Es el mismo error que ya está anotado en domicilios-ops y se repite acá a propósito, para que se vea. Medir las horas reales antes de pasar el estado a 'vigente'. La revisión mensual NO es cortesía: sin contacto mensual el cliente llega al mes 4 preguntando '¿qué estoy pagando?', que es como muere un recurrente (investigacion_de_venta §3)."
+    },
+    {
       "id": "web-corporativa",
       "nombre": "Página web / landing corporativa (construcción nueva)",
       "linea": "servicios",
@@ -172,6 +218,12 @@
     "buzonesTopados": "Los correos con dominio propio se cotizan con número de buzones explícito y precio por buzón adicional. Ofrecer 'correos' sin tope es la fuga que puede volver negativa la línea: con Google Workspace, 8 buzones se comen el recurrente entero.",
     "noAcumulaDescuentos": "Los descuentos no se suman: ONG (−25%), primeros clientes (−30%) y cualquier rebaja ya incorporada al precio de lista son excluyentes entre sí. Se aplica el mayor, nunca dos.",
     "setup5050": "El setup se cobra 50% al aceptar la cotización y 50% cuando el bot queda atendiendo. El anticipo nunca baja a cero: es el filtro que separa al que va en serio del curioso.",
-    "garantiaImplementacion": "Plazo de 7 días calendario, escalonado por plan (canon.json → garantiaImplementacion). NO aplica a la línea de servicios: ahí rige anticipo50."
+    "garantiaImplementacion": "Plazo de 7 días calendario, escalonado por plan (canon.json → garantiaImplementacion). NO aplica a la línea de servicios: ahí rige anticipo50.",
+  "anticipo100": "El diagnóstico se paga completo por adelantado. No es rigidez: es el filtro entero. Un diagnóstico contra entrega vuelve a ser trabajo gratis con un paso extra.",
+  "seDescuentaDelProyecto": "El valor del diagnóstico se descuenta 100% del proyecto si el cliente contrata dentro de 30 días de entregado el documento. Pasados los 30 días no se descuenta: el descuento paga la decisión rápida, no la indecisión larga.",
+  "entregableEscrito": "El diagnóstico SIEMPRE deja un documento escrito, aunque la conclusión sea 'no le sirve automatizar esto'. Si no deja documento, el cliente pagó por una conversación y va a sentirlo.",
+  "seProponeAntesDeEntregar": "El soporte evolutivo se propone ANTES de entregar el proyecto, nunca después. Entregado y andando, el cliente ya no siente el riesgo que el plan cubre, y la conversación pasa de 'cómo lo cuidamos' a 'para qué te pago si ya está'.",
+  "horasTopadas": "Las horas incluidas son un tope explícito y no se acumulan mes a mes. 'Soporte' sin tope es la fuga que vuelve negativa la línea, igual que los buzones en web-cuidada.",
+  "fueraDeAlcanceEsOrdenDeCambio": "Todo lo que quede fuera del alcance escrito es una orden de cambio facturada aparte, y se dice en la reunión mensual, no al final del mes en la factura. El riesgo principal del recurrente productizado es el scope creep silencioso (investigacion_de_venta §3)."
   }
 }

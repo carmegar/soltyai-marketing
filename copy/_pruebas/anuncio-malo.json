@@ -4,7 +4,7 @@
   "id": "_fixture-anuncio-malo",
   "estado": "fixture",
   "origin": "meta_inexistente_zz",
-  "texto": "Somos líderes en Colombia con +100 clientes felices. Tu bot en 40 días o no pagas, con conversaciones ilimitadas, un asistente de IA que responde cualquier pregunta y un bot para tu página web. Y si prefieres, tambien hacemos desarrollo a la medida para tu empresa.",
+  "texto": "Somos líderes en Colombia con +100 clientes felices. Tu bot en 40 días o no pagas, con conversaciones ilimitadas, un asistente de IA que responde cualquier pregunta y un bot para tu página web. Y si prefieres, tambien hacemos desarrollo a la medida para tu empresa, o growth marketing con gestión de pauta incluida. Agenda tu diagnóstico gratuito.",
   "titular": "Este titular es larguísimo y se pasa del máximo de Meta",
   "descripcion": "Esta descripción también se pasa de treinta",
   "destino_titular": "Tu bot listo en 90 días",
@@ -13,6 +13,8 @@
     "prohibicion:absolutos",
     "prohibicion:asistenteGeneralIa",
     "prohibicion:webComoPromesa",
+    "prohibicion:servicioFantasma",
+    "prohibicion:diagnosticoGratis",
     "copy:limite-meta",
     "copy:coherencia-plazo",
     "copy:garantia-sin-definir",
@@ -20,5 +22,6 @@
     "canal:mezcla-de-lineas"
   ],
   "_cambio2": "2026-08-20: entra la regla mensajeLider. Se le agrega plataforma \"meta\" (que segun el canon lleva la linea del BOT) y una frase de la OTRA linea, para que el fixture mezcle las dos y la regla canal:mezcla-de-lineas tenga contra que probarse. Sin esto la regla nacia sin test, que es como nacio mensajeLiderPorCanal en el canon: un dato que nadie hace cumplir.",
+  "_cambio3": "2026-08-21: entran servicioFantasma y diagnosticoGratis, las dos prohibiciones que nacen de la auditoría de reconciliación (17-RECONCILIACION-CONTENIDO.md). Se agregan al texto «growth marketing con gestión de pauta» y «diagnóstico gratuito». Son reglas de patrón puro, sin lógica nueva, y por eso la tentación era no probarlas — pero la regla servicioFantasma cazó, el mismo día en que se escribió, un «Growth Marketing» que llevaba tres meses publicado en el FAQ de la landing. Una regla que ya demostró que muerde es justamente la que no se puede dejar sin test.",
   "plataforma": "meta"
 }

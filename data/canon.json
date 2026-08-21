@@ -1,6 +1,6 @@
 {
   "_doc": "Hechos canónicos en formato máquina. Espejo de 01-SOURCE-BRIEF.md + ESTADO.md §Marketing. Si cambia el precio o la promesa, se cambia AQUÍ y en el doc, en el mismo commit. Los guardrails leen este archivo: es lo que hace que una decisión escrita se vuelva una regla que falla el CI.",
-  "actualizado": "2026-08-20",
+  "actualizado": "2026-08-21",
   "_actualizado": "Este sello lo pone una persona y por eso derivó: hasta el 13-ago decía 2026-08-04 dentro de un archivo que ya contenía `canales._cambio` y `_whatsappComoPromesa_RETIRADA`, los dos del 13. El hook anunciaba «canon actualizado hace 9 días» de un canon que estaba al día. Desde hoy `scripts/contexto-sesion.mjs` toma la fecha del último commit del archivo y avisa cuando este campo se queda atrás: manda git, que no puede derivar. Actualizalo igual — es la anotación de cuándo se revisó a conciencia, no la de cuándo cambió un byte.",
   "fuentes": [
     "01-SOURCE-BRIEF.md (promesa, verticales, canales, costo de servir)",
@@ -119,10 +119,21 @@
     "maxProyectosSimultaneos": 1,
     "maxProyectosPorTrimestre": 1,
     "excepcionPiso": "Solo si el proyecto abre la puerta a un cliente grande, y se anota como tal.",
+    "_alcanceDelPiso": "2026-08-21: el piso de 3.000.000 aplica a `desarrollo-a-medida` (construir algo que no existe), NO a las líneas de web, que son productos de alcance cerrado y precio propio (web-corporativa 1.500.000, web-redespliegue 750.000). Hasta hoy el canon decía «piso de la línea de servicios» a secas y el catálogo tenía dos líneas de servicios por debajo del piso: el que leyera sólo el canon concluía que se estaba vendiendo bajo el mínimo. No cambió ningún precio; se nombró a qué aplica.",
+    "escaleraDeValor": {
+      "_doc": "2026-08-21. Nace de marketing/investigacion_de_venta.md §3: entre la suscripción más cara (790.000/mes) y el piso del proyecto (3.000.000) no había ningún escalón, y el único abridor de puerta que teníamos —la auditoría de business/16 §6d— se regalaba. La escalera se lee de abajo hacia arriba y cada escalón tiene que poder venderse solo.",
+      "1_diagnostico": "diagnostico-automatizacion — pagado, se descuenta 100% del proyecto si contratan dentro de 30 días. Es el filtro: quien no paga el diagnóstico no iba a pagar el proyecto.",
+      "2_proyecto": "desarrollo-a-medida (piso 3.000.000, anticipo 50%) o las líneas de web.",
+      "3_recurrente": "soporte-evolutivo — el negocio de verdad. Ver `reglas`: ningún proyecto se entrega sin proponerlo.",
+      "_porque": "Las agencias sin ingreso recurrente son no rentables ~60% del tiempo; con 25% de recurrente esa cifra cae por debajo del 10% (investigacion_de_venta §3). Hasta hoy la línea que MÁS factura era 100% no recurrente: Swisscontact entregó 2.300.000 y después 0/mes."
+    },
     "reglas": [
       "La prospección no se suspende por un proyecto en curso.",
       "Todo proyecto deja pieza reutilizable en platform/.",
       "Todo cliente de servicio sale con propuesta de bot.",
+      "Ningún proyecto se entrega sin proponer `soporte-evolutivo`, y la propuesta se hace ANTES de entregar, no después: entregado y andando, el cliente ya no siente el riesgo que el plan cubre.",
+      "Nada gratis que consuma tiempo del fundador. La demo del bot es gratis porque ya existe; diagnosticar, configurar o integrar, no.",
+      "Nada se cotiza si no está en catalogo.json. Si hace falta vender algo nuevo, primero entra al catálogo con su costo y su margen.",
       "Un mensaje líder POR CANAL: el bot en Meta, outbound y la landing; el servicio en Google Search, el Google Business Profile y TODO el orgánico (cambió el 2026-08-17, ver mensajeLiderPorCanal._cambio).",
       "Dentro de una misma pieza sigue habiendo UN solo mensaje: nunca 'hacemos software a la medida, páginas web, bots y marketing' en el mismo anuncio.",
       "Si entran 2 proyectos a la vez se pausa el carril de Google, no se contrata."
@@ -181,6 +192,15 @@
     "ltvBruto12m": 5080000,
     "ticketPromedioSupuesto": 390000,
     "cajaMes1": 790000,
+
+    "cortePorVertical": {
+      "_doc": "2026-08-21. Nace de investigacion_de_venta §Recomendaciones/Fase 0: la especialización por nicho es el multiplicador de conversión más grande que existe, pero sólo si el nicho se ABANDONA cuando no responde. Hasta hoy había reglas de corte para la plata (por lead calificado) y ninguna para el nicho: las 906 inmobiliarias podían comerse tres meses sin que nada dijera basta.",
+      "respuestaMinima": 0.04,
+      "ventanaDias": 90,
+      "minimoContactadosParaJuzgar": 150,
+      "regla": "Si a los 90 días una vertical no pasa el 4% de respuesta sobre al menos 150 contactados, se cambia de vertical. No se retrabaja el copy por cuarta vez: el copy explica una diferencia de puntos, no un piso que no llega.",
+      "_notaHonesta": "Los 15/30 de la tanda 1 NO alcanzan para juzgar nada (business/16 §6d lo dice de frente: 15 contra 14 no da significancia). El contador de esta regla se lee sobre el segmento CORREO completo (305), no sobre el experimento."
+    },
 
     "fuentesDeDato": ["export-meta", "export-google", "export-linkedin", "gbp", "calendly", "suite-mcp", "bot-log", "manual"],
     "notaFuenteDato": "Toda métrica declara de dónde salió. Hoy varias son 'manual' y está bien: lo que no se vale es fingir que el dato es automático.",
@@ -268,6 +288,22 @@
       "porque": "Hoy solo podemos nombrar a Bucaradomi (piloto real, con permiso) y a Swisscontact (servicio). Todo lo demás es la mentira de '+100 proyectos exitosos' del swipe file.",
       "exenciones": []
     },
+    "servicioFantasma": {
+      "_doc": "2026-08-21. Nace de la auditoría de reconciliación (17-RECONCILIACION-CONTENIDO.md): la landing publicaba 'Growth Marketing con IA' —gestión de pauta en Meta y Google Ads, 12 a 20 piezas al mes— y la suite lo tenía cotizable como 05-marketing-starter a US$480/mes. NO estaba en canon.json ni en catalogo.json: era una línea de negocio entera que ninguna regla de margen gobernaba. Y peor: prometía gestionar pauta cuando nuestro propio píxel sigue en G-XXXXXXXXXX y el carril de Meta está relegado por no tener creatividad (15-CANALES §1). Se vendía lo que todavía no sabemos hacer.",
+      "patrones": ["growth marketing", "gesti[oó]n de pauta", "gestionamos (sus|tus) (anuncios|campa[ñn]as)", "manejo de redes sociales", "community manager"],
+      "alcance": "copy",
+      "porque": "No está en catalogo.json, así que no tiene costo de servir ni margen mínimo, y no se puede entregar hoy. La regla general está en lineaServicios.reglas: nada se cotiza si no está en el catálogo.",
+      "exenciones": ["prohibid", "no vendemos", "fantasma", "retirad", "ya no", "dej[oó] de"]
+    },
+
+    "diagnosticoGratis": {
+      "_doc": "2026-08-21. La landing decía 'Agendar Diagnóstico Gratuito' mientras el diagnóstico pasaba a ser un producto pagado (catalogo → diagnostico-automatizacion). Un piloto o diagnóstico gratis convierte por debajo del 10%; pagado y con criterios de éxito, entre 40% y 60% (investigacion_de_venta §2). Y el costo real no es el precio: es el día del único desarrollador, que además es el único vendedor.",
+      "patrones": ["diagn[oó]stico gratuito", "diagn[oó]stico gratis", "auditor[ií]a gratuita", "auditor[ií]a gratis", "consultor[ií]a gratuita"],
+      "alcance": "copy",
+      "porque": "El diagnóstico es pagado y se descuenta del proyecto si contratan. Lo gratis que sí se ofrece es la DEMO del bot, que ya existe y no cuesta tiempo del fundador.",
+      "exenciones": ["prohibid", "no ofrecemos", "ya no", "dej[oó] de", "pagad"]
+    },
+
     "absolutos": {
       "patrones": ["ilimitad", "100% garantizado", "sin ning[uú]n costo", "gratis para siempre"],
       "alcance": "copy",
