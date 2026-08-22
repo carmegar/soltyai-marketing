@@ -515,7 +515,8 @@ Se revisa cada mes junto al tablero del §8:
 > **La fila que no se movió es la que manda.** El recorte bajó el MRR objetivo a la mitad, pero
 > **«100% de los costos fijos cubiertos por MRR» sigue igual**, y es el verdadero indicador de si esto
 > es una empresa o un empleo disfrazado. Con ~$2.340.000/mes de MRR esa meta es **más fácil**, no más
-> difícil: los costos fijos hoy son VPS, API, Workspace, Instantly y contador, no $4.700.000. El plan
+> difícil: los costos fijos hoy son VPS, API, Workspace y contador, no $4.700.000 (Instantly salió el
+> 22-ago). El plan
 > de 12 confundía «MRR grande» con «MRR suficiente».
 
 Cuando el MRR cubra los costos fijos **y** los honorarios base del fundador, el servicio a medida

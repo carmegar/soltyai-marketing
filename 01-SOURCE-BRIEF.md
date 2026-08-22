@@ -289,7 +289,8 @@ Carlos y se paga directo (art. 35 ET — `business/18` §2). Los datos fiscales 
 van a nombre de **SOLTYAI S.A.S. · NIT 902081265-3**, y cada gasto se registra en el libro de caja como
 egreso con nota *"pagado por el socio — por reembolsar"*.
 
-**Outbound (canal vivo):** **865 prospectos en producción** en la suite — CORREO 305 (Instantly) y
+**Outbound (canal vivo):** **865 prospectos en producción** en la suite — CORREO 305 (a mano desde
+Gmail; Instantly de baja el 22-ago, `business/16` §12) y
 DIRECTO 560 (164 con web viva · 260 por tel/WA/IG · 136 sin canal · **64 del área metropolitana** =
 visita). 🔴 **El carril directo se contacta a mano, NUNCA por la API de WhatsApp.** Y **nunca subir
 esos teléfonos a Meta** como audiencia (viola ToS + Ley 1581).

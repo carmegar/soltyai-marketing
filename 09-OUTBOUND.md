@@ -30,7 +30,7 @@ fecha de contacto y bitácora por prospecto, repartidos en dos carriles que no s
 
 | Carril | Cuántos | Cómo se contacta |
 |---|---|---|
-| **CORREO** | **305** | secuencia de cold email por **Instantly** (`business/16-motor-cold-email.md`) |
+| **CORREO** | **305** | cold email de 3 toques **a mano desde Gmail** (`business/16` §11). ⛔ Instantly se dio de baja el 22-ago sin mandar un correo (§12): vuelve cuando el volumen lo pida |
 | **DIRECTO** | **560** | 1-a-1 **a mano**: teléfono, WhatsApp, Instagram o visita |
 
 Dentro de los 560 del carril DIRECTO: **164 con web viva** · **260 por teléfono/WhatsApp/Instagram** ·
@@ -356,7 +356,7 @@ prospecto se lleva lo mismo de siempre:
 |---|---|---|---|---|---|---|---|---|---|---|
 | Área metropolitana (piloto, 64) | | | | | | | | | | |
 | DIRECTO lote 1 | | | | | | | | | | |
-| CORREO tanda 1 (Instantly) | | | | | | | | | | |
+| CORREO tanda 1 · lote 1 (manual, 7-sep) | | | | | | | | | | |
 | **TOTAL** | | | | | | | | | | |
 
 **Fórmulas:** `% Resp = Respondieron / Contactados` · `% Reunión = Reuniones / Contactados` ·
