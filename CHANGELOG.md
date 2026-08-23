@@ -1,5 +1,46 @@
 # Changelog · soltyai-marketing
 
+## 2026-08-22 — investigación de mercado: zapateros, restaurantes y el filtro de la FECHA
+
+Encargo del fundador: *«qué productos puedo diseñar para los zapateros y los restaurantes de
+Bucaramanga para cobrarles mes a mes, y busca demanda de software en otros terrenos para no depender
+de lo que venimos haciendo»*. Investigación web con fuentes, sin tocar precios ni catálogo.
+Doc nuevo: **`19-INVESTIGACION-MERCADO-VERTICALES.md`**.
+
+### Lo que salió
+
+- **Zapateros: la palabra tapa dos mercados y uno no es mercado.** La reparación de calzado (el que
+  se ve por la ventana) no puede pagar suscripción. La fábrica sí: **~1.800 empresas registradas en
+  Santander, ~36.000 empleos, 10,6M pares/año**, segundo clúster del país. Pero **ya hay competencia
+  colombiana resolviendo el core** (PyloERP hace satélites y curva de tallas) y **Tikno tiene un
+  artículo dedicado a «Santander»**. La rendija nuestra es el **satélite reportando por WhatsApp**
+  —el pedazo que los ERP no cierran porque asumen que el proveedor se sienta en un computador—, más
+  estar acá, más la puerta institucional (hoja de ruta 2026 del clúster con Alcaldía + IMEBU +
+  Cámara, que incluye inversión en tecnología).
+- **Restaurantes: el POS está muerto para nosotros.** Precio de mercado **$9.000–$279.990/mes**
+  (Fudo $62.900 base, Siigo POS Gastrobar $87.494). Nuestro plan más barato es $290.000. La puerta
+  real es **la comisión de Rappi: 27%–32% + $3.000–$8.000 por pedido**, que hunde el margen de 46,4%
+  a 19,4%. Y ahí **ya tenemos los dos lados**: `domicilios-ops` en producción **y** Bucaradomi con
+  flota. ⚠️ El ahorro **no** es la comisión completa (incluye el domiciliario): es comisión menos
+  costo de repartir, y ese número no lo tenemos. Medirlo es el paso 1.
+- **Otros terrenos: el filtro útil no es el sector, es la FECHA.** Una obligación con calendario y
+  multa produce compradores que ya decidieron comprar. Quedan **salud (FEV+RIPS, Res. 948 de 2026,
+  la EPS no paga sin RIPS)** y **transporte de carga (RNDC, formatos obligatorios desde el
+  1-may-2026)**. Se descartan con argumento **propiedad horizontal** (Resia cobra $800/unidad y
+  regala hasta 50 unidades) y **nómina horizontal** (Siigo/Alegra/Buk/Symplifica).
+- **El dato que ordena los tres:** el piso mental de una pyme colombiana para «software» es
+  **$37.000–$180.000/mes**. Vender «software» nos deja siempre por encima del precio de referencia;
+  lo único que sostiene el ticket es vender **un reemplazo con nombre** —la persona que digita, la
+  comisión que se paga, la multa que se arriesga—. Es el ancla de `18 §6`.
+
+### Lo que NO cambió
+
+Ningún precio, ningún producto del catálogo, ningún mensaje líder. `npm run check` en verde (sólo los
+avisos que ya existían: márgenes supuestos y `costoHoraOperativa`). La regla
+`tablero.cortePorVertical` —4% de respuesta sobre 150 contactados en 90 días o se cambia de
+vertical— **aplica a estos frentes sin excepción**.
+
+
 ## 2026-08-22 — arquitectura de oferta: el único cliente que paga no compró nada de lo que publicamos
 
 Nace de una pregunta del fundador sobre el pricing (*«habíamos dicho que no iba a haber pricing para
