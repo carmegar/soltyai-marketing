@@ -32,6 +32,11 @@
    único que eligen es a quién. Con ese filtro quedan dos candidatos reales —**salud (FEV+RIPS)** y
    **transporte de carga (RNDC)**— y dos descartes con argumento —**propiedad horizontal** y **nómina
    horizontal**—.
+4. 🔴 **Y después de escribir los tres puntos de arriba se bajó el registro mercantil, que corrigió
+   dos y ascendió uno.** Los restaurantes formales del área metropolitana no son 6.500 sino **2.924**;
+   los zapateros de reparación son **11 empresas matriculadas**; y el **transporte de carga** resultó
+   ser el segmento con más densidad de empresa formal de todos (**287 sociedades de 517, el 56%**),
+   con obligación RNDC desde el 1-may-2026. **§1.1 manda sobre lo que digan §2 y §3.**
 
 Y el dato que ordena los tres: **el piso mental de una pyme colombiana para "software" está en
 $37.000–$180.000/mes** (planes contables para micro y pequeña empresa). Nuestro plan más barato
@@ -53,13 +58,63 @@ los competidores. Todas las cifras llevan fuente al final.
 - **No hay una sola entrevista con un cliente.** Todo lo de acá es escritorio. Un dolor leído en
   prensa y un dolor que alguien te dice en su fábrica no son el mismo dato, y el segundo es el que
   vale.
-- **Los números vienen de prensa y de gremios, no de registro primario.** El registro primario existe
-  y es gratis: la base de empresas de la **Cámara de Comercio de Bucaramanga** está publicada en
-  Datos Abiertos, y **Compite 360** permite filtrar por actividad económica. Esa es la fuente para
-  contar de verdad — y de paso **es la lista de prospección**, o sea que el mismo trabajo sirve dos
-  veces (`tools/apps/prospeccion`).
-- **Ningún precio de acá está validado contra nadie.** Los anclas de §2.4 y §3.4 son aritmética sobre
+- ~~**Los números vienen de prensa y de gremios, no de registro primario.**~~ ✅ **Corregido el mismo
+  día**, y lo que apareció está en §1.1. Sigue siendo cierto para las cifras nacionales y de gremio
+  (ACICAM, ACODRES), que no tienen registro que las verifique.
+- **Ningún precio de acá está validado contra nadie.** Los anclas de §2.6 y §3.4 son aritmética sobre
   cifras públicas, no cotizaciones aceptadas.
+
+---
+
+## 1.1 · 🔴 El registro primario, y lo que corrige de este mismo doc
+
+Horas después de escribir lo de arriba se bajó la fuente que faltaba: la **base de empresas de la
+Cámara de Comercio de Bucaramanga** en Datos Abiertos (`datos.gov.co`, dataset `wf53-j577`).
+Reproducible con **`node src/00-ccb.js --todos`** en `tools/apps/prospeccion`.
+
+Ámbito: **Bucaramanga + Floridablanca + Girón + Piedecuesta**, matrículas **ACTIVAS**, al 22-ago-2026.
+Total del ámbito: **43.905 empresas**.
+
+| Segmento | Matrículas | **Sociedades** | Personas naturales |
+|---|---:|---:|---:|
+| Comidas preparadas (sin bares) | 2.924 | **335** (11%) | 2.589 |
+| Fabricación de calzado | 821 | **198** (24%) | 623 |
+| **Transporte de carga** | 517 | **287 (56%)** | 230 |
+| Mensajería y domicilios | 263 | **37** (14%) | 226 |
+| *Reparación de calzado* | **11** | 3 | 8 |
+
+Y aparte: 428 bares, 582 comercios minoristas de calzado y cuero, 9 curtiembres.
+
+**Lo que esto corrige, y no es menor:**
+
+1. 🔴 **La cifra de 6.500 restaurantes que circula en prensa está inflada al doble.** El registro dice
+   **2.924** establecimientos de comida preparada en los cuatro municipios. La cifra de prensa quedó
+   citada en §3.1 con su fuente, pero **el número que manda es el del registro**. Es exactamente el
+   modo de falla de Promatel (`17 §2`): un dato de tercero repetido sin ir a la fuente que sí existe.
+2. 🔴 **«Los zapateros que están por todos lados» son 11 empresas matriculadas.** No es que sean
+   pocos: es que **casi ninguno es una empresa**. §2.2 lo descartaba por argumento; ahora está
+   descartado por dato.
+3. 🟢 **Apareció un segmento que no estaba en el radar: el transporte de carga.** 517 matrículas y
+   **287 sociedades — el 56%, más del doble de densidad de empresa formal que cualquier otro
+   segmento mirado**. Con obligación RNDC desde el 1-may-2026 y forma de producto parecida a
+   `domicilios-ops`. Ver §4.2, que sube de «candidato» a **el mejor candidato de la lista**.
+4. 🟡 **La lista de los iguales de Bucaradomi es corta y por eso es buena:** **37 sociedades** de
+   mensajería. Se trabaja entera a mano en un día, sin embudo ni pauta.
+
+> ⚠️ **La trampa que casi se convierte en hallazgo.** El primer corte se hizo por `tamano_empresa` y
+> daba «99,9% MICROEMPRESA» en todos los segmentos, que parecía un veredicto sobre la capacidad de
+> pago. No lo era: **el 98,9% del registro entero declara MICROEMPRESA** (43.411 de 43.905). Era la
+> tasa base, no una señal — la figura confundida con el fondo. El campo que sí discrimina es
+> **`tipo_juridico`**: una persona natural matriculada es el taller o el puesto de alguien; una SAS
+> tiene contador, nómina y facturación electrónica. Por eso la columna que manda en la tabla es la de
+> sociedades. Queda anotado en la cabecera del script para que no se repita.
+
+⚠️ **Lo que estos números NO prueban:** `ACTIVO` es estado de **matrícula**, no de operación, y las
+matrículas sin renovar siguen figurando. Sirven para ordenar de magnitud y para **descartar**, no
+para afirmar que 335 restaurantes están abiertos hoy.
+
+🔐 **Los CSV quedan fuera de git a propósito** (`data/` ya está ignorado): traen NIT y razón social de
+personas naturales, o sea datos personales. Lo versionado es el script; los listados se regeneran.
 
 ---
 
@@ -166,6 +221,13 @@ Tres cosas que los de arriba no tienen y nosotros sí:
    de distribución que no hay que construir: 88 empresas convocadas periódicamente por una entidad
    pública, con presupuesto de fortalecimiento.
 
+### 2.6 · Y el registro corrige el tamaño del premio
+
+De las 821 fábricas del AMB, **198 son sociedades**. Las 623 restantes son personas naturales: el
+taller de alguien. Eso encaja con las 88 del clúster formal y deja el mercado real en el orden de
+**100–200 empresas**, no 821 ni 1.800. Es poco para un producto y **suficiente para trabajarlo a
+mano**, que es justo lo que se puede hacer sin presupuesto de pauta.
+
 **El ancla de precio**, con la lógica de `18 §6` (el reemplazo, no el costo): un auxiliar de
 producción o de costeo cuesta ~$1.900.000/mes. Y la desviación de cuero de una fábrica que corta
 10.000 pares al mes es plata de verdad. Un producto entre **$500.000 y $900.000/mes** cabe en esa
@@ -180,7 +242,7 @@ conversación. En una página publicada, sin embargo, **se habla en horas, no en
 
 | Dato | Valor | Fuente |
 |---|---|---|
-| Restaurantes en el área metropolitana | **~6.500 formales** (Cámara de Comercio), **~8.000** contando informalidad | prensa, ene-2026 |
+| Restaurantes en el área metropolitana | 🔴 la prensa dice ~6.500; **el registro dice 2.924, de los cuales 335 sociedades** — ver §1.1 | prensa ene-2026 / **CCB Datos Abiertos** |
 | Cierres en Bucaramanga en 2025 | **45** | ACODRES |
 | Cierres en Colombia en un año | **~2.000** | ACODRES |
 | Nómina sobre costos operativos | **25%–35%** | ACODRES |
@@ -248,14 +310,15 @@ pitch de canal propio—. Se le vende **el canal propio con la flota resuelta**:
 plataforma, Bucaradomi reparte. Eso convierte el «costo de repartir por cuenta propia» de una
 incógnita en un precio que se puede cotizar.
 
-⚠️ **Dos cosas que verificar antes de moverse con esto**, y ninguna es opcional:
+✅ **La cláusula se verificó contra la propuesta firmada en la suite el 22-ago, y dice lo contrario de
+lo que decía la memoria.** No es que nosotros le llevemos negocios a él: **es él quien nos debe una
+reunión a nosotros**, y por eso paga $370.000 en vez del precio de lista de $600.000–$650.000 + IVA.
+Corte el **20-sep**, cumplido cero. Eso convierte «buscar restaurantes» en **pedirle a Bucaradomi que
+nos presente a uno de los suyos** — que ya lo conoce, ya trabaja con él, y a quien le duele
+exactamente la comisión de la que habla §3.3. Detalle y guion: `clients/bucaradomi/corte-bimestre-2026-09-20.md`.
 
-1. **Hablarlo con Bucaradomi primero.** Es cliente, no proveedor nuestro; llevarle restaurantes es una
-   conversación comercial que él tiene que querer tener. Si además el contrato tiene la cláusula de
-   *un negocio nuevo por bimestre* que aparece en la memoria de la renegociación —**no está en
-   `clients/bucaradomi/contrato-trial-2026-07.md`, hay que confirmarlo contra la propuesta firmada en
-   la suite**—, esto la cumple en vez de pelearla.
-2. **Zonas y capacidad.** Un restaurante en Cabecera y uno en Girón no son el mismo problema de flota.
+⚠️ **Lo que igual hay que resolver:** **zonas y capacidad.** Un restaurante en Cabecera y uno en Girón
+no son el mismo problema de flota, y prometer cobertura que no existe rompe al cliente que sí paga.
 
 ### 3.5 · El tercer ángulo, que es de cumplimiento
 
@@ -309,11 +372,24 @@ e historia clínica), lo que sube el requisito de contrato y de infraestructura 
 que hemos hecho; y hay proveedores establecidos (SaludTools, Medifolios, softwares médicos). No es un
 frente para abrir con el runway corto — es el que se explora **después** del primero que produzca caja.
 
-### 4.2 · Transporte de carga (RNDC)
+### 4.2 · Transporte de carga (RNDC) — 🟢 el mejor candidato de la lista
 
-Encaja con lo que ya construimos —operación, despachos, estados en vivo, seguimiento— y Santander es
-corredor de carga. La obligación de mayo de 2026 es reciente, o sea que **hay empresas que todavía no
-la resolvieron**. Es el más cercano a `domicilios-ops` en forma. Va a la lista, detrás de restaurantes.
+Entró como relleno y salió primero cuando llegó el registro (§1.1). Tiene las cuatro cosas a la vez, y
+es el único:
+
+1. **Densidad de empresa formal, no de puestos:** **287 sociedades** de 517 matrículas — el 56%,
+   contra 24% del calzado y 11% de las comidas. Es el segmento más «empresa» de todos los mirados.
+2. **Fecha y multa:** formatos únicos de manifiesto electrónico y de cumplido obligatorios desde el
+   **1-may-2026**, y el Decreto 1017 de 2025 exige reportar tiempos logísticos con monitoreo de flota.
+   Es reciente: **hay empresas que todavía no lo resolvieron**.
+3. **Forma de producto conocida:** operación, despachos, estados en vivo, seguimiento. Es lo más
+   cercano a `domicilios-ops` que existe — el mismo `L1` con otro nombre.
+4. **Está acá.** Santander es corredor de carga y las 287 están en los cuatro municipios.
+
+⚠️ **Lo que hay que verificar antes de entusiasmarse**, y no está resuelto: **quién integra hoy con el
+RNDC**. Si el gremio o los proveedores establecidos (Ofima y compañía) ya lo cerraron, esto es calzado
+otra vez — funcionalidad tomada. La diferencia con el calzado es que acá la obligación es de **este
+año**, no de hace una década. Es una llamada, no un proyecto.
 
 ### 4.3 · Reforma laboral — no es un producto, es un argumento de venta
 
@@ -365,10 +441,19 @@ factura primero con lo que ya está construido»**.
 ### Ahora (semanas 0–6) · Restaurantes por el canal propio de domicilios
 
 - **Por qué primero:** cero construcción. `domicilios-ops` está en producción y pagado. El pitch se
-  calcula con el extracto de Rappi del propio cliente. 6.500 puertas formales acá mismo.
-- **Los pasos, en orden:** (1) hablar con Bucaradomi sobre la flota y confirmar la cláusula del
-  contrato; (2) **medir el costo de repartir** para poder decir un número honesto; (3) sacar la lista
-  real de Compite 360 / Datos Abiertos filtrando restaurantes del AMB; (4) 20 conversaciones.
+  calcula con el extracto de Rappi del propio cliente. **335 sociedades** de comida preparada en el
+  AMB (§1.1), acá mismo.
+- 🔴 **Y hay una fecha que lo hace urgente, no salió de esta investigación, y va al revés de lo que
+  uno supone.** La propuesta firmada `SAI-DOMIOPS-20260703-001` dice que la tarifa de $370.000 (contra
+  un precio de lista de **$600.000–$650.000 + IVA**) está condicionada a que **el Cliente nos presente
+  a nosotros un negocio nuevo por bimestre** — *«reunión efectiva concretada con un tomador de
+  decisión»*. Corte: **20-sep-2026**. Cumplido hoy: **cero**.
+  **O sea que el primer restaurante no se busca en una lista fría: se le pide a Bucaradomi**, que
+  reparte para ellos, los conoce, y tiene la obligación contractual de presentar uno. Es el prospecto
+  más caliente que existe y ya está pago. Guion completo: `clients/bucaradomi/corte-bimestre-2026-09-20.md`.
+- ~~sacar la lista real~~ ✅ hecha (§1.1). **Los pasos que quedan, en orden:** (1) hablar con
+  Bucaradomi sobre la flota; (2) **medir el costo de repartir** para poder decir un número honesto;
+  (3) enriquecer las 335 con contacto —el registro no trae teléfono ni web—; (4) 20 conversaciones.
 - **Riesgo:** que el ahorro neto contra la flota propia no dé. **Si no da, se sabe en la semana 2 y no
   se gastó nada** — que es justamente por qué va primero.
 
@@ -380,9 +465,15 @@ factura primero con lo que ya está construido»**.
   existen, o el satélite sigue reportando por WhatsApp y a mano?* Si es lo segundo, hay producto. Si es
   lo primero, se cierra el frente sin pena.
 
-### Después (y no antes de que uno de los dos produzca caja) · RNDC o Salud
+### Después, y ya no «según lo que aparezca» · RNDC primero, salud después
 
-Se elige con lo que haya aparecido, no ahora.
+El registro (§1.1) deshizo el empate: **287 sociedades de transporte de carga** contra 335 de comidas
+y 198 de calzado, con una obligación de **este año** y la forma de producto que ya sabemos hacer. Es
+el siguiente, y su primer paso es barato: **una llamada a 3 de esas 287 para saber quién les está
+resolviendo hoy el manifiesto electrónico.** Si nadie, hay frente; si el gremio ya lo cerró, se cierra
+sin gastar nada.
+
+Salud (FEV+RIPS) queda detrás por los frenos de §4.1, no por tamaño.
 
 ### Nunca
 
@@ -413,6 +504,12 @@ producto.
 3. Los pedidos que ya entran por WhatsApp, ¿quién los toma y cómo los despacha?
 4. ¿Tenés domiciliarios propios? ¿Cuánto te cuestan al mes, todo incluido?
 5. ¿Ya estás transmitiendo tiquetes electrónicos a la DIAN?
+
+**Transporte de carga (3 llamadas, no 10 — es para descartar rápido):**
+1. Desde mayo hay que mandar el manifiesto en el formato único del Ministerio. ¿Con qué lo estás
+   haciendo hoy?
+2. ¿Quién te lo vendió, y cuánto pagás al mes?
+3. Si es a mano o en Excel: ¿cuánto tiempo te toma al mes, y qué pasó la última vez que se te pasó uno?
 
 ---
 
@@ -458,6 +555,6 @@ producto.
 - [Precios de software contable en Colombia 2026](https://programascontabilidad.com/comparativas-de-software/precios-de-software-contable-colombia-2026/)
 - [Proveedor Tecnológico DIAN Colombia 2026 — Facele](https://facele.co/proveedor-tecnologico-dian-colombia-2026/) · [Requisitos de software de facturación — Concepto DIAN 13246 de 2025](https://www.gydconsulting.com/requisitos-software-facturacion-electronica-dian/)
 
-**Fuentes primarias que NO se usaron y son el siguiente paso**
-- [Base de datos de empresas — Cámara de Comercio de Bucaramanga (Datos Abiertos)](https://www.datos.gov.co/Estad-sticas-Nacionales/BASE-DE-DATOS-DE-EMPRESAS-CAMARA-DE-COMERCIO-DE-BU/wf53-j577/data)
-- [Informes sectoriales — Cámara de Comercio de Bucaramanga](https://www.camaradirecta.com/actualidad-empresarial/informes_sectoriales)
+**Fuente primaria — la que manda cuando contradice a la prensa (§1.1)**
+- [Base de datos de empresas — Cámara de Comercio de Bucaramanga (Datos Abiertos, `wf53-j577`)](https://www.datos.gov.co/Estad-sticas-Nacionales/BASE-DE-DATOS-DE-EMPRESAS-CAMARA-DE-COMERCIO-DE-BU/wf53-j577/data) — se consulta con `node src/00-ccb.js --todos` en `tools/apps/prospeccion`
+- [Informes sectoriales — Cámara de Comercio de Bucaramanga](https://www.camaradirecta.com/actualidad-empresarial/informes_sectoriales) *(sin usar todavía)*

@@ -1,5 +1,50 @@
 # Changelog · soltyai-marketing
 
+## 2026-08-22 (bis) — el registro mercantil corrige la investigación el mismo día
+
+Se bajó la fuente primaria que el doc 19 había declarado como «no usada»: la base de empresas de la
+**Cámara de Comercio de Bucaramanga** en Datos Abiertos (`wf53-j577`), reproducible con
+`node src/00-ccb.js --todos` en `tools/apps/prospeccion`. Nuevo **§1.1** del doc 19, que **manda sobre
+§2 y §3** donde se contradigan.
+
+Área metropolitana (Bucaramanga + Floridablanca + Girón + Piedecuesta), matrículas activas, 43.905 en
+total:
+
+| Segmento | Matrículas | **Sociedades** |
+|---|---:|---:|
+| Comidas preparadas (sin bares) | 2.924 | **335** (11%) |
+| Fabricación de calzado | 821 | **198** (24%) |
+| **Transporte de carga** | 517 | **287 (56%)** |
+| Mensajería y domicilios | 263 | **37** (14%) |
+| *Reparación de calzado* | **11** | 3 |
+
+### Qué corrigió
+
+- 🔴 **La cifra de prensa de 6.500 restaurantes está inflada al doble**: son **2.924**. Quedaba citada
+  en §3.1 con fuente y sin verificar contra el registro que sí existe — el modo de falla de Promatel.
+- 🔴 **«Los zapateros que están por todos lados» son 11 empresas matriculadas.** Estaba descartado por
+  argumento; ahora lo está por dato.
+- 🟢 **El transporte de carga sube de relleno a mejor candidato**: 56% de sociedades, más del doble de
+  densidad de empresa formal que cualquier otro segmento mirado, y obligación RNDC desde el
+  1-may-2026. Su primer paso son **3 llamadas**, no un proyecto.
+- 🔴 **Y la cláusula de Bucaradomi decía lo contrario de lo que decía la memoria.** Verificada contra
+  la propuesta firmada `SAI-DOMIOPS-20260703-001`: la tarifa de $370.000 (lista: $600.000–$650.000 +
+  IVA) está condicionada a que **el Cliente nos presente a NOSOTROS** una reunión con un tomador de
+  decisión, corte **20-sep-2026**, cumplido **cero**. O sea que el primer restaurante no se busca en
+  una lista fría: se le pide a Bucaradomi. Guion: `clients/bucaradomi/corte-bimestre-2026-09-20.md`.
+
+### La trampa que casi se publica como hallazgo
+
+El primer corte se hizo por `tamano_empresa` y daba «99,9% MICROEMPRESA» en todos los segmentos, que
+parecía un veredicto sobre capacidad de pago. No lo era: **el 98,9% del registro entero declara
+MICROEMPRESA** (43.411 de 43.905). Era la tasa base — el fondo confundido con la figura. El campo que
+discrimina es **`tipo_juridico`**, y por eso la columna que manda es la de sociedades. Queda anotado
+en la cabecera del script.
+
+🔐 Los CSV quedan **fuera de git** (`data/` ya estaba ignorado): traen NIT y razón social de personas
+naturales. Se versiona el script; los listados se regeneran.
+
+
 ## 2026-08-22 — investigación de mercado: zapateros, restaurantes y el filtro de la FECHA
 
 Encargo del fundador: *«qué productos puedo diseñar para los zapateros y los restaurantes de
