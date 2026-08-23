@@ -1,5 +1,75 @@
 # Changelog · soltyai-marketing
 
+## 2026-08-22 — arquitectura de oferta: el único cliente que paga no compró nada de lo que publicamos
+
+Nace de una pregunta del fundador sobre el pricing (*«habíamos dicho que no iba a haber pricing para
+productos porque todo es bajo cotización, ¿piensas que no debe ser así?»*) con encargo explícito de
+investigar en internet qué hacen otros. La pregunta literal tenía respuesta corta; lo que apareció al
+verificarla no.
+
+### La respuesta a la pregunta: esa decisión ya estaba tomada, y está bien
+
+`business/24:131`, **D7** del 3-ago: *«La landing publica los 3 planes… Decisión del usuario. El
+precio deja de ser "por cotización": filtra curiosos y acorta el ciclo.»* Verificado contra el sitio
+vivo: la home y `/precios` publican $290k/$490k/$790k; `/servicios` no publica nada. Ya es híbrido, y
+la evidencia externa lo respalda — «contact for pricing» tiene **~38% más rebote**, y los productized
+services rinden **30–40% mejor margen** que cotizar cada caso.
+
+### 🔴 El hallazgo: lo que se publica arriba de todo no es lo que alguien está pagando
+
+**Bucaradomi paga $370.000/mes IVA incluido.** Eso es `domicilios-ops`: dashboard de operador + PWA de
+domiciliarios + hosting + backups + soporte, con precio verificado por contrato `SAI-DOMIOPS-20260703-001`
+y factura `SOL1`. Y con esta línea textual en el catálogo: **«Sin chat automático y sin IA por
+conversación (está fuera del alcance del plan)»**. Sin setup, además: `setup_fee_cop = 0`.
+
+Junto a eso: los **3 planes de bot publicados tienen cero clientes**, 10 de los 13 productos del
+catálogo están marcados `supuesto`, y en la home «Domicilios y logística» sale como **vertical del
+chatbot** — describiendo un producto que no es el que se vende.
+
+O sea: **el único cliente que paga no compró un chatbot.** Compró software operativo vertical.
+
+**Y la lección de sistema es la de siempre:** la D1 vigila que los precios no diverjan entre planos, y
+funciona. Lo que ninguna regla vigila es la pregunta anterior — *¿lo publicado arriba de todo es lo
+que alguien paga?*. Misma forma que el backup de las nueve noches: preguntar por el proceso, no por el
+resultado.
+
+### Lo que quedó decidido — `18-ARQUITECTURA-DE-OFERTA.md` (nuevo)
+
+Tres líneas con trabajos distintos, y el bot deja de abrir:
+
+| | Qué es | Su trabajo | Precio |
+|---|---|---|---|
+| **L1** | Producto vertical (`domicilios-ops`) | renta recurrente y **réplica** | público, $370k/mes |
+| **L3** | Servicio a la medida | **caja hoy** | «desde $3.000.000» |
+| **L2** | Bot por suscripción | entrada barata | público (ya está) |
+
+La regla que queda: **lleva precio público lo que tiene alcance cerrado, lleva «desde» lo que se
+cotiza, y nada lleva silencio.** Bucaradomi pasa de «el piloto» a **lighthouse customer** del playbook
+de réplica vertical (35–60% más retención que el horizontal; el modelo servicio→producto tarda 1–3
+años en el 43% de los casos).
+
+⚠️ **No se movió ningún precio.** Lo que cambia es qué se publica, en qué orden y con qué historia.
+
+### La tanda 1 de video se reordenó ANTES de grabarse
+
+**7 de los 10 guiones eran de la línea `bot`** y abrían en LinkedIn, donde el canon manda `servicio`
+desde el 17-ago. Nada lo iba a cazar: el guardrail `mensajeLider` **excluye `redes/` a propósito**
+(`src/guardrails/reglas.js`) — tercera repetición del modo de falla de Promatel y del backup, la regla
+existe y el patrón no alcanza la pieza.
+
+Orden nuevo: abre **#1 domicilios (L1, evidencia = el piloto de Bucaradomi)**, siguen los tres de «a la
+medida» (L3) en LinkedIn, y los seis de bot van a IG + TikTok. **Ningún guion se reescribió**; cada
+bloque conserva anotado su número viejo.
+
+### También
+
+- `15-CANALES-Y-SECUENCIA.md` §5 — el orgánico deja de liderar con «servicio» a secas: primero L1,
+  después L3. El razonamiento del 17-ago no se cae, se completa.
+- `16-CONTENIDO-VIDEO.md` — nota del reordenamiento en el encabezado.
+- **GBP destrabado sin gastar un peso:** el teléfono es **campo opcional**; lo que Google pide en 2026
+  para un negocio de área de servicio es **verificación por video**, no una línea. El motivo por el que
+  llevaba dos días vencido («son más gastos operacionales») no existía.
+
 ## 2026-08-21 — la auditoría de reconciliación: nueve hallazgos, y un caso de éxito que era falso
 
 Nace de una sospecha del fundador (*«la página y algunos otros espacios entre la documentación no

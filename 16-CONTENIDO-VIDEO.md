@@ -8,6 +8,13 @@
 > llevar el **servicio a la medida**. El motivo, textual: *«no pongamos reglas que nos impidan
 > obtener beneficios a nivel de empresa, hoy por hoy lo que nos tiene con vida es justamente el
 > desarrollo a la medida»*. El canon ya se movió (`data/canon.json → mensajeLiderPorCanal._cambio`).
+>
+> 🔄 **Actualizado el 2026-08-22 — la tanda 1 se reordenó ANTES de grabarse.** Al auditar la oferta
+> salió que **7 de los 10 guiones eran de la línea `bot`** y abrían en LinkedIn, donde el canon manda
+> `servicio`. Nada lo cazaba: el guardrail `mensajeLider` excluye `redes/` a propósito. El orden nuevo
+> abre con **L1 (producto vertical, domicilios — el único que hoy paga)**, sigue con **L3 (a la
+> medida)** y manda los de bot a IG/TikTok. Ningún guion se reescribió. Arquitectura completa:
+> **`18-ARQUITECTURA-DE-OFERTA.md`**; el orden nuevo, en `redes/guiones-tanda-1.md`.
 > Complementa a `15-CANALES-Y-SECUENCIA.md §5`, no lo reemplaza: la regla de las 8 semanas a mano
 > **sigue en pie**.
 

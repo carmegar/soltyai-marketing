@@ -176,6 +176,28 @@ empresa, hoy por hoy lo que nos tiene con vida es justamente el desarrollo a la 
 llaman a ninguna API y no publican: ordenan la materia prima. La máquina 1-idea→3-canales sigue
 bloqueada en el tablero hasta las 16 publicaciones.
 
+### 🔄 2026-08-22: el orgánico ya no lidera con «servicio» a secas, sino con L1 y después L3
+
+Cinco días después del cambio de arriba, auditando qué se publica de verdad salió el hallazgo que lo
+matiza: **el único cliente que paga —Bucaradomi, $370.000/mes con contrato y factura— no compró un
+chatbot**, compró la plataforma operativa `domicilios-ops`, que excluye el chat y la IA de su alcance.
+Los 3 planes de bot publicados tienen **cero clientes**.
+
+Eso parte el mensaje `servicio` en dos y les da orden:
+
+| | Qué es | En el orgánico |
+|---|---|---|
+| **L1** | Producto vertical (`domicilios-ops`) | **abre** — es lo que compone y lo que se replica |
+| **L3** | Servicio a la medida | **sigue** — es lo que paga hoy |
+| **L2** | Bot por suscripción | **no abre** — se queda en IG/TikTok y en los carriles de `mensajeLiderPorCanal` |
+
+El razonamiento del 17-ago **no se cae, se completa**: se dijo que el orgánico no podía liderar con el
+producto que Meta regala, y la conclusión coherente es que lidere con lo que **ya se está pagando**,
+no sólo con lo que se factura por proyecto. Lo primero que cambió en consecuencia fue la tanda 1 de
+video, que salía con 7 de 10 guiones de la línea `bot` (`redes/guiones-tanda-1.md`).
+
+Doc canónico: **`18-ARQUITECTURA-DE-OFERTA.md`**.
+
 ---
 
 ## 6. Carril 3 — Google Search para la línea de servicio {#google-search}
