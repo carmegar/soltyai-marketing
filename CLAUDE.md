@@ -59,6 +59,15 @@ Motor de marketing de SoltyAI: la estrategia escrita (`01`–`14`) y los program
 - **El orden de los canales lo manda `15-CANALES-Y-SECUENCIA.md`:** Google Business Profile →
   orgánico a mano → Google Search → **Meta, relegado**. Ya no hay «3 rondas de Meta» ni
   «Google Search = fase 2».
+- **El orden de las LÍNEAS lo manda `18-ARQUITECTURA-DE-OFERTA.md`** (22-ago): **L1** producto
+  vertical (`domicilios-ops` — el único que hoy paga: $370.000/mes con contrato y factura) → **L3**
+  servicio a la medida → **L2** bot, que sigue publicado pero **deja de abrir**. La regla que sale de
+  ahí: **lleva precio público lo que tiene alcance cerrado, lleva «desde» lo que se cotiza, y nada
+  lleva silencio** — el muro de «contáctanos» tiene ~38% más rebote. No cambia ningún precio: cambia
+  qué se publica y en qué orden.
+  ⚠️ Y el aviso que dejó: **`mensajeLider` excluye `redes/`** (ver arriba), y por ahí salió la tanda 1
+  de video con **7 de 10 guiones de la línea `bot`** apuntando a LinkedIn. Se reordenó a mano el
+  22-ago; a mano no escala. Pendiente `cmt53crvn002k01lkd6th204l`.
 - **Toda entrada del swipe file lleva su captura** en `swipe/`.
 
 ## Las skills del plugin `marketing` (Anthropic) — cómo se usan acá

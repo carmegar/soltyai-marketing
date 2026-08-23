@@ -44,7 +44,7 @@
 ## 1 ★ ¿Cuántas veces te ha tocado repetirle la dirección al domiciliario?
 
 `direccion-dictada-al-domiciliario` · Restaurante y domicilios · N1 Ordenar · bot
-**Red:** LinkedIn · *(era el #4 del orden viejo)*
+**Red:** LinkedIn · *(orden viejo: número 4)*
 **Evidencia:** el piloto de Bucaradomi despacha así.
 
 > ¿Cuántas veces te ha tocado repetirle la dirección al domiciliario?
@@ -66,12 +66,10 @@ la comida fría.
 
 ---
 
----
-
 ## 2 ★ ¿Todavía tienes a alguien digitando facturas?
 
 `digitar-la-factura-del-proveedor` · Contable y administrativo · N2 Automatizar · a la medida
-**Red:** LinkedIn · *(era el #5 del orden viejo)*
+**Red:** LinkedIn · *(orden viejo: número 5)*
 **Evidencia:** es el motor contable, y podemos mostrarlo corriendo.
 
 > ¿Todavía tienes a alguien digitando facturas?
@@ -93,12 +91,10 @@ Digitarla es volver a escribir algo que ya está escrito.
 
 ---
 
----
-
 ## 3 ★ ¿Todavía haces los recibos con talonario?
 
 `recibo-y-cobro-a-mano-al-cierre` · Salud y consultorios · N1 Ordenar · a la medida
-**Red:** LinkedIn · *(era el #10 del orden viejo)*
+**Red:** LinkedIn · *(orden viejo: número 10)*
 **Evidencia:** es lo que hace nuestro propio back-office, y por eso podemos mostrarlo funcionando.
 
 > ¿Todavía haces los recibos con talonario?
@@ -120,12 +116,10 @@ reconstruir el año.
 
 ---
 
----
-
 ## 4 ★ Cada cotización que mandas, ¿la armas copiando la del mes pasado?
 
 `cotizar-desde-cero-cada-vez` · Profesional independiente y agencia pequeña · N2 Automatizar · a la medida
-**Red:** LinkedIn · *(era el #6 del orden viejo)*
+**Red:** LinkedIn · *(orden viejo: número 6)*
 **Evidencia:** nuestro back-office hace exactamente esto, y lo usamos todos los días.
 
 > Cada cotización que mandas, ¿la armas copiando la del mes pasado?
@@ -147,12 +141,10 @@ Así es como uno cotiza barato sin darse cuenta.
 
 ---
 
----
-
 ## 5 ★ ¿Todavía copias a un cuaderno los pedidos que te llegan por WhatsApp?
 
 `pedidos-de-whatsapp-al-cuaderno` · Comercio y distribución · N1 Ordenar · bot
-**Red:** LinkedIn + IG · *(era el #3 del orden viejo)*
+**Red:** LinkedIn + IG · *(orden viejo: número 3)*
 **Evidencia:** es exactamente lo que hace el piloto de Bucaradomi desde el año pasado.
 
 > ¿Todavía copias a un cuaderno los pedidos que te llegan por WhatsApp?
@@ -174,12 +166,10 @@ enteras cuando el cliente reclama.
 
 ---
 
----
-
 ## 6 ★ ¿Tu recepcionista agenda o alcanza a hacer algo más?
 
 `agendar-citas-contestando-el-telefono` · Salud y consultorios · N2 Automatizar · bot
-**Red:** IG + TikTok · *(era el #1 del orden viejo)*
+**Red:** IG + TikTok · *(orden viejo: número 1)*
 **Evidencia:** el vertical de citas está construido.
 
 > ¿Tu recepcionista agenda, o alcanza a hacer algo más?
@@ -202,12 +192,10 @@ el que llamó a las siete de la noche igual no agendó.
 
 ---
 
----
-
 ## 7 ★ ¿Cuántas veces mandaste hoy las mismas fotos del mismo apartamento?
 
 `misma-ficha-del-inmueble-veinte-veces` · Inmobiliaria y arriendos · N2 Automatizar · bot
-**Red:** IG + TikTok · *(era el #2 del orden viejo)*
+**Red:** IG + TikTok · *(orden viejo: número 2)*
 **Evidencia:** el vertical inmobiliario está construido y probado punta a punta.
 
 > ¿Cuántas veces mandaste hoy las mismas fotos del mismo apartamento?
@@ -229,12 +217,10 @@ ya vio otros cuatro antes de que le contestaras.
 
 ---
 
----
-
 ## 8 ¿Te ha pasado que dos clientas quedaron a la misma hora?
 
 `agendar-por-dos-canales-al-tiempo` · Belleza y bienestar · N2 Automatizar · bot
-**Red:** IG + TikTok · *(era el #9 del orden viejo)*
+**Red:** IG + TikTok · *(orden viejo: número 9)*
 **Sin evidencia propia:** se cuenta el dolor. Nada de casos.
 
 > ¿Te ha pasado que dos clientas quedaron a la misma hora?
@@ -256,12 +242,10 @@ Simplemente no vuelve.
 
 ---
 
----
-
 ## 9 ¿Cuántas fotos de motores tienes hoy en el chat sin contestar?
 
 `cotizar-la-reparacion-por-chat-con-fotos` · Taller y servicio técnico · N2 Automatizar · bot
-**Red:** IG + TikTok · *(era el #8 del orden viejo)*
+**Red:** IG + TikTok · *(orden viejo: número 8)*
 **Sin evidencia propia:** se cuenta el dolor. Nada de casos.
 
 > ¿Cuántas fotos de motores tienes hoy en el chat sin contestar?
@@ -283,12 +267,10 @@ Y tú ni sabes que existió.
 
 ---
 
----
-
 ## 10 En temporada de matrículas, ¿cuántas veces al día explicas lo mismo?
 
 `las-mismas-diez-preguntas-de-matricula` · Educación y academias · N2 Automatizar · bot
-**Red:** IG + TikTok · *(era el #7 del orden viejo)*
+**Red:** IG + TikTok · *(orden viejo: número 7)*
 **Sin evidencia propia:** se cuenta el dolor. Nada de casos.
 
 > En temporada de matrículas, ¿cuántas veces al día explicas lo mismo?
@@ -307,8 +289,6 @@ Y tú ni sabes que existió.
 
 **Primera línea del post:** En temporada de matrículas atiendes peor justo cuando se define el año.
 No es descuido: es volumen.
-
----
 
 ---
 
