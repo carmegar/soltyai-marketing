@@ -1,5 +1,48 @@
 # Changelog · soltyai-marketing
 
+## 2026-09-04 — gitleaks por PR: el CI deja de enterarse el lunes
+
+**Qué.** Un job `secretos` en `.github/workflows/guardrails.yml`, más `.gitleaksignore`.
+El job es **copia byte a byte** de `security/gates/workflows/secretos.yml` (se concatenó
+desde el archivo, no se transcribió), y el `.gitleaksignore` salió de la **misma función**
+que usa el generador (`gitleaksignoreDe`), no de copiar y pegar: este repo tiene **0
+permitidos**, así que es puro encabezado, y su valor es decir dónde vive la allowlist de
+verdad.
+
+**Por qué.** `marketing` no despliega nada y no tiene dependencias, así que no le toca gate
+de advisories: no hay árbol que auditar. Pero «no despliega» no es «no filtra». Acá viven
+los datos del motor y el `.env.example` con los nombres de las claves de anuncios y de
+Resend — o sea, justo el sitio donde alguien pega una clave «para no perderla». Hasta hoy
+eso lo miraba **sólo** el barrido semanal, sobre la historia completa: se enteraba el
+lunes, no el día. Este job es la otra mitad.
+
+**Lo que NO hizo falta hacer, y conviene dejarlo escrito para que nadie lo agregue dos
+veces:** el chequeo `sin-dependencias` **ya corría** en este CI desde que se escribió, y
+corre **primero** dentro del job `verificar` (`node src/sin-dependencias.js`, línea 25).
+Se verificó antes de tocar nada. No se duplicó como job aparte: un mismo chequeo en dos
+sitios es un sitio donde se olvida de actualizar.
+
+**Qué se verificó.**
+
+- Los cinco comandos que el CI ejecuta, corridos en local uno por uno: cero dependencias,
+  el linter que muerde, los guardrails de mensaje, catálogo y márgenes, y la consistencia
+  de los reportes. **Los cinco en verde**, y ninguno se tocó.
+- YAML parseado con `js-yaml`: 2 jobs (`verificar` con sus **7 pasos intactos** y
+  `secretos`), y **cero** `continue-on-error` y **cero** `|| true` en todo el archivo.
+- Que el archivo **termina exactamente con la canónica** (`endsWith === true`): el job es
+  idéntico, la única cosa propia es un comentario **encima** del bloque.
+
+**Qué NO se verificó.**
+
+- **Nada corrió en Actions**, y no se puede disparar desde la sesión. Lo que sólo contesta
+  la primera corrida: que el runner levante Docker y baje la imagen fijada por digest — en
+  esta máquina **no hay Docker**, así que gitleaks no se ejecutó ni una vez acá.
+- **No se tocó `data/canon.json`** (fuente única D1, la toca una sesión a la vez) ni ningún
+  guardrail. Este PR no cambia una sola regla de mensaje.
+- Este repo **no está** en `REPOS_CON_GATE_POR_PR` (`security/scripts/lib/secretos.mjs`),
+  así que el barrido semanal todavía **no verifica** ni que el job exista ni que este
+  `.gitleaksignore` siga siendo el generado. Hay que agregarlo allá.
+
 ## 2026-08-22 (bis) — el registro mercantil corrige la investigación el mismo día
 
 Se bajó la fuente primaria que el doc 19 había declarado como «no usada»: la base de empresas de la

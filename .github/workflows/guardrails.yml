@@ -39,3 +39,95 @@ jobs:
       # ahora, antes de que haya datos, que es cuando arreglarlo es gratis.
       - name: Consistencia de los reportes
         run: node src/reportes/index.js validar
+
+# ── Por qué este repo también lleva el gate de secretos ───────────────────────
+# `marketing` no despliega nada, así que no tiene gate de advisories (no hay árbol
+# que auditar: cero dependencias declaradas, y el paso de arriba lo vigila). Pero
+# «no despliega» no quiere decir «no filtra»: acá viven los datos del motor de
+# marketing y el `.env.example` con los nombres de las claves de anuncios y de
+# Resend — o sea, justo el sitio donde alguien pega una clave «para no perderla».
+# Hasta hoy eso sólo lo miraba el barrido semanal sobre la historia completa: se
+# enteraba el lunes, no el día. Este job es la otra mitad.
+#
+# Lo de abajo es COPIA de security/gates/workflows/secretos.yml y se pega tal cual:
+# se concatenó desde el archivo, no se transcribió. Si hay que cambiar algo, se
+# cambia ALLÁ y se vuelve a copiar acá.
+# ── Gate de secretos POR PR ───────────────────────────────────────────────────
+# Copiar este job dentro de `jobs:` del ci.yml de un repo que despliegue. Es el
+# mismo job en platform, suite y bucaradomis; la copia canónica vive en
+# security/gates/workflows/secretos.yml y la capa gates del barrido semanal
+# verifica que cada repo lo tenga (presente, fijado por digest, sobre un rango,
+# bloqueante) — no que sea idéntico letra por letra.
+#
+# Qué hace: Gitleaks sobre lo que ESTE PR agrega a la historia (el rango
+# base..head), con el MISMO escáner fijado por digest que corre el barrido
+# semanal de `security`, y la MISMA allowlist: el `.gitleaksignore` de este repo
+# se GENERA desde security/data/secretos-permitidos.json (por fingerprint
+# commit:archivo:regla:línea, nunca por ruta) con
+#   node security/scripts/generar-gitleaksignore.mjs --repo <este>
+# y el barrido verifica cada lunes que la copia en `main` siga siendo la
+# generada. Un falso positivo nuevo se permite ALLÁ, con motivo y fecha, y se
+# regenera acá; este archivo no se edita a mano.
+#
+# El semanal mide la historia completa y se entera el lunes; este job se entera
+# en el PR, antes de que la clave llegue a `main`. Son las dos mitades.
+#
+# 🔴 Lo que NO se afloja: `--exit-code 1` (un hallazgo tumba el check) y el digest
+# de la imagen (el instrumento que caza etiquetas flotantes no corre en una). Si
+# el job nace rojo por un falso positivo, se permite en la allowlist canónica —
+# no se baja el umbral ni se apaga el job.
+  secretos:
+    name: secretos — gitleaks sobre lo que este PR agrega
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0 # el rango base..head necesita la historia, no un commit
+
+      # El rango viaja por `env:`, nunca interpolado dentro del script: son SHAs del
+      # evento, pero la regla de la casa no distingue. En un PR es base..head; en un
+      # push a main, lo que ese push trajo; si `before` viene en ceros (rama nueva,
+      # force-push), el último commit solo.
+      - name: Rango a escanear
+        env:
+          EVENTO: ${{ github.event_name }}
+          BASE: ${{ github.event.pull_request.base.sha }}
+          HEAD: ${{ github.event.pull_request.head.sha }}
+          ANTES: ${{ github.event.before }}
+          SHA: ${{ github.sha }}
+        run: |
+          case "$EVENTO:$ANTES" in
+            pull_request:*)                             rango="$BASE..$HEAD" ;;
+            *:|*:0000000000000000000000000000000000000000) rango="$SHA^..$SHA" ;;
+            *)                                          rango="$ANTES..$SHA" ;;
+          esac
+          n=$(git rev-list --count "$rango")
+          echo "RANGO=$rango" >> "$GITHUB_ENV"
+          echo "rango: $rango ($n commit(s))"
+
+      # `--redact`: los hallazgos salen con archivo:línea:regla y el valor tapado, así
+      # que el log del CI no republica lo que vino a cazar. `safe.directory=*` por
+      # entorno porque el clon pertenece a otro uid que el del contenedor y git se
+      # negaría a leerlo — y gitleaks reportaría «0 hallazgos» sobre un repo que no
+      # pudo abrir. Por eso el reporte va a un archivo y se comprueba que EXISTA: un
+      # verde sin reporte no es «limpio», es «no corrió».
+      - name: gitleaks (fijado por digest; allowlist en .gitleaksignore)
+        run: |
+          mkdir -p "$RUNNER_TEMP/gitleaks"
+          codigo=0
+          docker run --rm \
+            -v "$PWD:/repo:ro" \
+            -v "$RUNNER_TEMP/gitleaks:/out" \
+            -e GIT_CONFIG_COUNT=1 -e GIT_CONFIG_KEY_0=safe.directory -e GIT_CONFIG_VALUE_0=* \
+            ghcr.io/gitleaks/gitleaks:v8.30.1@sha256:c00b6bd0aeb3071cbcb79009cb16a60dd9e0a7c60e2be9ab65d25e6bc8abbb7f \
+            git --no-banner --redact --exit-code 1 -f json -r /out/reporte.json \
+            --log-opts="$RANGO" /repo || codigo=$?
+          if [ ! -f "$RUNNER_TEMP/gitleaks/reporte.json" ]; then
+            echo "::error::gitleaks no dejó reporte: NO midió el rango $RANGO. Eso no es «sin secretos», es «no se sabe»."
+            exit 1
+          fi
+          if [ "$codigo" -ne 0 ]; then
+            echo "::error::gitleaks encontró secretos en lo que este PR agrega (código $codigo). Si es un falso positivo: se permite por fingerprint en security/data/secretos-permitidos.json y se regenera .gitleaksignore. Si es real: se rota, y el commit se reescribe ANTES de mergear."
+            exit "$codigo"
+          fi
+          echo "✅ sin secretos nuevos en $RANGO"
