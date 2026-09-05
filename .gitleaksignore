@@ -1,0 +1,7 @@
+# GENERADO por security/scripts/generar-gitleaksignore.mjs — NO editar a mano.
+# Fuente: security/data/secretos-permitidos.json — allowlist por FINGERPRINT
+# (commit:archivo:regla:línea), nunca por ruta ni por regla. Un falso positivo
+# nuevo se permite ALLÁ, con motivo y fecha, y se regenera esto:
+#   node security/scripts/generar-gitleaksignore.mjs --repo marketing
+# Repo: marketing · 0 permitido(s).
+
