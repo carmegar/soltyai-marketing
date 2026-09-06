@@ -1,5 +1,40 @@
 # Changelog · soltyai-marketing
 
+## 2026-09-05 — El Google Business Profile queda escrito entero: sólo falta crearlo y grabar el video
+
+**Qué.** `redes/google-business-profile.md`, nuevo. Todo el contenido del perfil listo para pegar:
+nombre, categoría principal y tres secundarias, descripción de 745 caracteres (tope 750), siete
+servicios con su precio, atributos, las cuatro zonas del área metropolitana, horario, sitio web,
+tres preguntas frecuentes respondidas y los tres primeros posts (947, 1.001 y 1.061 caracteres,
+tope 1.500). Más el guion de la verificación por video y la lista de lo que sólo el fundador puede
+decidir. Cierra la parte escribible del pendiente `cmsrxibzm009k01s5nsa6uvsq`, vencido desde el
+20-ago; crear el perfil y verificarlo sigue siendo de él.
+
+**El canal lidera con el servicio.** El bloque publicable va dentro de `<!-- canal: gbp -->`, que el
+canon asigna a `servicio` desde el 17-ago, así que la pieza no nombra los tres planes de chat: no se
+esconden, es que su canal es otro. La explicación de por qué van afuera queda **antes** del
+marcador, que es donde `mensajeLider` no juzga, igual que se resolvió la bio de LinkedIn.
+
+**Dos cosas que salieron al escribirlo, y las dos son hallazgos, no gustos.** (1) El doc 15 proponía
+«Agencia de marketing en internet» como categoría secundaria; se descarta, porque ocho días después
+`servicioFantasma` retiró la línea de marketing de la landing por no estar en el catálogo. Una
+categoría de Google es una promesa de servicio con el mismo peso que una línea de la landing.
+(2) `soltyai.com/producto/domicilios-ops` **responde 404 hoy**: la página existe en el repo y no
+está desplegada (punto 3 del §9 del doc 18). Mientras siga así, el post 1 va sin enlace.
+
+**Atribución.** Cuatro `origin` nuevos en `data/links.json` con `npm run link nuevo`, fuente `gbp`,
+medium `organic_local`, campaña `local_2026q3`: `gbp_local_sitio`, `gbp_domicilios_post1`,
+`gbp_pyme_post2` y `gbp_pyme_post3`. Son los primeros del carril de Google.
+
+**Lo que no cambió.** Ningún precio: los siete salen de `data/catalogo.json` y del piso de
+`canon.lineaServicios`, y el archivo no define ninguno. Ni una métrica de rendimiento del piloto.
+`npm run check`: **0 errores y 11 avisos**, los mismos 11 de antes (ninguno de este archivo).
+
+**Lo que sólo él puede decidir**, en el §12 del archivo: el teléfono (no hay número propio de la
+empresa en ningún documento del repo, y el único escrito es el celular personal, así que la
+recomendación es dejar el campo vacío), si el perfil muestra dirección (no), el nombre exacto, la
+categoría que ofrezca el selector y con qué cuenta de Google se crea.
+
 ## 2026-09-05 — El LinkedIn deja de abrir con el chat: la página de empresa lidera con el servicio
 
 **Qué.** `redes/soltyai-linkedin-descripcion.txt` reescrito entero. Abría con «bots de WhatsApp y
