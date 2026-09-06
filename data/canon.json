@@ -142,6 +142,53 @@
     "_correccionMismoDia": "2026-08-13, más tarde: este motivo citaba también «Chalá $800k». Se retiró por dos razones, y la segunda importa más que la primera. (1) El dueño dio el proyecto por terminado, así que Chalá no factura nada. (2) Al archivarlo se vio que ese $800.000 era una propuesta en DRAFT que NUNCA se envió (SAI-PEDIDOS-20260708-001, hoy REJECTED): se estaba citando un borrador propio como evidencia de mercado. La regla que queda para este campo y para las «referencias reales» de 01-SOURCE-BRIEF: una cifra sólo cuenta si se envió y se aceptó. La decisión de abrir el carril de Google NO se revierte, pero descansa sobre un caso y no sobre dos."
   },
 
+  "lineasDeOferta": {
+    "_doc": "La arquitectura de oferta en formato máquina: QUÉ vendemos, en qué ORDEN se abre, y de qué MANERA lleva precio cada cosa. Es la capa de arriba de `planes` (que es L2) y de `lineaServicios` (que es L3). Hasta hoy vivía sólo en markdown, o sea que era memoria.",
+    "_fuente": "18-ARQUITECTURA-DE-OFERTA.md §4 (la tabla de las tres líneas, la regla de publicación y el orden), decidido el 2026-08-22. La fila que pedía esto es la del §7: «`data/canon.json` | Jerarquía de líneas (L1/L2/L3) y la regla de publicación | ninguno (dato)».",
+    "_cambio": "2026-09-05: baja al canon. El hallazgo que lo obliga: **el único cliente que paga no compró un chatbot.** Bucaradomi paga `domicilios-ops` —software operativo vertical por suscripción, con el chat y la IA explícitamente FUERA del alcance— con contrato firmado y factura electrónica, mientras los 3 planes de bot que sí publicamos tienen cero clientes y la home presentaba «domicilios» como vertical del chatbot. La D1 vigila que los precios no diverjan entre planos y funciona; lo que ninguna regla vigilaba es la pregunta anterior: ¿lo que publicamos arriba de todo es lo que alguien está pagando? Este bloque es esa pregunta convertida en dato.",
+    "_noMueveNingunPrecio": "Ni un importe se escribe acá. Cada línea apunta a DÓNDE vive su precio (`precio.fuente` + `precio.ruta`) en vez de copiarlo, porque una tercera copia del mismo número es una tercera fecha de vencimiento — es el hallazgo H7 de la reconciliación, el snapshot que derivó 8 días por ser copia manual. La regla `lineasDeOferta` de src/guardrails/reglas.js resuelve esas rutas en cada build: un puntero que no resuelve parece una referencia y no lo es, que es peor que un número copiado.",
+    "ordenDeApertura": ["L1", "L3", "L2"],
+    "_ordenDeApertura": "L1 producto vertical (lo que compone) → L3 servicio a la medida (lo que paga hoy) → L2 bot (la entrada barata). Antes la home abría con L2, que es justo lo que Meta regala gratis dentro de WhatsApp y lo que no ha vendido nunca. ⚠️ L2 NO se mata ni se esconde: sigue publicado, sigue siendo la entrada más barata y sigue siendo el mensaje líder en Meta, outbound y la landing según `mensajeLiderPorCanal`. Lo único que cambia es que deja de ser lo primero que ve alguien que llega frío.",
+    "reglaDePublicacion": {
+      "regla": "Lleva precio público lo que tiene alcance cerrado. Lleva «desde» lo que se cotiza. Nada lleva silencio.",
+      "_porque": "Las páginas de «contact for pricing» tienen ~38% más rebote que las que muestran precio (18 §3.1). Y un «desde» no es una cotización cerrada: no compromete alcance, ancla el orden de magnitud, filtra al que no tiene presupuesto y evita el muro en blanco. Es la forma híbrida que la evidencia recomienda para el escalón alto, no un punto medio de cobardía.",
+      "formas": {
+        "publico": "alcance cerrado y escrito: el número se publica tal cual",
+        "desde": "se cotiza por alcance: se publica el piso, anclado con «desde»",
+        "silencio": "PROHIBIDO. Ninguna línea publicada se queda sin señal de precio."
+      }
+    },
+    "lineas": {
+      "L1": {
+        "nombre": "Producto vertical",
+        "que": "domicilios-ops, y los que salgan igual del playbook de réplica",
+        "trabajo": "Renta recurrente y réplica. Es la línea que compone.",
+        "comoSeVende": "demo del sistema vivo + réplica al vertical",
+        "precio": { "forma": "publico", "fuente": "catalogo", "ruta": "servicios[domicilios-ops].precioConIva", "nota": "mensual, IVA incluido" },
+        "evidencia": "Contrato SAI-DOMIOPS-20260703-001 (Bucaradomi) y factura electrónica SOL1 del 26-jul-2026. Es la única línea con un cliente pagando.",
+        "_ojo": "Bucaradomi deja de ser «el piloto» y pasa a ser el lighthouse customer de esta línea. Lo que NO se publica de él: métricas de rendimiento, porque no se han medido (ver prohibiciones.metricaSinFuente). Lo publicable son hechos con testigo."
+      },
+      "L2": {
+        "nombre": "Bot por suscripción",
+        "que": "Los 3 planes de `planes`: Esencial, Pro, Premium",
+        "trabajo": "Volumen y entrada barata. Sigue publicado, pero deja de abrir.",
+        "comoSeVende": "autoservicio desde la landing",
+        "precio": { "forma": "publico", "fuente": "canon", "ruta": "planes[].precioMes", "nota": "mensual, antes de IVA; más `setup.precio` una vez" },
+        "evidencia": "Ninguna todavía: cero clientes pagando. Es el dato que reordenó todo lo demás."
+      },
+      "L3": {
+        "nombre": "Servicio a la medida",
+        "que": "Desarrollo, integraciones y las líneas de web del catálogo",
+        "trabajo": "Caja hoy, y materia prima de L1: todo proyecto deja pieza reutilizable.",
+        "comoSeVende": "escalera de valor de tres escalones (ver `lineaServicios.escaleraDeValor`)",
+        "precio": { "forma": "desde", "fuente": "canon", "ruta": "lineaServicios.pisoPrecio", "nota": "es el PISO de `desarrollo-a-medida`, se publica como «desde». NO aplica a las líneas de web, que tienen alcance cerrado y precio propio: ver lineaServicios._alcanceDelPiso" },
+        "evidencia": "Swisscontact (módulo Zaranda, $2.300.000 entregado). Es la línea que hoy sostiene el runway."
+      }
+    },
+    "_loQueNoCambia": "Sumar L1 no autoriza el «también hacemos» que convierte la marca en la agencia genérica de la esquina: sigue habiendo UN mensaje líder por canal (`mensajeLiderPorCanal`) y uno solo dentro de cada pieza. Ningún precio se mueve fuera de la D1. Nada se cotiza si no está en catalogo.json.",
+    "_pendienteDeEsteCambio": "La landing consume `platform/apps/landing/src/data/canon.snapshot.json`, que es COPIA MANUAL de este archivo: queda desactualizada desde este commit hasta que alguien la refresque. Es el hallazgo H7 otra vez, y es la razón por la que el snapshot debería dejar de ser copia."
+  },
+
   "mensajeLiderPorCanal": {
     "_fuente": "15-CANALES-Y-SECUENCIA.md §Por qué cambió el orden y §11. ✅ Desde el 2026-08-20 SÍ lo hace cumplir un guardrail: la regla `mensajeLider` de src/guardrails/reglas.js. Antes era dato que se leía a mano, y el CLAUDE.md del repo llegó a decir que el CI lo aplicaba cuando no.",
     "bot": ["meta", "outbound", "landing"],

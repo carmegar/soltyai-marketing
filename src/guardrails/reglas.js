@@ -1,5 +1,5 @@
 import { existe, leer, leerJson, lineaDe, listar } from '../lib/io.js';
-import { canon, preciosVigentes } from '../lib/canon.js';
+import { canon, catalogo, preciosVigentes } from '../lib/canon.js';
 import { cop, largo, montosCop, normalizar, plazosEnDias } from '../lib/texto.js';
 
 /*
@@ -467,6 +467,86 @@ export function mensajeLider(piezas = PIEZAS()) {
   return hallazgos;
 }
 
+// ─────────────────────────────────────────────────────────────────────────────
+// 8 · Arquitectura de oferta: los punteros de precio tienen que resolver
+// ─────────────────────────────────────────────────────────────────────────────
+
+/**
+ * `canon.lineasDeOferta` (2026-09-05) baja la jerarquía L1/L2/L3 del doc 18 al canon. A propósito
+ * **no copia ningún importe**: cada línea dice DÓNDE vive su precio (`precio.fuente` + `precio.ruta`)
+ * en vez de repetirlo, porque una tercera copia del mismo número es una tercera fecha de
+ * vencimiento — es el hallazgo H7 de la reconciliación, el snapshot que derivó 8 días por ser copia.
+ *
+ * Pero un puntero tiene un modo de falla propio y peor: **parece una referencia y no lo es.** Si
+ * alguien renombra `precioConIva`, el número copiado al menos seguiría siendo un número viejo
+ * visible; el puntero roto no se ve desde afuera. Por eso esta regla resuelve las rutas en cada
+ * build. Es la diferencia entre que el bloque sea dato y que sea prosa dentro de un JSON.
+ *
+ * Rutas que entiende, y sólo estas tres formas (nada de un mini-lenguaje: lo que no se pueda
+ * expresar así conviene que no exista):
+ *   servicios[id].campo   → busca por id en catalogo.servicios
+ *   coleccion[].campo     → exige que TODOS los elementos tengan el campo numérico
+ *   a.b.c                 → camino de propiedades
+ */
+export function lineasDeOferta() {
+  const hallazgos = [];
+  const cfg = canon.lineasDeOferta;
+  if (!cfg) return hallazgos;
+  const fallo = (mensaje) =>
+    hallazgos.push({ nivel: 'error', regla: 'oferta:puntero-roto', archivo: 'data/canon.json', linea: 0, mensaje });
+
+  const raices = { canon, catalogo };
+  const numero = (v) => typeof v === 'number' && Number.isFinite(v) && v > 0;
+
+  const resolver = (fuente, ruta) => {
+    const raiz = raices[fuente];
+    if (!raiz) return `fuente "${fuente}" desconocida (usá "canon" o "catalogo")`;
+    const porId = ruta.match(/^([A-Za-z]+)\[([^\]]*)\]\.(.+)$/);
+    if (porId) {
+      const [, coleccion, id, campo] = porId;
+      const lista = raiz[coleccion];
+      if (!Array.isArray(lista)) return `"${coleccion}" no es una lista en ${fuente}.json`;
+      if (id === '') {
+        const malos = lista.filter((x) => !numero(x?.[campo]));
+        return malos.length ? `${malos.length} de ${lista.length} elementos de "${coleccion}" no tienen "${campo}" numérico` : null;
+      }
+      const item = lista.find((x) => x?.id === id);
+      if (!item) return `no existe "${id}" en ${fuente}.json → ${coleccion}`;
+      return numero(item[campo]) ? null : `"${id}" no tiene un "${campo}" numérico`;
+    }
+    let valor = raiz;
+    for (const paso of ruta.split('.')) {
+      if (valor == null || typeof valor !== 'object') return `el camino "${ruta}" se corta en "${paso}"`;
+      valor = valor[paso];
+    }
+    return numero(valor) ? null : `"${ruta}" no resuelve a un número positivo`;
+  };
+
+  const formas = Object.keys(cfg.reglaDePublicacion?.formas ?? {});
+  const definidas = Object.keys(cfg.lineas ?? {});
+
+  for (const [id, linea] of Object.entries(cfg.lineas ?? {})) {
+    const p = linea.precio ?? {};
+    if (!formas.includes(p.forma)) {
+      fallo(`${id}: forma de precio "${p.forma}" no está en reglaDePublicacion.formas (${formas.join(' · ')})`);
+    }
+    if (p.forma === 'silencio') {
+      fallo(`${id}: ninguna línea publicada lleva silencio. Es la mitad de la regla que el muro de «contáctanos» ya nos cobró en rebote.`);
+    }
+    const error = resolver(p.fuente, String(p.ruta ?? ''));
+    if (error) fallo(`${id}: el puntero de precio no resuelve → ${error}. Un puntero roto parece una referencia y no lo es.`);
+  }
+
+  // El orden de apertura nombra líneas que existen, y a todas: media jerarquía es peor que ninguna.
+  const orden = cfg.ordenDeApertura ?? [];
+  const faltan = definidas.filter((id) => !orden.includes(id));
+  const sobran = orden.filter((id) => !definidas.includes(id));
+  if (faltan.length) fallo(`ordenDeApertura no nombra ${faltan.join(', ')}: media jerarquía no ordena nada`);
+  if (sobran.length) fallo(`ordenDeApertura nombra ${sobran.join(', ')}, que no está definida en lineas`);
+
+  return hallazgos;
+}
+
 export const TODAS = [
   enlacesRotos,
   preciosDePlan,
@@ -475,4 +555,5 @@ export const TODAS = [
   swipeConEvidencia,
   registroDeLinks,
   mensajeLider,
+  lineasDeOferta,
 ];

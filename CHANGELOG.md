@@ -1,5 +1,42 @@
 # Changelog · soltyai-marketing
 
+## 2026-09-05 — la arquitectura de oferta deja de ser memoria: `lineasDeOferta` en el canon
+
+**Qué.** Bloque nuevo `canon.lineasDeOferta`: `ordenDeApertura` `["L1","L3","L2"]`,
+`reglaDePublicacion` con sus tres formas (`publico` · `desde` · `silencio: PROHIBIDO`) y una
+entrada por línea con su trabajo, cómo se vende y su evidencia. Más la regla
+`lineasDeOferta` en el linter. `actualizado` del canon a **2026-09-05**.
+
+**Por qué.** La decisión es del 22-ago (`18-ARQUITECTURA-DE-OFERTA.md §4`) y hasta hoy vivía
+sólo en markdown, o sea que era memoria. El hallazgo que la obliga sigue igual de incómodo:
+**el único cliente que paga no compró un chatbot** — Bucaradomi paga `domicilios-ops`, con el
+chat y la IA explícitamente fuera del alcance, mientras los 3 planes de bot publicados tienen
+cero clientes.
+
+**Ni un importe se copió, y eso es lo que más cuidado tuvo.** Cada línea dice **dónde** vive
+su precio, no cuál es: `servicios[domicilios-ops].precioConIva` ($370.000, contrato
+`SAI-DOMIOPS-20260703-001` + factura `SOL1`), `planes[].precioMes` (290/490/790) y
+`lineaServicios.pisoPrecio` ($3.000.000). Una tercera copia del mismo número sería una tercera
+fecha de vencimiento: es el H7 de la reconciliación, el snapshot que derivó ocho días por ser
+copia manual.
+
+**Y por eso la regla nueva.** Un puntero tiene un modo de falla peor que un número copiado:
+**parece una referencia y no lo es.** El número viejo al menos se ve; el puntero roto no. La
+regla `lineasDeOferta` resuelve las tres rutas en cada build y verifica que
+`ordenDeApertura` nombre todas las líneas definidas y sólo esas. **Cazó el primero el día que
+se escribió:** `planes[]` no resolvía porque el parser exigía un id entre corchetes.
+
+**Qué se verificó.** `npm run check` en verde con los mismos avisos del baseline. Los tres
+punteros resueltos e impresos uno por uno. Experimento de control sobre el commit ya hecho:
+se rompió cada puntero a propósito y la regla los cazó los tres, más el `ordenDeApertura`
+incompleto; restaurado con `git checkout` y `git status` limpio.
+
+⚠️ **Lo que queda desactualizado y NO se tocó acá:**
+`platform/apps/landing/src/data/canon.snapshot.json` es copia manual de este canon. Desde este
+commit está atrás. Lo refresca otra sesión, en `platform`, que despliega.
+
+**Pendiente de la suite:** `cmt53c3wf002801lky8arf0j0`.
+
 ## 2026-09-05 — el linter aprende a contar métricas, no sólo clientes
 
 **Qué.** Dos prohibiciones nuevas en `data/canon.json`: **`metricaSinFuente`** (10 patrones)

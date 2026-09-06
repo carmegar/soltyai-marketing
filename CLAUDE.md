@@ -76,6 +76,16 @@ Motor de marketing de SoltyAI: la estrategia escrita (`01`–`14`) y los program
   ahí: **lleva precio público lo que tiene alcance cerrado, lleva «desde» lo que se cotiza, y nada
   lleva silencio** — el muro de «contáctanos» tiene ~38% más rebote. No cambia ningún precio: cambia
   qué se publica y en qué orden.
+  ✅ **Desde el 2026-09-05 esto es dato, no memoria: `canon.json → lineasDeOferta`** (`ordenDeApertura`
+  `["L1","L3","L2"]`, `reglaDePublicacion.formas` con `publico` / `desde` / `silencio: PROHIBIDO`, y
+  una entrada por línea). **No copia ningún importe:** cada línea apunta a dónde vive su precio
+  (`servicios[domicilios-ops].precioConIva`, `planes[].precioMes`, `lineaServicios.pisoPrecio`),
+  porque una tercera copia del mismo número es una tercera fecha de vencimiento. La regla
+  `lineasDeOferta` del linter **resuelve esas rutas en cada build**: un puntero roto parece una
+  referencia y no lo es.
+  ⚠️ **La landing queda atrás hasta que alguien la refresque:**
+  `platform/apps/landing/src/data/canon.snapshot.json` es copia manual de este canon (es el H7 de
+  `17-RECONCILIACION-CONTENIDO.md`, que ya derivó 8 días una vez).
   ⚠️ Y el aviso que dejó: **`mensajeLider` excluye `redes/`** (ver arriba), y por ahí salió la tanda 1
   de video con **7 de 10 guiones de la línea `bot`** apuntando a LinkedIn. Se reordenó a mano el
   22-ago; a mano no escala. Pendiente `cmt53crvn002k01lkd6th204l`.

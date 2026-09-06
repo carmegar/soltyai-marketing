@@ -144,6 +144,17 @@ misma regla de lectura: *una línea juzgada con la métrica de otra siempre pare
 > **Lleva precio público lo que tiene alcance cerrado. Lleva «desde» lo que se cotiza.
 > Nada lleva silencio.**
 
+✅ **Desde el 2026-09-05 esta tabla vive en `data/canon.json → lineasDeOferta`**, con
+`ordenDeApertura`, `reglaDePublicacion.formas` y una línea por cada L. Dejó de ser memoria.
+
+⚠️ **Y no copia ni un importe.** Cada línea dice **dónde** vive su precio, no cuál es:
+`servicios[domicilios-ops].precioConIva`, `planes[].precioMes`, `lineaServicios.pisoPrecio`. Una
+tercera copia del mismo número sería una tercera fecha de vencimiento — es el H7 de la
+reconciliación, el snapshot que derivó ocho días por ser copia manual. Lo que sí se agregó es la
+guarda que hace falta para que un puntero valga más que un número copiado: la regla
+`lineasDeOferta` **resuelve las tres rutas en cada build**, porque un puntero roto parece una
+referencia y no lo es. Cazó el primero el día que se escribió: `planes[]` no resolvía.
+
 Un «desde» no es una cotización cerrada: no compromete alcance, ancla el orden de magnitud, filtra al
 que no tiene presupuesto y evita el 38% de rebote del muro en blanco. Es la forma híbrida que la
 evidencia recomienda para el escalón alto.
@@ -213,7 +224,7 @@ suelto. Los pendientes del tablero llevan la ejecución.
 
 | Plano | Qué cambia | Riesgo |
 |---|---|---|
-| `data/canon.json` | Jerarquía de líneas (L1/L2/L3) y la regla de publicación | ninguno (dato) |
+| `data/canon.json` | ✅ **5-sep:** `lineasDeOferta` — jerarquía L1/L2/L3, `ordenDeApertura` y `reglaDePublicacion` | ninguno (dato) |
 | `data/catalogo.json` | `domicilios-ops` pasa de `supuesto` a `vigente` **sólo después** de medir soporte y operación (§5.3) | ninguno (dato) |
 | **Landing** (`platform`) | Publicar L1 · `/servicios` con «desde $3.000.000» · reordenar la home | 🔴 **despliega** — rama + PR, merge lo autoriza el usuario |
 | **Catálogo de la suite** | El pendiente vencido `cmsz6eq2s…`: los 3 planes no existen y 7 legacy en USD siguen cotizables | 🔴 **escribe en datos reales** — dry-run y aviso previo (regla cero) |
@@ -244,7 +255,7 @@ ventana entra todo lo de código y docs, y **nada** que genere cola de respuesta
 | # | Qué | Dónde | Ventana |
 |---|---|---|---|
 | **1** | Reordenar la tanda 1 de video: los de `a la medida` y los N3 abren; los 7 de bot van a IG/TikTok | `redes/guiones-tanda-1.md` | ✅ **hecho el 22-ago** |
-| **2** | Bajar la arquitectura a `canon.json` (jerarquía L1/L2/L3 + regla de publicación) | `marketing` | viaje |
+| **2** | Bajar la arquitectura a `canon.json` (jerarquía L1/L2/L3 + regla de publicación) | `marketing` | ✅ **hecho el 5-sep** |
 | **3** | Landing: publicar L1, «desde $3.000.000» en `/servicios`, reordenar la home | `platform` (rama+PR) | viaje |
 | **4** | Medir soporte y operación de `domicilios-ops` antes de tocar su `estado` | `marketing` + suite | viaje |
 | **5** | Catálogo de producción de la suite (el vencido `cmsz6eq2s…`) | suite | 🔴 con aviso |
