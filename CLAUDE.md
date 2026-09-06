@@ -47,6 +47,17 @@ Motor de marketing de SoltyAI: la estrategia escrita (`01`–`14`) y los program
   están superados (ojo: "Pro" a secas SÍ es válido, es el plan COP).
 - **Prueba social solo verificable:** hoy son Bucaradomi (piloto, con permiso) y Swisscontact
   (servicio). Nada de "+100 clientes" ni "líderes en".
+  ✅ **Y desde el 2026-09-05 tampoco cifras de resultado ni citas firmadas.** `pruebaSocialInventada`
+  contaba clientes y nada más, y por eso el caso Promatel —métricas de un sistema que nunca atendió
+  a nadie, más un testimonial atribuido a una empresa real— duró **tres meses publicado bajo un
+  linter que corría en cada build**. Lo que faltaba entró como dos reglas hermanas:
+  **`metricaSinFuente`** (porcentajes de reducción/aumento/mejora, `+N` consultas o flujos, «N
+  atendidas por semana», horas recuperadas, «duplicamos tus ventas», `<24h`) y
+  **`testimonialSinRespaldo`** (la firma: comilla de cierre + raya + cargo o nombre con empresa).
+  La regla de fondo: **un número publicado lleva fuente, y si la fuente somos nosotros lleva fecha
+  de medición, o no va** — «todavía no lo hemos medido» sí es publicable. Exime la línea que declara
+  su fuente o dice «supuesto». No hay patrón para `\d+%` a secas y es a propósito: se midió, y daba
+  3 falsos positivos de cada 4. Porqué largo en `17-RECONCILIACION-CONTENIDO.md §H1`.
 - **Toda pieza publicable lleva `origin`** registrado con `npm run link nuevo`. Sin eso el lead
   llega sin fuente y la ronda no se puede evaluar. Fuentes válidas en `canon.json → utm.source`; el
   carril de Google agregó **`google`** (Search, pagado) y **`gbp`** (Business Profile, orgánico).

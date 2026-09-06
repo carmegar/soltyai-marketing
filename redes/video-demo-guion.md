@@ -89,9 +89,12 @@ destino que un chat personal.
 ### TOMA 2 · El costo (0:07–0:15)
 
 **Se ve:** el mismo chat, sin respuesta. Cursor quieto.
-**Texto en pantalla:** «El 78% de los que no reciben respuesta escriben a otra inmobiliaria» —
-⚠️ **solo si conseguís la fuente**. Si no la tenés, este texto **no va**: la regla de la casa es cero
-métricas sin fuente. Reemplazo sin dato: «Mañana ya preguntó en otras tres.»
+**Texto en pantalla:** «Mañana ya preguntó en otras tres.»
+⚠️ Acá había una cifra de abandono con un «solo si conseguís la fuente» al lado. Salió el
+2026-09-05, el día en que la regla `metricaSinFuente` entró al canon y la cazó. El «solo si» no
+protege nada: el que graba lee el guion con el cronómetro corriendo y la nota se le queda en la
+página. Si algún día aparece un estudio citable, la cifra vuelve **con la fuente escrita al lado**,
+no antes.
 **Voz:**
 > Ese mensaje no se pierde: se va para otra parte.
 

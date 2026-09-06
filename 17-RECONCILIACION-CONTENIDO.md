@@ -211,10 +211,38 @@ aprobación explícita (regla cero). Estado verificado hoy contra producción:
 | `08-domicilios-ops`, `09` a `11` (web) | Al día, en COP, con alcance y SLA |
 | `diagnostico-automatizacion`, `soporte-evolutivo` | No existen todavía |
 
-Lo demás que queda abierto, en el tablero: el snapshot del canon sigue siendo copia manual (H7); el
-guardrail de la landing necesita patrones que cubran métricas y no sólo conteos de clientes (H1); y
+Lo demás que queda abierto, en el tablero: el snapshot del canon sigue siendo copia manual (H7); y
 falta decidir con el contador si una SAS en RST puede facturar servicios al exterior, que es la
 única forma de capturar el arbitraje de precio que describe la investigación sin abrir una LLC.
+
+### ✅ El patrón que le faltaba a H1 — cerrado el 2026-09-05
+
+Los patrones entraron al canon como **dos reglas nuevas**, no como más patrones dentro de
+`pruebaSocialInventada`:
+
+- **`metricaSinFuente`** (10 patrones) — la cifra de RESULTADO: porcentajes de reducción, aumento,
+  mejora o ahorro; `+N` consultas, flujos o pedidos; «N consultas atendidas por semana»; horas
+  recuperadas o ahorradas; «duplicamos tus ventas»; «N veces más»; `<24h`. Exime la línea que
+  declara su fuente, la que dice «supuesto» y la que nombra lo prohibido para prohibirlo.
+- **`testimonialSinRespaldo`** (2 patrones) — la **firma**: comilla de cierre seguida de raya y un
+  cargo («— Equipo Comercial…») o un nombre con empresa detrás. No adivina si una frase
+  entrecomillada es un testimonio; se lleva lo que la convierte en evidencia.
+
+Dos reglas y no una porque la prueba del linter sólo sabe **qué regla** se disparó: un patrón nuevo
+metido dentro de `pruebaSocialInventada` habría quedado tapado por el «+100 clientes» que ya la
+enciende, y habría nacido sin prueba propia. Los 12 patrones tienen su caso en
+`copy/_pruebas/anuncio-malo.json`, escrito con la **forma exacta** de lo que estuvo publicado: una
+regla escrita contra un ejemplo inventado no prueba que habría cazado el real.
+
+**Lo que NO se hizo, y es una decisión:** no hay patrón para `\d+%` a secas. Se midió sobre el
+repo — de 4 líneas con porcentaje en `redes/` y `copy/`, 3 eran legítimas (el zoom del guion de
+demo, el 30% de descuento de los primeros clientes) y 1 era el hallazgo. Una regla con 25% de
+precisión se ignora a la tercera semana.
+
+**Y cazó una pieza real el mismo día:** `redes/video-demo-guion.md` llevaba «El 78% de los que no
+reciben respuesta escriben a otra inmobiliaria» con un «⚠️ solo si conseguís la fuente» al lado. El
+«solo si» no protege: el que graba lee el guion con el cronómetro corriendo. La cifra salió y quedó
+el reemplazo sin dato que el propio guion ya proponía.
 
 ---
 

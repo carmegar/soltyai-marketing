@@ -1,6 +1,6 @@
 {
   "_doc": "Hechos canónicos en formato máquina. Espejo de 01-SOURCE-BRIEF.md + ESTADO.md §Marketing. Si cambia el precio o la promesa, se cambia AQUÍ y en el doc, en el mismo commit. Los guardrails leen este archivo: es lo que hace que una decisión escrita se vuelva una regla que falla el CI.",
-  "actualizado": "2026-08-21",
+  "actualizado": "2026-09-05",
   "_actualizado": "Este sello lo pone una persona y por eso derivó: hasta el 13-ago decía 2026-08-04 dentro de un archivo que ya contenía `canales._cambio` y `_whatsappComoPromesa_RETIRADA`, los dos del 13. El hook anunciaba «canon actualizado hace 9 días» de un canon que estaba al día. Desde hoy `scripts/contexto-sesion.mjs` toma la fecha del último commit del archivo y avisa cuando este campo se queda atrás: manda git, que no puede derivar. Actualizalo igual — es la anotación de cuándo se revisó a conciencia, no la de cuándo cambió un byte.",
   "fuentes": [
     "01-SOURCE-BRIEF.md (promesa, verticales, canales, costo de servir)",
@@ -283,11 +283,45 @@
       "exenciones": []
     },
     "pruebaSocialInventada": {
+      "_cambio": "2026-09-05: esta regla cuenta CLIENTES y nada más, y así se quedó. La mitad que le faltaba —las cifras de resultado y el testimonial firmado— salió a dos reglas hermanas, `metricaSinFuente` y `testimonialSinRespaldo`, en vez de engordar ésta: la prueba del linter sólo sabe qué regla se disparó, así que un patrón nuevo metido acá adentro habría quedado tapado por el '+100 clientes' que ya la enciende, y habría nacido sin prueba propia. Es el mismo motivo por el que `servicioFantasma` y `diagnosticoGratis` nacieron aparte.",
       "patrones": ["\\+\\s*\\d{2,}\\s+(clientes|empresas|negocios|proyectos)", "l[ií]deres en", "el #\\s*1", "n[uú]mero 1 en", "miles de (clientes|negocios|empresas)"],
       "alcance": "copy",
       "porque": "Hoy solo podemos nombrar a Bucaradomi (piloto real, con permiso) y a Swisscontact (servicio). Todo lo demás es la mentira de '+100 proyectos exitosos' del swipe file.",
       "exenciones": []
     },
+
+    "metricaSinFuente": {
+      "_doc": "2026-09-05. Nace del caso Promatel (17-RECONCILIACION-CONTENIDO.md §2): la landing publicó tres meses un caso de éxito de un sistema que nunca atendió a un cliente, con cuatro métricas inventadas —85% de reducción en tiempo de respuesta, +200 consultas atendidas por semana, 4 hrs/día recuperadas— y el Hero le sumaba «+50 flujos automatizados», «98% uptime garantizado» y «<24h tiempo de respuesta». El linter corría en cada build y no dijo nada: `pruebaSocialInventada` sólo cuenta clientes, empresas, negocios y proyectos, y esa pieza hablaba de flujos, consultas y porcentajes. La regla estaba; el patrón no la alcanzaba. Esta regla es el patrón que faltaba.",
+      "patrones": [
+        "\\d{1,3}\\s*%\\s*(de\\s+)?(mas|menos|reduccion|aumento|incremento|mejora|ahorro|crecimiento|efectividad|precision|exactitud|uptime|disponibilidad|satisfaccion|conversion)",
+        "\\d{1,3}\\s*%\\s+de\\s+(los|las|tus|sus|nuestros|nuestras|todos|todas)\\b",
+        "(reduc|aument|increment|mejor|ahorr|crec|multiplic|dispar|acelera)[a-z]*\\s+(un\\s+|el\\s+|en\\s+|hasta\\s+(un\\s+)?)?\\d{1,3}\\s*%",
+        "\\+\\s*\\d{2,}\\s+(consultas|flujos|pedidos|mensajes|leads|ventas|automatizaciones|integraciones|tickets|citas|reservas|despachos|horas)",
+        "\\d{2,}\\s+(consultas|pedidos|mensajes|leads|citas|reservas|despachos|ventas|facturas|solicitudes)\\s+(atendid|gestionad|procesad|resuelt|automatizad|cerrad|despachad|respondid)[a-z]*\\s*(por|al|a la|cada)\\s+(semana|mes|dia|hora)",
+        "\\d{1,3}\\s*(horas?|hrs?)[^.]{0,25}(recuperad|ahorrad|liberad)",
+        "(ahorr|recuper|liber)[a-z]*[^.]{0,20}\\d{1,3}\\s*(horas?|hrs?)\\b",
+        "(duplic|triplic|cuadruplic)[a-z]*\\s+(tus\\s+|sus\\s+|las\\s+|los\\s+|el\\s+|la\\s+)?(ventas|ingresos|clientes|pedidos|leads|facturacion|conversiones|citas)",
+        "\\d{1,2}\\s*veces\\s+mas\\b",
+        "<\\s*\\d{1,3}\\s*(h|hrs?|horas?|min|minutos?|seg|segundos?)\\b"
+      ],
+      "alcance": "copy",
+      "porque": "La regla que salió de H1 y H2: un número en una página publicada lleva FUENTE, y si la fuente somos nosotros lleva FECHA DE MEDICIÓN, o no va. 'Todavía no lo hemos medido' es una frase publicable; una cifra inventada no. Del piloto de Bucaradomi no se publica ni una métrica de rendimiento porque no las hemos medido: se publican los hechos con testigo (contrato firmado, factura emitida, sistema en producción).",
+      "_queNoCaza": "A propósito no hay un patrón para '\\d+%' a secas. Se midió sobre el repo: de 4 líneas que lo tienen en redes/ y copy/, 3 son legítimas (el zoom del guion de demo, el 30% de descuento de los primeros clientes) y 1 era el hallazgo. Una regla con 25% de precisión se ignora a la tercera semana, y un aviso que siempre está encendido deja de ser un aviso. Estos diez patrones cazan la cifra de RESULTADO —la que dice que algo mejoró, se ahorró o se multiplicó— que es la que miente.",
+      "exenciones": ["sin fuente", "prohibid", "inventad", "fabricad", "nunca digas", "retirad", "supuesto", "fuente:", "medido el", "segun ", "estudio de", "verificad", "sla ", "contrato"]
+    },
+
+    "testimonialSinRespaldo": {
+      "_doc": "2026-09-05. La otra mitad del caso Promatel: además de las métricas, la landing publicaba una cita entre comillas firmada «— Equipo Comercial, Promatel». Palabras que el equipo de una empresa real nunca dijo, sobre un sistema que nunca los atendió, en un sitio indexado. Eso ya no es incumplir una regla interna: es una afirmación falsa sobre un tercero identificado con nombre propio, y destruye justo el argumento sobre el que descansa toda la línea de servicio, que es que somos verificables.",
+      "patrones": [
+        "[«»\"“”']\\s*[*_`]*\\s*[-–—]{1,2}\\s*[*_`]*\\s*(equipo|gerent|gerenc|director|due[nñ]|propietari|ceo|fundador|socio|administrador|coordinador|jefe|encargad)",
+        "[«»\"“”']\\s*[*_`]*\\s*[-–—]{1,2}\\s*[*_`]*\\s*[a-z][a-z .]{2,30},\\s*[*_`]*[a-z]"
+      ],
+      "alcance": "copy",
+      "porque": "Un testimonial es la palabra de otro: o existe con permiso por escrito de quien la dijo, o no se publica. Hoy las dos únicas referencias que podemos nombrar son Bucaradomi (piloto, con permiso) y Swisscontact (servicio), y ninguna de las dos nos ha dado una cita.",
+      "_queCaza": "La FORMA de la atribución, no el contenido: una comilla de cierre seguida de raya y un cargo ('— Equipo Comercial…', '— Gerente de…'), o de un nombre con empresa detrás ('— Juan Pérez, Ferretería El Tornillo'). No intenta adivinar si una frase entrecomillada es un testimonio: eso sería fabricar una precisión que no tiene. Lo que se lleva es la firma, que es lo que convierte una frase en evidencia.",
+      "exenciones": ["sin respaldo", "prohibid", "inventad", "fabricad", "nunca digas", "retirad", "con permiso", "por escrito", "autoriz"]
+    },
+
     "servicioFantasma": {
       "_doc": "2026-08-21. Nace de la auditoría de reconciliación (17-RECONCILIACION-CONTENIDO.md): la landing publicaba 'Growth Marketing con IA' —gestión de pauta en Meta y Google Ads, 12 a 20 piezas al mes— y la suite lo tenía cotizable como 05-marketing-starter a US$480/mes. NO estaba en canon.json ni en catalogo.json: era una línea de negocio entera que ninguna regla de margen gobernaba. Y peor: prometía gestionar pauta cuando nuestro propio píxel sigue en G-XXXXXXXXXX y el carril de Meta está relegado por no tener creatividad (15-CANALES §1). Se vendía lo que todavía no sabemos hacer.",
       "patrones": ["growth marketing", "gesti[oó]n de pauta", "gestionamos (sus|tus) (anuncios|campa[ñn]as)", "manejo de redes sociales", "community manager"],

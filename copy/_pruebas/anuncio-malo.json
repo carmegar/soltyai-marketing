@@ -8,8 +8,12 @@
   "titular": "Este titular es larguísimo y se pasa del máximo de Meta",
   "descripcion": "Esta descripción también se pasa de treinta",
   "destino_titular": "Tu bot listo en 90 días",
+  "metricas": "Nuestros clientes logran 85% de reducción en tiempo de respuesta, +200 consultas atendidas por semana y 4 hrs/día recuperadas, con 98% uptime garantizado y <24h de respuesta. Duplicamos tus ventas, aumentamos un 40% lo que factura cada local, atendemos 3 veces mas rápido y el 70% de los negocios que nos contratan ahorra 10 horas al mes.",
+  "testimonial": "«Antes perdíamos clientes porque no respondíamos a tiempo. Ahora el bot atiende en segundos» — Equipo Comercial, Ferretería El Tornillo",
   "_esperados": [
     "prohibicion:pruebaSocialInventada",
+    "prohibicion:metricaSinFuente",
+    "prohibicion:testimonialSinRespaldo",
     "prohibicion:absolutos",
     "prohibicion:asistenteGeneralIa",
     "prohibicion:webComoPromesa",
@@ -23,5 +27,6 @@
   ],
   "_cambio2": "2026-08-20: entra la regla mensajeLider. Se le agrega plataforma \"meta\" (que segun el canon lleva la linea del BOT) y una frase de la OTRA linea, para que el fixture mezcle las dos y la regla canal:mezcla-de-lineas tenga contra que probarse. Sin esto la regla nacia sin test, que es como nacio mensajeLiderPorCanal en el canon: un dato que nadie hace cumplir.",
   "_cambio3": "2026-08-21: entran servicioFantasma y diagnosticoGratis, las dos prohibiciones que nacen de la auditoría de reconciliación (17-RECONCILIACION-CONTENIDO.md). Se agregan al texto «growth marketing con gestión de pauta» y «diagnóstico gratuito». Son reglas de patrón puro, sin lógica nueva, y por eso la tentación era no probarlas — pero la regla servicioFantasma cazó, el mismo día en que se escribió, un «Growth Marketing» que llevaba tres meses publicado en el FAQ de la landing. Una regla que ya demostró que muerde es justamente la que no se puede dejar sin test.",
+  "_cambio4": "2026-09-05: entran metricaSinFuente y testimonialSinRespaldo, las dos mitades del caso Promatel (17-RECONCILIACION-CONTENIDO.md §2). El campo `metricas` copia la FORMA exacta de lo que estuvo tres meses publicado —85% de reducción, +200 consultas atendidas por semana, 4 hrs/día recuperadas, 98% uptime, <24h— porque una regla que se escribe contra un ejemplo inventado no prueba que habría cazado el real. El campo `testimonial` copia la forma de la cita firmada, con una empresa ficticia a propósito: el fixture no tiene por qué repetir una afirmación falsa sobre un tercero con nombre propio, y lo que se está probando es la firma, no el nombre. Y son DOS reglas nuevas en vez de patrones metidos dentro de pruebaSocialInventada: la prueba del linter sólo sabe qué regla se disparó, así que un patrón nuevo ahí adentro habría quedado tapado por el '+100 clientes' que ya la enciende y habría nacido sin prueba.",
   "plataforma": "meta"
 }

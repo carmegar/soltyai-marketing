@@ -1,5 +1,47 @@
 # Changelog · soltyai-marketing
 
+## 2026-09-05 — el linter aprende a contar métricas, no sólo clientes
+
+**Qué.** Dos prohibiciones nuevas en `data/canon.json`: **`metricaSinFuente`** (10 patrones)
+y **`testimonialSinRespaldo`** (2 patrones), con sus 12 casos en
+`copy/_pruebas/anuncio-malo.json`. Cero código nuevo: son patrones y exenciones, que es
+donde la casa dice que van.
+
+**Por qué.** `pruebaSocialInventada` decía `(clientes|empresas|negocios|proyectos)` y el caso
+Promatel hablaba de **flujos, consultas y porcentajes**. La regla estaba, el patrón no la
+alcanzaba, y la pieza aguantó **tres meses publicada bajo un linter que corría en cada
+build** (`17-RECONCILIACION-CONTENIDO.md §2`). Lo que entra ahora es la cifra de
+**resultado** —porcentaje de reducción o aumento, `+N` consultas o flujos, «N atendidas por
+semana», horas recuperadas, «duplicamos tus ventas», `<24h`— y la **firma** de un
+testimonial: comilla de cierre, raya y un cargo o un nombre con empresa detrás.
+
+**Por qué DOS reglas y no más patrones dentro de la vieja.** Porque `npm run prueba` sólo
+sabe **qué regla** se disparó. Un patrón nuevo dentro de `pruebaSocialInventada` habría
+quedado tapado por el «+100 clientes» que ya la enciende: el fixture seguiría en verde sin
+probar nada. Es exactamente el modo de falla que este pendiente venía a cerrar, así que no
+se podía reproducir al cerrarlo.
+
+**Lo que NO se hizo, y es una decisión medida.** No hay patrón para `\d+%` a secas. Se corrió
+sobre el repo antes de escribir nada: de las **4 líneas con porcentaje** en `redes/` y
+`copy/`, **3 eran legítimas** (el zoom del guion de demo, el 30% de descuento de los primeros
+clientes) y 1 era el hallazgo. Una regla con 25% de precisión se ignora a la tercera semana,
+y un aviso siempre encendido deja de ser un aviso.
+
+**Qué cazó el mismo día.** `redes/video-demo-guion.md` llevaba «El 78% de los que no reciben
+respuesta escriben a otra inmobiliaria» con un «⚠️ solo si conseguís la fuente» al lado. El
+«solo si» no protege nada: el que graba lee el guion con el cronómetro corriendo. Salió la
+cifra y quedó el reemplazo sin dato que el propio guion ya proponía.
+
+**Qué se verificó.** `npm run check` en verde, con los mismos 4 avisos del baseline (márgenes
+supuestos y `costoHoraOperativa`), ni uno nuevo. Los **12 patrones tienen evidencia**: se
+listó cuál disparó contra el fixture, uno por uno (10/10 y 2/2). La pieza real de `copy/`
+sigue pasando con **0 hallazgos** en aislamiento. La regla mira **7 archivos** de alcance
+publicable (6 en `redes/` + 1 pieza de `copy/`) y deja fuera los 27 docs a propósito: un doc
+tiene que poder nombrar lo prohibido para explicarlo, y de hecho `17`, `18`, `19` y este
+mismo `CHANGELOG` lo nombran.
+
+**Pendiente de la suite:** `cmt3c0y74007401mmtes0bggj`.
+
 ## 2026-09-04 — gitleaks por PR: el CI deja de enterarse el lunes
 
 **Qué.** Un job `secretos` en `.github/workflows/guardrails.yml`, más `.gitleaksignore`.
