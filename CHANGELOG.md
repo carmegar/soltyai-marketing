@@ -1,5 +1,36 @@
 # Changelog · soltyai-marketing
 
+## 2026-09-05 — El LinkedIn deja de abrir con el chat: la página de empresa lidera con el servicio
+
+**Qué.** `redes/soltyai-linkedin-descripcion.txt` reescrito entero. Abría con «bots de WhatsApp y
+Telegram» en el único canal donde el canon manda `servicio` desde el 17-ago, y era justo el aviso
+que cantó `mensajeLider` el día que `redes/` entró al guardrail. Ahora abre con el estudio de
+desarrollo y el software a la medida. El producto de chat no desaparece del mundo, desaparece de
+esta pieza: WhatsApp queda nombrado por lo que es para esta línea, la API oficial por la que Meta
+aprobó a SoltyAI como Tech Provider.
+
+**Qué quedó adentro.** Eslogan de 85 caracteres (tope 120), descripción de 1.859 (tope 2.000), 15
+especialidades, un bloque «lo que no decimos» y otro de verificación previa. Lo que sostiene la
+pieza son los cuatro hechos con testigo: habilitación DIAN como facturador electrónico, aprobación
+de Meta como Tech Provider, `domicilios-ops` en producción con contrato firmado y factura
+(Bucaradomi, $370.000/mes IVA incluido) y el módulo entregado a Swisscontact. Ni una métrica de
+rendimiento, que es lo que el caso Promatel dejó dicho y lo que `metricaSinFuente` caza hoy.
+
+**La forma importa tanto como el texto.** El bloque publicable va dentro de `<!-- canal: linkedin -->`
+y las reglas de marca van **después** de `<!-- /canal -->`: nombran lo prohibido para explicarlo, y
+adentro del bloque habrían disparado la regla que documentan, que es el mismo motivo por el que la
+exención de las prohibiciones es por línea. `npm run check`: **0 errores y 11 avisos**, uno menos
+que antes, y el que se fue es el de este archivo.
+
+**Lo que no cambió.** Ningún precio. El «desde $3.000.000» y los $370.000/mes salen del canon
+(`lineaServicios.pisoPrecio` y `servicios[domicilios-ops].precioConIva`), no de una copia nueva. El
+link de la descripción todavía va sin `origin`, y queda anotado dentro del propio archivo para que
+no se publique sin registrarlo.
+
+**Fuera de este repo:** el perfil personal de Carlos quedó en `D:\trabajo\cv\linkedin-perfil-2026-09.md`
+(titular, «Acerca de», entrada de experiencia, servicios, lista de pegado y lo que solo él puede
+verificar). Pendiente `cmsscb2cm00ck01s5x8jh8m3w`: los textos están listos, falta que los pegue.
+
 ## 2026-09-05 — El costo de repartir, medido: el canal propio gana contra Rappi y pierde contra DiDi
 
 **Qué.** `19 §3.3` reescrito con la medición que faltaba, y los 28 parámetros en máquina en

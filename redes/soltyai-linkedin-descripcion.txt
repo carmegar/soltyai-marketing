@@ -1,12 +1,89 @@
+Página de empresa de SoltyAI SAS en LinkedIn. Los dos bloques de abajo se pegan tal cual
+en los campos "Eslogan" y "Descripción". Reescrito el 2026-09-05: antes abría con
+"bots de WhatsApp y Telegram", y en LinkedIn el mensaje líder es el servicio a la medida
+(canon.json → mensajeLiderPorCanal, decidido el 2026-08-17).
+
 <!-- canal: linkedin -->
-En muchos negocios las ventas se pierden por algo simple: nadie alcanzó a responder a tiempo.
 
-SoltyAI arma bots de WhatsApp y Telegram que atienden esa conversación. Responden al instante, a cualquier hora, con la información real de tu negocio: tu catálogo, tu agenda, tus precios. Preguntan lo que hay que preguntar, agendan la visita o la cita, y te pasan el cliente cuando ya vale la pena que hables tú.
+=== ESLOGAN (campo "Eslogan", máximo 120 caracteres) ===
 
-No te entregamos una herramienta para que la configures. La dejamos funcionando con tus datos y te enseñamos a usarla.
+Estudio de desarrollo en Bucaramanga. Software a la medida para negocios colombianos.
 
-Trabajamos por sectores: inmobiliarias, domicilios, comercio y agendamiento de citas. Si tu negocio no necesita inteligencia artificial, lo hacemos con un flujo fijo: sale más barato y nunca improvisa.
+=== DESCRIPCIÓN (campo "Descripción", máximo 2.000 caracteres) ===
 
-Somos de Bucaramanga, hablamos como acá y contesta una persona.
+SoltyAI es un estudio de desarrollo en Bucaramanga. Hacemos software a la medida para negocios colombianos que ya tienen una operación andando y quieren quitarle de encima el trabajo repetitivo.
 
-Mira cómo funciona y agenda una cita: soltyai.com
+Lo que construimos se conecta a lo que la empresa ya usa: su base de datos, su inventario, su agenda, su ERP y la facturación electrónica de la DIAN. Y sabemos lo que en Colombia le cambia la forma al software: la habilitación como facturador, la retención en la fuente, el régimen simple y el ICA. No entregamos una herramienta para que alguien la configure. La dejamos funcionando con los datos reales del negocio y enseñamos a usarla.
+
+Tres cosas que puedes verificar antes de contratarnos:
+
+1. SoltyAI está habilitada por la DIAN como facturador electrónico, con certificado, prefijo y resolución propios. Hicimos el trámite completo, así que sabemos cómo se conecta.
+
+2. Meta nos aprobó como Tech Provider de WhatsApp Business API. La conversación por WhatsApp entra como una interfaz del sistema, nunca como el producto.
+
+3. Tenemos software propio en producción con un cliente pagando: SoltyAI Domicilios, la plataforma operativa de Bucaradomi (pedidos, asignación, estados en vivo, zonas, tarifas y una aplicación para los domiciliarios), $370.000 al mes con IVA. También entregamos un módulo a la medida para un programa de campo de Swisscontact.
+
+Cómo se contrata:
+
+Diagnóstico de automatización. Revisamos la operación y entregamos el plan de trabajo. Es pagado, y se descuenta del proyecto si contratas dentro de los 30 días siguientes.
+
+Desarrollo a la medida, desde $3.000.000, con anticipo del 50%.
+
+Páginas web nuevas y rescate de sitios existentes, con precio cerrado.
+
+Soporte y evolución del sistema después de entregado.
+
+Tomamos un proyecto a la vez, para que el que está en curso no se atrase.
+
+Escríbenos y contesta una persona: soltyai.com
+
+=== ESPECIALIDADES (campo "Especialidades", hasta 20) ===
+
+Desarrollo de software a la medida
+Automatización de procesos operativos
+Integración con ERP y sistemas existentes
+Facturación electrónica DIAN
+WhatsApp Business API
+Plataformas operativas por sector
+Logística y domicilios
+Inteligencia artificial aplicada al negocio
+Node.js y TypeScript
+Python
+PostgreSQL multi-tenant
+Next.js y React
+Páginas web corporativas
+Soporte y evolución de sistemas
+Bucaramanga y Santander
+
+<!-- /canal -->
+
+=== LO QUE NO DECIMOS ===
+
+Reglas de marca para esta página. Van acá abajo a propósito, fuera del bloque de canal:
+nombran lo prohibido para explicarlo, y el linter no debe juzgarlas como copy.
+
+- Nunca abrimos con el producto de chat en LinkedIn. Sigue existiendo y sigue publicado en
+  la landing, en Meta y en el outbound, pero acá el titular es el servicio a la medida
+  (canon.json → mensajeLiderPorCanal). Dentro de una misma pieza hay un solo mensaje: si
+  la descripción nombra las dos líneas, el CI la para con `canal:mezcla-de-lineas`.
+- Nunca "un asistente de IA" a secas: la política de IA de WhatsApp prohíbe los agentes de
+  propósito general. Lo que se publica es software de negocio acotado a una operación.
+- Nunca cifras de rendimiento del piloto. No están medidas. Lo publicable son hechos con
+  testigo: contrato firmado, factura electrónica emitida, sistema en producción.
+- Nunca conteos de clientes ni superlativos de mercado. Hoy podemos nombrar a Bucaradomi
+  (con permiso) y a Swisscontact, y a nadie más.
+- Nunca el widget de chat para el sitio del cliente: no está construido y no se promete.
+- Nunca los planes viejos en dólares. Si aparece un precio, sale del canon y va en pesos.
+- Nunca "startup". Somos un estudio de desarrollo con empresa constituida, y esa palabra
+  es justo la que hace que un comprador de contrato piense que nos vamos en seis meses.
+
+=== ANTES DE PEGAR, VERIFICAR ===
+
+- Que el permiso de Bucaradomi para aparecer con nombre propio siga vigente. Si hay duda,
+  reemplazar "Bucaradomi" por "una empresa de domicilios de Bucaramanga" y el texto queda
+  igual de cierto.
+- El link de la descripción va sin atribución. Antes de publicarlo conviene registrarlo con
+  `npm run link nuevo` (fuente `organico`) y pegar la URL con `origin`, o el lead que entre
+  por acá llega sin fuente.
+- La ubicación de la página debe decir Bucaramanga, Santander, Colombia, y el sector
+  "Desarrollo de software", no "Publicidad" ni "Marketing".
