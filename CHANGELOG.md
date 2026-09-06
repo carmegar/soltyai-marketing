@@ -1,5 +1,44 @@
 # Changelog · soltyai-marketing
 
+## 2026-09-05 — El costo de repartir, medido: el canal propio gana contra Rappi y pierde contra DiDi
+
+**Qué.** `19 §3.3` reescrito con la medición que faltaba, y los 28 parámetros en máquina en
+`data/dolores.json → parametros.costoDeRepartir` (10 `vigente`, 18 `supuesto`, cada uno con su
+`base` y la fecha de consulta). `dolores.js validar` aprendió a exigirlo: sin `estado`, sin
+`unidad`, sin `base`, o `vigente` sin fecha en la base, el CI falla. Cierra el pendiente
+`cmt55gxrc002v01lk5w67m5ft` (vencía el 12-sep).
+
+**Los tres caminos, a ticket de $40.000 y 30 días/mes.** Plataforma completa **$14.260/pedido**
+(28% + $3.062 fijos), domiciliario propio **$6.830** a capacidad plena, flota tercerizada
+**$5.500**.
+
+**Tres cruces, y uno duele:**
+
+1. Contra la plataforma completa el canal propio gana **desde un ticket de $8.714**, o sea siempre:
+   el costo de la comisión escala con el pedido y el del reparto no.
+2. **El domiciliario propio nunca le gana a la flota tercerizada.** Necesitaría casi 20 pedidos
+   diarios por persona y la capacidad realista son 16. Confirma con número lo que `§3.4` decía por
+   intuición: a un restaurante no se le dice «monta tu flota».
+3. 🔴 **Apareció DiDi Tu Negocio, que es nuestro pitch vendido por quien ya tiene la flota:**
+   9,5% + IVA, sin costos fijos, el pedido entra por el WhatsApp del restaurante y DiDi pone el
+   repartidor. **En Bucaramanga desde julio de 2022.** A $40.000 de ticket cuesta $4.522 contra
+   nuestros $5.500 + suscripción: perdemos hasta un ticket de $50.000–$60.000.
+
+**Dos correcciones al propio doc.** (1) El «$3.000–$8.000 por pedido» que `§3.3` cobraba del lado
+del restaurante es lo que la app le cobra **al cliente**: contarlo ahí inflaba el costo de la
+plataforma casi al doble. El cargo fijo al restaurante que sí está documentado es ~$3.062
+(Nautilus), que coincide con el mínimo que Rappi le paga al repartidor. (2) El desglose de costo
+de empleador que circula usa **ARL clase I (0,522%)**; un domiciliario en moto es **clase V
+(6,960%)**, $112.723 más al mes.
+
+**Lo que no se pudo medir, dicho:** ninguna empresa de domicilios de Bucaramanga publica tarifa
+(verificadas cuatro, todas remiten a WhatsApp), no existe estudio colombiano de pedidos por hora
+de un domiciliario, y la página de DiDi no dice si el 9,5% incluye el reparto. Los tres se cierran
+con una llamada, en la misma conversación del corte del 20-sep.
+
+**La regla que queda:** en público se dice el costo **por camino** y el restaurante hace la resta
+con su extracto. Nunca un porcentaje de ahorro.
+
 ## 2026-09-05 — `redes/` entra a `mensajeLider`: la pieza declara su canal, el linter no adivina
 
 **Qué.** `mensajeLider` deja de excluir `redes/`. La condición es que la pieza **declare**:

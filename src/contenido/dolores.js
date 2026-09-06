@@ -98,6 +98,39 @@ function validar() {
     avisos.push(`▲ costoHoraOperativa sigue en "supuesto" (${p.valor} COP): los videos hablan en HORAS, no en pesos.`);
   }
 
+  // 🔴 Misma disciplina para el costo de repartir. Es el número con el que se le habla a un
+  // restaurante de su plata: una cifra sin `base` acá es la métrica sin fuente que ya nos costó
+  // tres meses de caso Promatel publicado. La regla es la misma de las frecuencias, aplicada a un
+  // árbol en vez de a una lista.
+  const cdr = banco.parametros.costoDeRepartir;
+  if (!cdr) problemas.push('✖ parametros.costoDeRepartir: falta el bloque (lo mide 19 §3.3)');
+  else {
+    let cifras = 0;
+    let supuestas = 0;
+    for (const [grupo, valores] of Object.entries(cdr)) {
+      if (grupo.startsWith('_') || typeof valores !== 'object') continue;
+      for (const [nombre, c] of Object.entries(valores)) {
+        if (nombre.startsWith('_') || typeof c !== 'object' || c === null) continue;
+        const donde = `costoDeRepartir.${grupo}.${nombre}`;
+        cifras += 1;
+        const tieneNumero = ['valor', 'min', 'max', 'central'].some((k) => typeof c[k] === 'number');
+        if (!tieneNumero) problemas.push(`✖ ${donde}: no tiene valor/min/max numérico`);
+        if (typeof c.unidad !== 'string' || !c.unidad) problemas.push(`✖ ${donde}: falta la unidad`);
+        if (c.estado !== 'supuesto' && c.estado !== 'vigente') {
+          problemas.push(`✖ ${donde}: estado tiene que ser "supuesto" o "vigente"`);
+        }
+        if (typeof c.base !== 'string' || c.base.length < 15) {
+          problemas.push(`✖ ${donde}: falta la base. De dónde sale el número se dice o no se usa el número`);
+        } else if (c.estado === 'vigente' && !/\d{4}-\d{2}-\d{2}/.test(c.base)) {
+          // Un `vigente` sin fecha de consulta envejece en silencio y sigue pareciendo verificado.
+          problemas.push(`✖ ${donde}: marcado "vigente" y su base no dice la fecha en que se consultó`);
+        }
+        if (c.estado === 'supuesto') supuestas += 1;
+      }
+    }
+    avisos.push(`▲ costoDeRepartir: ${cifras} cifras, ${supuestas} en "supuesto". El pitch dice el costo POR CAMINO y deja que el restaurante haga la resta; nunca un porcentaje de ahorro.`);
+  }
+
   const sinUsar = sectores.filter((s) => !banco.dolores.some((d) => d.sector.includes(s)));
   for (const s of sinUsar) avisos.push(`▲ el sector "${s}" está declarado y no tiene ni un dolor`);
 

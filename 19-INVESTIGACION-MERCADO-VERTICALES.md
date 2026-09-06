@@ -268,35 +268,156 @@ soporte 24/7. **No.** Y hay una razón de fondo: el POS es **horizontal disfraza
 mismo producto para todo restaurante del país, guerra de precio garantizada. Es lo contrario del
 playbook de `18 §3.3`.
 
-### 3.3 · La puerta que sí sirve: la comisión de las apps
+### 3.3 · La puerta que sí sirve: la comisión de las apps, y cuánto cuesta de verdad reemplazarla
 
-Los números de 2026:
+> 🔴 **Esta sección se reescribió el 2026-09-05 con la medición que le faltaba.** Lo que había era
+> el costo de la plataforma y una nota admitiendo que el otro lado de la resta no lo teníamos. Ahora
+> están los tres caminos costeados, con fuentes consultadas ese día, y **el resultado no es el que
+> el pitch esperaba**: contra la plataforma completa el canal propio gana en todos los volúmenes,
+> pero apareció un competidor que no estaba en el mapa y que gana casi siempre. Los números en
+> máquina viven en `data/dolores.json → parametros.costoDeRepartir` (28 cifras, 10 `vigente` y 18
+> `supuesto`), y `npm run dolores validar` exige que cada una lleve su base.
 
-- **Rappi cobra 27%–32%** del valor del pedido a restaurantes en Colombia (otras fuentes reportan
-  25%–30%), **más** una comisión de plataforma de **$3.000–$8.000 por pedido**.
-- El ejemplo trabajado que circula en el sector: pedido de **$35.000**, comisión del 27% = **$9.450**.
-  El restaurante recibe $25.550, y tras insumos (35%), empaque y nómina proporcional le queda un
-  margen real de **19,4% contra 46,4%** vendiendo por canal propio.
-- La recomendación del propio sector es **50/50 entre apps y canal propio en 6–12 meses**.
+#### 3.3.1 · Lo que cuesta la plataforma
 
-**La aritmética del pitch** (ejemplo, no promesa): un restaurante que factura **$10.000.000/mes por
-Rappi** con ticket de $35.000 hace ~286 pedidos y paga:
+- **Rappi no publica su tarifa.** Su propia página de merchants dice que la cifra exacta se informa
+  en el registro. Todo lo que circula son reportes de restauranteros, no contratos leídos.
+- **El rango reportado para 2026** es Rappi 27%–32%, PedidosYa 28%–32%, Uber Eats 25%–30%,
+  iFood 24%–30% y DiDi Food 22%–28%.
+- **El único caso colombiano con el desglose completo** es el de Nautilus: venta de $62.000,
+  comisión del 26% igual a $16.120, más una tarifa por uso de plataforma de $3.062,80. Al
+  restaurante le quedan $42.817, o sea un costo total del **31%**.
 
-```
-comisión 27%              $2.700.000
-comisión por pedido       $  857.000  (286 × $3.000, extremo bajo)
-                          ──────────
-total al mes              $3.557.000   (y hasta ~$5.000.000 en el extremo alto)
-```
+🔴 **Y acá hay una corrección a esta misma sección.** Lo que decía antes era *«comisión del 27%–32%
+más una comisión de plataforma de $3.000–$8.000 por pedido»*. Ese rango de $3.000–$8.000 **no es un
+cargo al restaurante: es lo que la app le cobra al CLIENTE por el domicilio** (más propina de
+$2.000–$5.000; recoger en tienda ahorra $8.000–$15.000). Contarlo del lado del restaurante infla el
+costo de la plataforma casi al doble. El cargo fijo al restaurante que sí está documentado es el de
+Nautilus, **~$3.062**, que además coincide con el mínimo garantizado que Rappi le paga al repartidor
+($3.050 por domicilio cumplido, más $640 por kilómetro desde el km 4, acuerdo con MinTrabajo de
+feb-2024). Probablemente es el mismo dinero.
 
-Recuperar **una cuarta parte** de esos pedidos al canal propio libera **~$890.000/mes**. Una
-suscripción de $370.000–$590.000 se paga sola una vez y media, y el cliente lo comprueba **con su
-propio extracto**, no con una promesa nuestra.
+**Caso central que se usa de acá en adelante:** comisión del 28% más $3.062 fijos. El IVA del 19%
+sobre la comisión queda **fuera**, porque Rappi dice que se suman los impuestos que apliquen y
+Nautilus lo menciona pero no lo suma en su ejemplo; esa contradicción se resuelve con un contador,
+no con una suposición nuestra.
 
-> 🔴 **La honestidad que hay que mantener en ese pitch:** el ahorro **no es la comisión completa**. La
-> comisión de Rappi incluye el domiciliario. El ahorro real es *comisión − costo de repartir por
-> cuenta propia*, y **ese número no lo tenemos**. Prometerlo como neto sería exactamente la métrica
-> sin fuente que `17 §3` prohíbe. Es lo primero que hay que medir.
+#### 3.3.2 · Los tres caminos, por pedido
+
+Ticket de trabajo **$40.000** (`supuesto`: el ticket medio de foodservice en Bucaramanga es $43.019
+por comensal según Delectatech, pero eso no es un ticket de domicilio; se usa un poco abajo porque
+el volumen de domicilio lo mueven restaurantes de barrio). 30 días operativos al mes.
+
+| Camino | Qué es | COP por pedido | % del ticket |
+|---|---|---:|---:|
+| **1. Plataforma completa** | Rappi y compañía: ponen demanda, repartidor y cobro | **$14.260** | 35,7% |
+| **1b. Plataforma sólo herramienta** | DiDi Tu Negocio: el pedido entra por el WhatsApp del restaurante y DiDi pone el repartidor | **$4.522** | 11,3% |
+| **2. Domiciliario propio** | Contratado, a capacidad plena | **$6.830** | 17,1% |
+| **3. Flota tercerizada** | Una empresa de domicilios cobra por entrega | **$5.500** | 13,8% |
+
+**De dónde sale el $6.830 del camino 2**, que es el número que nadie calcula:
+
+| Concepto | COP/mes | Estado |
+|---|---:|---|
+| Salario mínimo 2026 | 1.750.905 | vigente |
+| Auxilio de transporte (Decreto 1470 de 2025) | 249.095 | vigente |
+| Pensión 12% | 210.109 | vigente |
+| **ARL clase V 6,960%** (mensajería en moto es el riesgo más alto del sistema) | **121.863** | vigente |
+| Caja de compensación 4% | 70.036 | vigente |
+| Prima, cesantías, intereses y vacaciones | 426.213 | vigente |
+| Dotación | 50.000 | supuesto |
+| **Subtotal nómina (empresa exonerada)** | **2.878.221** | |
+| Auxilio de rodamiento (el domiciliario pone la moto) | 400.000 | supuesto |
+| **Total por domiciliario** | **3.278.221** | |
+
+> ⚠️ **El error que casi se cuela, y vale $112.723 al mes.** El desglose publicado de referencia
+> (Alegra) usa **ARL clase I, 0,522%**, que es el de una oficina. Un domiciliario en moto es
+> **clase V, 6,960%**: la tarifa más alta que existe. Copiar la tabla de la oficina subestima el
+> costo del domiciliario en más de cien mil pesos mensuales.
+
+A eso hay que sumarle lo que no aparece en ninguna nómina: **quién despacha**. A 1,5 minutos por
+pedido entre tomarlo, asignarlo, seguirlo y cerrarlo, son **7,5 horas al mes** con 10 pedidos
+diarios, **22 horas** con 30 y **60 horas** con 80. Se dice en horas y no en pesos, porque
+`costoHoraOperativa` sigue en `supuesto`. **Ese es el trabajo que reemplaza `domicilios-ops`**, y es
+el único de los tres caminos donde nuestro producto entra sin depender de la flota.
+
+#### 3.3.3 · Los tres escenarios
+
+| A ticket $40.000 | 10 pedidos/día (300/mes) | 30 pedidos/día (900/mes) | 80 pedidos/día (2.400/mes) |
+|---|---:|---:|---:|
+| **1. Plataforma completa** | $4.278.000 | $12.834.000 | $34.224.000 |
+| **1b. DiDi Tu Negocio** | $1.356.600 | $4.069.800 | $10.852.800 |
+| **2. Domiciliario propio** | $3.278.221 (1 dom., 63% ocupado) | $6.556.441 (2 dom., 94%) | $16.391.103 (5 dom., 100%) |
+| **3. Flota tercerizada + suscripción $370.000** | $2.020.000 | $5.320.000 | $13.570.000 |
+| | | | |
+| **Camino 3 contra la plataforma completa** | **libera $2.258.000/mes** | **libera $7.514.000/mes** | **libera $20.654.000/mes** |
+| **Camino 3 contra DiDi Tu Negocio** | 🔴 **cuesta $663.400 más** | 🔴 **cuesta $1.250.200 más** | 🔴 **cuesta $2.717.200 más** |
+
+#### 3.3.4 · Los tres cruces, que son la respuesta
+
+1. **Contra la plataforma completa, el canal propio gana desde un ticket de $8.714.** No hay
+   volumen ni ticket real de restaurante donde la comisión salga más barata que pagar la entrega:
+   el costo de la plataforma escala con el valor del pedido y el del reparto no. Ese es el foso del
+   pitch y está firme.
+2. **El domiciliario propio nunca le gana a la flota tercerizada.** Para que el sueldo empate con
+   una entrega de $5.500 hacen falta **596 pedidos al mes por domiciliario, casi 20 al día**, y la
+   capacidad realista supuesta son 16. A capacidad plena el propio cuesta $6.830 contra $5.500. En
+   la práctica **nunca está a capacidad plena**, porque la demanda de un restaurante se concentra en
+   dos picos. 👉 Consecuencia directa: **a un restaurante no se le dice «monta tu flota»**. Eso
+   confirma con números lo que §3.4 ya decía por intuición.
+3. 🔴 **Contra DiDi Tu Negocio perdemos hasta un ticket de $50.000–$60.000.** Con $5.500 por entrega
+   más la suscripción, nuestro camino sólo gana por encima de ~$59.600 de ticket a 300 pedidos/mes,
+   ~$52.300 a 900 y ~$50.000 a 2.400. Debajo de eso, cuesta más.
+
+#### 3.3.5 · 🔴 Lo que esta medición le quita al pitch
+
+**Apareció un competidor que hace exactamente lo que íbamos a vender, y ya está en Bucaramanga.**
+**DiDi Tu Negocio** cobra *«solo 9,5% por pedido (+IVA). Sin costos fijos ni cargos adicionales»*: el
+restaurante recibe pedidos por WhatsApp o teléfono, asigna repartidores de DiDi y lo maneja desde su
+DiDi Tienda. Es canal propio con la flota resuelta, vendido por quien ya tiene la flota. Y DiDi Food
+opera en Bucaramanga desde julio de 2022.
+
+Eso **no mata el pitch, pero le quita el argumento fácil**. Lo que queda en pie, y hay que decirlo
+con estas palabras y no con otras:
+
+- ⚠️ **Hay una pregunta sin resolver que decide el veredicto y cuesta una llamada:** si ese 9,5%
+  **incluye el reparto** o si el domicilio lo paga el cliente aparte. La página no lo dice. Si lo
+  incluye, DiDi gana en todos los volúmenes con ticket de $40.000. Si no lo incluye, la comparación
+  es otra y hay que rehacerla. **Está registrado como `incluyeElDomicilio` en `supuesto`.**
+- **Lo que DiDi no le da al restaurante es el cliente.** El pedido entra por su canal, sí, pero la
+  operación, la base de clientes y el histórico quedan del lado de DiDi. Ese es un argumento de
+  propiedad del dato, no de precio, y es más difícil de vender.
+- **La cobertura.** §3.4 ya advertía que zonas y capacidad están sin resolver. DiDi tiene flota en
+  toda la ciudad; una flota tercerizada local tiene la que tiene.
+
+**Y el recordatorio que ninguna tabla de arriba contiene: la plataforma no vende logística, vende
+demanda.** Todo el cálculo compara el costo de *entregar* un pedido que ya existe. Un pedido que
+sólo existe porque el cliente abrió Rappi no se «recupera» moviéndolo de canal. Por eso el pitch
+honesto no es «cambiate», es **«recuperá al canal propio los pedidos que ya son tuyos»**, que es la
+recomendación del propio sector de llegar a 50/50 entre apps y canal propio en 6 a 12 meses.
+
+#### 3.3.6 · Cómo se dice esto en público
+
+- ✅ **Se dice el costo por pedido de cada camino** y se deja que el restaurante haga la resta con su
+  propio extracto. Es aritmética que él verifica, no una promesa nuestra.
+- ✅ **Se dice que los números llevan supuestos** y cuáles: el ticket, la tarifa de la flota y la
+  capacidad del domiciliario.
+- ❌ **No se dice un porcentaje de ahorro.** Ni «te ahorras el 30%» ni «recuperá la comisión». El
+  ahorro es comisión menos costo de repartir, y el costo de repartir no es cero.
+- ❌ **No se dice «monta tu propia flota»:** el cruce 2 dice que casi nunca conviene.
+- ❌ **No se publica ninguna cifra de esta sección en una página.** Sigue vigente §7: son cifras de
+  prensa sobre terceros, y las nuestras son sólo las verificables.
+
+#### 3.3.7 · Los tres números que faltan, y qué cuesta cerrarlos
+
+| Qué falta | Cómo se cierra | Cuesta |
+|---|---|---|
+| **La tarifa real de una flota en Bucaramanga.** Ninguna la publica: Punto Ágil, `mensajeriabucaramanga.com`, Citix y Teleservimos remiten todas a WhatsApp | Una llamada a Bucaradomi, o a cualquiera de las 37 sociedades de mensajería del registro (§1.1) | una llamada |
+| **Si el 9,5% de DiDi Tu Negocio incluye el reparto** | Registrarse o llamar | una llamada |
+| **Cuántos pedidos por hora entrega un domiciliario de verdad.** No se encontró ni un estudio colombiano | Bucaradomi lo tiene en `domicilios-ops`: es una consulta a la base, no una encuesta | una consulta |
+
+Los tres se responden en **la misma conversación del corte del 20-sep**, que ya está agendada por
+otra razón (`clients/bucaradomi/corte-bimestre-2026-09-20.md`).
 
 ### 3.4 · Y acá está lo que nadie más puede armar
 
@@ -309,6 +430,13 @@ O sea: al restaurante no hay que venderle «montá tu propia flota» —que es l
 pitch de canal propio—. Se le vende **el canal propio con la flota resuelta**: SoltyAI pone la
 plataforma, Bucaradomi reparte. Eso convierte el «costo de repartir por cuenta propia» de una
 incógnita en un precio que se puede cotizar.
+
+> ✅ **Medido el 2026-09-05, y esta intuición quedó confirmada con número: §3.3.4, cruce 2.** El
+> domiciliario propio necesitaría casi 20 pedidos diarios por persona para empatar con una flota
+> tercerizada de $5.500, y la capacidad realista son 16. 🔴 **Pero la misma medición encontró que
+> este párrafo ya no describe algo que sólo nosotros podamos armar:** DiDi Tu Negocio vende
+> exactamente esto desde 2022 en Bucaramanga. Ver §3.3.5 antes de usar este argumento con un
+> cliente.
 
 ✅ **La cláusula se verificó contra la propuesta firmada en la suite el 22-ago, y dice lo contrario de
 lo que decía la memoria.** No es que nosotros le llevemos negocios a él: **es él quien nos debe una
@@ -451,9 +579,12 @@ factura primero con lo que ya está construido»**.
   **O sea que el primer restaurante no se busca en una lista fría: se le pide a Bucaradomi**, que
   reparte para ellos, los conoce, y tiene la obligación contractual de presentar uno. Es el prospecto
   más caliente que existe y ya está pago. Guion completo: `clients/bucaradomi/corte-bimestre-2026-09-20.md`.
-- ~~sacar la lista real~~ ✅ hecha (§1.1). **Los pasos que quedan, en orden:** (1) hablar con
-  Bucaradomi sobre la flota; (2) **medir el costo de repartir** para poder decir un número honesto;
-  (3) enriquecer las 335 con contacto —el registro no trae teléfono ni web—; (4) 20 conversaciones.
+- ~~sacar la lista real~~ ✅ hecha (§1.1). ~~medir el costo de repartir~~ ✅ **hecha el 2026-09-05, y
+  cambió el pitch: ver §3.3.** Los tres caminos están costeados, el domiciliario propio quedó
+  descartado por número, y apareció **DiDi Tu Negocio** (9,5% + IVA, con flota, ya en Bucaramanga)
+  como competencia directa del canal propio. **Los pasos que quedan, en orden:** (1) hablar con
+  Bucaradomi sobre la flota **y cerrar de una vez los tres números que faltan (§3.3.7)**;
+  (2) enriquecer las 335 con contacto —el registro no trae teléfono ni web—; (3) 20 conversaciones.
 - **Riesgo:** que el ahorro neto contra la flota propia no dé. **Si no da, se sabe en la semana 2 y no
   se gastó nada** — que es justamente por qué va primero.
 
@@ -544,6 +675,39 @@ producto.
 - [Rappi para restaurantes: cómo integrar pedidos sin perder el margen — Bibisoft](https://bibisoft.co/rappi-restaurantes-colombia)
 - [Factura electrónica para restaurantes en Colombia 2026 — Warocol](https://warocol.com/blog/facturacion-electronica-restaurante-colombia)
 - [Documentos equivalentes electrónicos 2026 — Cuenti](https://cuenti.com/software-contable/documentos-equivalentes-electronicos-2026-guia-de-automatizacion/)
+
+**§3.3 — el costo de repartir** *(todas consultadas el 2026-09-05; lo que no cargó, dicho)*
+
+*Lo que cobra la plataforma*
+- [¿Cuánto cobra Rappi a los restaurantes en Colombia? — Rappi Merchants (oficial)](https://merchants.rappi.com/es-co/cuanto-cobra-rappi-a-los-restaurantes) — **no publica el porcentaje**: dice que se informa en el registro
+- [Simulador de comisiones de delivery — POS Colombia](https://poscolombia.com/herramientas/simulador-comisiones-delivery) — rangos 2026 por plataforma
+- [¿Cuánto cobra Rappi a los restaurantes? — Nautilus (14-ene-2025)](https://nautilusrestaurante.co/que-porcentaje-cobra-rappi-a-los-restaurantes/) — el único caso colombiano con el desglose (26% + $3.062,80 de tarifa fija)
+- [Rappi para restaurantes: cómo integrar pedidos sin perder el margen — Bibisoft (22-jun-2026)](https://bibisoft.co/rappi-restaurantes-colombia) — ejemplo de $35.000 al 27% y margen 19,4% contra 46,4%
+- [Los pedidos de Rappi tendrán tarifa mínima fija de $3.050 — El Colombiano (21-feb-2024)](https://www.elcolombiano.com/negocios/empresas/pedidos-de-rappi-tendran-tarifa-minima-fija-EP23795537) — acuerdo con MinTrabajo: $3.050 por domicilio + $640/km desde el km 4
+- [Entrega a domicilio con flota propia usando la app — Rappi Merchants](https://merchants.rappi.com/es-co/entrega-domicilio-flota-propia-usando-app) — la fórmula del costo propio por pedido, sin cifras
+- [¿Cuánto cuesta comer en restaurante en Colombia? Domicilios 2026 — CuántoMeCuesta (abr-2026)](https://cuantomecuesta.com/co/restaurante/) — los $3.000–$8.000 que paga **el cliente**, no el restaurante
+- 🔴 [DiDi Tu Negocio — DiDi Colombia (oficial)](https://web.didiglobal.com/co/food/restaurantes/didi-tu-negocio/) — *«solo 9,5% por pedido (+IVA). Sin costos fijos ni cargos adicionales»*
+- [DiDi Food llega a Bucaramanga — Vanguardia (26-jul-2022)](https://www.vanguardia.com/economia/local/2022/07/26/didi-food-la-nueva-app-de-comida-a-domicilio-llega-a-bucaramanga/)
+- *No cargó:* [chejefe.com/comisiones-rappi](https://www.chejefe.com/blog/independencia-de-las-apps/comisiones-rappi-cuanto-queda) sí abrió pero **no da cifras para Colombia 2026**; [maspedidos.com](https://www.maspedidos.com/blog/cuanto-cobra-rappi-a-los-restaurantes) es de México
+
+*Lo que cuesta un domiciliario propio*
+- [Costo de contratar un empleado con salario mínimo — Alegra (23-may-2026)](https://blog.alegra.com/colombia/costo-de-contratar-un-empleado-con-salario-minimo/) — desglose completo, $2.765.572/mes con exoneración **y ARL clase I**
+- [Tarifas ARL: tabla de riesgos — Buk](https://www.buk.co/blog/tarifas-arl-tabla-riesgos-calculo) · [Cotización según nivel de riesgo — Gerencie](https://www.gerencie.com/cotizacion-a-riesgos-laborales-segun-nivel-de-riesgo.html) — mensajería en moto es **clase V, 6,960%**
+- [Salario mínimo 2026 — Buk](https://www.buk.co/blog/salario-minimo-2026-en-colombia) · [Auxilio de transporte 2026 (Decreto 1470 de 2025) — Magneto365](https://www.magneto365.com/co/blog/auxilio-de-transporte)
+- [Ofertas de domiciliario con moto — elempleo.com](https://www.elempleo.com/co/ofertas-empleo/trabajo-domiciliario-con-moto) y [las de Bucaramanga](https://www.elempleo.com/co/ofertas-empleo/trabajo-domiciliario-repartidor-con-moto-bucaramanga-santander) — rodamientos reales de $300.000 a $787.476
+- [El auxilio de rodamiento y su tratamiento laboral — Gerencie](https://www.gerencie.com/el-auxilio-de-rodamiento-y-su-tratamiento-laboral-y-tributario.html) — lo fijan libremente las partes, no hay mínimo legal
+- [Cuánto cuesta mantener una moto al mes — Dismerca (15-oct-2025)](https://dismerca.com/blog-cuanto-cuesta-mantener-moto-mes-colombia/) — franja «trabajo/domicilio»: $230.000–$300.000/mes · [NKD 125 — Pulzo (15-may-2026)](https://www.pulzo.com/carros/motos/cuanto-cuesta-mantener-moto-vendida-colombia-esto-pagaria-mes-PP5181607)
+- [SOAT moto 2026 por cilindraje — SeguroYa](https://seguroya.com.co/soat-moto-colombia.html) · [Gasolina en Bucaramanga desde el 5-may-2026 — Infobae](https://www.infobae.com/colombia/2026/05/05/gasolina-y-acpm-suben-de-precio-en-colombia-y-asi-queda-el-valor-del-galon-de-corriente-en-bogota-medellin-cali-y-otras-ciudades/)
+- *No cargó:* [symcolombia.co/costos-reales-de-tener-moto](https://symcolombia.co/costos-reales-de-tener-moto/) (HTTP 403) y la página de salarios de [Computrabajo](https://co.computrabajo.com/salarios/domiciliario-con-moto) (vino vacía)
+
+*Lo que cobra una flota tercerizada*
+- 🔴 **Ninguna empresa de domicilios de Bucaramanga publica tarifa.** Verificadas una por una: [Punto Ágil](https://puntoagil.com/servicios/), [mensajeriabucaramanga.com](https://mensajeriabucaramanga.com/), [Citix](https://citix.com.co/mensajeria-outsourcing) y [Teleservimos](https://domiciliosteleservimos.com.co/) remiten todas a WhatsApp o teléfono
+- [Tarifas — Messengers (Medellín)](https://www.messengers.com.co/tarifas) — $15.000 por diligencia; el domicilio, a cotizar
+- [Cotizador de Mensajeros Urbanos](https://old-web.mensajerosurbanos.com/cotizador) — sin tarifas sin dirección; [Skydropx](https://www.skydropx.com.co/transportadoras/mensajeros-urbanos/cotizador/) reporta «desde $4.970» (la página devolvió HTTP 403; la cifra viene del resultado de búsqueda)
+- [¿Cuánto cuesta un envío en moto en Bogotá? — TuMensajeroExpress (2-feb-2026)](https://tumensajeroexpress.com.co/cuanto-cuesta-un-envio-en-moto-en-bogota-guia-de-precios-2025/) — 0–5 km: $8.000–$12.000
+
+*El ticket*
+- [Food service Colombia 2026 — Delectatech](https://www.delectatech.com/food-service-colombia-2026-datos-tendencias-y-oportunidades/) — ticket medio Bucaramanga $43.019 (+13,1%), may-2025 a abr-2026
 
 **Otros terrenos**
 - [Resolución 948 de 2026 — MinSalud (PDF)](https://www.minsalud.gov.co/sites/rid/Lists/BibliotecaDigital/RIDE/DE/DIJ/resolucion-0948-de-2026.pdf) · [Guía RIPS y FEV — Software Médico](https://softwaremedico.com.co/resolucion-948-de-2026/) · [Facturación electrónica en salud 2026 — SaludTools](https://www.saludtools.com/articulo/facturacion-electronica-salud-2026-dian)
