@@ -1,5 +1,56 @@
 # Changelog · soltyai-marketing
 
+## 2026-09-05 — `redes/` entra a `mensajeLider`: la pieza declara su canal, el linter no adivina
+
+**Qué.** `mensajeLider` deja de excluir `redes/`. La condición es que la pieza **declare**:
+`<!-- canal: linkedin -->` solo en su renglón abre un bloque, `<!-- canal: instagram, tiktok -->`
+declara varios y `<!-- /canal -->` lo cierra. Los diez guiones de la tanda 1 y la bio de
+LinkedIn ya lo llevan (11 marcadores + 1 cierre). Dos fixtures nuevos en `copy/_pruebas/`, y
+`prueba.js` aprende a leer fixtures de texto con `<!-- esperados: … -->`.
+
+**Por qué.** La exclusión estaba **bien razonada** —el canal habría que adivinarlo por el nombre
+del archivo— y aun así costó: la tanda 1 se escribió con **7 de 10 guiones de la línea `bot`**
+saliendo a LinkedIn, donde el canon manda `servicio` desde el 17-ago. Se reordenó a mano el
+22-ago; a mano no escala. Tercera repetición del mismo modo de falla (Promatel, el backup de las
+nueve noches, esto). La salida no fue adivinar mejor: fue que la pieza lo diga.
+
+**Por qué por bloque y no por archivo.** Porque los archivos de `redes/` son mixtos, exactamente
+igual que la exención de las prohibiciones: `guiones-tanda-1.md` trae diez guiones con destinos
+distintos y una tabla de control al final que nombra las dos líneas a propósito. Un marcador de
+archivo daría un veredicto falso sobre las dos mitades.
+
+**Dos bugs que cazó el fixture el día que se escribió** — y los dos eran falsos negativos, que
+es la clase que se ve igual que un verde:
+
+1. **La prosa que documenta el marcador era un marcador.** El fixture decía «ni un marcador
+   `<!-- canal: … -->` en todo el archivo» y eso abría un bloque de verdad, con el canal `…`, y de
+   paso apagaba el aviso de que el archivo no declaraba nada. Se arregló exigiendo que el marcador
+   sea **toda la línea**: documentar la convención no puede ser ejecutarla.
+2. **El vocabulario partido por el salto de línea no hacía match.** El markdown va envuelto a 100
+   columnas, así que «software a la\nmedida» se leía como que la pieza sólo nombraba el bot. Los
+   espacios ahora se aplanan antes de buscar. Este bug existía desde el 20-ago en el camino de
+   `copy/` y nadie lo había visto porque ahí los campos son de una línea.
+
+**Lo que canta apenas se enciende — 12 avisos, 0 errores, y ninguno se tapó:**
+
+- **7 guiones** llevan la etiqueta `bot` y salen a LinkedIn/IG/TikTok, que el canon asigna a
+  `servicio`. ⚠️ **No es un error de dedo: son dos decisiones que se contradicen.**
+  `mensajeLiderPorCanal._cambio` (17-ago) manda todo el orgánico a `servicio`;
+  `18-ARQUITECTURA-DE-OFERTA §4` (22-ago) mandó L2 bot a IG + TikTok. Por eso son 🟡 y no 🔴, y por
+  eso **no se tocó ninguna de las dos**: mover el canon es una decisión comercial.
+- **La bio de LinkedIn** abre con «bots de WhatsApp y Telegram» en un canal que lleva servicio.
+- **4 piezas no declaran canal** (`solty-fb-textos`, `solty-yt-textos`, `video-demo-guion`,
+  `outbound-mensajes`). Se dejaron sin declarar a propósito: dos son ambiguas de verdad y
+  declararlas sería la adivinanza que esta regla vino a evitar. El 🟡 es el hueco, ahora visible.
+
+**Qué se verificó.** `npm run check` sale **0** (los avisos no bloquean, por diseño). Los cuatro
+veredictos con fixture propio: `canal:mezcla-de-lineas`, `canal:linea-que-no-le-toca`,
+`canal:desconocido` y `canal:sin-declarar`. Los guiones **2, 3 y 4** salen limpios —nombran «a la
+medida» y van a LinkedIn— o sea que la regla distingue, no marca todo. Y el fixture de JSON ya no
+arrastra los hallazgos de `redes/` como suyos: cada camino recibe la otra lista vacía.
+
+**Pendiente de la suite:** `cmt53crvn002k01lkd6th204l`.
+
 ## 2026-09-05 — la arquitectura de oferta deja de ser memoria: `lineasDeOferta` en el canon
 
 **Qué.** Bloque nuevo `canon.lineasDeOferta`: `ordenDeApertura` `["L1","L3","L2"]`,

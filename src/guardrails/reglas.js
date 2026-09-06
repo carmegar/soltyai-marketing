@@ -397,12 +397,69 @@ export function registroDeLinks() {
  * dos ya falló por la regla 1, y pedirle al linter que ordene por prominencia sería fabricar una
  * precisión que no tiene.
  *
- * Alcance: las piezas de `copy/` que declaran `plataforma`. ⚠️ `redes/` queda FUERA a propósito:
- * ahí el canal se tendría que adivinar por el nombre del archivo, y adivinar es cómo un linter
- * empieza a dar veredictos que nadie puede defender. Si algún día esos archivos declaran su canal,
- * entran solos.
+ * ALCANCE — cambió el 2026-09-05, y el motivo es el pendiente `cmt53crvn…`:
+ *
+ * Antes eran sólo las piezas de `copy/` que declaran `plataforma`, y `redes/` quedaba fuera «porque
+ * ahí el canal se tendría que adivinar por el nombre del archivo». El razonamiento era correcto y
+ * aun así costó: la tanda 1 de video se escribió con **7 de 10 guiones de la línea `bot`** saliendo
+ * a LinkedIn, donde el canon manda `servicio` desde el 17-ago. Se reordenó a mano el 22-ago; a mano
+ * no escala, y es la tercera repetición del mismo modo de falla (Promatel, el backup de las nueve
+ * noches, esto).
+ *
+ * La solución NO es adivinar: es que **la pieza DECLARE su canal**, con el mismo idioma que ya usa
+ * el repo para `<!-- guardrail:ignorar -->`:
+ *
+ *     <!-- canal: linkedin -->            abre un bloque; vale hasta el siguiente marcador
+ *     <!-- canal: instagram, tiktok -->   varios canales: se juzga contra cada uno
+ *     <!-- /canal -->                     cierra el bloque (índices, tablas de control, notas)
+ *
+ * Es por BLOQUE y no por archivo porque los archivos de `redes/` son mixtos: `guiones-tanda-1.md`
+ * trae diez guiones con destinos distintos y una tabla de control al final que nombra las dos
+ * líneas a propósito. Un marcador de archivo daría un veredicto falso sobre las dos mitades.
+ *
+ * Lo que pasa con lo que NO declara: se queda como estaba —no se juzga, porque seguiría siendo
+ * adivinar— pero la regla **avisa** que la pieza no declara canal. Un hueco anunciado se puede
+ * cerrar; el de antes no se veía desde afuera.
  */
-export function mensajeLider(piezas = PIEZAS()) {
+
+// 🔴 El marcador tiene que ser TODA la línea (`^…$` sobre la línea recortada), y no vale inline.
+// El primer fixture lo cazó el día que se escribió: un párrafo que EXPLICA la convención —«ni un
+// marcador `<!-- canal: … -->` en todo el archivo»— abría un bloque de verdad, con el canal «…»,
+// y de paso apagaba el aviso de que el archivo no declaraba nada. Es el mismo modo de falla que
+// obliga a que la exención de las prohibiciones sea por línea: documentar lo prohibido no puede
+// ser hacerlo. Se diferencia a propósito de `<!-- guardrail:ignorar -->`, que sí es inline porque
+// exenta LA línea en la que va; éste declara lo que viene DESPUÉS, así que no comparte renglón.
+const CANAL_ABRE = /^<!--\s*canal:\s*([a-z0-9][a-z0-9 ,._-]*)\s*-->$/i;
+const CANAL_CIERRA = /^<!--\s*\/\s*canal\s*-->$/i;
+
+/**
+ * Los bloques que declaran canal dentro de un archivo de prosa. Lo que está antes del primer
+ * marcador —el encabezado del archivo, la nota de por qué se reordenó— no pertenece a ningún
+ * bloque y no se juzga: no es copy de un canal, es la explicación de la pieza.
+ */
+export function bloquesDeCanal(archivo) {
+  const bloques = [];
+  let actual = null;
+  leer(archivo).split('\n').forEach((cruda, i) => {
+    const linea = cruda.trim();
+    if (CANAL_CIERRA.test(linea)) { actual = null; return; }
+    const abre = linea.match(CANAL_ABRE);
+    if (abre) {
+      actual = {
+        canales: abre[1].split(',').map((c) => normalizar(c).trim()).filter(Boolean),
+        linea: i + 1,
+        texto: [],
+      };
+      bloques.push(actual);
+      return;
+    }
+    // Misma exención por línea que las prohibiciones: una declaración, no un silenciador.
+    if (actual && !EXENTA_LA_LINEA.test(linea)) actual.texto.push(linea);
+  });
+  return bloques;
+}
+
+export function mensajeLider(piezas = PIEZAS(), publicado = PUBLICADO()) {
   const hallazgos = [];
   const cfg = canon.mensajeLiderPorCanal ?? {};
   const vocab = cfg.vocabulario;
@@ -414,22 +471,17 @@ export function mensajeLider(piezas = PIEZAS()) {
     for (const canal of cfg[linea] ?? []) lineaDeCanal.set(canal, linea);
   }
 
+  // 🔴 Los espacios se aplanan ANTES de buscar. El vocabulario son frases de varias palabras
+  // ("software a la medida") y el markdown de `redes/` va envuelto a 100 columnas, así que la frase
+  // se parte justo en el medio y `includes` no la encuentra. El fixture lo cazó el día que se
+  // escribió: el bloque decía "hacemos software a la\nmedida" y la regla lo leyó como que sólo
+  // nombraba el bot. Un falso NEGATIVO en una regla de guardia se ve igual que un verde.
+  const aplanar = (t) => normalizar(t).replace(/\s+/g, ' ');
   const nombra = (texto, linea) =>
-    (vocab[linea] ?? []).filter((frase) => normalizar(texto).includes(normalizar(frase)));
+    (vocab[linea] ?? []).filter((frase) => aplanar(texto).includes(aplanar(frase)));
 
-  for (const archivo of piezas) {
-    const pieza = leerJson(archivo);
-    const canal = pieza.plataforma;
-    if (!canal) continue;
-    const meToca = lineaDeCanal.get(canal);
-
-    // El texto de la pieza, sin los campos de metadatos: un `_congelado` que EXPLICA por qué se
-    // relegó el carril nombra las dos líneas a propósito, y no es copy.
-    const texto = Object.entries(pieza)
-      .filter(([k]) => !k.startsWith('_') && k !== 'fuente')
-      .map(([, v]) => (typeof v === 'string' ? v : JSON.stringify(v)))
-      .join(' \n ');
-
+  /** El juicio, uno solo, para que la pieza de `copy/` y el bloque de `redes/` no puedan divergir. */
+  const juzgar = ({ archivo, linea, canales, texto, canalDebeExistir }) => {
     const delBot = nombra(texto, 'bot');
     const delServicio = nombra(texto, 'servicio');
 
@@ -438,32 +490,98 @@ export function mensajeLider(piezas = PIEZAS()) {
         nivel: 'error',
         regla: 'canal:mezcla-de-lineas',
         archivo,
-        linea: 0,
+        linea,
         mensaje:
           `la pieza nombra LAS DOS líneas ("${delBot[0]}" y "${delServicio[0]}"). ` +
           'El canon es explícito: dentro de una misma pieza hay UN solo mensaje. ' +
           'Mezclarlas es el riesgo que el cambio del 17-ago marcó como el real.',
       });
-      continue;
+      return;
     }
 
-    if (!meToca) continue;
-    const otra = meToca === 'bot' ? 'servicio' : 'bot';
-    const nombraLaOtra = meToca === 'bot' ? delServicio : delBot;
-    const nombraLaSuya = meToca === 'bot' ? delBot : delServicio;
+    // Un aviso por BLOQUE, no por canal. Un guion que sale a Instagram y TikTok es UN hecho, no
+    // dos: repetirlo por canal es cómo un tablero de avisos se vuelve papel tapiz y deja de leerse.
+    const fuera = [];
+    for (const canal of canales) {
+      const meToca = lineaDeCanal.get(canal);
+      if (!meToca) {
+        // Un `plataforma` desconocido en `copy/` se salta como siempre; un canal ESCRITO a mano en
+        // un marcador es una afirmación del autor, y si no está en el canon es un dedazo que deja
+        // la pieza sin vigilar creyendo que la vigila.
+        if (canalDebeExistir) {
+          hallazgos.push({
+            nivel: 'error',
+            regla: 'canal:desconocido',
+            archivo,
+            linea,
+            mensaje:
+              `el marcador declara el canal "${canal}", que no está en canon.mensajeLiderPorCanal ` +
+              `(${[...lineaDeCanal.keys()].join(' · ')}). Un canal mal escrito deja el bloque sin juzgar.`,
+          });
+        }
+        continue;
+      }
+      const nombraLaOtra = meToca === 'bot' ? delServicio : delBot;
+      const nombraLaSuya = meToca === 'bot' ? delBot : delServicio;
+      if (nombraLaOtra.length && !nombraLaSuya.length) fuera.push({ canal, meToca, por: nombraLaOtra[0] });
+    }
 
-    if (nombraLaOtra.length && !nombraLaSuya.length) {
+    if (fuera.length) {
+      const { meToca, por } = fuera[0];
+      const otra = meToca === 'bot' ? 'servicio' : 'bot';
       hallazgos.push({
         nivel: 'aviso',
         regla: 'canal:linea-que-no-le-toca',
         archivo,
-        linea: 0,
+        linea,
         mensaje:
-          `canal "${canal}" lleva la línea "${meToca}" y esta pieza sólo nombra "${otra}" ` +
-          `(por "${nombraLaOtra[0]}"). Revisar contra 15-CANALES-Y-SECUENCIA.md, o cambiar el canal.`,
+          `${fuera.length > 1 ? `los canales "${fuera.map((f) => f.canal).join('", "')}" llevan` : `canal "${fuera[0].canal}" lleva`} ` +
+          `la línea "${meToca}" y esta pieza sólo nombra "${otra}" (por "${por}"). ` +
+          'Revisar contra 15-CANALES-Y-SECUENCIA.md, o cambiar el canal.',
+      });
+    }
+  };
+
+  for (const archivo of piezas) {
+    const pieza = leerJson(archivo);
+    const canal = pieza.plataforma;
+    if (!canal) continue;
+
+    // El texto de la pieza, sin los campos de metadatos: un `_congelado` que EXPLICA por qué se
+    // relegó el carril nombra las dos líneas a propósito, y no es copy.
+    const texto = Object.entries(pieza)
+      .filter(([k]) => !k.startsWith('_') && k !== 'fuente')
+      .map(([, v]) => (typeof v === 'string' ? v : JSON.stringify(v)))
+      .join(' \n ');
+
+    juzgar({ archivo, linea: 0, canales: [canal], texto, canalDebeExistir: false });
+  }
+
+  for (const archivo of publicado) {
+    const bloques = bloquesDeCanal(archivo);
+    if (!bloques.length) {
+      hallazgos.push({
+        nivel: 'aviso',
+        regla: 'canal:sin-declarar',
+        archivo,
+        linea: 1,
+        mensaje:
+          'se publica y no declara su canal, así que `mensajeLider` no la juzga. Se cierra con ' +
+          '`<!-- canal: … -->` arriba del bloque. No se adivina por el nombre del archivo.',
+      });
+      continue;
+    }
+    for (const bloque of bloques) {
+      juzgar({
+        archivo,
+        linea: bloque.linea,
+        canales: bloque.canales,
+        texto: bloque.texto.join(' \n '),
+        canalDebeExistir: true,
       });
     }
   }
+
   return hallazgos;
 }
 

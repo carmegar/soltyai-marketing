@@ -33,9 +33,21 @@ Motor de marketing de SoltyAI: la estrategia escrita (`01`–`14`) y los program
     legítimos (una mención de paso), así que no bloquea.
   - El vocabulario de cada línea vive en `canon.json → mensajeLiderPorCanal.vocabulario`, no en el
     código: es una decisión comercial, igual que un precio.
-  - Alcance: las piezas de `copy/` que declaran `plataforma`. **`redes/` queda fuera a propósito**
-    porque ahí el canal habría que adivinarlo por el nombre del archivo, y adivinar es cómo un
-    linter empieza a dar veredictos que nadie puede defender.
+  - Alcance: las piezas de `copy/` que declaran `plataforma`, **y desde el 2026-09-05 también las de
+    `redes/` que declaran su canal.** `redes/` estuvo fuera porque el canal habría que adivinarlo
+    por el nombre del archivo, y adivinar es cómo un linter empieza a dar veredictos que nadie puede
+    defender. La salida no fue adivinar: **la pieza declara**.
+    ```markdown
+    <!-- canal: linkedin -->            abre bloque; vale hasta el siguiente marcador
+    <!-- canal: instagram, tiktok -->   varios canales; se juzga contra cada uno
+    <!-- /canal -->                     cierra (índices, tablas de control, notas)
+    ```
+    Va **solo en su renglón** —a diferencia de `<!-- guardrail:ignorar -->`, que es inline porque
+    exenta la línea donde va—; es **por bloque y no por archivo** porque los archivos de `redes/` son
+    mixtos, igual que la exención de las prohibiciones. Lo de antes del primer marcador no se juzga.
+    Lo que **no declara** sigue sin juzgarse, pero sale un 🟡 `canal:sin-declarar`: un hueco anunciado
+    se puede cerrar, el de antes no se veía desde afuera. Un canal que no está en el canon es 🔴
+    (`canal:desconocido`): un dedazo dejaba el bloque sin vigilar creyendo que lo vigilaba.
 - **WhatsApp y Telegram se prometen; la web no.** WhatsApp quedó **vivo el 2026-08-07** (Meta aprobó
   a SoltyAI como Tech Provider el 6-ago). La prohibición `whatsappComoPromesa` fue **retirada** — el
   bloque quedó en el canon como registro, bajo una clave con `_` adelante, para que nadie la
@@ -86,9 +98,16 @@ Motor de marketing de SoltyAI: la estrategia escrita (`01`–`14`) y los program
   ⚠️ **La landing queda atrás hasta que alguien la refresque:**
   `platform/apps/landing/src/data/canon.snapshot.json` es copia manual de este canon (es el H7 de
   `17-RECONCILIACION-CONTENIDO.md`, que ya derivó 8 días una vez).
-  ⚠️ Y el aviso que dejó: **`mensajeLider` excluye `redes/`** (ver arriba), y por ahí salió la tanda 1
-  de video con **7 de 10 guiones de la línea `bot`** apuntando a LinkedIn. Se reordenó a mano el
-  22-ago; a mano no escala. Pendiente `cmt53crvn002k01lkd6th204l`.
+  ✅ **El aviso que dejó quedó cerrado el 2026-09-05.** `mensajeLider` excluía `redes/`, y por ahí
+  salió la tanda 1 de video con **7 de 10 guiones de la línea `bot`** apuntando a LinkedIn; se
+  reordenó a mano el 22-ago, y a mano no escala. Ahora los diez guiones y la bio de LinkedIn
+  **declaran su canal** con `<!-- canal: … -->` y entran al guardrail (ver arriba).
+  ⚠️ **Y lo primero que cantó al encenderlo es una decisión pendiente, no un bug:** siete guiones
+  llevan la etiqueta `bot` y salen a LinkedIn/IG/TikTok, que el canon asigna a `servicio` desde el
+  17-ago, mientras `18-ARQUITECTURA-DE-OFERTA §4` los mandó ahí a propósito el 22-ago («L2 bot → IG
+  + TikTok»). **Las dos decisiones se contradicen y ninguna es un error de dedo**, así que salen 🟡
+  y no 🔴. Lo mismo la bio de LinkedIn, que abre con «bots de WhatsApp y Telegram» en un canal que
+  lleva servicio. Se resuelve moviendo `mensajeLiderPorCanal` **o** el destino, nunca los dos.
 - **Toda entrada del swipe file lleva su captura** en `swipe/`.
 
 ## Las skills del plugin `marketing` (Anthropic) — cómo se usan acá

@@ -24,6 +24,20 @@
 >
 > **No se reescribió ni un guion.** Sólo cambió el orden y se le puso destino a cada uno. Cada bloque
 > conserva anotado su número viejo para que nada se pierda al comparar con el `dolores.json`.
+>
+> ## ✅ 2026-09-05 — el destino dejó de estar sólo en prosa
+>
+> Cada guion abre con un marcador `<!-- canal: … -->` que dice a qué red va, y con eso **entra al
+> guardrail `mensajeLider`**, que hasta hoy excluía `redes/` entera. El marcador vale hasta el
+> siguiente, y `<!-- /canal -->` lo cierra (la tabla de control del final queda fuera a propósito:
+> nombra las dos líneas y no es copy). Tiene que ir **solo en su renglón**.
+>
+> ⚠️ **Lo que el guardrail canta apenas se encendió, y no se tocó acá porque es una decisión
+> comercial:** siete de los diez guiones llevan la etiqueta `bot` en su ficha y salen a LinkedIn, IG
+> o TikTok, que según `canon.mensajeLiderPorCanal` llevan `servicio` desde el 17-ago. La tabla de
+> arriba los mandó ahí el 22-ago a propósito («L2 bot → IG + TikTok»), así que **las dos decisiones
+> se contradicen** y ninguna de las dos es un error de dedo. Son 🟡 y no 🔴 justamente por eso.
+> Quien lo resuelva mueve `mensajeLiderPorCanal` o mueve el destino, pero no las dos a la vez.
 
 ## Cómo se usan
 
@@ -41,6 +55,7 @@
 
 ---
 
+<!-- canal: linkedin -->
 ## 1 ★ ¿Cuántas veces te ha tocado repetirle la dirección al domiciliario?
 
 `direccion-dictada-al-domiciliario` · Restaurante y domicilios · N1 Ordenar · bot
@@ -66,6 +81,7 @@ la comida fría.
 
 ---
 
+<!-- canal: linkedin -->
 ## 2 ★ ¿Todavía tienes a alguien digitando facturas?
 
 `digitar-la-factura-del-proveedor` · Contable y administrativo · N2 Automatizar · a la medida
@@ -91,6 +107,7 @@ Digitarla es volver a escribir algo que ya está escrito.
 
 ---
 
+<!-- canal: linkedin -->
 ## 3 ★ ¿Todavía haces los recibos con talonario?
 
 `recibo-y-cobro-a-mano-al-cierre` · Salud y consultorios · N1 Ordenar · a la medida
@@ -116,6 +133,7 @@ reconstruir el año.
 
 ---
 
+<!-- canal: linkedin -->
 ## 4 ★ Cada cotización que mandas, ¿la armas copiando la del mes pasado?
 
 `cotizar-desde-cero-cada-vez` · Profesional independiente y agencia pequeña · N2 Automatizar · a la medida
@@ -141,6 +159,7 @@ Así es como uno cotiza barato sin darse cuenta.
 
 ---
 
+<!-- canal: linkedin, instagram -->
 ## 5 ★ ¿Todavía copias a un cuaderno los pedidos que te llegan por WhatsApp?
 
 `pedidos-de-whatsapp-al-cuaderno` · Comercio y distribución · N1 Ordenar · bot
@@ -166,6 +185,7 @@ enteras cuando el cliente reclama.
 
 ---
 
+<!-- canal: instagram, tiktok -->
 ## 6 ★ ¿Tu recepcionista agenda o alcanza a hacer algo más?
 
 `agendar-citas-contestando-el-telefono` · Salud y consultorios · N2 Automatizar · bot
@@ -192,6 +212,7 @@ el que llamó a las siete de la noche igual no agendó.
 
 ---
 
+<!-- canal: instagram, tiktok -->
 ## 7 ★ ¿Cuántas veces mandaste hoy las mismas fotos del mismo apartamento?
 
 `misma-ficha-del-inmueble-veinte-veces` · Inmobiliaria y arriendos · N2 Automatizar · bot
@@ -217,6 +238,7 @@ ya vio otros cuatro antes de que le contestaras.
 
 ---
 
+<!-- canal: instagram, tiktok -->
 ## 8 ¿Te ha pasado que dos clientas quedaron a la misma hora?
 
 `agendar-por-dos-canales-al-tiempo` · Belleza y bienestar · N2 Automatizar · bot
@@ -242,6 +264,7 @@ Simplemente no vuelve.
 
 ---
 
+<!-- canal: instagram, tiktok -->
 ## 9 ¿Cuántas fotos de motores tienes hoy en el chat sin contestar?
 
 `cotizar-la-reparacion-por-chat-con-fotos` · Taller y servicio técnico · N2 Automatizar · bot
@@ -267,6 +290,7 @@ Y tú ni sabes que existió.
 
 ---
 
+<!-- canal: instagram, tiktok -->
 ## 10 En temporada de matrículas, ¿cuántas veces al día explicas lo mismo?
 
 `las-mismas-diez-preguntas-de-matricula` · Educación y academias · N2 Automatizar · bot
@@ -291,6 +315,8 @@ Y tú ni sabes que existió.
 No es descuido: es volumen.
 
 ---
+
+<!-- /canal -->
 
 ## Lista para la sesión B (grabación)
 

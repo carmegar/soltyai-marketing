@@ -44,6 +44,12 @@ relleno que todos; una que **reformatee y distribuya** multiplica lo único que 
   Search, el Google Business Profile **y todo el orgánico**. Como este motor produce orgánico, lo
   que salga de acá lleva **el servicio**, no el bot. El mapa está en `canon.mensajeLiderPorCanal`;
   el porqué, en `../../16-CONTENIDO-VIDEO.md` y `../../15-CANALES-Y-SECUENCIA.md §5`.
+  ✅ **Y desde el 2026-09-05 el CI lo revisa también en `redes/`**, que es donde vive lo que este
+  motor produce. La condición es que la pieza **declare su canal**: `<!-- canal: linkedin -->` solo
+  en su línea abre un bloque, `<!-- canal: instagram, tiktok -->` declara varios y `<!-- /canal -->`
+  lo cierra para los índices y tablas de control. Lo que no declara **no se juzga** —seguiría siendo
+  adivinar por el nombre del archivo— pero sale un 🟡 diciendo que no declaró. Lo que este motor
+  genere tiene que nacer con su marcador puesto, o nace fuera de la vigilancia.
 - **Dentro de una misma pieza sigue habiendo UN solo mensaje.** Nunca "hacemos software a la medida,
   páginas web, bots y marketing" en el mismo post: eso convierte la marca en la agencia genérica de
   la esquina, que compite por precio contra veinte iguales.

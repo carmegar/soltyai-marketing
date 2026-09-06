@@ -1,3 +1,4 @@
+<!-- canal: linkedin -->
 En muchos negocios las ventas se pierden por algo simple: nadie alcanzó a responder a tiempo.
 
 SoltyAI arma bots de WhatsApp y Telegram que atienden esa conversación. Responden al instante, a cualquier hora, con la información real de tu negocio: tu catálogo, tu agenda, tus precios. Preguntan lo que hay que preguntar, agendan la visita o la cita, y te pasan el cliente cuando ya vale la pena que hables tú.
