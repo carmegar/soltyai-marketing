@@ -201,6 +201,26 @@ a `redes/` declarando `landing`, el linter va a sacar un 🟡 `canal:linea-que-n
 va a estar bien puesto. Es la misma tensión de los siete guiones de video, y se resuelve igual:
 moviendo el canal **o** el destino, nunca los dos.
 
+#### L3 tenía un solo «desde», y necesitaba dos: entra `web-basica`
+
+Con la home abriendo en L3, el «desde $3.000.000» quedó siendo la única señal de precio de toda la
+línea. Ese número **no es mentira, pero es de otro producto**: es el piso de `desarrollo-a-medida`,
+no el de una página web. Quien llega buscando estar en internet lee tres millones y se va, y encima
+el catálogo ya tenía dos líneas de web muy por debajo de eso.
+
+Entra **`web-basica`, «desde $400.000»** (antes de IVA, como todo el canon): una sola página, alcance
+cerrado y escrito, sin integraciones. Es el **escalón de entrada** de la línea de web y el ítem al
+que apunta el «desde» que la web publica para páginas web.
+
+⚠️ **No baja ni retira nada.** `web-corporativa` sigue en **$1.500.000** (construcción nueva de 1 a 3
+secciones) y `web-redespliegue` en **$750.000** (cuando el código ya existe). `web-basica` se agrega
+**debajo** de las dos, no en lugar de ellas.
+
+En el canon queda como un puntero, no como un importe: `lineasDeOferta.lineas.L3.preciosAdicionales`
+apunta a `catalogo → servicios[web-basica].precio`, por la misma razón que el resto del bloque. Y la
+regla `lineasDeOferta` se amplió el mismo día para **resolver también estos punteros**: uno que nadie
+resuelve es peor que el original, porque nace invisible.
+
 ---
 
 ## 5. El playbook de réplica: Bucaradomi como lighthouse
@@ -302,6 +322,7 @@ alrededor de L1, es abrirla con L3.
 | **3a** | Canon: landing a `servicio`, orden L3 → L1 → L2, `web-basica` en el catálogo | `marketing` | ✅ **hecho el 8-sep** |
 | **3b** | Refrescar `canon.snapshot.json` de la landing contra este canon | `platform` (rama+PR) | 8-sep |
 | **3c** | Home nueva: abre con L3, sigue L1, el bot se muda a `/producto/chatbot` | `platform` (rama+PR) | antes del 11-sep |
+| **3d** | Publicar el «desde» de web (`web-basica`) donde hoy sólo está el de desarrollo | `platform` (rama+PR) | antes del 11-sep |
 
 El snapshot de la landing es **copia manual** de `data/canon.json` (es el H7 de la reconciliación, el
 que ya derivó ocho días), así que 3b no es un detalle de higiene: sin eso la home nueva se construye

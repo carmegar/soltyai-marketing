@@ -119,7 +119,8 @@
     "maxProyectosSimultaneos": 1,
     "maxProyectosPorTrimestre": 1,
     "excepcionPiso": "Solo si el proyecto abre la puerta a un cliente grande, y se anota como tal.",
-    "_alcanceDelPiso": "2026-08-21: el piso de 3.000.000 aplica a `desarrollo-a-medida` (construir algo que no existe), NO a las líneas de web, que son productos de alcance cerrado y precio propio (web-corporativa 1.500.000, web-redespliegue 750.000). Hasta hoy el canon decía «piso de la línea de servicios» a secas y el catálogo tenía dos líneas de servicios por debajo del piso: el que leyera sólo el canon concluía que se estaba vendiendo bajo el mínimo. No cambió ningún precio; se nombró a qué aplica.",
+    "_alcanceDelPiso": "2026-08-21: el piso de 3.000.000 aplica a `desarrollo-a-medida` (construir algo que no existe), NO a las líneas de web, que son productos de alcance cerrado y precio propio (web-corporativa 1.500.000, web-redespliegue 750.000). Hasta hoy el canon decía «piso de la línea de servicios» a secas y el catálogo tenía dos líneas de servicios por debajo del piso: el que leyera sólo el canon concluía que se estaba vendiendo bajo el mínimo. No cambió ningún precio; se nombró a qué aplica. ⚠️ Los importes de esta nota son de lectura y no son la fuente: la fuente es catalogo.json, y quien cotice mira allá.",
+    "_alcanceDelPisoWebBasica": "2026-09-08: `web-basica` también está FUERA del piso, por el mismo motivo y no por uno nuevo: es alcance cerrado y escrito (una sola página, sin integraciones), no un proyecto a la medida. Es el escalón de entrada de la línea de web y es el ítem al que apunta el «desde» que la web publica para páginas web. No baja ni retira a `web-corporativa` ni a `web-redespliegue`: se agrega debajo de las dos. El importe vive en catalogo.json → servicios[web-basica].precio y acá no se copia (ver lineasDeOferta._noMueveNingunPrecio).",
     "escaleraDeValor": {
       "_doc": "2026-08-21. Nace de marketing/investigacion_de_venta.md §3: entre la suscripción más cara (790.000/mes) y el piso del proyecto (3.000.000) no había ningún escalón, y el único abridor de puerta que teníamos —la auditoría de business/16 §6d— se regalaba. La escalera se lee de abajo hacia arriba y cada escalón tiene que poder venderse solo.",
       "1_diagnostico": "diagnostico-automatizacion — pagado, se descuenta 100% del proyecto si contratan dentro de 30 días. Es el filtro: quien no paga el diagnóstico no iba a pagar el proyecto.",
@@ -184,6 +185,17 @@
         "trabajo": "Caja hoy, y materia prima de L1: todo proyecto deja pieza reutilizable.",
         "comoSeVende": "escalera de valor de tres escalones (ver `lineaServicios.escaleraDeValor`)",
         "precio": { "forma": "desde", "fuente": "canon", "ruta": "lineaServicios.pisoPrecio", "nota": "es el PISO de `desarrollo-a-medida`, se publica como «desde». NO aplica a las líneas de web, que tienen alcance cerrado y precio propio: ver lineaServicios._alcanceDelPiso" },
+        "preciosAdicionales": [
+          {
+            "id": "web",
+            "que": "El «desde» de las páginas web, que es un escalón distinto del de desarrollo a la medida",
+            "forma": "desde",
+            "fuente": "catalogo",
+            "ruta": "servicios[web-basica].precio",
+            "nota": "antes de IVA, como todo el canon. Es el escalón de ENTRADA: web-corporativa y web-redespliegue siguen arriba con su precio propio y su alcance propio"
+          }
+        ],
+        "_preciosAdicionales": "2026-09-08. L3 no tiene un solo «desde», tiene dos, y hasta hoy el canon sólo apuntaba a uno. Un visitante que busca «página web» y ve «desde $3.000.000» se va, y el número no era mentira: era el piso de otro producto. Se agrega el puntero al escalón de entrada de web en vez de copiar el importe, por la misma razón que el resto del bloque (`_noMueveNingunPrecio`), y la regla `lineasDeOferta` resuelve estos punteros igual que los de `precio`: un puntero que nadie resuelve parece una referencia y no lo es.",
         "evidencia": "Swisscontact (módulo Zaranda, $2.300.000 entregado). Es la línea que hoy sostiene el runway."
       }
     },
