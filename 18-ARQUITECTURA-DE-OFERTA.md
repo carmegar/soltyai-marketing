@@ -136,8 +136,8 @@ misma regla de lectura: *una línea juzgada con la métrica de otra siempre pare
 | # | Línea | Qué es | Su trabajo | Precio | Cómo se vende |
 |---|---|---|---|---|---|
 | **L1** | **Producto vertical** | `domicilios-ops` y los que salgan igual | **Renta recurrente y réplica.** Es el que compone | **público**, $370.000/mes IVA incl. | demo del sistema vivo + réplica al vertical |
-| **L2** | **Bot por suscripción** | Los 3 planes del canon | Volumen y entrada barata | público (ya está) | autoservicio desde la landing |
-| **L3** | **Servicio a la medida** | Desarrollo, integraciones, web | **Caja hoy** y materia prima de L1 | **«desde $3.000.000»** | escalera de valor de tres escalones |
+| **L2** | **Bot por suscripción** | Los 3 planes del canon | Volumen y entrada barata | público (ya está) | autoservicio desde `/producto/chatbot` |
+| **L3** | **Servicio a la medida** | Desarrollo, integraciones, web | **Caja hoy** y materia prima de L1 | **«desde $3.000.000»**, y las líneas de web con su propio «desde» | escalera de valor de tres escalones |
 
 ### La regla de publicación que sale de esto
 
@@ -162,7 +162,7 @@ evidencia recomienda para el escalón alto.
 ### La jerarquía, que es lo que de verdad cambia
 
 Hoy la home lidera con **L2**, que es lo que Meta regala gratis dentro de WhatsApp
-(`CLAUDE.md` → *Competencia first-party*) y lo que no ha vendido. El orden nuevo es:
+(`CLAUDE.md` → *Competencia first-party*) y lo que no ha vendido. El orden que se fijó el 22-ago era:
 
 ```
 L1 producto vertical  →  L3 servicio a la medida  →  L2 bot
@@ -170,8 +170,56 @@ L1 producto vertical  →  L3 servicio a la medida  →  L2 bot
 ```
 
 ⚠️ **L2 no se mata ni se esconde.** Sigue publicado, sigue siendo la entrada más barata y sigue siendo
-lo que se anuncia en Meta, en outbound y en la landing según `mensajeLiderPorCanal`. Lo que cambia es
+lo que se anuncia en Meta y en el outbound según `mensajeLiderPorCanal`. Lo que cambia es
 que **deja de ser lo primero que ve alguien que llega frío.**
+
+#### 🔄 2026-09-08: el orden se invierte arriba, y la landing cambia de línea
+
+Decisión del fundador al mandar rehacer soltyai.com para el evento con empresarios del **11-sep-2026**.
+El punto de partida, textual: la web *«hoy por hoy no lleva a ningún lado»*. Tres cosas cambian y
+ninguna toca un precio:
+
+```
+L3 servicio a la medida  →  L1 producto vertical  →  L2 bot
+   (lo que paga hoy)          (lo que compone)        (la entrada barata)
+```
+
+1. **La home abre con L3**, con el titular «desarrollo de software, automatización e implementación
+   web a la medida para negocios colombianos». L1 no baja de importancia: entra segundo, que es donde
+   el visitante ya entendió qué hacemos y le sirve ver el producto vertical armado.
+2. **La landing pasa de canal `bot` a canal `servicio`** en `canon.json → mensajeLiderPorCanal`. Era
+   el último canal que seguía liderando con el producto que Meta regala; el orgánico ya se había
+   movido el 17-ago por el mismo motivo. En `bot` quedan Meta y el outbound, que son embudos de
+   audiencia fría con una sola oferta que mostrar.
+3. **L2 se muda completo a `/producto/chatbot`** y sale de la home, con los 3 planes y sus precios
+   intactos. No se mata: se le da destino propio. Sacarlo de la home sin darle página sería el
+   `silencio` que la regla de publicación prohíbe.
+
+⚠️ **La consecuencia que se declara en vez de descubrirse después:** `/producto/chatbot` nombra la
+línea `bot` dentro de un canal que ahora lleva `servicio`. Si esa página entra alguna vez a `copy/` o
+a `redes/` declarando `landing`, el linter va a sacar un 🟡 `canal:linea-que-no-le-toca`, y ese aviso
+va a estar bien puesto. Es la misma tensión de los siete guiones de video, y se resuelve igual:
+moviendo el canal **o** el destino, nunca los dos.
+
+#### L3 tenía un solo «desde», y necesitaba dos: entra `web-basica`
+
+Con la home abriendo en L3, el «desde $3.000.000» quedó siendo la única señal de precio de toda la
+línea. Ese número **no es mentira, pero es de otro producto**: es el piso de `desarrollo-a-medida`,
+no el de una página web. Quien llega buscando estar en internet lee tres millones y se va, y encima
+el catálogo ya tenía dos líneas de web muy por debajo de eso.
+
+Entra **`web-basica`, «desde $400.000»** (antes de IVA, como todo el canon): una sola página, alcance
+cerrado y escrito, sin integraciones. Es el **escalón de entrada** de la línea de web y el ítem al
+que apunta el «desde» que la web publica para páginas web.
+
+⚠️ **No baja ni retira nada.** `web-corporativa` sigue en **$1.500.000** (construcción nueva de 1 a 3
+secciones) y `web-redespliegue` en **$750.000** (cuando el código ya existe). `web-basica` se agrega
+**debajo** de las dos, no en lugar de ellas.
+
+En el canon queda como un puntero, no como un importe: `lineasDeOferta.lineas.L3.preciosAdicionales`
+apunta a `catalogo → servicios[web-basica].precio`, por la misma razón que el resto del bloque. Y la
+regla `lineasDeOferta` se amplió el mismo día para **resolver también estos punteros**: uno que nadie
+resuelve es peor que el original, porque nace invisible.
 
 ---
 
@@ -256,12 +304,29 @@ ventana entra todo lo de código y docs, y **nada** que genere cola de respuesta
 |---|---|---|---|
 | **1** | Reordenar la tanda 1 de video: los de `a la medida` y los N3 abren; los 7 de bot van a IG/TikTok | `redes/guiones-tanda-1.md` | ✅ **hecho el 22-ago** |
 | **2** | Bajar la arquitectura a `canon.json` (jerarquía L1/L2/L3 + regla de publicación) | `marketing` | ✅ **hecho el 5-sep** |
-| **3** | Landing: publicar L1, «desde $3.000.000» en `/servicios`, reordenar la home | `platform` (rama+PR) | viaje |
+| **3** | Landing: publicar L1, «desde $3.000.000» en `/servicios`, reordenar la home | `platform` (rama+PR) | 🔄 **reemplazado el 8-sep, ver abajo** |
 | **4** | Medir soporte y operación de `domicilios-ops` antes de tocar su `estado` | `marketing` + suite | viaje |
 | **5** | Catálogo de producción de la suite (el vencido `cmsz6eq2s…`) | suite | 🔴 con aviso |
 | **6** | Lista de empresas de domicilios del área metropolitana | `tools/apps/prospeccion` | viaje |
 | **7** | Grabar la tanda 1 ya reordenada | cámara | **al volver** |
 | **8** | GBP sin teléfono, verificación por video | — | **al volver** |
+
+### 🔄 2026-09-08: la fila 3 se reemplaza, con fecha de entrega
+
+La web se rehace para el **evento con empresarios del viernes 11-sep-2026**, así que la fila 3 deja de
+ser «cuando haya ventana» y pasa a tener plazo. El alcance también cambió: ya no es reordenar la home
+alrededor de L1, es abrirla con L3.
+
+| # | Qué | Dónde | Ventana |
+|---|---|---|---|
+| **3a** | Canon: landing a `servicio`, orden L3 → L1 → L2, `web-basica` en el catálogo | `marketing` | ✅ **hecho el 8-sep** |
+| **3b** | Refrescar `canon.snapshot.json` de la landing contra este canon | `platform` (rama+PR) | 8-sep |
+| **3c** | Home nueva: abre con L3, sigue L1, el bot se muda a `/producto/chatbot` | `platform` (rama+PR) | antes del 11-sep |
+| **3d** | Publicar el «desde» de web (`web-basica`) donde hoy sólo está el de desarrollo | `platform` (rama+PR) | antes del 11-sep |
+
+El snapshot de la landing es **copia manual** de `data/canon.json` (es el H7 de la reconciliación, el
+que ya derivó ocho días), así que 3b no es un detalle de higiene: sin eso la home nueva se construye
+contra el canon viejo.
 
 ### Sobre el GBP, ya que fue parte de la pregunta
 

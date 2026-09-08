@@ -643,16 +643,29 @@ export function lineasDeOferta() {
   const formas = Object.keys(cfg.reglaDePublicacion?.formas ?? {});
   const definidas = Object.keys(cfg.lineas ?? {});
 
-  for (const [id, linea] of Object.entries(cfg.lineas ?? {})) {
-    const p = linea.precio ?? {};
+  /*
+   * Un puntero de precio se juzga igual venga de donde venga (2026-09-08). Antes esto sólo miraba
+   * `linea.precio`, y ese día L3 estrenó un SEGUNDO «desde»: el de las páginas web, que es un
+   * escalón distinto del piso de `desarrollo-a-medida`. Un puntero adicional que la regla no
+   * resolviera sería exactamente el modo de falla que este bloque existe para tapar —parece una
+   * referencia y no lo es—, y encima uno peor, porque nace ya invisible.
+   */
+  const juzgarPuntero = (id, p, etiqueta) => {
     if (!formas.includes(p.forma)) {
-      fallo(`${id}: forma de precio "${p.forma}" no está en reglaDePublicacion.formas (${formas.join(' · ')})`);
+      fallo(`${id}${etiqueta}: forma de precio "${p.forma}" no está en reglaDePublicacion.formas (${formas.join(' · ')})`);
     }
     if (p.forma === 'silencio') {
-      fallo(`${id}: ninguna línea publicada lleva silencio. Es la mitad de la regla que el muro de «contáctanos» ya nos cobró en rebote.`);
+      fallo(`${id}${etiqueta}: ninguna línea publicada lleva silencio. Es la mitad de la regla que el muro de «contáctanos» ya nos cobró en rebote.`);
     }
     const error = resolver(p.fuente, String(p.ruta ?? ''));
-    if (error) fallo(`${id}: el puntero de precio no resuelve → ${error}. Un puntero roto parece una referencia y no lo es.`);
+    if (error) fallo(`${id}${etiqueta}: el puntero de precio no resuelve → ${error}. Un puntero roto parece una referencia y no lo es.`);
+  };
+
+  for (const [id, linea] of Object.entries(cfg.lineas ?? {})) {
+    juzgarPuntero(id, linea.precio ?? {}, '');
+    for (const extra of linea.preciosAdicionales ?? []) {
+      juzgarPuntero(id, extra, ` · preciosAdicionales[${extra.id ?? '?'}]`);
+    }
   }
 
   // El orden de apertura nombra líneas que existen, y a todas: media jerarquía es peor que ninguna.

@@ -13,7 +13,8 @@
 >
 > `data/canon.json → mensajeLiderPorCanal` pone `gbp` en la lista de `servicio` desde el 17-ago.
 > Por eso el bloque de copy de abajo **no nombra los tres planes de suscripción de chatbot**: no es
-> que se escondan (siguen publicados en la landing, que es su canal junto con Meta y el outbound),
+> que se escondan (siguen publicados en `/producto/chatbot`, y su canal líder son Meta y el
+> outbound; la landing salió de esa lista el 8-sep-2026 y hoy lleva servicio, igual que el GBP),
 > es que mezclar las dos líneas dentro de una misma pieza es el error 🔴 `canal:mezcla-de-lineas`
 > que el guardrail bloquea. El bloque va marcado con `<!-- canal: gbp -->` para que el linter lo
 > juzgue, igual que los guiones de video.

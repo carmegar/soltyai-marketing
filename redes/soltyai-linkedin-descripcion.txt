@@ -63,7 +63,8 @@ Reglas de marca para esta página. Van acá abajo a propósito, fuera del bloque
 nombran lo prohibido para explicarlo, y el linter no debe juzgarlas como copy.
 
 - Nunca abrimos con el producto de chat en LinkedIn. Sigue existiendo y sigue publicado en
-  la landing, en Meta y en el outbound, pero acá el titular es el servicio a la medida
+  su propia página (/producto/chatbot), en Meta y en el outbound, pero acá el titular es el
+  servicio a la medida, igual que en la landing desde el 8-sep-2026
   (canon.json → mensajeLiderPorCanal). Dentro de una misma pieza hay un solo mensaje: si
   la descripción nombra las dos líneas, el CI la para con `canal:mezcla-de-lineas`.
 - Nunca "un asistente de IA" a secas: la política de IA de WhatsApp prohíbe los agentes de

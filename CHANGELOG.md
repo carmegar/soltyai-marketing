@@ -1,5 +1,63 @@
 # Changelog · soltyai-marketing
 
+## 2026-09-08 — La landing deja de abrir con el bot, y la línea de web estrena escalón de entrada
+
+**Por qué hoy.** El fundador mandó rehacer soltyai.com para el **evento con empresarios del viernes
+11-sep-2026**. El punto de partida, textual: la web *«hoy por hoy no lleva a ningún lado»*. Este
+commit baja esa decisión a los dos archivos que la gobiernan, `data/canon.json` y
+`data/catalogo.json`, y a los docs que la explican. **Ningún precio se movió.**
+
+**La landing cambia de línea.** `mensajeLiderPorCanal`: `landing` sale de `bot` y entra en
+`servicio`. En `bot` quedan **meta** y **outbound**, que son los dos embudos de audiencia fría con
+una sola oferta que mostrar. Es la misma corrección que el orgánico recibió el 17-ago, aplicada al
+último canal que faltaba: la home abría con el producto que Meta regala dentro de WhatsApp, y así no
+vendió nunca. Queda fechado en `_cambioLanding`.
+
+**El orden de apertura se invierte arriba.** `lineasDeOferta.ordenDeApertura` pasa de
+`["L1","L3","L2"]` a **`["L3","L1","L2"]`**, con el porqué en `_cambioOrden`. Lo que cambió no es que
+L1 valga menos —sigue siendo la única línea con un cliente pagando—, es para qué se rehace la web: se
+rehace para un evento donde lo que se vende es lo que hoy factura y se contrata de una, que es L3. L1
+entra segundo, donde el visitante ya entendió qué hacemos. **L2 no se mata:** los 3 planes se mudan
+completos a `/producto/chatbot` con sus precios intactos, porque sacarlos de la home sin darles
+página sería el `silencio` que `reglaDePublicacion.formas` prohíbe.
+
+**Entra `web-basica`, «desde $400.000».** Con la home abriendo en L3, el «desde $3.000.000» quedaba
+siendo la única señal de precio de la línea entera, y ese número es el piso de `desarrollo-a-medida`,
+no el de una página web. El ítem nuevo es alcance **cerrado y escrito** —una sola página, plantilla
+propia, formulario, una ronda de ajustes; sin integraciones, sin segunda página, sin redacción—,
+costo supuesto $240.000 (4 h a los $60.000/h que ya usan las otras líneas de web) y margen 40% sobre
+el mínimo de 35%. ⚠️ **No baja ni retira nada:** `web-corporativa` sigue en $1.500.000 y
+`web-redespliegue` en $750.000; el escalón se agrega **debajo** de las dos.
+
+**El canon apunta, no copia.** El «desde» de web entra como
+`lineasDeOferta.lineas.L3.preciosAdicionales` → `catalogo servicios[web-basica].precio`, y
+`lineaServicios._alcanceDelPisoWebBasica` nombra que también está fuera del piso de $3M sin repetir
+el importe. Es la misma disciplina del 5-sep: una tercera copia de un número es una tercera fecha de
+vencimiento.
+
+**Guardrail, en el mismo commit.** La regla `lineasDeOferta` juzgaba un solo `linea.precio`. Se
+extrajo a `juzgarPuntero` y ahora recorre también `preciosAdicionales`. Sin eso, el puntero que se
+agrega hoy sería justo el modo de falla que esa regla existe para tapar, y peor, porque nacería
+invisible. Verificado rompiendo la ruta a mano: sale `oferta:puntero-roto` nombrando
+`L3 · preciosAdicionales[web]`.
+
+**La consecuencia que se declara en vez de descubrirse después.** `/producto/chatbot` nombra la línea
+`bot` dentro de un canal que ahora lleva `servicio`. Si esa página entra a `copy/` o a `redes/`
+declarando `landing`, va a salir un 🟡 `canal:linea-que-no-le-toca` y va a estar bien puesto. Es la
+misma tensión de los siete guiones de video: se resuelve moviendo el canal **o** el destino, nunca
+los dos.
+
+**Lo que queda atrás y hay que refrescar.** `platform/apps/landing/src/data/canon.snapshot.json` es
+copia manual de este canon (el H7 de la reconciliación, que ya derivó ocho días una vez): desde este
+commit está desactualizado, y sin refrescarlo la home nueva se construiría contra el canon viejo. Es
+la fila 3b del §9 del doc 18.
+
+**Docs tocados:** `18-ARQUITECTURA-DE-OFERTA.md` §4 y §9 (la fila 3 se reemplaza por 3a–3d con
+fecha), `15-CANALES-Y-SECUENCIA.md` §5, el `CLAUDE.md` de este repo, y las dos líneas de `redes/`
+que seguían afirmando el mapa viejo de canales (la bio de LinkedIn y el GBP).
+
+`npm run check`: **0 errores y 11 avisos**, los mismos 11 de antes del cambio.
+
 ## 2026-09-05 — El Google Business Profile queda escrito entero: sólo falta crearlo y grabar el video
 
 **Qué.** `redes/google-business-profile.md`, nuevo. Todo el contenido del perfil listo para pegar:

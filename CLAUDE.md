@@ -15,11 +15,16 @@ Motor de marketing de SoltyAI: la estrategia escrita (`01`–`14`) y los program
 
 ## Las reglas que el CI hace cumplir
 
-- **Un mensaje líder POR CANAL** (cambió el 2026-08-13, **y otra vez el 2026-08-17**). El **bot** es
-  el titular en Meta, outbound y la landing; el **servicio a la medida** es el titular en Google
-  Search, el Google Business Profile **y todo el orgánico** (linkedin, instagram, tiktok, youtube).
+- **Un mensaje líder POR CANAL** (cambió el 2026-08-13, otra vez el 2026-08-17, **y otra vez el
+  2026-09-08**). El **bot** es el titular en Meta y en el outbound; el **servicio a la medida** es el
+  titular en **la landing**, en Google Search, en el Google Business Profile **y en todo el orgánico**
+  (linkedin, instagram, tiktok, youtube).
   El orgánico se movió el 17-ago porque el servicio es la línea que hoy factura y sostiene el
   runway; el porqué largo está en `16-CONTENIDO-VIDEO.md` y en `15-CANALES-Y-SECUENCIA.md §5`.
+  **La landing se movió el 8-sep** al rehacer soltyai.com para el evento con empresarios del 11-sep:
+  era el último canal que abría con el producto que Meta regala. Con eso el orden de apertura pasa a
+  **L3 → L1 → L2** y los 3 planes de bot se mudan a `/producto/chatbot`, publicados y con sus precios
+  intactos. Ver `18-ARQUITECTURA-DE-OFERTA.md §4`.
   Dentro de una misma pieza sigue habiendo **uno solo**: "hacemos software a la medida, páginas web,
   bots y marketing" en el mismo anuncio es la agencia genérica de la esquina. Mapa en
   `canon.json → mensajeLiderPorCanal`.
@@ -82,9 +87,10 @@ Motor de marketing de SoltyAI: la estrategia escrita (`01`–`14`) y los program
 - **El orden de los canales lo manda `15-CANALES-Y-SECUENCIA.md`:** Google Business Profile →
   orgánico a mano → Google Search → **Meta, relegado**. Ya no hay «3 rondas de Meta» ni
   «Google Search = fase 2».
-- **El orden de las LÍNEAS lo manda `18-ARQUITECTURA-DE-OFERTA.md`** (22-ago): **L1** producto
-  vertical (`domicilios-ops` — el único que hoy paga: $370.000/mes con contrato y factura) → **L3**
-  servicio a la medida → **L2** bot, que sigue publicado pero **deja de abrir**. La regla que sale de
+- **El orden de las LÍNEAS lo manda `18-ARQUITECTURA-DE-OFERTA.md`** (22-ago, **reordenado el
+  8-sep**): **L3** servicio a la medida (la caja de hoy, y lo que abre la home nueva) → **L1**
+  producto vertical (`domicilios-ops` — el único que hoy paga: $370.000/mes con contrato y factura)
+  → **L2** bot, que sigue publicado pero **deja de abrir**. La regla que sale de
   ahí: **lleva precio público lo que tiene alcance cerrado, lleva «desde» lo que se cotiza, y nada
   lleva silencio** — el muro de «contáctanos» tiene ~38% más rebote. No cambia ningún precio: cambia
   qué se publica y en qué orden.
