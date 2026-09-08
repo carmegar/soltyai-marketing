@@ -198,6 +198,29 @@ video, que salía con 7 de 10 guiones de la línea `bot` (`redes/guiones-tanda-1
 
 Doc canónico: **`18-ARQUITECTURA-DE-OFERTA.md`**.
 
+### 🔄 2026-09-08: la landing también cambia de mensaje líder, y con eso `bot` queda en dos canales
+
+Hasta hoy el mapa de `canon.json → mensajeLiderPorCanal` ponía la landing junto a Meta y al outbound,
+del lado del `bot`. Deja de estar ahí: **la landing pasa a `servicio`**, por decisión del fundador al
+mandar rehacer soltyai.com para el evento con empresarios del **11-sep-2026**. El punto de partida,
+textual: la web *«hoy por hoy no lleva a ningún lado»*.
+
+| Línea líder | Canales, desde el 8-sep |
+|---|---|
+| **bot** | meta, outbound |
+| **servicio** | **landing**, google, gbp, linkedin, instagram, tiktok, youtube, organico |
+
+El razonamiento del 17-ago no se cae otra vez, se termina: se dijo que el orgánico no podía liderar
+con el producto que Meta regala dentro de WhatsApp, y la landing era el último canal que seguía
+haciéndolo. Lo que queda en `bot` son los dos embudos de audiencia fría con una sola oferta que
+mostrar, que es donde ese mensaje sí trabaja.
+
+Lo que cambia en la home: abre con **L3** («desarrollo de software, automatización e implementación
+web a la medida para negocios colombianos»), sigue **L1**, y los 3 planes de bot se mudan completos a
+`/producto/chatbot` con sus precios intactos. **No se mata L2**, se le da destino propio.
+
+Doc canónico del orden de líneas: **`18-ARQUITECTURA-DE-OFERTA.md` §4**.
+
 ---
 
 ## 6. Carril 3 — Google Search para la línea de servicio {#google-search}
