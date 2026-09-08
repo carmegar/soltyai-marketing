@@ -15,7 +15,7 @@
 | Qué | Dónde | Estado |
 |---|---|---|
 | El QR a pantalla completa | foto en el carrete del celular, con brillo al máximo | hay que generarlo |
-| Destino del QR | `https://soltyai.com/contacto?origen=evento_empresarios_qr&utm_source=evento&utm_medium=qr&utm_campaign=2026-09-11` | listo y registrado |
+| Destino del QR | `https://soltyai.com/contacto?utm_source=evento&utm_medium=qr&utm_campaign=2026-09-11&utm_content=qr&utm_term=empresarios&origin=evento_empresarios_qr` | listo y registrado |
 | WhatsApp Business instalado en `[NÚMERO]` | la SIM nueva del 9-sep | hay que comprarla |
 | Batería | cargador de bolsillo | el QR sin batería no existe |
 

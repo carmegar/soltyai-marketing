@@ -275,7 +275,7 @@ Mientras siga en 404, el post 1 se publica **sin acción de enlace**, o con el e
 ### El enlace del evento del 11-sep no es un enlace del perfil
 
 El QR del evento con empresarios apunta a
-`https://soltyai.com/contacto?origen=evento_empresarios_qr&utm_source=evento&utm_medium=qr&utm_campaign=2026-09-11`,
+`https://soltyai.com/contacto?utm_source=evento&utm_medium=qr&utm_campaign=2026-09-11&utm_content=qr&utm_term=empresarios&origin=evento_empresarios_qr`,
 con el origin `evento_empresarios_qr` registrado aparte en `../data/links.json` (fuente `evento`,
 medio `qr`, campaña `2026-09-11`). **El campo «Sitio web» del perfil no se toca:** sigue siendo
 `gbp_local_sitio`. Son dos carriles distintos, y mezclarlos borra la única forma de saber cuál de los
