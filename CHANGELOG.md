@@ -1,5 +1,48 @@
 # Changelog · soltyai-marketing
 
+## 2026-09-08 (ter) — El kit del evento del 11-sep aterriza en `redes/`
+
+**Qué entra.** Dos piezas nuevas y un delta aplicado sobre lo que ya existía, escrito todo para el
+evento con empresarios del viernes 11-sep-2026 y para el carril de video que corre en paralelo.
+
+**`redes/evento-2026-09-11-guion.md`** (nuevo): el guion de los 60 segundos de esa noche, golpe por
+golpe, con las tres variantes según lo que conteste el interlocutor (necesita página, tiene un proceso
+manual que le duele, tiene sistemas que no se hablan), la lista de lo que NO se dice, la plantilla del
+mensaje del sábado por WhatsApp y el registro del lunes en la suite. Declara `<!-- canal: organico -->`,
+que es el que lleva `servicio`: la línea de la noche es L3 y el bot no abre nunca.
+
+**`redes/videos-angulo-lo-necesitas.md`** (nuevo): la serie «¿y tú lo necesitas?», cinco guiones
+(página web, desarrollo a la medida, ERP, CRM, bot) que abren con la escena y no con la definición, y
+terminan diciendo si la necesitas o no. En tres de los cinco la respuesta honesta incluye un «todavía
+no», que es lo que hace creíble el «sí». Mecánica de «comenta la palabra y te escribo», cuatro golpes,
+unas 140 palabras, aritmética en **horas y no en pesos**, y el DM se contesta con **una pregunta, no
+con un link**. `16-CONTENIDO-VIDEO.md` queda apuntando ahí con una nota fechada.
+
+**`redes/google-business-profile.md`** (delta aplicado en el lugar, no un segundo perfil, que sería el
+hallazgo H7 repetido a mano): entra el servicio §4.8 «página web sencilla» a `$400.000 + IVA`, puesto
+antes de la corporativa porque `web-basica` bajó hoy el piso de la línea de web de $750.000 a
+$400.000; la fila 1 del §12 pasa de «dejar el teléfono vacío» a la línea comercial que se compra el
+9-sep, con sus tres condiciones (que conteste en el horario publicado, que sea el mismo número del
+WhatsApp Business, y que el celular del RUT no se publique en ninguna parte); entran las preguntas P4
+(conectarse con lo que ya tienes) y P5 (no hay oficina, es negocio de área de servicio) al §9; el §8
+separa el enlace del evento del enlace del perfil; y el §13 nuevo trae el checklist de creación de
+esta semana, con la advertencia de que la revisión de Google tarda hasta 5 días hábiles y el perfil
+puede no estar vivo el viernes. Eso no bloquea el evento: el QR va a `/contacto`, no al perfil.
+
+**El origen del evento queda registrado.** `data/links.json` suma `evento_empresarios_qr` con
+`npm run link nuevo` (fuente `evento`, medio `qr`, campaña `2026-09-11`, destino
+`soltyai.com/contacto`). Los dos borradores traían `evento-2026-09-11` como valor de origen y una nota
+🔴 diciendo que `evento` no existía en el canon: la entrada anterior de hoy ya lo había resuelto, así
+que el valor se reemplazó por el canónico y las notas se cayeron. Queda anotada en el guion la
+confusión fácil: `evento` es **fuente de atribución** (`utm.source`), no canal de
+`mensajeLiderPorCanal`, y por eso el marcador del guion declara `organico` y no `evento`.
+
+`npm run check`: **0 errores, 12 avisos.** Los 11 de siempre más uno nuevo y buscado: el video 5 de la
+serie nombra la línea `bot` en Instagram y TikTok, que el canon asigna a `servicio` desde el 17-ago
+mientras `18-ARQUITECTURA-DE-OFERTA.md §4` los mandó ahí a propósito el 22-ago. Las dos decisiones se
+contradicen y ninguna es un dedazo, que es exactamente el caso para el que ese hallazgo es 🟡 y no 🔴.
+El guion lo declara antes de que el linter lo cante.
+
 ## 2026-09-08 (bis) — `evento` y `qr` entran a la convención UTM
 
 El kit del evento cazó que la URL del QR (`?origen=...&utm_source=evento&utm_medium=qr`) llegaba con una fuente que `canon.utm.source` no conocía: la regla `origin` habría marcado el lead como sin carril. Entran `evento` a `source` y `qr` a `medium`, con el origin canónico `evento_empresarios_qr` (formato fuente_audiencia_creatividad). Es lo que la landing manda como `source` del lead a la suite. `npm run check`: 0 errores, los mismos 11 avisos.

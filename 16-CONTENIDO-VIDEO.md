@@ -17,6 +17,15 @@
 > **`18-ARQUITECTURA-DE-OFERTA.md`**; el orden nuevo, en `redes/guiones-tanda-1.md`.
 > Complementa a `15-CANALES-Y-SECUENCIA.md §5`, no lo reemplaza: la regla de las 8 semanas a mano
 > **sigue en pie**.
+>
+> 🆕 **Nuevo el 2026-09-08: el ángulo «¿lo necesitas?».** Los cinco guiones que explican qué es una
+> cosa (página web, desarrollo a la medida, ERP, CRM, bot) y terminan diciendo si la necesitas o no,
+> con la mecánica de «comenta la palabra y te escribo», viven en
+> **`redes/videos-angulo-lo-necesitas.md`**. Respetan lo de acá: cuatro golpes (§3), unas 140 palabras
+> y aritmética en horas y no en pesos (§2). La categoría es el título de la serie, nunca el arranque
+> del video, que abre con la escena. **Y el DM se contesta con una pregunta, no con un link:** el
+> enlace a `/contacto` sale sólo cuando el prospecto lo pide o cuando ya hay una reunión que agendar,
+> porque mandarlo de entrada es lo que convierte la conversación en publicidad.
 
 ---
 

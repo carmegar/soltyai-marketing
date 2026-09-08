@@ -2,6 +2,22 @@
   "_doc": "Registro de todo link publicado, con su origen de atribución. La cadena `origin` (fuente_audiencia_creatividad) es la clave que concilia el clic con el lead que entra por Telegram, WhatsApp o Calendly — ver 08-TRACKING-SETUP §2. Se genera con `npm run link nuevo`, nunca a mano: el `start` de Telegram tiene formato duro y si se rompe el lead llega sin fuente.",
   "links": [
     {
+      "origin": "evento_empresarios_qr",
+      "fuente": "evento",
+      "medium": "qr",
+      "campana": "2026-09-11",
+      "creatividad": "qr",
+      "audiencia": "empresarios",
+      "vertical": null,
+      "nota": "QR del evento con empresarios del 11-sep-2026 (redes/evento-2026-09-11-guion.md)",
+      "creado": "2026-09-08",
+      "url": "https://soltyai.com/contacto?utm_source=evento&utm_medium=qr&utm_campaign=2026-09-11&utm_content=qr&utm_term=empresarios&origin=evento_empresarios_qr",
+      "telegram": "https://t.me/BOT_SIN_CONFIGURAR?start=evento_empresarios_qr",
+      "whatsapp": null,
+      "calendly": null,
+      "_aviso": "TELEGRAM_BOT_USERNAME sin definir en .env: el deep-link de Telegram NO sirve todavía"
+    },
+    {
       "origin": "gbp_pyme_post3",
       "fuente": "gbp",
       "medium": "organic_local",

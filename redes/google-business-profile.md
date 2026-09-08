@@ -9,6 +9,12 @@
 > Google y grabar un video en vivo. Acá está todo lo que había que escribir, ya escrito. La lista
 > de lo que **sólo él puede decidir** está al final, en §12.
 >
+> 🔄 **Actualizado el 2026-09-08**, sin reescribirlo: entra el servicio §4.8 (página web sencilla,
+> $400.000 + IVA, que baja el piso de la línea de web), la fila 1 del §12 pasa de «dejar el teléfono
+> vacío» a la línea comercial nueva con sus tres condiciones, se agregan las preguntas P4 y P5, la
+> nota del §8 que separa el enlace del evento del enlace del perfil, y el §13 con el checklist de
+> creación de esta semana.
+>
 > ### El mensaje líder de este canal es el servicio a la medida
 >
 > `data/canon.json → mensajeLiderPorCanal` pone `gbp` en la lista de `servicio` desde el 17-ago.
@@ -141,6 +147,29 @@ Plataforma operativa para empresas de domicilios y mensajería. Tablero de opera
 
 *(En el catálogo la línea se llama `domicilios-ops`. Acá va sin la raya larga del nombre interno.)*
 
+### 4.8 · Página web sencilla (una sola página)
+**Precio:** `$400.000 + IVA`
+
+```
+Una sola página con todo apilado ahí mismo: qué haces, para quién y el formulario de contacto que te llega al correo. Diseño sobre plantilla propia con tu logo y tus colores, adaptada al celular y publicada con dominio. Incluye una ronda de ajustes. Los textos y las fotos los pones tú.
+```
+
+*(286 caracteres, dentro del límite de 300 de Google.)*
+
+Lleva el número 4.8 porque `web-basica` entró a `data/catalogo.json` el 8-sep, tres días después de
+que se escribiera esta lista, y va puesta acá arriba porque por precio es la que abre la línea de web.
+
+**Lo que hay que decir si preguntan y no está en la ficha** (sale del catálogo, no de la memoria): no
+incluye integraciones de ningún tipo, ni segunda página, ni blog, ni catálogo con buscador, ni la
+redacción de los textos. Si aparece cualquiera de esas, la línea que se cotiza es la corporativa de
+$1.500.000, nunca esta con un descuento mental. Y no se entrega sola: sale con el cuidado de sitio web
+de §4.6 ($180.000 + IVA al mes), porque el cliente que se queda sin quien le renueve el dominio lo
+pierde.
+
+> ⚠️ **Esto no baja ni retira las otras dos líneas de web.** La corporativa de $1.500.000 y el rescate
+> de $750.000 siguen igual en §4.4 y §4.5. Lo único que cambia es el piso: la línea de páginas web se
+> anuncia ahora **desde $400.000 + IVA**, y antes ese piso era $750.000.
+
 ### 4.4 · Página web corporativa
 **Precio:** `$1.500.000 + IVA`
 
@@ -243,10 +272,20 @@ existe en el repo pero no está desplegada: es el punto 3 del §9 del doc 18, qu
 Mientras siga en 404, el post 1 se publica **sin acción de enlace**, o con el enlace de
 `gbp_local_sitio`. Un enlace roto en el perfil es peor que ningún enlace.
 
+### El enlace del evento del 11-sep no es un enlace del perfil
+
+El QR del evento con empresarios apunta a
+`https://soltyai.com/contacto?origen=evento_empresarios_qr&utm_source=evento&utm_medium=qr&utm_campaign=2026-09-11`,
+con el origin `evento_empresarios_qr` registrado aparte en `../data/links.json` (fuente `evento`,
+medio `qr`, campaña `2026-09-11`). **El campo «Sitio web» del perfil no se toca:** sigue siendo
+`gbp_local_sitio`. Son dos carriles distintos, y mezclarlos borra la única forma de saber cuál de los
+dos trajo al cliente. El guion de esa noche está en
+[`evento-2026-09-11-guion.md`](evento-2026-09-11-guion.md).
+
 ## 9. Preguntas frecuentes
 
 Google deja que el dueño publique la pregunta y la responda él mismo, y esas respuestas salen en la
-búsqueda. Tres, que son las tres objeciones reales.
+búsqueda. Cinco, que son las cinco objeciones reales (las dos últimas entraron el 8-sep).
 
 ⚠️ Google **no publica** un límite de caracteres para las respuestas, y lo que se reporta afuera no
 coincide: hay quien mide 440 caracteres y quien dice que acepta miles. Las de abajo están entre 200
@@ -274,6 +313,24 @@ Eso significa que ya recorrimos el trámite completo: firma electrónica del rep
 Sí. Trabajamos en remoto con clientes de cualquier parte de Colombia y el diagnóstico se puede hacer por videollamada.
 
 En Bucaramanga, Floridablanca, Girón y Piedecuesta lo hacemos presencial si lo prefieres.
+```
+
+**P4. ¿Pueden conectarse con el sistema que ya tengo, o toca cambiarlo todo?**
+
+```
+Conectar lo que ya tienes es la mitad de lo que hacemos, y casi siempre es lo más barato.
+
+Lo que nos encontramos seguido es una empresa que ya compró un sistema y después contrató a alguien para hacer a mano lo que el sistema no hace. Ese sueldo es el precio real de ese software, solo que no aparece en la factura.
+
+Lo primero que preguntamos es qué sistema tienes andando y qué paso quedó por fuera. Si se puede conectar, se conecta. Si no se puede, te lo decimos de una y no te cobramos por averiguarlo.
+```
+
+**P5. ¿Tienen oficina para atender al público?**
+
+```
+No, y por eso el perfil aparece sin dirección: SoltyAI es un negocio de área de servicio. Vamos donde tú estás.
+
+Trabajamos con cita previa en Bucaramanga, Floridablanca, Girón y Piedecuesta, y por videollamada para el resto del país. SOLTYAI S.A.S. tiene NIT 902.081.265-3 y matrícula 731655 en la Cámara de Comercio de Bucaramanga, y emite factura electrónica validada por la DIAN.
 ```
 
 ## 10. Los tres primeros posts
@@ -400,7 +457,7 @@ De apoyo, si el revisor pide más: el **RUT** (NIT 902.081.265-3).
 
 | # | Qué hay que decidir | Lo que recomienda este documento |
 |---|---|---|
-| 1 | 🔴 **Teléfono: `[verificar: número propio]`.** No hay número propio de SoltyAI decidido en ningún documento del repo. El único número escrito es el celular personal del fundador (RUT). | **Dejar el campo vacío.** Es opcional, el sitio web queda como vía de contacto, y la verificación por video no necesita una línea telefónica (doc 18 §9). Poner el celular personal repite el problema de datos personales; el número propio ya era el cuello de la tercera CTA de la landing. |
+| 1 | **Teléfono: `[NÚMERO]`**, la SIM prepago que se compra el 9-sep-2026 como línea comercial de SoltyAI. Hasta el 5-sep esta fila recomendaba dejar el campo vacío, y era lo correcto: el único número escrito en todo el repo era el celular personal del fundador (RUT). | **Llenar el campo con la línea nueva**, con tres condiciones que no son opcionales. (1) El número contesta en el horario publicado: Google mide y castiga el perfil cuyo teléfono no responde, y una llamada perdida de un lead local cuesta más que el campo vacío. (2) Ese mismo número es el del WhatsApp Business del negocio, para que el QR del evento, el perfil y la firma del correo lleven todos al mismo lado; un número por canal es cómo se pierde el rastro de dónde vino cada quien. (3) 🔴 El celular personal del RUT (3016426577) no se publica en ninguna parte del perfil: sigue siendo dato de la DIAN, no de marketing. |
 | 2 | 🔴 **Dirección: ¿se muestra o no?** | **Negocio de área de servicio, sin dirección visible.** No hay local con atención al público. La dirección se le enseña a Google en privado, en el certificado, durante la verificación. |
 | 3 | **Nombre del perfil: `SoltyAI` o `SoltyAI S.A.S.`** | `SoltyAI`, que es el del mundo real. Si el revisor objeta contra el certificado, se cambia a `SoltyAI S.A.S.` |
 | 4 | **Categoría principal, con el nombre exacto que ofrezca el selector.** | La que salga al escribir `software`. Ver §2 y las alternativas equivalentes. |
@@ -409,6 +466,36 @@ De apoyo, si el revisor pide más: el **RUT** (NIT 902.081.265-3).
 | 7 | **¿Se agrega `Santander, Colombia` como quinta zona?** | Es gratis y amplía el alcance, pero diluye la señal local del área metropolitana. Decisión suya. |
 | 8 | **Fecha de apertura publicada: julio de 2026.** | Publicarla. Es verificable contra la matrícula y le dice al que llega que la empresa es nueva, que es cierto. |
 | 9 | **Logo y portada.** | Logo: `redes/solty-fb-perfil.png` (1024x1024, cuadrado, por encima del mínimo de Google). Portada: `redes/solty-yt-banner.png` (2048x1152, que es 16:9 exacto, el formato que pide Google). ⚠️ El banner de LinkedIn (1128x191) **no sirve**: la proporción no es la de Google y quedaría recortado. Conviene mirar el de YouTube antes de subirlo, porque está diseñado con el contenido centrado. |
+
+---
+
+## 13. Lo que queda para crear el perfil esta semana
+
+Escrito el 2026-09-08. Nada de esto es redacción: es el fundador con una cuenta de Google y un
+celular.
+
+| # | Paso | Cuándo | Nota |
+|---|---|---|---|
+| 1 | Comprar la SIM prepago y anotar el `[NÚMERO]` | mié 9-sep | Es la fila 1 del §12 |
+| 2 | Pedir el certificado de existencia de la CCB (matrícula 731655) | mié 9-sep | Tiene costo y se pide en línea. Sin él no hay verificación (§11) |
+| 3 | Crear el perfil con `carmegar12@gmail.com` y pegar §1 a §8, incluido el §4.8 | jue 10-sep | Categorías: ver el aviso de abajo |
+| 4 | Grabar el video de verificación con el guion del §11 | jue 10-sep | Una sola toma, sin cortar, mínimo 30 segundos, en vivo desde el celular |
+| 5 | Publicar logo y portada (§12, fila 9) | al quedar verificado | El banner de LinkedIn no sirve: la proporción es otra |
+| 6 | Publicar el post 1 y pedir la primera reseña | al quedar verificado | La reseña es la única prueba social de origen externo que tenemos |
+
+> ⚠️ **La revisión de Google tarda hasta 5 días hábiles.** Si se graba el jueves 10, el perfil puede
+> no estar vivo el viernes 11. **Eso no bloquea el evento con empresarios**: el QR de esa noche va a
+> `soltyai.com/contacto`, no al perfil (ver §8).
+
+### Sobre las categorías del §2: lo que no se pudo verificar
+
+Los cuatro nombres del §2 salieron de la documentación pública y de listas de terceros, y **no se
+pudieron confirmar contra la lista viva de Google**. Google mantiene más de 4.000 categorías, cambian
+seguido y el nombre varía por país; las listas que se consultan desde afuera no coinciden entre sí. La
+única verificación que vale es el selector del panel: se escribe `software`, `informát`, `sitios web`
+y `asistencia`, y se toma lo que ofrezca. Lo que sí está decidido y no se negocia: **ninguna categoría
+de marketing, publicidad ni redes sociales**, porque no está en `catalogo.json` y atrae la búsqueda
+que después no sabemos atender (prohibición `servicioFantasma`).
 
 ---
 
