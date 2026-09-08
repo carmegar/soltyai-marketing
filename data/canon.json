@@ -226,9 +226,11 @@
 
   "utm": {
     "_fuente": "08-TRACKING-SETUP.md §2",
-    "source": ["google", "gbp", "meta", "linkedin", "instagram", "tiktok", "youtube", "outbound", "organico"],
+    "source": ["google", "gbp", "meta", "linkedin", "instagram", "tiktok", "youtube", "outbound", "organico", "evento"],
+    "_cambioSourceEvento": "2026-09-08: entra `evento` para el QR del evento con empresarios del 11-sep-2026 (la web se rehizo para eso). El origin sigue el formato fuente_audiencia_creatividad: `evento_empresarios_qr`. La landing manda ese origin como `source` del lead a la suite, y la URL del QR lleva utm_source=evento, utm_medium=qr, utm_campaign=2026-09-11. Sin esto el lead del viernes llegaba sin carril al que imputarse (lo cazó el agente del kit del evento).",
     "_cambioSource": "2026-08-13: entran `google` (Search) y `gbp` (Google Business Profile) al abrirse el carril de Google. Sin origen registrado el lead llega sin fuente y la ronda no se puede evaluar, así que el carril nuevo necesitaba su source ANTES de la primera pieza.",
-    "medium": ["paid_search", "paid_social", "organic_social", "organic_local", "email", "referral", "directo"],
+    "medium": ["paid_search", "paid_social", "organic_social", "organic_local", "email", "referral", "directo", "qr"],
+    "_cambioMediumQr": "2026-09-08: entra `qr` como medio: un código en la pantalla del celular no es referral ni directo, y el evento se evalúa aparte.",
     "formatoOrigin": "fuente_audiencia_creatividad",
     "maxLargoStart": 64,
     "regexStart": "^[A-Za-z0-9_-]{1,64}$",

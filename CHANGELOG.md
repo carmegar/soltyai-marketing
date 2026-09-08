@@ -1,5 +1,9 @@
 # Changelog · soltyai-marketing
 
+## 2026-09-08 (bis) — `evento` y `qr` entran a la convención UTM
+
+El kit del evento cazó que la URL del QR (`?origen=...&utm_source=evento&utm_medium=qr`) llegaba con una fuente que `canon.utm.source` no conocía: la regla `origin` habría marcado el lead como sin carril. Entran `evento` a `source` y `qr` a `medium`, con el origin canónico `evento_empresarios_qr` (formato fuente_audiencia_creatividad). Es lo que la landing manda como `source` del lead a la suite. `npm run check`: 0 errores, los mismos 11 avisos.
+
 ## 2026-09-08 — La landing deja de abrir con el bot, y la línea de web estrena escalón de entrada
 
 **Por qué hoy.** El fundador mandó rehacer soltyai.com para el **evento con empresarios del viernes
