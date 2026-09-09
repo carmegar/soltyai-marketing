@@ -135,14 +135,27 @@ misma regla de lectura: *una línea juzgada con la métrica de otra siempre pare
 
 | # | Línea | Qué es | Su trabajo | Precio | Cómo se vende |
 |---|---|---|---|---|---|
-| **L1** | **Producto vertical** | `domicilios-ops` y los que salgan igual | **Renta recurrente y réplica.** Es el que compone | **público**, $370.000/mes IVA incl. | demo del sistema vivo + réplica al vertical |
+| **L1** | **Producto vertical** | `domicilios-ops` y los que salgan igual | **Renta recurrente y réplica.** Es el que compone | **se cotiza** por domiciliario activo y se negocia (desde el 9-sep; antes «público») | demo del sistema vivo + réplica al vertical |
 | **L2** | **Bot por suscripción** | Los 3 planes del canon | Volumen y entrada barata | público (ya está) | autoservicio desde `/producto/chatbot` |
-| **L3** | **Servicio a la medida** | Desarrollo, integraciones, web | **Caja hoy** y materia prima de L1 | **«desde $3.000.000»**, y las líneas de web con su propio «desde» | escalera de valor de tres escalones |
+| **L3** | **Servicio a la medida** | Desarrollo, integraciones, web | **Caja hoy** y materia prima de L1 | **se cotiza**: el cliente pone el presupuesto y el alcance se acomoda (desde el 9-sep; antes «desde $3.000.000»); las líneas de web sí llevan su «desde» | escalera de valor de tres escalones |
 
 ### La regla de publicación que sale de esto
 
 > **Lleva precio público lo que tiene alcance cerrado. Lleva «desde» lo que se cotiza.
 > Nada lleva silencio.**
+
+⚠️ **2026-09-09: entra una cuarta forma, «cotizacion», y L1 y L3 pasan a ella.** Dos hallazgos del
+fundador el mismo día. El $370.000/mes que la landing publicaba como precio público de L1 **es el
+precio pactado con Bucaradomi, no una lista**: domicilios-ops se cobra por domiciliario que vaya a
+operar en la plataforma y se cuadra negociando con cada empresa, así que publicarlo lo convertía en
+ancla para cualquier flota. Y el «desde $3.000.000» de L3 tampoco es cierto como piso: hay proyectos
+más sencillos que se negocian por menos, y lo que mejor funciona es que **el cliente diga su
+presupuesto y el alcance se acomode**. «Cotizacion» no es «silencio»: la página está obligada a
+decir la **base del cobro** («por domiciliario activo», «tú pones el presupuesto») en la misma
+tarjeta donde antes iba la cifra. Los punteros de precio se conservan y se siguen resolviendo en
+cada build, como evidencia y referencia de cotización, no como lo que se publica. El «desde
+$400.000» de web-basica no cambia (alcance cerrado). El catálogo tampoco: el 370.000 sigue ahí
+porque es lo que se le factura a Bucaradomi. Detalle: `canon.lineasDeOferta.reglaDePublicacion._cambioFormas`.
 
 ✅ **Desde el 2026-09-05 esta tabla vive en `data/canon.json → lineasDeOferta`**, con
 `ordenDeApertura`, `reglaDePublicacion.formas` y una línea por cada L. Dejó de ser memoria.

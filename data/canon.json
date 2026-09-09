@@ -1,6 +1,6 @@
 {
   "_doc": "Hechos canónicos en formato máquina. Espejo de 01-SOURCE-BRIEF.md + ESTADO.md §Marketing. Si cambia el precio o la promesa, se cambia AQUÍ y en el doc, en el mismo commit. Los guardrails leen este archivo: es lo que hace que una decisión escrita se vuelva una regla que falla el CI.",
-  "actualizado": "2026-09-08",
+  "actualizado": "2026-09-09",
   "_actualizado": "Este sello lo pone una persona y por eso derivó: hasta el 13-ago decía 2026-08-04 dentro de un archivo que ya contenía `canales._cambio` y `_whatsappComoPromesa_RETIRADA`, los dos del 13. El hook anunciaba «canon actualizado hace 9 días» de un canon que estaba al día. Desde hoy `scripts/contexto-sesion.mjs` toma la fecha del último commit del archivo y avisa cuando este campo se queda atrás: manda git, que no puede derivar. Actualizalo igual — es la anotación de cuándo se revisó a conciencia, no la de cuándo cambió un byte.",
   "fuentes": [
     "01-SOURCE-BRIEF.md (promesa, verticales, canales, costo de servir)",
@@ -115,6 +115,7 @@
   "lineaServicios": {
     "_fuente": "13-PLAN-12-CLIENTES.md §10 — reglas anti-trampa-de-agencia",
     "pisoPrecio": 3000000,
+    "_cambioPiso": "2026-09-09: el piso deja de PUBLICARSE y deja de ser mínimo duro. Se queda como referencia de cotización (el aviso de src/cotizar y la validación del catálogo lo siguen usando como señal) porque un proyecto sencillo puede negociarse por menos: el cliente pone el presupuesto y el alcance se acomoda (lineasDeOferta.lineas.L3._cambioPrecio). No se bajó el número porque no hay uno nuevo que lo reemplace: lo que cambió es su naturaleza, de mínimo a referencia.",
     "anticipo": 0.5,
     "maxProyectosSimultaneos": 1,
     "maxProyectosPorTrimestre": 1,
@@ -157,8 +158,10 @@
       "formas": {
         "publico": "alcance cerrado y escrito: el número se publica tal cual",
         "desde": "se cotiza por alcance: se publica el piso, anclado con «desde»",
+        "cotizacion": "se cotiza y se negocia con cada cliente: NO se publica cifra, se publica la BASE del cobro (la unidad, p. ej. «por domiciliario activo», o «tú pones el presupuesto y el alcance se acomoda»). No es silencio: el visitante sale sabiendo cómo se cobra, y la página lo dice con esas palabras.",
         "silencio": "PROHIBIDO. Ninguna línea publicada se queda sin señal de precio."
-      }
+      },
+      "_cambioFormas": "2026-09-09: entra «cotizacion», por decisión del fundador y por dos hallazgos del mismo día. (1) El $370.000/mes que la landing publicaba como precio público de L1 es el precio PACTADO con Bucaradomi, no una lista: domicilios-ops se cobra por domiciliario que vaya a operar en la plataforma y se cuadra negociando con cada empresa. Publicarlo como lista lo convertía en ancla para cualquier otra flota, más grande o más chica. (2) El «desde $3.000.000» de L3 tampoco es cierto como piso: hay proyectos más sencillos que se negocian por menos, y lo que mejor funciona es que el cliente diga su presupuesto y el alcance se acomode. Lo que NO cambia: «silencio» sigue prohibido — la forma nueva OBLIGA a decir la base del cobro, y la landing lo dice en la misma tarjeta donde antes iba la cifra. El puntero de precio de cada línea se conserva y se sigue resolviendo en cada build: es la evidencia (lo que Bucaradomi paga; el piso de referencia para cotizar), no lo que se publica."
     },
     "lineas": {
       "L1": {
@@ -166,7 +169,8 @@
         "que": "domicilios-ops, y los que salgan igual del playbook de réplica",
         "trabajo": "Renta recurrente y réplica. Es la línea que compone.",
         "comoSeVende": "demo del sistema vivo + réplica al vertical",
-        "precio": { "forma": "publico", "fuente": "catalogo", "ruta": "servicios[domicilios-ops].precioConIva", "nota": "mensual, IVA incluido" },
+        "precio": { "forma": "cotizacion", "fuente": "catalogo", "ruta": "servicios[domicilios-ops].precioConIva", "unidad": "por domiciliario activo en la plataforma", "nota": "mensual. NO se publica la cifra: el puntero es lo que paga Bucaradomi (contrato con IVA incluido), y sirve de evidencia y de referencia para cotizar, no de lista. Cada empresa se cotiza por domiciliario y se negocia." },
+        "_cambioPrecio": "2026-09-09: de «publico» a «cotizacion» (ver reglaDePublicacion._cambioFormas). El catálogo NO se toca: servicios[domicilios-ops] sigue con precio 310924 + precioConIva 370000 porque eso es lo que se le factura a Bucaradomi cada mes y la suite lo consume para facturar. Lo que cambió es qué hace la landing con ese número: nada. Lo que dice en su lugar: «se cotiza por domiciliario activo».",
         "evidencia": "Contrato SAI-DOMIOPS-20260703-001 (Bucaradomi) y factura electrónica SOL1 del 26-jul-2026. Es la única línea con un cliente pagando.",
         "_ojo": "Bucaradomi deja de ser «el piloto» y pasa a ser el lighthouse customer de esta línea. Lo que NO se publica de él: métricas de rendimiento, porque no se han medido (ver prohibiciones.metricaSinFuente). Lo publicable son hechos con testigo."
       },
@@ -184,7 +188,8 @@
         "que": "Desarrollo, integraciones y las líneas de web del catálogo",
         "trabajo": "Caja hoy, y materia prima de L1: todo proyecto deja pieza reutilizable.",
         "comoSeVende": "escalera de valor de tres escalones (ver `lineaServicios.escaleraDeValor`)",
-        "precio": { "forma": "desde", "fuente": "canon", "ruta": "lineaServicios.pisoPrecio", "nota": "es el PISO de `desarrollo-a-medida`, se publica como «desde». NO aplica a las líneas de web, que tienen alcance cerrado y precio propio: ver lineaServicios._alcanceDelPiso" },
+        "precio": { "forma": "cotizacion", "fuente": "canon", "ruta": "lineaServicios.pisoPrecio", "unidad": "el presupuesto del cliente: él lo pone y el alcance se acomoda", "nota": "NO se publica el piso. `lineaServicios.pisoPrecio` queda como REFERENCIA interna al cotizar (el aviso de src/cotizar), no como mínimo publicado ni duro: ver lineaServicios._cambioPiso. NO aplica a las líneas de web, que tienen alcance cerrado y precio propio (preciosAdicionales sigue publicando su «desde»)." },
+        "_cambioPrecio": "2026-09-09: de «desde» a «cotizacion» (ver reglaDePublicacion._cambioFormas). Textual del fundador: «a la medida no necesariamente es desde 3, puede ser alguno más sencillo y puede negociarse por menos, lo mejor es que el cliente dé su presupuesto y nos acomodemos». El «desde $400.000» de web-basica NO cambia: es alcance cerrado y sigue en preciosAdicionales.",
         "preciosAdicionales": [
           {
             "id": "web",
