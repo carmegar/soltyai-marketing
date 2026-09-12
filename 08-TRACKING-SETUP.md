@@ -213,7 +213,7 @@ en dos y el conteo tiene que decir por cuál entró cada chat, porque miden cosa
 | | **`wa.me` — click-to-chat humano** | **Bot en WhatsApp Business API** |
 |---|---|---|
 | Quién contesta | una persona | el bot, como en Telegram |
-| Estado | 🔴 **bloqueado: falta el número propio de SoltyAI** | **vivo** desde el 7-ago (Tech Provider aprobado) |
+| Estado | ✅ **línea comercial propia desde el 11-sep-2026**: Tigo prepago 300 570 1661, con la app de WhatsApp Business | **vivo** desde el 7-ago (Tech Provider aprobado) |
 | Cómo llega el origen | `text` pre-rellenado de `wa.me` | igual que el `start` de Telegram: parámetro en el enlace, leído al primer mensaje |
 | Conteo | manual | automatizable por el mismo camino que Telegram |
 

@@ -99,7 +99,7 @@ resultados, no contra un plan escrito en agosto.
 2. El destino ofrece **3 opciones de entrada**:
    - **Prueba el bot ahora** — demo viva por **WhatsApp o Telegram** (los dos vivos; la web no).
    - **Agenda una reunión** (la que hoy manda) — Calendly, 15 minutos.
-   - **Escríbenos por WhatsApp** — click-to-chat humano. 🔴 Falta el número propio.
+   - **Escríbenos por WhatsApp** — click-to-chat humano. ✅ Línea comercial propia desde el 11-sep-2026 (Tigo prepago, 300 570 1661).
 3. **Reunión** → oferta tester→cliente: *"te lo dejamos configurado con tus datos reales para que lo
    pruebes de verdad"* (el setup como prueba de valor).
 4. **Cierre por plan** (Esencial $290.000 · Pro $490.000 · Premium $790.000 + setup $400.000, antes

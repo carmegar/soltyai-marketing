@@ -15,6 +15,11 @@
 > nota del §8 que separa el enlace del evento del enlace del perfil, y el §13 con el checklist de
 > creación de esta semana.
 >
+> 🔄 **Actualizado el 2026-09-11**, otra vez sin reescribirlo: entra el número de la línea
+> comercial (SIM prepago Tigo, `300 570 1661`) en la fila 1 del §12, en el §13 y en la tabla de datos
+> de arriba. El perfil de WhatsApp Business que va en ese mismo número está escrito completo en
+> [`whatsapp-business-perfil.md`](whatsapp-business-perfil.md).
+>
 > ### El mensaje líder de este canal es el servicio a la medida
 >
 > `data/canon.json → mensajeLiderPorCanal` pone `gbp` en la lista de `servicio` desde el 17-ago.
@@ -44,6 +49,7 @@
 | Inicio de actividades | 2026-07-02 | `business/23` §5 |
 | Ciudad | Bucaramanga, Santander | `business/23` |
 | Facturador electrónico DIAN | responsabilidad 52, prefijo `SOL`, resolución `18764113048579` | `business/09` |
+| Línea comercial (esta SÍ se publica) | 300 570 1661 | SIM prepago Tigo, comprada el 2026-09-11 |
 | Dirección registrada | Carrera 19 No. 10-45 apto. 503 | `business/23` §5 |
 | Correo del RUT | carmegar12@gmail.com | `business/23` §5 |
 | Teléfono del RUT | 3016426577 | `business/23` §5 |
@@ -457,7 +463,7 @@ De apoyo, si el revisor pide más: el **RUT** (NIT 902.081.265-3).
 
 | # | Qué hay que decidir | Lo que recomienda este documento |
 |---|---|---|
-| 1 | **Teléfono: `[NÚMERO]`**, la SIM prepago que se compra el 9-sep-2026 como línea comercial de SoltyAI. Hasta el 5-sep esta fila recomendaba dejar el campo vacío, y era lo correcto: el único número escrito en todo el repo era el celular personal del fundador (RUT). | **Llenar el campo con la línea nueva**, con tres condiciones que no son opcionales. (1) El número contesta en el horario publicado: Google mide y castiga el perfil cuyo teléfono no responde, y una llamada perdida de un lead local cuesta más que el campo vacío. (2) Ese mismo número es el del WhatsApp Business del negocio, para que el QR del evento, el perfil y la firma del correo lleven todos al mismo lado; un número por canal es cómo se pierde el rastro de dónde vino cada quien. (3) 🔴 El celular personal del RUT (3016426577) no se publica en ninguna parte del perfil: sigue siendo dato de la DIAN, no de marketing. |
+| 1 | **Teléfono: `300 570 1661`**, la SIM prepago Tigo comprada el 2026-09-11 como línea comercial de SoltyAI (se había previsto para el 9-sep y se compró el 11). Hasta el 5-sep esta fila recomendaba dejar el campo vacío, y era lo correcto: el único número escrito en todo el repo era el celular personal del fundador (RUT). | **Llenar el campo con la línea nueva**, con tres condiciones que no son opcionales. (1) El número contesta en el horario publicado: Google mide y castiga el perfil cuyo teléfono no responde, y una llamada perdida de un lead local cuesta más que el campo vacío. (2) Ese mismo número es el del WhatsApp Business del negocio, para que el QR del evento, el perfil y la firma del correo lleven todos al mismo lado; un número por canal es cómo se pierde el rastro de dónde vino cada quien. (3) 🔴 El celular personal del RUT (3016426577) no se publica en ninguna parte del perfil: sigue siendo dato de la DIAN, no de marketing. |
 | 2 | 🔴 **Dirección: ¿se muestra o no?** | **Negocio de área de servicio, sin dirección visible.** No hay local con atención al público. La dirección se le enseña a Google en privado, en el certificado, durante la verificación. |
 | 3 | **Nombre del perfil: `SoltyAI` o `SoltyAI S.A.S.`** | `SoltyAI`, que es el del mundo real. Si el revisor objeta contra el certificado, se cambia a `SoltyAI S.A.S.` |
 | 4 | **Categoría principal, con el nombre exacto que ofrezca el selector.** | La que salga al escribir `software`. Ver §2 y las alternativas equivalentes. |
@@ -476,7 +482,7 @@ celular.
 
 | # | Paso | Cuándo | Nota |
 |---|---|---|---|
-| 1 | Comprar la SIM prepago y anotar el `[NÚMERO]` | mié 9-sep | Es la fila 1 del §12 |
+| 1 | ✅ Comprar la SIM prepago y anotar el número | vie 11-sep | Hecho: Tigo prepago, **300 570 1661**. Es la fila 1 del §12 |
 | 2 | Pedir el certificado de existencia de la CCB (matrícula 731655) | mié 9-sep | Tiene costo y se pide en línea. Sin él no hay verificación (§11) |
 | 3 | Crear el perfil con `carmegar12@gmail.com` y pegar §1 a §8, incluido el §4.8 | jue 10-sep | Categorías: ver el aviso de abajo |
 | 4 | Grabar el video de verificación con el guion del §11 | jue 10-sep | Una sola toma, sin cortar, mínimo 30 segundos, en vivo desde el celular |

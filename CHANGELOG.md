@@ -1,5 +1,24 @@
 # Changelog · soltyai-marketing
 
+## 2026-09-11 — la línea comercial tiene número, y el perfil de WhatsApp Business queda escrito
+
+**El número.** La SIM prepago **Tigo 300 570 1661** se compró el 11-sep (se había previsto para el 9).
+Con eso se llenan los cinco lugares donde el repo decía `[NÚMERO]` o «falta el número propio»:
+`redes/google-business-profile.md` (§12 fila 1, §13 paso 1 y la tabla de datos de arriba),
+`redes/evento-2026-09-11-guion.md` §0, `README.md` (el embudo), `11-PRE-LAUNCH-CHECKLIST.md` (la tabla
+de gates y la fila de `whatsappNumber`) y `08-TRACKING-SETUP.md` §4.3. 🔴 El celular personal del
+fundador (el del RUT) sigue sin copiarse a ningún doc de marketing. `.env.example` se deja en
+`57XXXXXXXXXX` **a propósito**: ahí la ausencia tiene que seguir siendo detectable.
+
+**`redes/whatsapp-business-perfil.md`** (nuevo): todo lo que hay que pegar en la app al activar el
+número, en el orden de las pantallas. Nombre, categoría, descripción de 508 caracteres (el límite de
+512 va marcado como **fuente secundaria**: la referencia de Meta devolvió HTTP 500 el 11-sep), estado
+corto, horario, correo, sitio, mensaje de bienvenida, mensaje de ausencia, cinco respuestas rápidas
+(`/precios` `/web` `/domicilios` `/contable` `/cita`) y la recomendación de **no** llenar el catálogo
+hoy. Sin dirección (es la vivienda del fundador), sin tiempos de respuesta y sin plazos de conexión de
+la API. Del §4 al §10 declara `<!-- canal: organico -->`; las respuestas rápidas quedan fuera de bloque
+a propósito y el archivo explica por qué. `npm run check`: 0 errores y los mismos 12 avisos de antes.
+
 ## 2026-09-08 (ter) — El kit del evento del 11-sep aterriza en `redes/`
 
 **Qué entra.** Dos piezas nuevas y un delta aplicado sobre lo que ya existía, escrito todo para el

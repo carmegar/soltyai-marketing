@@ -108,7 +108,7 @@ valores reales):
 | `calendlyUrl` | ✅ | `calendly.com/carlos-soltyai/30min`, con las 4 preguntas y el `a1` verificado |
 | `lead.endpoint` | ✅ | `contratos.soltyai.com/api/leads` — endpoint **propio en la suite**, no Formspree (la suite ya corre Next y ya tiene Resend). Avisa por correo con `reply_to` del prospecto y por Telegram |
 | `social.{facebook,instagram,tiktok,youtube,linkedin}` | ✅ | Perfiles verificados. `twitter` vacío a propósito |
-| `whatsappNumber` + `whatsappMessage` | 🔴 **vacío** | Espera **línea comercial nueva**, no el celular personal. Mientras esté vacío **el CTA de WhatsApp no se pinta** en ninguna página |
+| `whatsappNumber` + `whatsappMessage` | 🟡 **la línea ya existe, falta ponerla** | Línea comercial propia desde el 11-sep-2026: Tigo prepago **300 570 1661**, no el celular personal. Mientras el campo de `site.ts` siga vacío **el CTA de WhatsApp no se pinta** en ninguna página |
 | `analytics.ga4MeasurementId` | 🔴 `G-XXXXXXXXXX` | **Bloquea la pauta** |
 | `analytics.metaPixelId` | 🔴 vacío = píxel apagado | **Bloquea la pauta** |
 
@@ -199,7 +199,7 @@ para que lo pruebe de verdad → cierre** (el setup como prueba de valor que baj
 
 | Carril | Su gate | ¿Se puede hoy? |
 |---|---|---|
-| **Google Business Profile** | A.0.1 ✓ (sólo necesita el **número propio**) | casi: falta el número |
+| **Google Business Profile** | A.0.1 ✓ | **sí, hoy**: el número propio llegó el 11-sep-2026 (Tigo prepago, 300 570 1661) |
 | **Orgánico a mano** | nada: se publica y ya | **sí, hoy** |
 | **Outbound** | número calentado + los 865 prospectos con estado | **sí, corriendo** |
 | **Google Search** | A.0.2 + A.0.3 + **GA4 vivo** + el GBP creado | no todavía |

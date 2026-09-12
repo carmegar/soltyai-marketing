@@ -16,7 +16,7 @@
 |---|---|---|
 | El QR a pantalla completa | foto en el carrete del celular, con brillo al máximo | hay que generarlo |
 | Destino del QR | `https://soltyai.com/contacto?utm_source=evento&utm_medium=qr&utm_campaign=2026-09-11&utm_content=qr&utm_term=empresarios&origin=evento_empresarios_qr` | listo y registrado |
-| WhatsApp Business instalado en `[NÚMERO]` | la SIM nueva del 9-sep | hay que comprarla |
+| WhatsApp Business instalado en **300 570 1661** | la SIM prepago Tigo del 11-sep | comprada; falta activar la app y pegar el perfil de `whatsapp-business-perfil.md` |
 | Batería | cargador de bolsillo | el QR sin batería no existe |
 
 Lo que la página del QR tiene que hacer en ese orden: **guardar el contacto (vCard), escribir por
