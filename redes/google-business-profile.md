@@ -546,10 +546,13 @@ no se «optimiza» el texto, se optimizan la categoría, los servicios, las rese
    ampliarlo; el fundador decidió publicar el horario en que de verdad se trabaja, **lunes a viernes
    9:00 a 5:00**, porque un horario que no se atiende cuesta más de lo que suma (§7). El factor se
    recupera por el otro lado: el WhatsApp Business del mismo número tiene mensaje de ausencia.
-3. **Las dos reseñas que existen se piden ya, y se piden con las palabras.** Bucaradomi y
-   Swisscontact son las únicas referencias reales. Una reseña que dice «software a la medida» y
-   «Bucaramanga» le enseña a Google qué hacemos (factor #36); una que dice «excelente servicio», no.
-   No se dicta el texto: se le dice al cliente qué le sirve a Google que mencione.
+3. **Las dos reseñas que existen se piden ya, y se piden SIN sugerir palabras.** Bucaradomi y
+   Swisscontact son las únicas referencias reales. ⚠️ Este punto decía «se piden con las palabras»
+   hasta el 15-sep-2026 y quedó **retirado**: la política de contenido de Google Maps (versión del
+   16-abr-2026) prohíbe pedir que la reseña incluya contenido específico, y una reseña inducida es
+   causa de suspensión del perfil. Lo que sí se hace: mandar el enlace de reseña y pedir que cuenten
+   su experiencia con sus palabras. Los mensajes exactos y la fuente están en
+   `../21-SEO-Y-GEO.md` §6.
 4. **La página a la que apunta el perfil dice lo mismo que el perfil.** `/servicios` debe nombrar
    «Bucaramanga» y «diseño de páginas web» en su texto visible (on-page es el 12% del ranking y
    la coincidencia nombre-dirección-teléfono entre web y perfil es el factor #15). Es un pendiente

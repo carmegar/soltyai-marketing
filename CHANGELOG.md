@@ -1,5 +1,27 @@
 # Changelog · soltyai-marketing
 
+## 2026-09-15 — SEO + GEO: estrategia, copy de 8 páginas y corrección del doc del GBP (sesión 96)
+
+Frente nuevo, pendiente `cmu3623d2006301lfiegaqnno`. Tres agentes en paralelo, conciliados por la sesión.
+
+- **`21-SEO-Y-GEO.md`** (nuevo, 636 líneas): cómo aparece una empresa en las respuestas de IA
+  (77% de lo citado está fuera de la web propia; ChatGPT/Copilot leen Bing, Gemini lee Google,
+  Claude usa Brave), cuánto tarda el GBP en salir por nombre (control el 29-sep), mapa de intención
+  de búsqueda B2B (todo «supuesto» salvo las 5 búsquedas medidas), registro en Bing/Clutch/
+  Crunchbase/GoodFirms «listo para pegar», mensajes para pedir reseñas SIN sugerir palabras, y el
+  protocolo mensual de medición GEO (10 preguntas × 6 asistentes, a mano, desde el 5-oct).
+  Conciliación: el doc decía «llms.txt no se crea»; la landing lo genera igual desde los datos de
+  `/empresa` porque cuesta cero, así que el doc pasa a «no se le atribuye nada».
+- **`redes/seo/00…09`** (nuevos): mapa de páginas + copy completo de 5 páginas por intención
+  (software a la medida, integración contable y DIAN, automatización de procesos, páginas web
+  Bucaramanga, empresas de domicilios), la comparativa «agente de Meta vs. desarrollo a la medida»,
+  dos casos (Bucaradomi, Swisscontact/Zaranda según el acta de entrega) y las 10 preguntas para IA.
+  Cada bloque declara `<!-- canal: landing -->`; precios sólo del catálogo; 🟠 del usuario en cada
+  «Control». Se cablean en `platform` rama `landing/seo-geo`.
+- **`redes/google-business-profile.md` §12c.3**: retirado «se piden con las palabras». La política
+  de Maps (16-abr-2026) prohíbe pedir contenido específico en reseñas; es causa de suspensión.
+- Linter: 0 errores, 5 avisos preexistentes.
+
 ## 2026-09-15 — orgánico: los once cambios al plan, con la evidencia de 2026
 
 **`20-ORGANICO-QUE-CAMBIA.md`** (nuevo, propuesta sin aplicar). El fundador quiere publicar a diario
