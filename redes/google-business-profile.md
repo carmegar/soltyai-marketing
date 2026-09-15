@@ -20,6 +20,15 @@
 > de arriba. El perfil de WhatsApp Business que va en ese mismo número está escrito completo en
 > [`whatsapp-business-perfil.md`](whatsapp-business-perfil.md).
 >
+> ✅ **Creado y verificado el 2026-09-15.** Con `carlos@soltyai.com`. La verificación fue **instantánea**: Google
+> no pidió video ni documento, porque el dominio del Workspace coincide con el sitio web del perfil.
+> El guion del §11 queda como respaldo por si alguna vez Google pide re-verificar. Lo que difiere de lo
+> escrito: las categorías reales del selector fueron `Compañía de software` (principal), `Diseñador
+> web`, `Consultor informático` y `Asistencia y servicios informáticos`; la portada NO es el banner
+> de YouTube (decía «chatbots») sino `solty-gbp-portada.png`, generada con `generar-portadas.ps1`
+> con el titular del servicio; `/producto/domicilios-ops` ya responde 200, así que el post 1 salió con
+> su enlace. Enlace de reseñas: `https://g.page/r/Cfnm6edFflNkEBM/review`. Bucaradomi ya dejó la suya.
+>
 > ### El mensaje líder de este canal es el servicio a la medida
 >
 > `data/canon.json → mensajeLiderPorCanal` pone `gbp` en la lista de `servicio` desde el 17-ago.
@@ -384,7 +393,7 @@ Somos un estudio de desarrollo en Bucaramanga y hacemos software a la medida par
 
 No arrancamos cotizando. Arrancamos con un diagnóstico de automatización: una sesión de 60 a 90 minutos sobre el proceso real y, después, un documento con el mapa de los pasos manuales, las oportunidades ordenadas por impacto y la estimación de alcance y precio del proyecto que resolvería las dos primeras. Cuesta $600.000 más IVA y se descuenta completo si contratas dentro de los 30 días siguientes.
 
-Si de ahí sale un proyecto, el piso es $3.000.000 más IVA, se paga mitad al inicio y mitad contra entrega, y antes de entregarlo te proponemos el plan de soporte y evolución.
+Si de ahí sale un proyecto, no hay un «desde»: tú pones el presupuesto y el alcance se acomoda. Se paga mitad al inicio y mitad contra entrega, y antes de entregarlo te proponemos el plan de soporte y evolución.
 
 Trabajamos un proyecto a la vez, y es a propósito.
 ```
@@ -488,7 +497,7 @@ De apoyo, si el revisor pide más: el **RUT** (NIT 902.081.265-3).
 | 6 | **Formas de pago que se declaran.** | Transferencia y QR. Tarjeta no, hasta que Wompi pase a producción. |
 | 7 | **¿Se agrega `Santander, Colombia` como quinta zona?** | Es gratis y amplía el alcance, pero diluye la señal local del área metropolitana. Decisión suya. |
 | 8 | **Fecha de apertura publicada: julio de 2026.** | Publicarla. Es verificable contra la matrícula y le dice al que llega que la empresa es nueva, que es cierto. |
-| 9 | **Logo y portada.** | Logo: `redes/solty-fb-perfil.png` (1024x1024, cuadrado, por encima del mínimo de Google). Portada: `redes/solty-yt-banner.png` (2048x1152, que es 16:9 exacto, el formato que pide Google). ⚠️ El banner de LinkedIn (1128x191) **no sirve**: la proporción no es la de Google y quedaría recortado. Conviene mirar el de YouTube antes de subirlo, porque está diseñado con el contenido centrado. |
+| 9 | **Logo y portada.** | Logo: `redes/solty-fb-perfil.png` (1024x1024). Portada: `redes/solty-gbp-portada.png` (2048x1152, 16:9). ⚠️ Hasta el 15-sep esta fila mandaba el banner de YouTube, que decía «Chatbots que atienden, venden y agendan por ti»: contradecía el mensaje líder del canal. Las cuatro portadas (GBP, YouTube, Facebook, LinkedIn) se regeneraron ese día con `generar-portadas.ps1` y el titular «Software a la medida para negocios colombianos». |
 
 ---
 
