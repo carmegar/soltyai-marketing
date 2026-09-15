@@ -14,6 +14,29 @@ duraciones por red desde una sola grabación. Once cambios (C1 a C11), el pipeli
 decisiones que son del fundador (§4). Nada del canon, los guiones ni el tablero se tocó.
 `npm run check`: 0 errores y los mismos 12 avisos.
 
+**Y el mismo día se aplicó**, por orden del fundador («reescribe lo que debas»):
+
+- `16-CONTENIDO-VIDEO.md`: §3 (pausa de un segundo entre golpes; dos cierres, «escríbeme» en
+  LinkedIn y «comenta X» sólo en IG/FB/TikTok), §4 (15 videos cada 5 semanas; la sesión C pasa al
+  pipeline local ffmpeg + faster-whisper, descrito ahí, que se construye sobre la primera grabación),
+  §5 entero (perfil personal y no página; **sin link en el post ni en el primer comentario**, el
+  `origin` va en Destacados y en la bio, por red; carrusel semanal desde `dolores.json`; los 20
+  minutos después de publicar como único bloque no negociable; tabla de cinco redes + GBP con sus
+  usuarios en Colombia y su herramienta gratis; cadencia diaria entre semana).
+- `15 §5` y `18 §4`: notas fechadas; `business/14`: nota al encabezado.
+- `data/dolores.json`: **24 dolores pasan de `solucion: bot` a `vertical`** (ninguno nombra un bot en
+  cámara; es la interfaz del vertical, 24-ago). `src/contenido/dolores.js`: enum nuevo y `redesDe()`,
+  redes derivadas del sector (LinkedIn sólo contable, independiente y domicilios, por autoridad
+  temática); `ver` y `tanda` las imprimen.
+- `data/canon.json`: **`facebook` entra a `mensajeLiderPorCanal.servicio`** con su nota
+  `_cambioOrganico`; `tablero.carriles.organico.trabajo` describe la cadencia nueva.
+- `redes/guiones-tanda-1.md`: etiquetas `vertical`, marcadores con `facebook` y `youtube`, pausa,
+  los 15 en una sesión, recordatorio de publicación reescrito. `redes/videos-angulo-lo-necesitas.md`:
+  dos cierres por video, Facebook en la tabla, sin link, comentario en 30 min, DM a mano (ManyChat
+  gratis bajó a 25 contactos).
+- `npm run check`: 0 errores y **5 avisos** (eran 12: los siete 🟡 `linea-que-no-le-toca` de los
+  guiones `bot` desaparecen con la etiqueta, sin tocar el canon ni el destino).
+
 ## 2026-09-11 — la línea comercial tiene número, y el perfil de WhatsApp Business queda escrito
 
 **El número.** La SIM prepago **Tigo 300 570 1661** se compró el 11-sep (se había previsto para el 9).

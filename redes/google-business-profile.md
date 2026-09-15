@@ -131,11 +131,15 @@ Todos los precios salen de `data/catalogo.json`, donde el importe es **base sin 
 caracteres que pone Google.
 
 ### 4.1 · Desarrollo de software a la medida
-**Precio:** `Desde $3.000.000 + IVA`
+**Precio:** en el selector de Google, `Sin precio` (la forma es `cotizacion` desde el 9-sep:
+**no se publica cifra**, se publica la base del cobro, y va en la descripción)
 
 ```
-Construimos el sistema que tu operación necesita y que ningún software de estantería resuelve, y lo conectamos con lo que ya usas: sistema contable, ERP, inventario, formularios. Se cotiza por alcance, con la mitad al inicio y la mitad contra entrega. El precio publicado es el piso, no la tarifa.
+Construimos el sistema que tu operación necesita y que ningún software de estantería resuelve, y lo conectamos con lo que ya usas: sistema contable, ERP, inventario, formularios. No hay un «desde»: tú pones el presupuesto y el alcance se acomoda. Mitad al inicio y mitad contra entrega.
 ```
+
+*(279 caracteres. Hasta el 15-sep esta ficha decía «Desde $3.000.000 + IVA» y «el precio publicado es
+el piso»: quedó vieja el 9-sep, cuando L3 pasó a `cotizacion` en `canon.json → lineasDeOferta`.)*
 
 ### 4.2 · Diagnóstico de automatización
 **Precio:** `$600.000 + IVA`
@@ -145,13 +149,16 @@ Sesión de 60 a 90 minutos sobre tu proceso real, mapa de los pasos manuales y d
 ```
 
 ### 4.3 · SoltyAI Domicilios, Plan Operativo
-**Precio:** `$370.000 al mes, IVA incluido`
+**Precio:** en el selector de Google, `Sin precio` (forma `cotizacion` desde el 9-sep: se cobra
+**por domiciliario activo** y se negocia con cada empresa; el $370.000 es lo pactado con
+Bucaradomi, no una lista, y no se publica)
 
 ```
-Plataforma operativa para empresas de domicilios y mensajería. Tablero de operador con pedidos, asignación y estados en vivo, zonas y tarifas que edita el dueño. Aplicación en el celular del domiciliario. Alojamiento, monitoreo y copias diarias cifradas fuera del servidor. Soporte en horario hábil.
+Plataforma operativa para empresas de domicilios y mensajería. Tablero de operador con pedidos, asignación y estados en vivo, zonas y tarifas que edita el dueño. Aplicación en el celular del domiciliario. Alojamiento, monitoreo y copias diarias cifradas. Se cotiza por domiciliario activo, al mes.
 ```
 
-*(En el catálogo la línea se llama `domicilios-ops`. Acá va sin la raya larga del nombre interno.)*
+*(296 caracteres. En el catálogo la línea se llama `domicilios-ops`. Acá va sin la raya larga del
+nombre interno.)*
 
 ### 4.8 · Página web sencilla (una sola página)
 **Precio:** `$400.000 + IVA`
@@ -356,7 +363,7 @@ SoltyAI Domicilios, Plan Operativo, es la plataforma que usa hoy una empresa de 
 
 Está en producción con su propio dominio. El alojamiento, el monitoreo y las copias de seguridad diarias cifradas corren por nuestra cuenta, con soporte en horario hábil. El contrato está firmado y el cobro sale por factura electrónica validada por la DIAN.
 
-$370.000 al mes, IVA incluido.
+Se cotiza por domiciliario activo, al mes, y se negocia con cada empresa.
 
 Si tienes una operación de domicilios o de mensajería en el área metropolitana y quieres verla funcionando, escríbenos y te la mostramos.
 ```
@@ -474,6 +481,19 @@ De apoyo, si el revisor pide más: el **RUT** (NIT 902.081.265-3).
 | 9 | **Logo y portada.** | Logo: `redes/solty-fb-perfil.png` (1024x1024, cuadrado, por encima del mínimo de Google). Portada: `redes/solty-yt-banner.png` (2048x1152, que es 16:9 exacto, el formato que pide Google). ⚠️ El banner de LinkedIn (1128x191) **no sirve**: la proporción no es la de Google y quedaría recortado. Conviene mirar el de YouTube antes de subirlo, porque está diseñado con el contenido centrado. |
 
 ---
+
+## 12b. Lo que cambió el 2026-09-15, antes de pegar
+
+- **L1 y L3 sin cifra.** Las fichas §4.1 y §4.3 y el post 1 del §8 decían «Desde $3.000.000» y
+  «$370.000 al mes»: quedaron viejas el 9-sep, cuando las dos líneas pasaron a la forma
+  `cotizacion` (`canon.json → lineasDeOferta`). Ya están corregidas: en el selector de precio de
+  Google va `Sin precio` y la **base del cobro va en la descripción** («tú pones el presupuesto»,
+  «por domiciliario activo»). Las líneas de web conservan su precio: son alcance cerrado.
+- **Un post por semana con el video de la semana.** Google indexa las publicaciones del perfil y el
+  video de la tanda (`16 §5`) se sube también acá, con el mismo texto que en LinkedIn y el link con
+  `origin=gbp`. Los tres posts del §8 son los de apertura; después el ritmo lo lleva la tanda.
+- **El teléfono es el de WhatsApp Business** (fila 1 del §12): el mismo número en el perfil, en la
+  bio de las redes y en la firma. Un número por canal es cómo se pierde el rastro.
 
 ## 13. Lo que queda para crear el perfil esta semana
 

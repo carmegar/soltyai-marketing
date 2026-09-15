@@ -28,14 +28,23 @@
 
 | # | Video | Palabra | Canales | Por qué ahí |
 |---|---|---|---|---|
-| 1 | Página web | `WEB` | LinkedIn, Instagram, TikTok, YouTube Shorts | El escalón de entrada más barato y el que más gente reconoce. Abre |
-| 2 | Desarrollo a la medida | `MEDIDA` | LinkedIn, Instagram, TikTok, YouTube Shorts | La línea que hoy factura. Abre junto con el 1 |
-| 3 | ERP | `ERP` | LinkedIn, Instagram, TikTok, YouTube Shorts | Sube el nivel de conversación y filtra empresa con operación |
-| 4 | CRM | `CRM` | LinkedIn, Instagram, TikTok, YouTube Shorts | Igual, y engancha con el 3 |
-| 5 | Bot | `BOT` | Instagram, TikTok | **Va de último y no abre.** Ver el aviso de abajo |
+| 1 | Página web | `WEB` | LinkedIn, Instagram, Facebook, TikTok, YouTube Shorts | El escalón de entrada más barato y el que más gente reconoce. Abre |
+| 2 | Desarrollo a la medida | `MEDIDA` | LinkedIn, Instagram, Facebook, TikTok, YouTube Shorts | La línea que hoy factura. Abre junto con el 1 |
+| 3 | ERP | `ERP` | LinkedIn, Instagram, Facebook, TikTok, YouTube Shorts | Sube el nivel de conversación y filtra empresa con operación |
+| 4 | CRM | `CRM` | LinkedIn, Instagram, Facebook, TikTok, YouTube Shorts | Igual, y engancha con el 3 |
+| 5 | Bot | `BOT` | Instagram, Facebook, TikTok | **Va de último y no abre.** Ver el aviso de abajo |
 
-**Cadencia:** tres por semana, en ese orden, video nativo subido a cada red. El link nunca va en el
-cuerpo del post: va en el primer comentario, con su `origin` registrado (`npm run link nuevo`).
+**Cadencia:** uno por semana (el viernes, dentro de la cadencia diaria de `16 §5`), en ese orden,
+video nativo subido a cada red. **Sin link en ningún post ni en ningún comentario:** el link vive en
+Destacados del perfil de LinkedIn y en la bio de cada red, con su `origin` por red
+(`npm run link nuevo`). El «link en el primer comentario» está suprimido en LinkedIn desde 2026.
+
+> 🔄 **2026-09-15: cada video lleva dos cierres, uno por red** (`20-ORGANICO-QUE-CAMBIA.md` C3).
+> «Comenta la palabra» es engagement bait en LinkedIn desde marzo-2026 (el post se suprime y el
+> castigo dura semanas; cifras y fuentes en el doc 20), y sigue siendo válido en Instagram, Facebook
+> y TikTok. Se graba el golpe 4
+> dos veces, con la frase de cada red; el pipeline arma las dos versiones. Se grabaron marcados
+> abajo en cada guion.
 
 > ⚠️ **El video 5 sale con un 🟡 conocido del guardrail, y es a propósito.** Nombra la línea del bot,
 > y `canon.json → mensajeLiderPorCanal` pone Instagram y TikTok en la lista de `servicio` desde el
@@ -48,7 +57,7 @@ cuerpo del post: va en el primer comentario, con su `origin` registrado (`npm ru
 
 ## 1. Página web
 
-<!-- canal: linkedin, instagram, tiktok, youtube -->
+<!-- canal: linkedin, instagram, facebook, tiktok, youtube -->
 
 **Gancho para la primera línea del post (no es el guion del video):**
 `Antes de pagar una página web, revisa si de verdad la necesitas. A veces no.`
@@ -69,7 +78,9 @@ cuerpo del post: va en el primer comentario, con su `origin` registrado (`npm ru
 > tu dominio, a tu nombre.
 >
 > **(40 a 55 s)** Vuelve a esas diez horas del mes. ¿La necesitas? Si te buscan y no apareces, sí.
-> Si vives de clientes que ya te conocen y no piensas crecer, todavía no. Comenta WEB y te escribo.
+> Si vives de clientes que ya te conocen y no piensas crecer, todavía no.
+> **Cierre IG/FB/TikTok:** Comenta WEB y te escribo.
+> **Cierre LinkedIn/Shorts:** Si te pasa, escríbeme y te cuento cómo se vería en tu caso.
 
 ---
 
@@ -94,7 +105,9 @@ cuerpo del post: va en el primer comentario, con su `origin` registrado (`npm ru
 > pagaste.
 >
 > **(40 a 55 s)** Vuelve a esas cuarenta horas. ¿Lo necesitas? Sólo si ese paso a mano ya te costó
-> plata o un cliente. Si todavía no, guarda el video para cuando pase. Comenta MEDIDA y te escribo.
+> plata o un cliente. Si todavía no, guarda el video para cuando pase.
+> **Cierre IG/FB/TikTok:** Comenta MEDIDA y te escribo.
+> **Cierre LinkedIn/Shorts:** Si ya te pasó, escríbeme y te cuento cómo se resolvería en tu caso.
 
 ---
 
@@ -118,8 +131,9 @@ cuerpo del post: va en el primer comentario, con su `origin` registrado (`npm ru
 > que los demás lo lean en vez de volverlo a escribir.
 >
 > **(40 a 55 s)** Vuelve a esa hora diaria. ¿Lo necesitas? Si tu negocio cabe en dos Excel y una
-> persona, todavía no. Si ya son tres personas digitando lo mismo, sí, y vas tarde. Comenta ERP y
-> te escribo.
+> persona, todavía no. Si ya son tres personas digitando lo mismo, sí, y vas tarde.
+> **Cierre IG/FB/TikTok:** Comenta ERP y te escribo.
+> **Cierre LinkedIn/Shorts:** Si ya son tres, escríbeme y te cuento por dónde se empieza.
 
 ---
 
@@ -144,7 +158,9 @@ cuerpo del post: va en el primer comentario, con su `origin` registrado (`npm ru
 > teléfono que se puede perder.
 >
 > **(40 a 55 s)** ¿Lo necesitas? Si vendes una vez y ya, no. Si tu cliente puede volver, sí, y cada
-> mes sin eso es una lista que se enfría. Comenta CRM y te escribo.
+> mes sin eso es una lista que se enfría.
+> **Cierre IG/FB/TikTok:** Comenta CRM y te escribo.
+> **Cierre LinkedIn/Shorts:** Si tu cliente puede volver, escríbeme y te cuento cómo se arma.
 
 <!-- /canal -->
 
@@ -152,7 +168,7 @@ cuerpo del post: va en el primer comentario, con su `origin` registrado (`npm ru
 
 ## 5. Bot
 
-<!-- canal: instagram, tiktok -->
+<!-- canal: instagram, facebook, tiktok -->
 
 **Gancho para la primera línea del post:**
 `Te escriben el sábado a las nueve de la noche. Contestas el lunes. Ahí se fue la venta.`
@@ -185,8 +201,14 @@ vistas, y la métrica que manda es **conversaciones iniciadas por semana**, no v
 
 ### El comentario público
 
-Se contesta corto y en el mismo día: `Listo [NOMBRE], te escribo por interno.` Nada más. La
-conversación no pasa en los comentarios.
+Se contesta corto y **en los primeros 30 minutos** cuando se puede (es lo que más alcance da, `16
+§5`): `Listo [NOMBRE], te escribo por interno.` Nada más. La conversación no pasa en los
+comentarios. En LinkedIn nadie va a comentar una palabra porque el video no lo pide; el que comenta
+algo de sustancia recibe respuesta de sustancia, y si pregunta por su caso, el DM de abajo.
+
+**El DM se manda a mano.** ManyChat gratis bajó a 25 contactos activos al mes (marzo-2026); con el
+volumen de hoy no se paga nada, y el día que 25 comentarios por video se queden cortos se compra la
+herramienta, no antes.
 
 ### El DM: una pregunta, nunca un link
 
@@ -216,8 +238,8 @@ una palabra todavía no pidió nada. **Se manda una sola pregunta, específica d
 
 - Un link de entrada, un PDF, un catálogo ni una presentación.
 - Un precio suelto sin haber entendido el alcance. Lo que sí se puede decir cuando pregunten:
-  página sencilla **desde $400.000 + IVA**, proyecto a la medida **desde $3.000.000 + IVA**. Nada
-  más de memoria.
+  página sencilla **desde $400.000 + IVA**; proyecto a la medida, **sin cifra: «tú pones el
+  presupuesto y el alcance se acomoda»** (forma `cotizacion` desde el 9-sep). Nada más de memoria.
 - Ninguna métrica de resultado. No se han medido, y un número publicado lleva fuente o no va.
 - Ningún audio. El que comentó una palabra no pidió un audio de dos minutos.
 

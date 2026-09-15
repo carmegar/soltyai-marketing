@@ -21,13 +21,13 @@ Tres cosas que puedes verificar antes de contratarnos:
 
 2. Meta nos aprobó como Tech Provider de WhatsApp Business API. La conversación por WhatsApp entra como una interfaz del sistema, nunca como el producto.
 
-3. Tenemos software propio en producción con un cliente pagando: SoltyAI Domicilios, la plataforma operativa de Bucaradomi (pedidos, asignación, estados en vivo, zonas, tarifas y una aplicación para los domiciliarios), $370.000 al mes con IVA. También entregamos un módulo a la medida para un programa de campo de Swisscontact.
+3. Tenemos software propio en producción con un cliente pagando: SoltyAI Domicilios, la plataforma operativa de Bucaradomi (pedidos, asignación, estados en vivo, zonas, tarifas y una aplicación para los domiciliarios), que se cotiza por domiciliario activo. También entregamos un módulo a la medida para un programa de campo de Swisscontact.
 
 Cómo se contrata:
 
 Diagnóstico de automatización. Revisamos la operación y entregamos el plan de trabajo. Es pagado, y se descuenta del proyecto si contratas dentro de los 30 días siguientes.
 
-Desarrollo a la medida, desde $3.000.000, con anticipo del 50%.
+Desarrollo a la medida: tú pones el presupuesto y el alcance se acomoda, con anticipo del 50%.
 
 Páginas web nuevas y rescate de sitios existentes, con precio cerrado.
 

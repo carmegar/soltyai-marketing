@@ -211,7 +211,8 @@
   "mensajeLiderPorCanal": {
     "_fuente": "15-CANALES-Y-SECUENCIA.md §Por qué cambió el orden y §11. ✅ Desde el 2026-08-20 SÍ lo hace cumplir un guardrail: la regla `mensajeLider` de src/guardrails/reglas.js. Antes era dato que se leía a mano, y el CLAUDE.md del repo llegó a decir que el CI lo aplicaba cuando no.",
     "bot": ["meta", "outbound"],
-    "servicio": ["google", "gbp", "linkedin", "instagram", "tiktok", "youtube", "organico", "landing"],
+    "servicio": ["google", "gbp", "linkedin", "instagram", "facebook", "tiktok", "youtube", "organico", "landing"],
+    "_cambioOrganico": "2026-09-15: entra `facebook` a la lista de `servicio`. Faltaba en el mapa aunque el repo ya tenía textos y portada de Facebook (redes/solty-fb-*): en Colombia tiene 36,4M de usuarios contra 21,6M de Instagram (DataReportal oct-2025) y es donde está el dueño de la pyme de barrio. `youtube` ya estaba. Con esto las cinco redes del orgánico llevan el mismo mensaje líder. El resto de lo que cambió ese día (sin link en LinkedIn, «comenta la palabra» sólo en IG/FB/TikTok, perfil personal y no página, carrusel semanal, dos duraciones, cadencia diaria) no toca el canon: vive en 20-ORGANICO-QUE-CAMBIA.md y en 16-CONTENIDO-VIDEO.md §5.",
     "vocabulario": {
       "_doc": "Con qué se reconoce cada línea dentro de una pieza. Vive en el canon y no en el código porque es una decisión comercial, igual que un precio: si mañana cambia cómo se llama la línea, cambia acá y la regla lo hace cumplir sola. Son fragmentos; se buscan normalizados (sin tildes, sin distinguir mayúsculas).",
       "bot": ["bot", "chatbot", "asistente de whatsapp", "atiende solo", "contesta solo", "responde solo", "plan esencial", "plan pro", "plan premium", "suscripcion mensual"],
@@ -278,7 +279,7 @@
     "carriles": {
       "_fuente": "15-CANALES-Y-SECUENCIA.md — decidido 2026-08-13. Cada carril tiene un trabajo distinto y un reloj distinto: juzgar uno con la métrica de otro lo hace parecer un fracaso.",
       "gbp": { "orden": 1, "presupuesto": 0, "trabajo": "pack local + reseñas verificables", "pagaEn": "semanas", "estado": "por-crear" },
-      "organico": { "orden": 2, "presupuesto": 0, "trabajo": "construir el activo que prospecta sin manos", "pagaEn": "6-12 meses", "estado": "a-mano" },
+      "organico": { "orden": 2, "presupuesto": 0, "trabajo": "construir el activo que prospecta sin manos: 3 videos + 1 carrusel + 1 texto por semana desde el perfil del fundador", "pagaEn": "6-12 meses", "estado": "a-mano" },
       "google-search": { "orden": 3, "presupuesto": 400000, "trabajo": "capturar intención existente de la línea de servicio", "pagaEn": "semanas", "estado": "por-abrir" },
       "meta": { "orden": 4, "presupuesto": 1200000, "trabajo": "generar demanda por vertical y ciudad", "pagaEn": "meses", "estado": "relegado" },
       "outbound": { "orden": 0, "presupuesto": 0, "trabajo": "el motor de corto plazo, sin CAC", "pagaEn": "días", "estado": "corriendo" }

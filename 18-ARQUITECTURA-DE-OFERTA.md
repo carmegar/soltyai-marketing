@@ -186,6 +186,15 @@ L1 producto vertical  →  L3 servicio a la medida  →  L2 bot
 lo que se anuncia en Meta y en el outbound según `mensajeLiderPorCanal`. Lo que cambia es
 que **deja de ser lo primero que ve alguien que llega frío.**
 
+> 🔄 **2026-09-15: los dolores de sector del banco dejan de ser «de la línea bot».** Los 24 dolores
+> que `dolores.json` etiquetaba `bot` (pedidos por chat, citas, fichas de inmuebles) pasan a
+> `vertical`: ninguno de sus guiones nombra un bot, describen la interfaz de un producto vertical,
+> que es exactamente lo que dice la decisión del 24-ago (el bot no se vende suelto). Con eso el
+> orgánico entero lleva `servicio` sin el aviso 🟡 que el guardrail daba desde el 5-sep, y L2 se
+> queda donde la tabla de arriba lo puso: Meta, outbound y `/producto/chatbot`. El único video del
+> orgánico que sí nombra la línea del bot es el #5 de «¿lo necesitas?», y sale a IG/TikTok con su
+> 🟡 declarado. Doc: `20-ORGANICO-QUE-CAMBIA.md` C11.
+
 #### 🔄 2026-09-08: el orden se invierte arriba, y la landing cambia de línea
 
 Decisión del fundador al mandar rehacer soltyai.com para el evento con empresarios del **11-sep-2026**.

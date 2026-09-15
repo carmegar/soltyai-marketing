@@ -156,6 +156,15 @@ el comentario fijado, con `origin` por canal.
 **Semáforo:** 2 semanas seguidas sin publicar = la cadencia estaba mal calibrada, no falta disciplina.
 Se baja a 1 post/semana antes que dejar de publicar. Un carril que compone solo funciona si no se corta.
 
+> ⚠️ **2026-09-15: el párrafo de arriba quedó superado en dos cosas** (`20-ORGANICO-QUE-CAMBIA.md`).
+> (1) **El link ya no va en el comentario fijado:** LinkedIn suprime hasta 80% los comentarios con
+> link externo; el `origin` va en Destacados del perfil y en la bio de cada red, **por red y no por
+> pieza**. (2) **La cadencia pasa de 2 posts/semana a diario entre semana** (3 videos + 1 carrusel +
+> 1 texto), porque la grabación en lote de 15 videos cada 5 semanas y el pipeline de edición lo
+> permiten sin que el fundador toque nada entre tandas. El semáforo se mantiene tal cual. Y entra
+> **Facebook** al orgánico (36,4M de usuarios en Colombia, el doble de Instagram): con eso son cinco
+> redes y el GBP, todas con el mismo mensaje líder. Detalle y reglas: `16-CONTENIDO-VIDEO.md §5`.
+
 ### 🔄 2026-08-17: el orgánico cambia de mensaje líder, y se le da formato
 
 Cuatro días después de escribir este doc, el fundador pidió arrancar el carril orgánico en serio y

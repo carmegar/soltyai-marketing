@@ -38,6 +38,13 @@
 > arriba los mandó ahí el 22-ago a propósito («L2 bot → IG + TikTok»), así que **las dos decisiones
 > se contradicen** y ninguna de las dos es un error de dedo. Son 🟡 y no 🔴 justamente por eso.
 > Quien lo resuelva mueve `mensajeLiderPorCanal` o mueve el destino, pero no las dos a la vez.
+>
+> ✅ **2026-09-15 — se resolvió por la tercera vía: la etiqueta.** Ninguno de los siete dice «bot»
+> en cámara; describen la interfaz de un producto vertical, que es lo que el 24-ago decidió que el
+> bot es. `dolores.json` renombra la solución `bot` a `vertical`, los encabezados de abajo también, y
+> el aviso desaparece sin mover el canon ni el destino. Y **entran Facebook y YouTube Shorts** a los
+> marcadores (`20-ORGANICO-QUE-CAMBIA.md` C5, C6, C11): los cuatro de LinkedIn salen también a
+> Shorts, y los de sector salen a IG, Facebook, TikTok y Shorts.
 
 ## Cómo se usan
 
@@ -51,15 +58,19 @@
 - Los tres sin ★ (**8, 9, 10** en el orden nuevo) **no tienen evidencia propia**: se cuenta el dolor
   y nunca un caso. Nada de «un cliente nuestro». No existe.
 - La **primera línea del post** va aparte porque LinkedIn corta en «ver más» y esa línea decide si
-  alguien pone play. No es el guion.
+  alguien pone play.
+- **Pausa de un segundo entre golpe y golpe.** El pipeline corta por ese silencio la versión de
+  30 s (golpes 1, 2 y 4) para Instagram, Facebook y TikTok. No se nota en el video largo.
+- Los cierres de estos diez ya son «escríbeme», que vale en todas las redes. No se agrega
+  «comenta X»: en LinkedIn es engagement bait desde marzo-2026. No es el guion.
 
 ---
 
-<!-- canal: linkedin -->
+<!-- canal: linkedin, youtube -->
 ## 1 ★ ¿Cuántas veces te ha tocado repetirle la dirección al domiciliario?
 
-`direccion-dictada-al-domiciliario` · Restaurante y domicilios · N1 Ordenar · bot
-**Red:** LinkedIn · *(orden viejo: número 4)*
+`direccion-dictada-al-domiciliario` · Restaurante y domicilios · N1 Ordenar · vertical
+**Red:** LinkedIn + Shorts · *(orden viejo: número 4)*
 **Evidencia:** el piloto de Bucaradomi despacha así.
 
 > ¿Cuántas veces te ha tocado repetirle la dirección al domiciliario?
@@ -81,11 +92,11 @@ la comida fría.
 
 ---
 
-<!-- canal: linkedin -->
+<!-- canal: linkedin, youtube -->
 ## 2 ★ ¿Todavía tienes a alguien digitando facturas?
 
 `digitar-la-factura-del-proveedor` · Contable y administrativo · N2 Automatizar · a la medida
-**Red:** LinkedIn · *(orden viejo: número 5)*
+**Red:** LinkedIn + Shorts · *(orden viejo: número 5)*
 **Evidencia:** es el motor contable, y podemos mostrarlo corriendo.
 
 > ¿Todavía tienes a alguien digitando facturas?
@@ -107,11 +118,11 @@ Digitarla es volver a escribir algo que ya está escrito.
 
 ---
 
-<!-- canal: linkedin -->
+<!-- canal: linkedin, youtube -->
 ## 3 ★ ¿Todavía haces los recibos con talonario?
 
 `recibo-y-cobro-a-mano-al-cierre` · Salud y consultorios · N1 Ordenar · a la medida
-**Red:** LinkedIn · *(orden viejo: número 10)*
+**Red:** LinkedIn + Shorts · *(orden viejo: número 10)*
 **Evidencia:** es lo que hace nuestro propio back-office, y por eso podemos mostrarlo funcionando.
 
 > ¿Todavía haces los recibos con talonario?
@@ -133,11 +144,11 @@ reconstruir el año.
 
 ---
 
-<!-- canal: linkedin -->
+<!-- canal: linkedin, youtube -->
 ## 4 ★ Cada cotización que mandas, ¿la armas copiando la del mes pasado?
 
 `cotizar-desde-cero-cada-vez` · Profesional independiente y agencia pequeña · N2 Automatizar · a la medida
-**Red:** LinkedIn · *(orden viejo: número 6)*
+**Red:** LinkedIn + Shorts · *(orden viejo: número 6)*
 **Evidencia:** nuestro back-office hace exactamente esto, y lo usamos todos los días.
 
 > Cada cotización que mandas, ¿la armas copiando la del mes pasado?
@@ -159,11 +170,11 @@ Así es como uno cotiza barato sin darse cuenta.
 
 ---
 
-<!-- canal: linkedin, instagram -->
+<!-- canal: linkedin, youtube, instagram, facebook, tiktok -->
 ## 5 ★ ¿Todavía copias a un cuaderno los pedidos que te llegan por WhatsApp?
 
-`pedidos-de-whatsapp-al-cuaderno` · Comercio y distribución · N1 Ordenar · bot
-**Red:** LinkedIn + IG · *(orden viejo: número 3)*
+`pedidos-de-whatsapp-al-cuaderno` · Comercio y distribución · N1 Ordenar · vertical
+**Red:** LinkedIn + Shorts + IG + FB + TikTok · *(orden viejo: número 3)*
 **Evidencia:** es exactamente lo que hace el piloto de Bucaradomi desde el año pasado.
 
 > ¿Todavía copias a un cuaderno los pedidos que te llegan por WhatsApp?
@@ -185,11 +196,11 @@ enteras cuando el cliente reclama.
 
 ---
 
-<!-- canal: instagram, tiktok -->
+<!-- canal: instagram, facebook, tiktok, youtube -->
 ## 6 ★ ¿Tu recepcionista agenda o alcanza a hacer algo más?
 
-`agendar-citas-contestando-el-telefono` · Salud y consultorios · N2 Automatizar · bot
-**Red:** IG + TikTok · *(orden viejo: número 1)*
+`agendar-citas-contestando-el-telefono` · Salud y consultorios · N2 Automatizar · vertical
+**Red:** IG + FB + TikTok + Shorts · *(orden viejo: número 1)*
 **Evidencia:** el vertical de citas está construido.
 
 > ¿Tu recepcionista agenda, o alcanza a hacer algo más?
@@ -212,11 +223,11 @@ el que llamó a las siete de la noche igual no agendó.
 
 ---
 
-<!-- canal: instagram, tiktok -->
+<!-- canal: instagram, facebook, tiktok, youtube -->
 ## 7 ★ ¿Cuántas veces mandaste hoy las mismas fotos del mismo apartamento?
 
-`misma-ficha-del-inmueble-veinte-veces` · Inmobiliaria y arriendos · N2 Automatizar · bot
-**Red:** IG + TikTok · *(orden viejo: número 2)*
+`misma-ficha-del-inmueble-veinte-veces` · Inmobiliaria y arriendos · N2 Automatizar · vertical
+**Red:** IG + FB + TikTok + Shorts · *(orden viejo: número 2)*
 **Evidencia:** el vertical inmobiliario está construido y probado punta a punta.
 
 > ¿Cuántas veces mandaste hoy las mismas fotos del mismo apartamento?
@@ -238,11 +249,11 @@ ya vio otros cuatro antes de que le contestaras.
 
 ---
 
-<!-- canal: instagram, tiktok -->
+<!-- canal: instagram, facebook, tiktok, youtube -->
 ## 8 ¿Te ha pasado que dos clientas quedaron a la misma hora?
 
-`agendar-por-dos-canales-al-tiempo` · Belleza y bienestar · N2 Automatizar · bot
-**Red:** IG + TikTok · *(orden viejo: número 9)*
+`agendar-por-dos-canales-al-tiempo` · Belleza y bienestar · N2 Automatizar · vertical
+**Red:** IG + FB + TikTok + Shorts · *(orden viejo: número 9)*
 **Sin evidencia propia:** se cuenta el dolor. Nada de casos.
 
 > ¿Te ha pasado que dos clientas quedaron a la misma hora?
@@ -264,11 +275,11 @@ Simplemente no vuelve.
 
 ---
 
-<!-- canal: instagram, tiktok -->
+<!-- canal: instagram, facebook, tiktok, youtube -->
 ## 9 ¿Cuántas fotos de motores tienes hoy en el chat sin contestar?
 
-`cotizar-la-reparacion-por-chat-con-fotos` · Taller y servicio técnico · N2 Automatizar · bot
-**Red:** IG + TikTok · *(orden viejo: número 8)*
+`cotizar-la-reparacion-por-chat-con-fotos` · Taller y servicio técnico · N2 Automatizar · vertical
+**Red:** IG + FB + TikTok + Shorts · *(orden viejo: número 8)*
 **Sin evidencia propia:** se cuenta el dolor. Nada de casos.
 
 > ¿Cuántas fotos de motores tienes hoy en el chat sin contestar?
@@ -290,11 +301,11 @@ Y tú ni sabes que existió.
 
 ---
 
-<!-- canal: instagram, tiktok -->
+<!-- canal: instagram, facebook, tiktok, youtube -->
 ## 10 En temporada de matrículas, ¿cuántas veces al día explicas lo mismo?
 
-`las-mismas-diez-preguntas-de-matricula` · Educación y academias · N2 Automatizar · bot
-**Red:** IG + TikTok · *(orden viejo: número 7)*
+`las-mismas-diez-preguntas-de-matricula` · Educación y academias · N2 Automatizar · vertical
+**Red:** IG + FB + TikTok + Shorts · *(orden viejo: número 7)*
 **Sin evidencia propia:** se cuenta el dolor. Nada de casos.
 
 > En temporada de matrículas, ¿cuántas veces al día explicas lo mismo?
@@ -321,7 +332,10 @@ No es descuido: es volumen.
 ## Lista para la sesión B (grabación)
 
 Se graban en este orden, que **cambió el 2026-08-22** (ver la nota del encabezado). Los cuatro
-primeros son los que abren en LinkedIn: son los que hay que leer mejor.
+primeros son los que abren en LinkedIn: son los que hay que leer mejor. **En la misma sesión se
+graban los cinco de `videos-angulo-lo-necesitas.md`**: 15 videos, unas 2 horas, y con eso hay cinco
+semanas de publicación diaria (`16 §4`). Los MP4 se nombran con el `id` del dolor (columna de la
+ficha) para que el pipeline los reconozca.
 
 | # | Gancho de arranque | Sector | Red | Línea |
 |---|---|---|---|---|
@@ -336,6 +350,9 @@ primeros son los que abren en LinkedIn: son los que hay que leer mejor.
 | 9 | ¿Cuántas fotos de motores tienes hoy en el chat sin contestar? | Taller | IG + TikTok | L2 bot |
 | 10 | En temporada de matrículas, ¿cuántas veces al día explicas lo mismo? | Educación | IG + TikTok | L2 bot |
 
-**Recordatorio de la sesión D:** el link va en el primer comentario con su `origin`
-(`npm run link nuevo`), nunca en el cuerpo del post. Sin `origin` el lead llega sin fuente y el
-carril no se puede evaluar.
+**Recordatorio de la sesión D (reescrito el 2026-09-15):** **sin link en el post ni en el primer
+comentario.** LinkedIn suprime hasta 80% los comentarios con link externo. El link de `/contacto`
+con `origin=linkedin` va en Destacados del perfil de Carlos (se registra una vez con
+`npm run link nuevo`), y en la bio de cada red con su propio `origin`. El video sale del **perfil
+personal**, no de la página; la página lo comparte al día siguiente. Y los **20 minutos después de
+publicar** contestando comentarios son el único bloque que no se negocia (`16 §5`).

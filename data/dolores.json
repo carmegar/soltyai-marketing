@@ -1,11 +1,13 @@
 {
   "_doc": "Banco de dolores: la materia prima del contenido de video. La unidad NO es 'un tema', es una TAREA MANUAL concreta que un negocio hace hoy. Cada fila = un video de 45-60 s. El porqué y el proceso viven en 16-CONTENIDO-VIDEO.md; los precios y el mensaje líder siguen viviendo en canon.json.",
-  "actualizado": "2026-08-17",
+  "actualizado": "2026-09-15",
   "_reglaDeUso": [
     "🔴 EL VIDEO HABLA EN HORAS, NO EN PESOS. Las horas salen de aritmética que el dueño puede verificar contra su propio negocio ('si haces esto 25 veces al día a 2 minutos'). Los pesos exigen un costo-hora que hoy es SUPUESTO y sin verificar: si se dicen, se dicen como 'si tu hora cuesta X', nunca como cifra nuestra.",
     "Ninguna fila afirma un hecho de mercado. La frecuencia es un supuesto declarado, y el video la presenta como supuesto: es honesto y además funciona mejor, porque el que se reconoce corrige el número en la cabeza y se convence solo.",
     "Un video = un dolor = un mensaje. Nunca dos dolores en la misma pieza.",
-    "`evidencia` no es decoración: las filas que la tienen son las que producen el mejor video, porque nadie más puede grabarlas. Se agotan primero."
+    "`evidencia` no es decoración: las filas que la tienen son las que producen el mejor video, porque nadie más puede grabarlas. Se agotan primero.",
+    "2026-09-15: la solución `bot` pasa a llamarse `vertical`. Ningún guion dice «bot»: dicen «el pedido queda registrado solo», «el paciente ve los espacios libres». Eso es la interfaz de un producto vertical (decisión del 24-ago: el bot no se vende suelto), y con la etiqueta vieja el guardrail `mensajeLider` avisaba 🟡 en IG/TikTok sin que hubiera nada que corregir. 20-ORGANICO-QUE-CAMBIA.md C11.",
+    "2026-09-15: cada dolor tiene REDES derivadas del sector (`redesDe` en el CLI). LinkedIn se queda en dos temas para la autoridad temática: operación colombiana y DIAN (contable, independiente) y a la medida y domicilios. Los sectores de barrio (comercio, inmobiliaria, salud, taller, belleza, educación) van a Instagram, Facebook, TikTok y YouTube Shorts, que es donde está ese dueño. 20-ORGANICO-QUE-CAMBIA.md C5."
   ],
   "parametros": {
     "costoHoraOperativa": {
@@ -108,7 +110,7 @@
       "frecuencia": { "veces": 25, "unidad": "dia", "minutos": 2, "estado": "supuesto", "base": "25 pedidos diarios de un negocio pequeño, 2 minutos entre leer el chat, escribir y verificar" },
       "costoOculto": "El pedido que no se copió no existe. Se despacha el que se acordó alguien, y el que se perdió sólo aparece cuando el cliente reclama.",
       "conTecnologia": "El pedido se registra solo cuando entra, con el nombre, lo que pidió y la dirección. Nadie transcribe nada y al final del día la lista ya está armada.",
-      "solucion": "bot",
+      "solucion": "vertical",
       "evidencia": "Es exactamente lo que hace el piloto de Bucaradomi desde el año pasado."
     },
     {
@@ -120,7 +122,7 @@
       "frecuencia": { "veces": 40, "unidad": "dia", "minutos": 1, "estado": "supuesto", "base": "40 consultas de precio al día, 1 minuto cada una entre que se lee, se busca y se responde" },
       "costoOculto": "El que pregunta a las 8 de la noche no recibe respuesta hasta mañana, y mañana ya compró en otro lado.",
       "conTecnologia": "La consulta de precio se contesta al instante y con el precio que está vigente hoy, no con el de la lista que quedó desactualizada.",
-      "solucion": "bot",
+      "solucion": "vertical",
       "evidencia": null
     },
     {
@@ -181,7 +183,7 @@
       "frecuencia": { "veces": 35, "unidad": "dia", "minutos": 3, "estado": "supuesto", "base": "35 pedidos telefónicos al día, 3 minutos entre saludar, anotar, confirmar dirección y despedirse" },
       "costoOculto": "En hora pico el teléfono ocupado es una venta perdida que ni siquiera queda registrada. No sabes cuántas fueron.",
       "conTecnologia": "El pedido se toma solo, con el menú de hoy, y llega a la cocina escrito. El teléfono deja de ser el cuello de botella de las 7 p.m.",
-      "solucion": "bot",
+      "solucion": "vertical",
       "evidencia": null
     },
     {
@@ -193,7 +195,7 @@
       "frecuencia": { "veces": 25, "unidad": "dia", "minutos": 2, "estado": "supuesto", "base": "25 despachos al día, 2 minutos entre dictar, confirmar y aclarar el punto de referencia" },
       "costoOculto": "La dirección mal escuchada son 20 minutos de moto y un cliente con la comida fría.",
       "conTecnologia": "El domiciliario recibe la dirección tal como la escribió el cliente, con el punto en el mapa. Nadie la dicta y nadie la vuelve a escribir.",
-      "solucion": "bot",
+      "solucion": "vertical",
       "evidencia": "El piloto de Bucaradomi despacha así."
     },
     {
@@ -205,7 +207,7 @@
       "frecuencia": { "veces": 12, "unidad": "dia", "minutos": 2, "estado": "supuesto", "base": "12 llamadas de seguimiento al día, 2 minutos entre atender, averiguar y responder" },
       "costoOculto": "Cada llamada de esas interrumpe a la persona que está tomando otro pedido. El costo real no es el minuto: es el pedido que se dañó por la interrupción.",
       "conTecnologia": "El cliente recibe el aviso cuando el pedido sale, sin pedirlo. La llamada deja de existir porque deja de hacer falta.",
-      "solucion": "bot",
+      "solucion": "vertical",
       "evidencia": null
     },
     {
@@ -229,7 +231,7 @@
       "frecuencia": { "veces": 1, "unidad": "dia", "minutos": 25, "estado": "supuesto", "base": "25 minutos diarios entre armar el mensaje y mandarlo a la lista" },
       "costoOculto": "Se manda tarde, o no se manda, justo los días de más trabajo. Que son los días en que más sirve.",
       "conTecnologia": "El menú sale a la hora que decidiste, a los que dijeron que sí querían recibirlo, sin que nadie tenga que acordarse.",
-      "solucion": "bot",
+      "solucion": "vertical",
       "evidencia": null
     },
     {
@@ -241,7 +243,7 @@
       "frecuencia": { "veces": 8, "unidad": "dia", "minutos": 3, "estado": "supuesto", "base": "8 reservas diarias, 3 minutos entre atender, anotar y confirmar" },
       "costoOculto": "La reserva anotada en la libreta que nadie miró es una mesa vacía en la hora buena, o dos familias paradas en la puerta.",
       "conTecnologia": "La reserva queda en un solo lugar que ve todo el equipo, con confirmación automática el mismo día.",
-      "solucion": "bot",
+      "solucion": "vertical",
       "evidencia": null
     },
 
@@ -254,7 +256,7 @@
       "frecuencia": { "veces": 20, "unidad": "dia", "minutos": 4, "estado": "supuesto", "base": "20 interesados diarios, 4 minutos entre buscar las fotos, mandarlas y contestar las tres preguntas de siempre" },
       "costoOculto": "El que preguntó el sábado a las 10 de la noche recibe respuesta el lunes. Para entonces ya vio otros cuatro.",
       "conTecnologia": "El interesado recibe la ficha completa apenas pregunta, con fotos, precio, administración y barrio, a la hora que sea.",
-      "solucion": "bot",
+      "solucion": "vertical",
       "evidencia": "El vertical inmobiliario está construido y probado punta a punta."
     },
     {
@@ -266,7 +268,7 @@
       "frecuencia": { "veces": 12, "unidad": "mes", "minutos": 75, "estado": "supuesto", "base": "12 visitas mensuales fallidas, 75 minutos cada una contando el desplazamiento" },
       "costoOculto": "No es la hora perdida: es la visita que sí calificaba y quedó para la otra semana porque la agenda estaba llena.",
       "conTecnologia": "Antes de agendar, el interesado ya contestó presupuesto, fecha de mudanza y si tiene codeudor. Llegas a mostrar, no a averiguar.",
-      "solucion": "bot",
+      "solucion": "vertical",
       "evidencia": null
     },
     {
@@ -278,7 +280,7 @@
       "frecuencia": { "veces": 15, "unidad": "semana", "minutos": 6, "estado": "supuesto", "base": "15 visitas semanales, 6 minutos de ida y vuelta para cuadrar cada una" },
       "costoOculto": "Dos visitas cuadradas a la misma hora en el mismo inmueble. Pasa una vez y el cliente no lo olvida.",
       "conTecnologia": "El interesado escoge de las horas que de verdad tienes libres, y queda confirmado sin que tú intervengas.",
-      "solucion": "bot",
+      "solucion": "vertical",
       "evidencia": null
     },
     {
@@ -290,7 +292,7 @@
       "frecuencia": { "veces": 8, "unidad": "mes", "minutos": 45, "estado": "supuesto", "base": "8 estudios al mes, 45 minutos repartidos en recordatorios y revisión de lo que llega incompleto" },
       "costoOculto": "Mientras se completa la carpeta el inmueble sigue vacío, y el arrendatario bueno se va con el que fue más rápido.",
       "conTecnologia": "El sistema pide los documentos uno por uno, avisa cuál falta y recuerda solo. Tú entras cuando la carpeta está completa.",
-      "solucion": "bot",
+      "solucion": "vertical",
       "evidencia": null
     },
     {
@@ -302,7 +304,7 @@
       "frecuencia": { "veces": 40, "unidad": "mes", "minutos": 3, "estado": "supuesto", "base": "40 inmuebles administrados, 3 minutos entre escribir, esperar y anotar quién pagó" },
       "costoOculto": "Al que no le recordaste, no pagó. Y el que paga tarde todos los meses lo hace porque nadie le puso fecha.",
       "conTecnologia": "El recordatorio sale solo el día que corresponde, y el que ya pagó deja de recibirlo.",
-      "solucion": "bot",
+      "solucion": "vertical",
       "evidencia": null
     },
     {
@@ -327,7 +329,7 @@
       "frecuencia": { "veces": 30, "unidad": "dia", "minutos": 4, "estado": "supuesto", "base": "30 llamadas diarias de agendamiento, 4 minutos entre buscar el espacio, confirmar datos y anotar" },
       "costoOculto": "El paciente que llamó fuera de horario no agendó. Y el 40% de las llamadas son para reagendar algo que ya estaba.",
       "conTecnologia": "El paciente agenda solo, desde el chat, viendo los espacios reales. La recepción atiende a los que están en la sala, que es lo que no se puede automatizar.",
-      "solucion": "bot",
+      "solucion": "vertical",
       "evidencia": "El vertical de citas está construido."
     },
     {
@@ -339,7 +341,7 @@
       "frecuencia": { "veces": 25, "unidad": "dia", "minutos": 3, "estado": "supuesto", "base": "25 confirmaciones diarias, 3 minutos entre marcar, esperar, repetir y anotar" },
       "costoOculto": "La hora que no se llenó no se recupera nunca. Es la única mercancía que se vence todos los días.",
       "conTecnologia": "El recordatorio sale solo con 24 horas de anticipación y el paciente confirma o cancela con una palabra. Lo que cancela a tiempo se puede volver a vender.",
-      "solucion": "bot",
+      "solucion": "vertical",
       "evidencia": null
     },
     {
@@ -351,7 +353,7 @@
       "frecuencia": { "veces": 2, "unidad": "mes", "minutos": 60, "estado": "supuesto", "base": "2 cancelaciones mensuales, una hora cada una entre llamar a 12 personas y volver a cuadrar" },
       "costoOculto": "Al que no alcanzaste a avisarle llegó al consultorio. Ese no vuelve, y además cuenta.",
       "conTecnologia": "El aviso sale a todos a la vez y cada uno escoge su nuevo espacio. Lo que tomaba una hora toma un minuto.",
-      "solucion": "bot",
+      "solucion": "vertical",
       "evidencia": null
     },
     {
@@ -400,7 +402,7 @@
       "frecuencia": { "veces": 15, "unidad": "dia", "minutos": 6, "estado": "supuesto", "base": "15 consultas diarias, 6 minutos entre ver las fotos, oír el audio, preguntar lo que falta y cotizar" },
       "costoOculto": "El que no recibió respuesta en dos horas ya llamó a otro taller. Y tú ni sabes que existió.",
       "conTecnologia": "El sistema le pide al cliente los datos que siempre faltan (modelo, año, qué le pasa, desde cuándo) antes de que tú mires el chat. Cotizas una vez, no tres.",
-      "solucion": "bot",
+      "solucion": "vertical",
       "evidencia": null
     },
     {
@@ -412,7 +414,7 @@
       "frecuencia": { "veces": 10, "unidad": "dia", "minutos": 3, "estado": "supuesto", "base": "10 entregas diarias, 3 minutos entre llamar, que no contesten y volver a llamar" },
       "costoOculto": "El carro listo que nadie recogió ocupa un espacio que necesitas para el que entra mañana.",
       "conTecnologia": "El aviso sale solo cuando la orden se marca terminada, con lo que quedó hecho y cuánto es.",
-      "solucion": "bot",
+      "solucion": "vertical",
       "evidencia": null
     },
     {
@@ -473,7 +475,7 @@
       "frecuencia": { "veces": 25, "unidad": "dia", "minutos": 3, "estado": "supuesto", "base": "25 solicitudes diarias repartidas entre dos chats, 3 minutos cada una" },
       "costoOculto": "La doble reserva se resuelve haciendo esperar a alguien. Esa clienta no reclama: simplemente no vuelve.",
       "conTecnologia": "Las dos entradas escriben en la misma agenda, así que el espacio ocupado deja de ofrecerse en el otro canal.",
-      "solucion": "bot",
+      "solucion": "vertical",
       "evidencia": null
     },
     {
@@ -485,7 +487,7 @@
       "frecuencia": { "veces": 6, "unidad": "semana", "minutos": 50, "estado": "supuesto", "base": "6 inasistencias semanales de 50 minutos de servicio cada una" },
       "costoOculto": "No es sólo la hora: es que esa hora la habría tomado otra persona si hubieras sabido con tiempo.",
       "conTecnologia": "Confirmación automática el día antes, y la hora que se libera se le ofrece sola a la lista de espera.",
-      "solucion": "bot",
+      "solucion": "vertical",
       "evidencia": null
     },
     {
@@ -521,7 +523,7 @@
       "frecuencia": { "veces": 8, "unidad": "semana", "minutos": 10, "estado": "supuesto", "base": "8 cancelaciones semanales, 10 minutos tratando de acordarse y llamando" },
       "costoOculto": "La hora se pierde por falta de memoria, no por falta de demanda. Es la peor forma de perder plata.",
       "conTecnologia": "La lista de espera existe de verdad, y el espacio libre se le ofrece sola a la primera que dijo que quería.",
-      "solucion": "bot",
+      "solucion": "vertical",
       "evidencia": null
     },
     {
@@ -619,7 +621,7 @@
       "frecuencia": { "veces": 35, "unidad": "dia", "minutos": 4, "estado": "supuesto", "base": "35 consultas diarias en temporada, 4 minutos cada una" },
       "costoOculto": "En el pico, que es cuando se define el año, es cuando peor se atiende. La gente decide con quien le contestó.",
       "conTecnologia": "Las preguntas de siempre se contestan solas a cualquier hora, y sólo llega a una persona el que ya está decidiendo.",
-      "solucion": "bot",
+      "solucion": "vertical",
       "evidencia": null
     },
     {
@@ -631,7 +633,7 @@
       "frecuencia": { "veces": 60, "unidad": "mes", "minutos": 3, "estado": "supuesto", "base": "60 estudiantes, 3 minutos entre escribir, esperar respuesta y anotar" },
       "costoOculto": "La mora crece en silencio hasta que ya son tres meses y la conversación se vuelve difícil.",
       "conTecnologia": "El recordatorio sale en la fecha, con el monto y el medio de pago, y deja de salirle al que ya pagó.",
-      "solucion": "bot",
+      "solucion": "vertical",
       "evidencia": null
     },
     {
@@ -679,7 +681,7 @@
       "frecuencia": { "veces": 3, "unidad": "mes", "minutos": 0, "estado": "supuesto", "base": "no se mide en minutos: se mide en consultas que se quedaron sin responder durante el pico" },
       "costoOculto": "Contratar para el pico sale caro y contratar tarde sale peor. La mayoría aguanta y pierde la mitad.",
       "conTecnologia": "La atención automática absorbe el pico sin contratar a nadie, y el equipo se dedica sólo a los que ya decidieron.",
-      "solucion": "bot",
+      "solucion": "vertical",
       "evidencia": null
     },
 
@@ -752,7 +754,7 @@
       "frecuencia": { "veces": 12, "unidad": "mes", "minutos": 12, "estado": "supuesto", "base": "12 reuniones al mes, 12 minutos repartidos en cinco o seis mensajes de ida y vuelta" },
       "costoOculto": "Cada ida y vuelta es un día perdido. Una reunión que se podía hacer el martes termina el viernes de la otra semana.",
       "conTecnologia": "El otro escoge de tus horas reales y queda agendado, con el recordatorio incluido. Un mensaje en vez de seis.",
-      "solucion": "bot",
+      "solucion": "vertical",
       "evidencia": null
     }
   ]

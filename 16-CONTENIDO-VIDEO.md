@@ -26,6 +26,13 @@
 > del video, que abre con la escena. **Y el DM se contesta con una pregunta, no con un link:** el
 > enlace a `/contacto` sale sólo cuando el prospecto lo pide o cuando ya hay una reunión que agendar,
 > porque mandarlo de entrada es lo que convierte la conversación en publicidad.
+>
+> 🔄 **Reescrito el 2026-09-15 con la evidencia de 2026 (`20-ORGANICO-QUE-CAMBIA.md`).** Cuatro
+> cosas que este doc daba por buenas ya no lo son: **el link en el primer comentario está suprimido**
+> en LinkedIn (hasta 80%), **«comenta la palabra» es engagement bait** ahí desde marzo-2026, el
+> **perfil personal rinde 5 a 10 veces la página**, y **el carrusel PDF rinde más que el video** sin
+> exigir grabar. Cambian §3 (la pausa entre golpes y los dos cierres), §4 (15 videos cada 5 semanas
+> y el pipeline de edición) y §5 entero (dónde y cómo se publica). Lo demás sigue igual.
 
 ---
 
@@ -119,6 +126,14 @@ Reglas de escritura que no se negocian (salen de `business/13-guia-estilo-y-prom
 - **Cero jerga** en el golpe 3. Si hay que decir «API», «integración» o «webhook», el guion está mal.
 - **Un video, un dolor, un mensaje.** Nunca dos dolores en la misma pieza y nunca «también hacemos».
 - El CTA es **blando y de conversación**, no un link. La gente escribe; la venta pasa en el chat.
+- **Una pausa de un segundo entre golpe y golpe** al grabar. No se nota en el video largo y es lo
+  que le permite al pipeline (§4) cortar por silencio la versión de 30 s para Instagram, Facebook y
+  TikTok: golpes 1, 2 y 4. El «cómo se hace» queda para la larga; en Reels el que quiere saber cómo,
+  escribe.
+- **El cierre se graba dos veces cuando el video va a LinkedIn y a Instagram/TikTok.** En LinkedIn
+  es «si te pasa, escríbeme y te cuento cómo se ve en tu caso». En Instagram, Facebook y TikTok puede
+  ser «comenta [PALABRA] y te escribo». **Nunca al revés:** en LinkedIn «comenta X» es engagement
+  bait desde marzo-2026 y cuesta de 50 a 80% del alcance del post más 2 a 4 semanas de castigo.
 
 ---
 
@@ -128,13 +143,36 @@ Reglas de escritura que no se negocian (salen de `business/13-guia-estilo-y-prom
 
 | Sesión | Qué | Cuánto | Quién |
 |---|---|---|---|
-| A | Elegir la tanda (`npm run dolores tanda`) y escribir los 10 guiones | ~1 h | Claude, en el arnés, sin gastar API |
-| B | Grabar los 10 seguidos, mismo día, misma ropa, misma luz | ~1,5 h | Carlos |
-| C | Editar los 10 y quemar subtítulos | ~1,5 h | Carlos (CapCut hace los subtítulos en español) |
-| D | Programar y publicar 3 por semana | ~20 min | Carlos |
+| A | Elegir la tanda (`npm run dolores tanda -- --n=15`), escribir los 15 guiones y el texto de cada post por red | ~1,5 h | Claude, en el arnés, sin gastar API |
+| B | Grabar los 15 seguidos, mismo día, misma ropa, misma luz, pausa de un segundo entre golpes | ~2 h | Carlos |
+| C | Recorte vertical, subtítulos quemados, versión de 30 s, textos por red y carrusel | ~10 min | **El pipeline**, en el PC (abajo) |
+| D | Programar 5 semanas en Buffer y Meta Business Suite | ~30 min | Carlos |
 
-Una tarde de trabajo = **tres semanas publicando**. La sesión A no espera a la B: los guiones de la
-tanda 2 se pueden escribir mientras se graba la 1.
+Una tarde de trabajo = **cinco semanas publicando** a diario entre semana. La sesión A no espera a
+la B: los guiones de la tanda 2 se pueden escribir mientras se graba la 1. Del fundador salen la B,
+la D y los 20 minutos después de cada post (§5); nada más.
+
+### El pipeline de edición (2026-09-15)
+
+Corre en el PC, sin API y sin subir nada a ningún lado. Se construye **sobre los archivos reales
+de la primera grabación**, no antes (la regla de `15 §5`: se automatiza un proceso que existe).
+
+```
+entrada/<id>.mp4                 ← el MP4 crudo del celular, nombrado por el id del dolor
+salida/<id>/
+  largo-9x16.mp4                 ← recorte vertical, subtítulos quemados, ~55 s (LinkedIn, YouTube)
+  corto-9x16.mp4                 ← golpes 1, 2 y 4 cortados por silencio, ~30 s (IG, FB, TikTok)
+  linkedin.txt · instagram.txt · facebook.txt · tiktok.txt · youtube.txt
+  carrusel.pdf                   ← 6 láminas desde dolores.json, sin grabar nada
+```
+
+Piezas: **ffmpeg** (recorte, subtítulos, cortes) y **faster-whisper** local (transcripción con
+marcas por palabra, modelo `small` en español). Ninguna está instalada: las dos pasan por
+`node security/scripts/revisar-dependencia.mjs` antes de instalarse. **El pipeline no escribe:**
+los textos por red salen del guion y de la primera línea que ya están en el `.md` de la tanda, y
+el carrusel repite los cuatro golpes del dolor. Reformatea y distribuye, que es exactamente lo que
+`15 §5` dijo que la máquina podía ser. Lo que sigue bloqueado es el motor que **escribe** y
+**publica** solo.
 
 **Producción, no producciones.** Cara a cámara, celular, luz de ventana. Al que compra desarrollo a
 la medida le compra a una persona, y la producción cara le resta credibilidad en vez de sumarla.
@@ -144,16 +182,70 @@ El único requisito técnico que sí es innegociable son los **subtítulos quema
 
 ## 5. Pieza 4 — Publicación, y cómo sabemos si sirvió
 
-**LinkedIn es la red de registro.** Es donde está la audiencia con presupuesto para un piso de
-$3.000.000 y donde el servicio a la medida se posiciona sin competir con el Meta Business Agent.
-Las demás redes reciben el mismo video, sin producción adicional.
+**LinkedIn es la red de registro, y el que publica es Carlos, no la página.** Es donde está la
+audiencia con presupuesto para un proyecto a la medida y donde el servicio se posiciona sin competir
+con el Meta Business Agent. En 2026 el perfil personal rinde **5 a 10 veces** la página de empresa:
+la página republica al día siguiente y sirve para que quien googlee vea empresa constituida; la
+distribución la hace la persona.
+
+**Cinco redes, una pieza.** Las demás reciben el mismo video sin producción adicional, y cada una
+tiene su porqué en Colombia (DataReportal oct-2025):
+
+| Red | Usuarios en Colombia | Qué hace ahí | Cómo se programa |
+|---|---|---|---|
+| LinkedIn (perfil) | 18M | La red de registro. Dos temas: operación colombiana y DIAN, y a la medida y domicilios | Buffer (gratis, 3 canales) |
+| Facebook | 36,4M | El dueño de la pyme de barrio. Los dolores de sector | Meta Business Suite (gratis, nativo) |
+| Instagram | 21,6M | Igual que Facebook, más joven | Meta Business Suite |
+| TikTok | 37,7M | Igual, y el mayor crecimiento del país | Buffer |
+| YouTube Shorts | 31M | **Lo único corto que Google indexa.** Título con la búsqueda, no con el gancho | Buffer |
+| Google Business Profile | — | Un post semanal con el video de la semana | Desde el panel del GBP |
+
+Metricool se descartó: su plan gratis excluye LinkedIn. A qué redes va cada dolor lo dice el banco
+(`npm run dolores ver -- <id>` → `Redes`), derivado del sector: LinkedIn premia la **autoridad
+temática** y un perfil que salta entre nueve sectores se suprime.
+
+### Las reglas de publicación, con la evidencia de 2026
 
 - **Video nativo**, subido a cada red. Todas castigan el link que saca gente de la plataforma.
+- **En LinkedIn no va link. Ni en el post ni en el primer comentario.** El post con link externo
+  pierde 18,8% de alcance mediano y **el comentario con link se suprime hasta 80%** (van der Blom
+  2026, 1,3M posts): el atajo del «link en el primer comentario» murió. El `origin` no se pierde:
+  el link de `/contacto` con `origin=linkedin` va **en Destacados del perfil** y en el campo de
+  sitio web, registrado una vez con `npm run link nuevo`; el DM lleva el link sólo cuando el
+  prospecto lo pide, con `origin=linkedin-dm`. En Instagram, Facebook y TikTok el link vive en la
+  bio, con su `origin` por red. La atribución es **por red**, no por pieza.
 - **El gancho va en la primera línea del texto del post**, no sólo en el video: LinkedIn corta en
   «ver más» y esa línea decide si alguien pone play.
-- **Sin link en el cuerpo del post.** Va en el primer comentario, con su `origin`
-  (`npm run link nuevo`). Sin `origin` el lead llega sin fuente y el carril no se puede evaluar.
 - El texto del post **no es el guion del video**: el video se ve, el post se lee. Se escriben aparte.
+- **«Comenta la palabra» sólo en Instagram, Facebook y TikTok.** En LinkedIn el cierre es
+  «escríbeme» (§3). Y el DM se contesta **a mano** con la tabla de
+  `redes/videos-angulo-lo-necesitas.md`: ManyChat gratis bajó a 25 contactos al mes en marzo-2026 y
+  no se paga una herramienta hasta que 25 comentarios por video se queden cortos.
+- **Un carrusel PDF por semana en LinkedIn**, generado desde `dolores.json` (6 láminas: escena,
+  supuesto, costo oculto, cómo se hace, el número, la puerta). Es el formato que más rinde en
+  LinkedIn en 2026 (6,6% contra 5,6% del video) y cuesta cero minutos de grabación.
+- **Los 20 minutos después de publicar son el único bloque del fundador que no se negocia.** El
+  algoritmo prueba el post con el 2 a 5% de la red en la primera hora; contestar los comentarios
+  en los primeros 30 minutos da 64% más comentarios y 2,3× más vistas, y sólo el 5% de los posts
+  flojos en esa hora se recupera. Por eso se programa a una hora fija en la que Carlos sí está con
+  el teléfono (**martes a viernes, 8:00**), y publicar a una hora en la que no puede contestar es
+  peor que no publicar. Comentar en posts de prospectos (10 a 15 al día, de sustancia) es el
+  segundo motor de entrada y queda como **opcional declarado**: si no hay tiempo, no se cuenta como
+  fallo.
+
+### La cadencia: diario entre semana, con tres videos
+
+| Día | LinkedIn (perfil de Carlos) | Instagram + Facebook + TikTok + Shorts |
+|---|---|---|
+| Lun | Video largo (55 s) | Video corto (30 s) |
+| Mar | Post de texto: lo que se construyó esa semana, sin link | — |
+| Mié | Carrusel del dolor de la semana | Video corto (otro dolor) |
+| Jue | Video largo | Video corto |
+| Vie | Video largo | Video corto (el de «¿lo necesitas?») |
+
+Tres videos por semana con 15 grabados son **cinco semanas**. Los cortos salen de los mismos 15.
+Esto es programar a mano en Buffer y Meta Business Suite, no un motor que publica: la regla de las
+8 semanas a mano de `15 §5` sigue en pie.
 
 ### La métrica es **conversaciones iniciadas por semana**, no vistas
 
@@ -168,9 +260,10 @@ gancho, no la cadencia. Se cambia de sector antes que de frecuencia.
 ## 6. Lo que este doc NO cambia
 
 - **La regla de las 8 semanas a mano sigue en pie** (`15-CANALES-Y-SECUENCIA.md §5`). El banco de
-  dolores y su CLI **no** son la máquina de contenido: no escriben, no llaman a ninguna API y no
-  publican. Ordenan la materia prima, que es lo que hacía falta para que las 8 semanas sean
-  llevaderas. El motor 1-idea→3-canales sigue bloqueado en el tablero, y con razón.
+  dolores, su CLI y el pipeline de edición (§4) **no** son la máquina de contenido: no escriben, no
+  llaman a ninguna API y no publican. Ordenan y reformatean la materia prima, que es lo que hacía
+  falta para que las 8 semanas sean llevaderas. El motor 1-idea→3-canales que escribe y publica
+  sigue bloqueado en el tablero, y con razón.
 - **El orden de los canales:** Google Business Profile primero. Es gratis, no depende de nada y
   captura intención. El contenido no lo reemplaza, lo alimenta.
 - **El contenido no es el motor de flujo de este trimestre.** Compone en 3 a 6 meses. Lo que trae

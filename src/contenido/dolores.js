@@ -37,6 +37,32 @@ export function horasMes(d) {
 const horas = (h) => (h >= 10 ? Math.round(h) : Math.round(h * 10) / 10);
 
 // ─────────────────────────────────────────────────────────────────────────────
+// Redes por sector (2026-09-15, 20-ORGANICO-QUE-CAMBIA.md C5). LinkedIn premia la autoridad
+// temática (2 o 3 temas por perfil), así que ahí sólo van dos: operación colombiana y DIAN, y
+// a la medida y domicilios. El dueño de la peluquería, el taller o la academia no está en
+// LinkedIn: está en Facebook, Instagram y TikTok. YouTube Shorts va en todos porque es lo único
+// corto que Google indexa, y el carril manda Google primero.
+// ─────────────────────────────────────────────────────────────────────────────
+const REDES_POR_SECTOR = {
+  contable: ['linkedin', 'youtube'],
+  independiente: ['linkedin', 'youtube'],
+  domicilios: ['linkedin', 'youtube', 'instagram', 'facebook', 'tiktok'],
+  comercio: ['instagram', 'facebook', 'tiktok', 'youtube'],
+  inmobiliaria: ['instagram', 'facebook', 'tiktok', 'youtube'],
+  salud: ['instagram', 'facebook', 'tiktok', 'youtube'],
+  taller: ['instagram', 'facebook', 'tiktok', 'youtube'],
+  belleza: ['instagram', 'facebook', 'tiktok', 'youtube'],
+  educacion: ['instagram', 'facebook', 'tiktok', 'youtube'],
+};
+
+/** A qué redes va el video de este dolor. Se deriva del sector: no se decide por tanda ni a ojo. */
+export function redesDe(d) {
+  const orden = ['linkedin', 'youtube', 'instagram', 'facebook', 'tiktok'];
+  const set = new Set(d.sector.flatMap((s) => REDES_POR_SECTOR[s] ?? []));
+  return orden.filter((r) => set.has(r));
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
 // Validación — un banco que se pudre en silencio es peor que no tenerlo
 // ─────────────────────────────────────────────────────────────────────────────
 function validar() {
@@ -45,7 +71,9 @@ function validar() {
   const vistos = new Set();
   const sectores = Object.keys(banco.sectores);
   const niveles = Object.keys(banco.niveles).filter((k) => !k.startsWith('_'));
-  const SOLUCIONES = ['bot', 'a-la-medida', 'integracion'];
+  // `vertical` se llamaba `bot` hasta el 2026-09-15: el bot es la interfaz de un producto vertical
+  // y no se vende suelto (CLAUDE.md, 24-ago). Un dolor `bot` viejo falla acá a propósito.
+  const SOLUCIONES = ['vertical', 'a-la-medida', 'integracion'];
 
   for (const d of banco.dolores) {
     const donde = d.id ?? '(sin id)';
@@ -191,6 +219,7 @@ function ver() {
   console.log(`  15-40 s     ${d.conTecnologia}`);
   console.log(`  40-55 s     el número (${horas(horasMes(d))} h/mes) + la invitación a escribir`);
   console.log(`\n  Solución    ${d.solucion}`);
+  console.log(`  Redes       ${redesDe(d).join(' · ')}`);
   console.log(`  Evidencia   ${d.evidencia ?? 'ninguna. Se habla del dolor, nunca de un caso que no existe.'}\n`);
 }
 
@@ -221,9 +250,10 @@ function tanda() {
   elegidos.forEach((d, i) => {
     console.log(`  ${String(i + 1).padStart(2)}. ${d.evidencia ? '★' : ' '} [N${d.nivel} ${banco.sectores[d.sector[0]].nombre}]`);
     console.log(`      ${d.escena}`);
-    console.log(`      ${horas(horasMes(d))} h/mes · ${d.solucion} · id: ${d.id}`);
+    console.log(`      ${horas(horasMes(d))} h/mes · ${d.solucion} · ${redesDe(d).join(' + ')} · id: ${d.id}`);
   });
-  console.log(`\n  Guiones: \`npm run dolores ver -- <id>\` da los 4 golpes de cada uno.\n`);
+  console.log(`\n  Guiones: \`npm run dolores ver -- <id>\` da los 4 golpes de cada uno.`);
+  console.log(`  Se graban con una pausa de un segundo entre golpes: el pipeline corta la versión de 30 s por silencio.\n`);
 }
 
 const comandos = { listar, validar, ver, tanda };

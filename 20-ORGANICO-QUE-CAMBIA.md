@@ -7,8 +7,14 @@
 > el plan de `16-CONTENIDO-VIDEO.md` está bien en lo esencial y el problema no fue el plan: fue que
 > **no se ha grabado nada desde el 22-ago**.
 >
-> **Estado: propuesta.** Ninguno de los once está aplicado. Los que tocan `canon.json`, los guiones
-> o el tablero se aplican cuando el fundador diga cuáles sí (§4).
+> ✅ **Aplicado el mismo 2026-09-15**, por orden del fundador («reescribe lo que debas»). Lo que
+> quedó escrito: `16 §3–§6`, `15 §5` (nota), `18 §4` (nota), `redes/guiones-tanda-1.md` (etiquetas,
+> marcadores con Facebook y Shorts, pausa, recordatorio de publicación), `redes/videos-angulo-lo-
+> necesitas.md` (dos cierres por video, sin link, DM a mano), `data/dolores.json` (`bot` → `vertical`
+> en 24 dolores, redes por sector), `src/contenido/dolores.js` (`redesDe`), `data/canon.json`
+> (`facebook` en `servicio`) y `business/14` (nota). **Lo que falta y se hace sobre la primera
+> grabación:** el pipeline de §3 y el generador de carrusel (C4). Los tres pendientes del tablero que
+> cambian de texto (C1, C2, C10) se editan con el ok del fundador.
 
 ---
 
