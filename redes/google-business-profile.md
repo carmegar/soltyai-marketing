@@ -425,8 +425,13 @@ guion de abajo sirve igual.
 
 El **certificado de existencia y representación legal** de la Cámara de Comercio de Bucaramanga
 (matrícula **731655**). Es el que dice a la vez el nombre `SOLTYAI S.A.S.`, el NIT y que Carlos
-Meza es el representante legal, o sea que resuelve el punto (2) y el (3) de una sola vez. Que sea
-reciente: se pide en línea en el portal de la CCB y tiene costo.
+Meza es el representante legal, o sea que resuelve el punto (2) y el (3) de una sola vez.
+
+✅ **Ya existe y no hay que comprarlo:** `suite/docs/certificado_comercio.pdf`, expedido el
+2-jul-2026 (el día de la constitución). Google no exige que el documento sea reciente: exige que el
+nombre coincida con el del perfil y que se vea en vivo, y ese lo cumple. Sólo si el revisor objeta la
+fecha se pide uno nuevo en línea en el portal de la CCB (tiene costo). Hasta el 15-sep este párrafo
+decía «que sea reciente, se pide en línea»: se corrigió al encontrar el archivo.
 
 De apoyo, si el revisor pide más: el **RUT** (NIT 902.081.265-3).
 
@@ -503,7 +508,7 @@ celular.
 | # | Paso | Cuándo | Nota |
 |---|---|---|---|
 | 1 | ✅ Comprar la SIM prepago y anotar el número | vie 11-sep | Hecho: Tigo prepago, **300 570 1661**. Es la fila 1 del §12 |
-| 2 | Pedir el certificado de existencia de la CCB (matrícula 731655) | mié 9-sep | Tiene costo y se pide en línea. Sin él no hay verificación (§11) |
+| 2 | ✅ Certificado de existencia de la CCB (matrícula 731655) | — | Ya está: `suite/docs/certificado_comercio.pdf` (2-jul-2026). Abrirlo en pantalla o imprimirlo para el paso 4 (§11) |
 | 3 | Crear el perfil con `carmegar12@gmail.com` y pegar §1 a §8, incluido el §4.8 | jue 10-sep | Categorías: ver el aviso de abajo |
 | 4 | Grabar el video de verificación con el guion del §11 | jue 10-sep | Una sola toma, sin cortar, mínimo 30 segundos, en vivo desde el celular |
 | 5 | Publicar logo y portada (§12, fila 9) | al quedar verificado | El banner de LinkedIn no sirve: la proporción es otra |
