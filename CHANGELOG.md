@@ -1,5 +1,19 @@
 # Changelog · soltyai-marketing
 
+## 2026-09-15 — orgánico: los once cambios al plan, con la evidencia de 2026
+
+**`20-ORGANICO-QUE-CAMBIA.md`** (nuevo, propuesta sin aplicar). El fundador quiere publicar a diario
+con el mínimo de tiempo suyo y preguntó qué cambiaría del plan. Se investigó el mismo día y salieron
+cuatro cosas que el plan asumía y ya no valen: el **link en el primer comentario está suprimido** en
+LinkedIn (hasta 80%, van der Blom 2026), **«comenta la palabra» es engagement bait** en LinkedIn desde
+marzo-2026 (sigue válido en IG/TikTok), el **perfil personal rinde 5 a 10× la página**, y el
+**carrusel PDF rinde más que el video** sin exigir grabar. Más: autoridad temática (LinkedIn en 2
+temas), Facebook y YouTube faltaban (36,4M y 31M en Colombia contra 18M de LinkedIn), y dos
+duraciones por red desde una sola grabación. Once cambios (C1 a C11), el pipeline local de edición
+(ffmpeg + faster-whisper, sin API, sobre los archivos reales de la primera grabación) y las cuatro
+decisiones que son del fundador (§4). Nada del canon, los guiones ni el tablero se tocó.
+`npm run check`: 0 errores y los mismos 12 avisos.
+
 ## 2026-09-11 — la línea comercial tiene número, y el perfil de WhatsApp Business queda escrito
 
 **El número.** La SIM prepago **Tigo 300 570 1661** se compró el 11-sep (se había previsto para el 9).
