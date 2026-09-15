@@ -246,18 +246,19 @@ Si se quiere alcance departamental, se agrega `Santander, Colombia` como quinta 
 ## 7. Horario
 
 ```
-Lunes     7:00 a.m. a 7:00 p.m.
-Martes    7:00 a.m. a 7:00 p.m.
-Miércoles 7:00 a.m. a 7:00 p.m.
-Jueves    7:00 a.m. a 7:00 p.m.
-Viernes   7:00 a.m. a 7:00 p.m.
-Sábado    8:00 a.m. a 12:00 p.m.
+Lunes     9:00 a.m. a 5:00 p.m.
+Martes    9:00 a.m. a 5:00 p.m.
+Miércoles 9:00 a.m. a 5:00 p.m.
+Jueves    9:00 a.m. a 5:00 p.m.
+Viernes   9:00 a.m. a 5:00 p.m.
+Sábado    Cerrado
 Domingo   Cerrado
 ```
 
-*(Ampliado el 2026-09-15: «abierto a la hora de la búsqueda» es el factor #5 del ranking local y la
-línea es un celular. Hasta entonces decía 8 a 6 y sábado cerrado. La condición es la de siempre: el
-horario publicado se contesta; si el sábado no se va a contestar, se publica cerrado. Ver §12c.)*
+*(Decidido por el fundador el 2026-09-15: es el horario real de trabajo, y el horario publicado se
+contesta. «Abierto a la hora de la búsqueda» es el factor #5 del ranking local (§12c), pero un
+horario que no se atiende cuesta más de lo que suma: Google castiga el perfil cuyo teléfono no
+responde.)*
 
 **Fecha de apertura:** julio de 2026 (la matrícula mercantil es del 2 de julio de 2026).
 
@@ -532,9 +533,10 @@ no se «optimiza» el texto, se optimizan la categoría, los servicios, las rese
    pasa a llamarse `Diseño de páginas web: página sencilla`, §4.4 `Diseño de páginas web:
    sitio corporativo`, §4.5 `Rescate y republicación de sitio web`, §4.1 se queda como está (es la
    frase que la gente usa). Los `id` del catálogo no cambian: es el rótulo que ve Google.
-2. **Horario más largo.** «Abierto a la hora de la búsqueda» es el factor #5 y la línea es un
-   celular: se publica **lunes a viernes 7:00 a 7:00 p.m. y sábado 8:00 a 12:00**, con la condición
-   de la fila 1 del §12 (se contesta). Si no se va a contestar el sábado, no se publica el sábado.
+2. **Horario: el real.** «Abierto a la hora de la búsqueda» es el factor #5, y por eso se propuso
+   ampliarlo; el fundador decidió publicar el horario en que de verdad se trabaja, **lunes a viernes
+   9:00 a 5:00**, porque un horario que no se atiende cuesta más de lo que suma (§7). El factor se
+   recupera por el otro lado: el WhatsApp Business del mismo número tiene mensaje de ausencia.
 3. **Las dos reseñas que existen se piden ya, y se piden con las palabras.** Bucaradomi y
    Swisscontact son las únicas referencias reales. Una reseña que dice «software a la medida» y
    «Bucaramanga» le enseña a Google qué hacemos (factor #36); una que dice «excelente servicio», no.
