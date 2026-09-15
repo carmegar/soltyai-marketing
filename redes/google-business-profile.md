@@ -160,7 +160,7 @@ Plataforma operativa para empresas de domicilios y mensajería. Tablero de opera
 *(296 caracteres. En el catálogo la línea se llama `domicilios-ops`. Acá va sin la raya larga del
 nombre interno.)*
 
-### 4.8 · Página web sencilla (una sola página)
+### 4.8 · Diseño de páginas web: página sencilla (una sola página)
 **Precio:** `$400.000 + IVA`
 
 ```
@@ -183,14 +183,14 @@ pierde.
 > de $750.000 siguen igual en §4.4 y §4.5. Lo único que cambia es el piso: la línea de páginas web se
 > anuncia ahora **desde $400.000 + IVA**, y antes ese piso era $750.000.
 
-### 4.4 · Página web corporativa
+### 4.4 · Diseño de páginas web: sitio corporativo
 **Precio:** `$1.500.000 + IVA`
 
 ```
 Sitio nuevo desde cero: estructura, diseño, contenido, formulario de contacto y publicación con dominio propio.
 ```
 
-### 4.5 · Rescate y republicación de un sitio existente
+### 4.5 · Rescate y republicación de sitio web existente
 **Precio:** `$750.000 + IVA`
 
 ```
@@ -246,14 +246,18 @@ Si se quiere alcance departamental, se agrega `Santander, Colombia` como quinta 
 ## 7. Horario
 
 ```
-Lunes    8:00 a.m. a 6:00 p.m.
-Martes   8:00 a.m. a 6:00 p.m.
-Miércoles 8:00 a.m. a 6:00 p.m.
-Jueves   8:00 a.m. a 6:00 p.m.
-Viernes  8:00 a.m. a 6:00 p.m.
-Sábado   Cerrado
-Domingo  Cerrado
+Lunes     7:00 a.m. a 7:00 p.m.
+Martes    7:00 a.m. a 7:00 p.m.
+Miércoles 7:00 a.m. a 7:00 p.m.
+Jueves    7:00 a.m. a 7:00 p.m.
+Viernes   7:00 a.m. a 7:00 p.m.
+Sábado    8:00 a.m. a 12:00 p.m.
+Domingo   Cerrado
 ```
+
+*(Ampliado el 2026-09-15: «abierto a la hora de la búsqueda» es el factor #5 del ranking local y la
+línea es un celular. Hasta entonces decía 8 a 6 y sábado cerrado. La condición es la de siempre: el
+horario publicado se contesta; si el sábado no se va a contestar, se publica cerrado. Ver §12c.)*
 
 **Fecha de apertura:** julio de 2026 (la matrícula mercantil es del 2 de julio de 2026).
 
@@ -499,6 +503,52 @@ De apoyo, si el revisor pide más: el **RUT** (NIT 902.081.265-3).
   `origin=gbp`. Los tres posts del §8 son los de apertura; después el ritmo lo lleva la tanda.
 - **El teléfono es el de WhatsApp Business** (fila 1 del §12): el mismo número en el perfil, en la
   bio de las redes y en la firma. Un número por canal es cómo se pierde el rastro.
+
+## 12c. Lo que Google busca de verdad en Bucaramanga (mirado el 2026-09-15)
+
+Se abrieron las búsquedas reales desde Bucaramanga y se cruzaron con el reporte de factores de
+ranking local 2026 de Whitespark (tabla de 15 al final). Lo que sale:
+
+**Qué pesa y qué no.** El ranking en el mapa lo deciden, en este orden: la **categoría principal**
+(#1), la cercanía, las **palabras en el nombre** (#3, pero Google suspende perfiles por meterlas),
+estar **abierto a la hora de la búsqueda** (#5), la calificación y la cantidad de reseñas con texto
+(#6 y #9), las categorías secundarias (#8) y los **servicios** (#22 y #30). Las palabras clave en la
+**descripción** están en el puesto **171** y en los **posts** en el **160**: no mueven nada. O sea:
+no se «optimiza» el texto, se optimizan la categoría, los servicios, las reseñas y el horario.
+
+**Qué busca la gente.** Cinco búsquedas, con lo que Google mostró:
+
+| Búsqueda | Qué salió | Lectura |
+|---|---|---|
+| `diseño de paginas web bucaramanga` | 10 agencias locales en orgánico, 2 anuncios, un perfil con **68 reseñas** (Damos, categoría «Agencia de marketing») | **La demanda local más clara y la más competida.** Es la línea de web |
+| `desarrollo de software bucaramanga` | 4 anuncios arriba (lobogris, cidenet, forti8…), después **ofertas de empleo** y universidades | Intención mezclada: la mitad busca trabajo o carrera. Lo comercial se lo llevan los anuncios |
+| `software a la medida bucaramanga` | 10 empresas en orgánico, 2 anuncios, **sin mapa** | Hay demanda, sin pack local: se compite por la web, no por el perfil |
+| `empresa de software bucaramanga` | Listados «las 5 mejores», Kondory, Xlogam, Computrabajo | Igual: sin mapa. Sirve para la categoría, no para el perfil |
+| `automatizacion de procesos empresa bucaramanga` | **Mapa con tres empresas de automatización industrial** (PLC, domótica) | La palabra «automatización» en Google local significa **fábrica**, no oficina. No sirve de categoría |
+
+**Lo que cambia en este doc por eso** (ninguna es un rediseño, todas son de forma):
+
+1. **Los títulos de los servicios llevan las palabras de la búsqueda**, no las del catálogo. §4.8
+   pasa a llamarse `Diseño de páginas web: página sencilla`, §4.4 `Diseño de páginas web:
+   sitio corporativo`, §4.5 `Rescate y republicación de sitio web`, §4.1 se queda como está (es la
+   frase que la gente usa). Los `id` del catálogo no cambian: es el rótulo que ve Google.
+2. **Horario más largo.** «Abierto a la hora de la búsqueda» es el factor #5 y la línea es un
+   celular: se publica **lunes a viernes 7:00 a 7:00 p.m. y sábado 8:00 a 12:00**, con la condición
+   de la fila 1 del §12 (se contesta). Si no se va a contestar el sábado, no se publica el sábado.
+3. **Las dos reseñas que existen se piden ya, y se piden con las palabras.** Bucaradomi y
+   Swisscontact son las únicas referencias reales. Una reseña que dice «software a la medida» y
+   «Bucaramanga» le enseña a Google qué hacemos (factor #36); una que dice «excelente servicio», no.
+   No se dicta el texto: se le dice al cliente qué le sirve a Google que mencione.
+4. **La página a la que apunta el perfil dice lo mismo que el perfil.** `/servicios` debe nombrar
+   «Bucaramanga» y «diseño de páginas web» en su texto visible (on-page es el 12% del ranking y
+   la coincidencia nombre-dirección-teléfono entre web y perfil es el factor #15). Es un pendiente
+   de la landing, no de este doc.
+5. **«Automatización» no entra como categoría ni como servicio con ese nombre.** Se describe como
+   lo que es para el que busca: «software a la medida» e «integración con el sistema contable».
+
+Lo que **no** cambia: nada de palabras clave en el nombre (fila 3 del §12), la descripción del §3
+se queda como está porque la lee el cliente y no el algoritmo, y el post semanal sigue (§12b) por
+el cliente y por las AI Overviews, no por ranking.
 
 ## 13. Lo que queda para crear el perfil esta semana
 
