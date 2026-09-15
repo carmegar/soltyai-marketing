@@ -479,7 +479,7 @@ De apoyo, si el revisor pide más: el **RUT** (NIT 902.081.265-3).
 | 2 | 🔴 **Dirección: ¿se muestra o no?** | **Negocio de área de servicio, sin dirección visible.** No hay local con atención al público. La dirección se le enseña a Google en privado, en el certificado, durante la verificación. |
 | 3 | **Nombre del perfil: `SoltyAI` o `SoltyAI S.A.S.`** | `SoltyAI`, que es el del mundo real. Si el revisor objeta contra el certificado, se cambia a `SoltyAI S.A.S.` |
 | 4 | **Categoría principal, con el nombre exacto que ofrezca el selector.** | La que salga al escribir `software`. Ver §2 y las alternativas equivalentes. |
-| 5 | 🔴 **Con qué cuenta de Google se crea.** El perfil queda amarrado a esa cuenta. | Hoy sólo existe `carmegar12@gmail.com`: el tenant de Google Workspace con `carlos@soltyai.com` está en pausa (`business/17` y `business/09`). Se puede crear con el Gmail y, cuando exista el correo corporativo, agregarlo como **propietario** y quitar el viejo. Lo que no se puede es dejarlo a nombre de una cuenta que después se abandone. |
+| 5 | 🔴 **Con qué cuenta de Google se crea.** El perfil queda amarrado a esa cuenta. | **`carlos@soltyai.com`**, la cuenta admin del Google Workspace de la empresa (vivo desde el 28-jul-2026, `business/17` §5). Es una cuenta de Google completa, el perfil queda dentro del tenant de la SAS y no de una persona, y el buzón que recibe los avisos de Google (reseñas, preguntas, verificación) es el corporativo. El Gmail personal **no** se usa ni como propietario secundario: si se quiere un respaldo, se agrega otro buzón `@soltyai.com` como administrador. Hasta el 15-sep esta fila decía que el tenant estaba en pausa y recomendaba el Gmail: estaba desactualizada desde julio. |
 | 6 | **Formas de pago que se declaran.** | Transferencia y QR. Tarjeta no, hasta que Wompi pase a producción. |
 | 7 | **¿Se agrega `Santander, Colombia` como quinta zona?** | Es gratis y amplía el alcance, pero diluye la señal local del área metropolitana. Decisión suya. |
 | 8 | **Fecha de apertura publicada: julio de 2026.** | Publicarla. Es verificable contra la matrícula y le dice al que llega que la empresa es nueva, que es cierto. |
@@ -509,7 +509,7 @@ celular.
 |---|---|---|---|
 | 1 | ✅ Comprar la SIM prepago y anotar el número | vie 11-sep | Hecho: Tigo prepago, **300 570 1661**. Es la fila 1 del §12 |
 | 2 | ✅ Certificado de existencia de la CCB (matrícula 731655) | — | Ya está: `suite/docs/certificado_comercio.pdf` (2-jul-2026). Abrirlo en pantalla o imprimirlo para el paso 4 (§11) |
-| 3 | Crear el perfil con `carmegar12@gmail.com` y pegar §1 a §8, incluido el §4.8 | jue 10-sep | Categorías: ver el aviso de abajo |
+| 3 | Crear el perfil con **`carlos@soltyai.com`** (Workspace) y pegar §1 a §8, incluido el §4.8 | — | Categorías: ver el aviso de abajo. En ventana de incógnito o con la sesión del Gmail personal cerrada, para que el perfil no nazca en la cuenta equivocada |
 | 4 | Grabar el video de verificación con el guion del §11 | jue 10-sep | Una sola toma, sin cortar, mínimo 30 segundos, en vivo desde el celular |
 | 5 | Publicar logo y portada (§12, fila 9) | al quedar verificado | El banner de LinkedIn no sirve: la proporción es otra |
 | 6 | Publicar el post 1 y pedir la primera reseña | al quedar verificado | La reseña es la única prueba social de origen externo que tenemos |
