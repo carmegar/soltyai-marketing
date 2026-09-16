@@ -21,7 +21,12 @@ const flag = (n, d) => {
   return v === undefined ? d : Number(v);
 };
 
-const MARCA = { vigente: '✓', supuesto: '▲', legacy: '⚠' };
+// `referencia` entró el 2026-09-15 (catalogo.json → _estados): importe NO publicable y SÍ cotizable.
+// Es la base interna para armar una cotización, nunca un precio de lista: los 3 planes de bot, el
+// setup, el excedente e integracion-erp. Antes de ese día el CLI trataba todo lo no-vigente como
+// «supuesto», y eso confundía dos cosas distintas: un número que no está verificado (supuesto) y
+// un número verificado que la empresa decidió no publicar (referencia).
+const MARCA = { vigente: '✓', supuesto: '▲', referencia: '◌', legacy: '⚠' };
 
 function listar() {
   console.log('\n  Estado  Servicio                                Precio        Costo        Margen');
@@ -37,7 +42,7 @@ function listar() {
       `  ${MARCA[s.estado] ?? '?'}       ${s.nombre.slice(0, 38).padEnd(38)} ${cop(m.ingreso).padStart(12)} ${cop(m.costo).padStart(12)} ${pct(m.porcentaje).padStart(8)}`,
     );
   }
-  console.log('\n  ✓ verificado   ▲ supuesto (confirmar antes de cotizar)   ⚠ legacy (modelo USD viejo)\n');
+  console.log('\n  ✓ verificado   ▲ supuesto (confirmar antes de cotizar)   ◌ referencia (no publicable: base para cotizar)   ⚠ legacy (modelo USD viejo)\n');
 }
 
 const minimo = (s) => canon.margenMinimo[s.linea] ?? 0.5;
@@ -52,7 +57,7 @@ function validar() {
       // Sobre números supuestos es una alerta: el costo es una estimación, no un hecho.
       const linea = `${s.id}: margen ${pct(m.porcentaje)} por debajo del mínimo de ${pct(minimo(s))} para la línea ${s.linea}`;
       if (s.estado === 'vigente') problemas.push(`✖ ${linea}`);
-      else flojos.push(`▲ ${linea} (costo ${s.estado} — medirlo con la primera venta real)`);
+      else flojos.push(`▲ ${linea} (${s.estado === 'referencia' ? 'importe de referencia, costo supuesto' : `costo ${s.estado}`} — medirlo con la primera venta real)`);
     }
     if (s.tipo === 'proyecto' || s.tipo === 'mixto') {
       const exento = s.notas?.includes('Excepción explícita al piso');
@@ -66,7 +71,12 @@ function validar() {
     if (!s.fuente) problemas.push(`✖ ${s.id}: sin campo "fuente". Todo precio y todo costo cita de dónde salió.`);
   }
 
-  const supuestos = catalogo.servicios.filter((s) => s.estado !== 'vigente');
+  const supuestos = catalogo.servicios.filter((s) => s.estado === 'supuesto' || s.estado === 'legacy');
+  const referencias = catalogo.servicios.filter((s) => s.estado === 'referencia');
+  const estadosValidos = new Set(Object.keys(MARCA));
+  for (const s of catalogo.servicios) {
+    if (!estadosValidos.has(s.estado)) problemas.push(`✖ ${s.id}: estado "${s.estado}" no es ${[...estadosValidos].join(' | ')}`);
+  }
   if (problemas.length) {
     console.log('\n' + problemas.join('\n'));
   } else {
@@ -76,6 +86,10 @@ function validar() {
   if (supuestos.length) {
     console.log(`\n▲ ${supuestos.length} servicio(s) con números sin verificar: ${supuestos.map((s) => s.id).join(', ')}`);
     console.log('  No bloquean, pero toda cotización que los use sale marcada. Confirmar con la primera venta real.');
+  }
+  if (referencias.length) {
+    console.log(`\n◌ ${referencias.length} servicio(s) en referencia (no publicables, sí cotizables): ${referencias.map((s) => s.id).join(', ')}`);
+    console.log('  Son la base para armar una cotización; ninguna de esas cifras va en una página, un chat ni un correo (canon → _planesRetirados).');
   }
   console.log();
   process.exit(problemas.length ? 1 : 0);
@@ -122,7 +136,14 @@ function cotizar() {
   console.log(`  Margen bruto         ${cop(bruto).padStart(14)}   ${pct(bruto / base)}`);
 
   const avisos = [];
-  if (s.estado !== 'vigente') avisos.push(`Los números de "${s.id}" son ${s.estado}: ${s.fuente}`);
+  if (s.estado === 'referencia') {
+    avisos.push(`Importe de referencia, NO publicable: es la base para armar la cotización de "${s.id}", no un precio de lista. Lo que se publica es la base del cobro (canon → lineasDeOferta), la cifra va sólo en la cotización que sale de la suite.`);
+  } else if (s.estado !== 'vigente') {
+    avisos.push(`Los números de "${s.id}" son ${s.estado}: ${s.fuente}`);
+  }
+  if (conSetup && canon.setup.estado === 'referencia') {
+    avisos.push('El setup sumado es referencia (no publicable): se cotiza según el alcance de la adaptación, mitad al arrancar y mitad cuando el bot atiende.');
+  }
   if (bruto / base < minimo(s)) avisos.push(`Margen por debajo del mínimo de ${pct(minimo(s))} para la línea ${s.linea}.`);
   if (s.reglas?.includes('anticipo50')) avisos.push(`Anticipo obligatorio: ${cop((base + iva) * canon.lineaServicios.anticipo)} para agendar.`);
   if (s.reglas?.includes('pisoPrecio') && base < canon.lineaServicios.pisoPrecio) avisos.push(`Por debajo del piso de ${cop(canon.lineaServicios.pisoPrecio)} — solo si abre un cliente grande, y se anota.`);
