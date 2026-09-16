@@ -97,8 +97,8 @@
       "tipo": "proyecto",
       "precio": 3000000,
       "costoUnico": 2400000,
-      "estado": "supuesto",
-      "fuente": "Piso de precio verificado (13-PLAN-12-CLIENTES §10). Referencia real de mercado propio: módulo Zaranda de Swisscontact $2.300.000. El costo (40 h a tarifa interna) es supuesto.",
+      "estado": "referencia",
+      "fuente": "Referencia de cotización, NO piso ni lista (desde el 9-sep-2026 L3 se cotiza: el cliente pone el presupuesto y el alcance se acomoda; canon → lineaServicios._cambioPiso). Hasta el 15-sep estaba en supuesto con regla pisoPrecio. Referencia real de mercado propio: módulo Zaranda de Swisscontact $2.300.000. El costo (40 h a tarifa interna) es supuesto.",
       "reglas": ["pisoPrecio", "anticipo50", "unoPorTrimestre", "dejaPiezaReutilizable", "saleConPropuestaDeBot"],
       "notas": "El precio del catálogo es el PISO, no el precio: cada proyecto se cotiza por alcance. El costo real es tiempo del único desarrollador, que es también el único vendedor — por eso el margen contable engaña: el costo de oportunidad es la prospección que se detiene."
     },
@@ -236,7 +236,7 @@
   ],
 
   "reglas": {
-    "pisoPrecio": "No se cotiza por debajo de $3.000.000 (13 §10). Excepción anotada: proyecto chico que abre cliente grande.",
+    "pisoPrecio": "Referencia de $3.000.000 al cotizar desarrollo a la medida (13 §10). Desde el 9-sep-2026 NO es mínimo duro ni se publica: un proyecto sencillo se negocia por menos, el cliente pone el presupuesto y el alcance se acomoda (canon → lineaServicios._cambioPiso). Sigue siendo la señal del aviso de src/cotizar.",
     "anticipo50": "50% de anticipo para agendar. Sin anticipo no entra al calendario (lección Swisscontact: $2,3M cobrados contra entrega).",
     "unoPorTrimestre": "Máximo un proyecto a la vez y uno por trimestre mientras la meta de 12 clientes esté viva.",
     "dejaPiezaReutilizable": "Si no deja módulo reutilizable en platform/, es trabajo por horas disfrazado.",
