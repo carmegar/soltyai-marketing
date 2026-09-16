@@ -2,7 +2,8 @@
 
 > **Para qué es este video.** Es la pieza que desbloquea el canal completo: post fijado del LinkedIn de
 > empresa, gancho del **toque 1** del outbound (`redes/outbound-mensajes.txt`) y destino al que apunta
-> el Calendly. Sin él no arranca ni el orgánico ni la pauta (`13-PLAN-12-CLIENTES.md` §3).
+> el formulario de `/contacto` (no hay Calendly desde el 9-sep-2026: la invitación de Meet se manda
+> a mano). Sin él no arranca ni el orgánico ni la pauta (`13-PLAN-12-CLIENTES.md` §3).
 >
 > **Lo que el video tiene que lograr:** que un dueño de inmobiliaria piense *"esto contesta los
 > WhatsApp que yo no alcanzo a contestar"* y haga clic en agendar. **No** tiene que explicar la
@@ -140,7 +141,7 @@ no antes.
 
 ```
 soltyai.com
-Agenda 15 minutos → [Calendly]
+Agenda 15 minutos → soltyai.com/contacto
 Bots de negocio para inmobiliarias · Bucaramanga
 ```
 
@@ -153,7 +154,7 @@ Estas no son sugerencias de estilo, son reglas que el CI hace cumplir (`CLAUDE.m
 | No decir | Por qué | Qué decir en cambio |
 |---|---|---|
 | "Inteligencia artificial", "IA", "GPT" | No es el beneficio, el modo determinista es parte del producto, y la política de IA de WhatsApp **prohíbe** posicionarse como bot de propósito general | "Atiende", "responde", "agenda", "bot para inmobiliarias" |
-| Precios | El video vende la cita, no el plan; el ancla la pone la conversación | — |
+| Precios | El video vende la cita, no el plan; el ancla la pone la conversación. Y desde el 15-sep-2026 el bot no tiene precio de lista: se cotiza por prospecto | — |
 | "+100 clientes", "líderes en" | Prueba social solo verificable (hoy: Bucaradomi y Swisscontact, con permiso) | — | <!-- guardrail:ignorar -->
 | "En 7 días o no pagas" | La garantía se anuncia en su versión suave y en la cotización, no acá | — |
 | El bot **en la web** del cliente | El widget web no existe: sigue en **próximamente** | Nada |
@@ -186,11 +187,12 @@ Estas no son sugerencias de estilo, son reglas que el CI hace cumplir (`CLAUDE.m
 | Métrica | Dónde | Para qué |
 |---|---|---|
 | Retención a los 3 s | Analítica de LinkedIn / IG | Si cae, el problema es la toma 1 |
-| Clics al Calendly | `origin` del enlace | Es el único número que importa |
-| **Reuniones agendadas / semana** | Calendly | El KPI que manda (meta: 2) |
+| Clics a `/contacto` | `origin` del enlace | Es el único número que importa |
+| **Reuniones agendadas / semana** | formulario de `/contacto` + invitación de Meet (`manual`) | El KPI que manda (`canon.tablero.metaReunionesSemana`: 2) |
 
-> El KPI dejó de ser "demos" el 2026-08-13: lo que se cuenta es **la cita en el Calendly**, no que
-> alguien haya entrado al bot. Es el mismo número con el nombre correcto.
+> El KPI dejó de ser "demos" el 2026-08-13: lo que se cuenta es **la reunión concretada** con un
+> tomador de decisión, no que alguien haya entrado al bot. Desde el 15-sep-2026 la clave del
+> registro también se llama así (`--reuniones=` en `npm run reportes registrar`).
 
 Impresiones y "me gusta" **no** son métricas de este video.
 

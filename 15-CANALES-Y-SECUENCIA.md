@@ -135,7 +135,8 @@ el código: es el mes de prospección que no pasó.
 
 Y ahí SoltyAI tiene lo que casi nadie en la categoría tiene, porque no se puede inventar:
 
-- Un motor que arma **90 de 92 asientos contables DIAN sin gastar un solo token**.
+- Una integración DIAN que arma **90 de 92 asientos contables sin gastar un solo token** (se cuenta
+  como capacidad a la medida; el motor contable no se ofrece como producto desde el 15-sep-2026).
 - Un **RCE real en producción** (react2shell, 5-ago) contenido, con los 6 secretos rotados y el
   post-mortem escrito.
 - El **tren de facturación electrónica cerrado** de punta a punta por una empresa de una persona.

@@ -53,5 +53,7 @@ Aquí verás bots trabajando con casos reales: demos, detrás de cámaras y resu
 - 🔴 **Nunca "un asistente de IA" a secas.** La política de IA de WhatsApp **prohíbe** los bots de
   propósito general: se publica **bot de negocio por rubro**. Vale también para los títulos y las
   descripciones de los videos, no sólo para el canal.
-- Precios, si aparecen: los del canon en **COP** (`data/canon.json`), nunca los de dólares.
+- Precios: **ninguna cifra del bot** (desde el 15-sep-2026 se cotiza por prospecto, canon →
+  `_planesRetirados`); si hay que hablar de plata se dice la base del cobro: adaptación una vez,
+  mitad y mitad, y mensualidad según canales, volumen, IA e integraciones. Nunca los de dólares.
 - CTA preferido: "escríbenos / escríbele al bot", no "agenda una demo".

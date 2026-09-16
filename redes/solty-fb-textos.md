@@ -73,5 +73,7 @@ Si tu WhatsApp ya es un cuello de botella, escríbenos. Miramos tu caso y te dec
   propósito general: se publica **bot de negocio por rubro** —pedidos, reservas, citas, respuestas
   del catálogo—, que además es lo que de verdad se vende.
 - Nunca los planes viejos Starter/Growth/Pro ni los ángulos quemados ("atiende 24/7" a secas, "CRM para WhatsApp"). <!-- guardrail:ignorar -->
-- Precios, si aparecen: los del canon en **COP** (`data/canon.json`), nunca los de dólares.
+- Precios: **ninguna cifra del bot** (desde el 15-sep-2026 se cotiza por prospecto, canon →
+  `_planesRetirados`); si hay que hablar de plata se dice la base del cobro: adaptación una vez,
+  mitad y mitad, y mensualidad según canales, volumen, IA e integraciones. Nunca los de dólares.
 - CTA preferido: "escríbenos / escríbele al bot", no "agenda una demo".

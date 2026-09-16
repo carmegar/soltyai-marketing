@@ -1,13 +1,17 @@
 GUIONES DE OUTBOUND — SoltyAI (WhatsApp 1 a 1, manual)
-Actualizado: 2026-07-25. Precios en COP vigentes. Texto plano: se copia y se pega tal cual.
-Reemplaza lo que va entre [corchetes]. No pegues los encabezados en mayúscula.
+Actualizado: 2026-09-15. El bot se cotiza por prospecto: en estos guiones no va ninguna cifra de
+plan (data/canon.json → _planesRetirados). Texto plano: se copia y se pega tal cual.
+Reemplaza lo que va entre [corchetes]. No pegues los encabezados en mayúscula ni la linea de canal.
+
+<!-- canal: outbound -->
 
 REGLAS QUE NO SE SALTAN
 - 30 a 50 mensajes por dia como maximo, desde un numero calentado. Esto es manual, no un blast.
 - Personaliza SIEMPRE el primer toque con el nombre real del negocio y una senal concreta.
 - Un solo llamado a la accion por mensaje. En el toque 1 no se habla de precio.
 - Opt out en el primer mensaje, y se respeta al instante.
-- La demo es por Telegram. No prometas WhatsApp API mientras Meta no apruebe.
+- La demo es por Telegram. WhatsApp esta vivo desde el 7-ago-2026, pero no prometas plazo de
+  conexion: el primer WhatsApp de cliente real se registra en vivo, con el cliente al lado.
 - Nunca subas estos telefonos a Meta como audiencia.
 
 
@@ -66,8 +70,10 @@ TOQUE 3 — DIA 5 a 7 (cierre del hilo)
 =====================================================================
 
 Hola [nombre], le hago el ultimo toque y no le insisto mas.
-Si le sirve, se lo dejamos montado esta semana: la instalacion es de 400.000 y desde ahi queda en
-290.000 mensuales mas IVA, con todo incluido.
+Si le sirve, se lo dejamos montado esta semana. Se cobra una sola vez la adaptacion con sus
+inmuebles, la mitad al arrancar y la otra mitad cuando ya este atendiendo, y despues una
+mensualidad que depende de cuantas conversaciones maneje y de si lleva IA. El numero exacto se lo
+paso en 10 minutos viendo su caso.
 Como estamos arrancando en [ciudad], a los primeros clientes les dejamos 30% de descuento los
 primeros tres meses a cambio de poder contar el caso.
 Le cuadra que hablemos 10 minutos hoy o manana?
@@ -103,8 +109,10 @@ OBJECIONES (responder corto y devolver con pregunta)
 =====================================================================
 
 "Cuanto cuesta?" (muy temprano)
-  Para inmobiliaria arranca en 290.000 al mes mas IVA, con la instalacion aparte, 400.000 una sola
-  vez. Antes de hablar de plata, prefiere verlo funcionando con sus inmuebles? Son dos minutos.
+  Depende de lo que necesite. Se cobra una sola vez la adaptacion con sus inmuebles, la mitad al
+  arrancar y la otra mitad cuando ya este atendiendo, y despues una mensualidad segun el volumen
+  de conversaciones, si lleva IA y que se conecta. Se lo cotizo con su caso a la vista. Antes de
+  hablar de plata, prefiere verlo funcionando con sus inmuebles? Son dos minutos.
 
 "Esta muy caro"
   Le entiendo. Miremoslo asi: un asesor cuesta mas de 1.200.000 al mes y aun asi no cubre noches ni
@@ -121,8 +129,9 @@ OBJECIONES (responder corto y devolver con pregunta)
   visita solo. La diferencia se nota en un minuto de prueba.
 
 "Es por WhatsApp?"
-  Hoy se lo muestro por Telegram, que para el cliente es igual, y WhatsApp esta en camino.
-  Lo importante es que vea como conversa.
+  Si. Se lo muestro por Telegram porque ahi tengo la demo montada, y en su negocio queda en su
+  WhatsApp Business: la conexion la hacemos nosotros con usted. Lo importante es que vea como
+  conversa.
 
 "No tengo tiempo ahora"
   Justo por eso existe. Le dejo el video y lo ve cuando pueda: [link video]
@@ -165,15 +174,18 @@ OBJECIONES (responder corto y devolver con pregunta)
 
 
 =====================================================================
-PRECIOS (para no improvisar)
+COMO SE COBRA (para no improvisar)
 =====================================================================
 
-Inmobiliaria, mas IVA:
-  Esencial   290.000 al mes    hasta 200 conversaciones
-  Pro        490.000 al mes    hasta 500 conversaciones, con IA
-  Premium    790.000 al mes    hasta 1.500 conversaciones, multi sede
-  Instalacion 400.000 una sola vez
-  Conversaciones de mas: 50.000 por cada 100
+Desde el 15-sep-2026 el bot se cotiza por prospecto: no hay lista de planes y por chat no se da
+ninguna cifra. Lo que si se dice, siempre igual:
+  - Un cobro unico de adaptacion con los datos del negocio: la mitad al arrancar y la otra mitad
+    cuando el bot ya este atendiendo.
+  - Una mensualidad que depende de los canales (WhatsApp, Telegram), el volumen de
+    conversaciones, si lleva IA y que integraciones necesita. Sin permanencia. Mas IVA.
+  - El numero exacto sale en la reunion de 10 minutos, con el caso a la vista, y se manda como
+    cotizacion desde la suite. Las referencias internas para armarla estan en data/catalogo.json
+    (estado referencia) y no se pegan en un chat.
 
 Primeros 3 a 5 clientes: 30% de descuento por 3 meses, a cambio de poder contar el caso.
 No existen planes Starter, Growth ni Pro genericos. No los menciones.
