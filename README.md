@@ -28,7 +28,7 @@ adaptamos a tu negocio en la instalación.**
 | 00 | `README.md` | **Este mapa.** Orden de lectura, cómo ejecutar la ronda, notas honestas. |
 | 01 | `01-SOURCE-BRIEF.md` | **Fuente canónica** del producto, pricing y mensaje. Manda sobre todo. Empieza aquí si retomas. |
 | 02 | `02-brand-dna.md` + `brand-profile.json` | ADN de marca: promesa, diferenciador, 3 ejes (tiempo/orden/productividad), voz, colores navy/teal, Inter, público. Insumo de la creatividad. |
-| 03 | `03-competitor-analysis.md` | Competidores PYME Colombia/LATAM (precios verificados + fuentes), el hueco a explotar (done-for-you) y 6 ángulos. |
+| 03 | `03-competitor-analysis.md` | Competencia por frente (refresco 16-sep-2026): Meta, bots, estudios e integración DIAN, domicilios; huecos y amenazas con URL y fecha. La ronda de junio (mapa, ángulos A–G) quedó archivada en su Anexo A. |
 | 04 | `04-STRATEGY.md` | El **carril de Meta**, hoy **relegado**: objetivo, embudo, audiencias, KPIs. Sirve para cuando Meta entre. |
 | 05 | `05-PRICING.md` | Pricing por producto + qué cubre cada cosa (y qué validar). |
 | 06 | `06-BUDGET-PLAN.md` | Unit economics: CAC máx, LTV:CAC, escenarios, presupuesto diario, reglas de poda/escalado. |

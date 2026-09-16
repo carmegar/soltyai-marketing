@@ -349,12 +349,20 @@ el único de los tres caminos donde nuestro producto entra sin depender de la fl
 | A ticket $40.000 | 10 pedidos/día (300/mes) | 30 pedidos/día (900/mes) | 80 pedidos/día (2.400/mes) |
 |---|---:|---:|---:|
 | **1. Plataforma completa** | $4.278.000 | $12.834.000 | $34.224.000 |
-| **1b. DiDi Tu Negocio** | $1.356.600 | $4.069.800 | $10.852.800 |
+| **1b. DiDi Tu Negocio** *(sin el envío: lo paga el consumidor, ver 3.3.5)* | $1.356.600 | $4.069.800 | $10.852.800 |
 | **2. Domiciliario propio** | $3.278.221 (1 dom., 63% ocupado) | $6.556.441 (2 dom., 94%) | $16.391.103 (5 dom., 100%) |
 | **3. Flota tercerizada + suscripción $370.000** | $2.020.000 | $5.320.000 | $13.570.000 |
+| **3b. Lo mismo, con la entrega cobrada al consumidor** *(sólo la suscripción)* | $370.000 | $370.000 | $370.000 |
 | | | | |
 | **Camino 3 contra la plataforma completa** | **libera $2.258.000/mes** | **libera $7.514.000/mes** | **libera $20.654.000/mes** |
-| **Camino 3 contra DiDi Tu Negocio** | 🔴 **cuesta $663.400 más** | 🔴 **cuesta $1.250.200 más** | 🔴 **cuesta $2.717.200 más** |
+| **Camino 3b contra DiDi Tu Negocio** *(envío del lado del consumidor en los dos)* | **libera $986.600/mes** | **libera $3.699.800/mes** | **libera $10.482.800/mes** |
+
+> 🔄 **Fila de DiDi rehecha el 2026-09-16.** Hasta ese día decía «cuesta $663.400 más» a 300
+> pedidos, y comparaba dos cosas distintas: al camino 3 le cargaba los $5.500 de cada entrega y al
+> de DiDi no, cuando la página oficial dice que en Tu Negocio **el envío lo paga el consumidor**.
+> Puesto el envío del mismo lado en los dos caminos, lo que el restaurante paga es 9,5% + IVA del
+> pedido contra una suscripción fija, y la suscripción gana desde ~82 pedidos al mes. Fuente y
+> detalle en 3.3.5; el número vive en `dolores.json → resultado.cruceTicketVsDidiTuNegocio`.
 
 #### 3.3.4 · Los tres cruces, que son la respuesta
 
@@ -368,9 +376,16 @@ el único de los tres caminos donde nuestro producto entra sin depender de la fl
    la práctica **nunca está a capacidad plena**, porque la demanda de un restaurante se concentra en
    dos picos. 👉 Consecuencia directa: **a un restaurante no se le dice «monta tu flota»**. Eso
    confirma con números lo que §3.4 ya decía por intuición.
-3. 🔴 **Contra DiDi Tu Negocio perdemos hasta un ticket de $50.000–$60.000.** Con $5.500 por entrega
-   más la suscripción, nuestro camino sólo gana por encima de ~$59.600 de ticket a 300 pedidos/mes,
-   ~$52.300 a 900 y ~$50.000 a 2.400. Debajo de eso, cuesta más.
+3. **Contra DiDi Tu Negocio, el canal propio con flota tercerizada gana desde ~82 pedidos al mes**
+   *(rehecho el 2026-09-16)*. En Tu Negocio el envío lo paga el consumidor (fuente oficial, 3.3.5),
+   así que lo que el restaurante paga es 9,5% + IVA de cada pedido: $4.522 a ticket de $40.000.
+   Con la entrega de la flota cobrada también al consumidor, nuestro camino le cuesta al
+   restaurante sólo la suscripción, y $370.000 ÷ $4.522 da el cruce en ~82 pedidos al mes; el
+   ticket de empate a 300 pedidos/mes es ~$10.900, o sea que en todo ticket real de restaurante
+   la suscripción sale más barata. ⚠️ Hasta el 16-sep este cruce decía lo contrario («perdemos
+   hasta un ticket de $50.000–$60.000»): le cargaba los $5.500 de la entrega a nuestro camino y no
+   al de DiDi. Lo que sigue supuesto es la tarifa de la flota y que el consumidor acepte pagarla
+   como hoy paga el envío de la app.
 
 #### 3.3.5 · 🔴 Lo que esta medición le quita al pitch
 
@@ -383,10 +398,16 @@ opera en Bucaramanga desde julio de 2022.
 Eso **no mata el pitch, pero le quita el argumento fácil**. Lo que queda en pie, y hay que decirlo
 con estas palabras y no con otras:
 
-- ⚠️ **Hay una pregunta sin resolver que decide el veredicto y cuesta una llamada:** si ese 9,5%
-  **incluye el reparto** o si el domicilio lo paga el cliente aparte. La página no lo dice. Si lo
-  incluye, DiDi gana en todos los volúmenes con ticket de $40.000. Si no lo incluye, la comparación
-  es otra y hay que rehacerla. **Está registrado como `incluyeElDomicilio` en `supuesto`.**
+- ✅ **La pregunta que decidía el veredicto quedó cerrada el 2026-09-16, y sin llamada:** el 9,5%
+  **no incluye el reparto**. La misma página oficial de DiDi lo dice más abajo, textual: *«Qué pagan
+  los usuarios: valor de productos + costos de envío + propina opcional para el repartidor»*
+  (https://web.didiglobal.com/co/food/restaurantes/didi-tu-negocio/, consultada el 16-sep-2026).
+  El 9,5% + IVA es la herramienta y el acceso a la flota; el envío lo paga el consumidor. Con eso
+  la comparación se rehízo (3.3.3 y cruce 3 de 3.3.4): puesto el envío del lado del consumidor en
+  los dos caminos, lo que el restaurante compara es un porcentaje del pedido contra una suscripción
+  fija, y la suscripción gana desde ~82 pedidos al mes. `incluyeElDomicilio` pasó a `vigente` en
+  `dolores.json` con la fuente. Lo que DiDi **no** publica es cuánto le cobra al consumidor por ese
+  envío en Tu Negocio: es la cifra que falta para comparar el precio final que ve el cliente.
 - **Lo que DiDi no le da al restaurante es el cliente.** El pedido entra por su canal, sí, pero la
   operación, la base de clientes y el histórico quedan del lado de DiDi. Ese es un argumento de
   propiedad del dato, no de precio, y es más difícil de vender.
@@ -411,15 +432,16 @@ recomendación del propio sector de llegar a 50/50 entre apps y canal propio en 
 - ❌ **No se publica ninguna cifra de esta sección en una página.** Sigue vigente §7: son cifras de
   prensa sobre terceros, y las nuestras son sólo las verificables.
 
-#### 3.3.7 · Los tres números que faltan, y qué cuesta cerrarlos
+#### 3.3.7 · Los números que faltan, y qué cuesta cerrarlos
 
 | Qué falta | Cómo se cierra | Cuesta |
 |---|---|---|
 | **La tarifa real de una flota en Bucaramanga.** Ninguna la publica: Punto Ágil, `mensajeriabucaramanga.com`, Citix y Teleservimos remiten todas a WhatsApp | Una llamada a Bucaradomi, o a cualquiera de las 37 sociedades de mensajería del registro (§1.1) | una llamada |
-| **Si el 9,5% de DiDi Tu Negocio incluye el reparto** | Registrarse o llamar | una llamada |
+| ~~Si el 9,5% de DiDi Tu Negocio incluye el reparto~~ ✅ **cerrado el 2026-09-16: no lo incluye**, lo dice la misma página oficial (3.3.5) | Leer la página completa | nada |
+| **Cuánto le cobra DiDi al consumidor por el envío en Tu Negocio.** La página dice que lo paga el usuario, no cuánto | Registrarse o pedir un domicilio de prueba en un restaurante que lo use | un pedido |
 | **Cuántos pedidos por hora entrega un domiciliario de verdad.** No se encontró ni un estudio colombiano | Bucaradomi lo tiene en `domicilios-ops`: es una consulta a la base, no una encuesta | una consulta |
 
-Los tres se responden en **la misma conversación del corte del 20-sep**, que ya está agendada por
+Los que quedan se responden en **la misma conversación del corte del 20-sep**, que ya está agendada por
 otra razón (`clients/bucaradomi/corte-bimestre-2026-09-20.md`).
 
 ### 3.4 · Y acá está lo que nadie más puede armar
@@ -586,7 +608,7 @@ factura primero con lo que ya está construido»**.
   cambió el pitch: ver §3.3.** Los tres caminos están costeados, el domiciliario propio quedó
   descartado por número, y apareció **DiDi Tu Negocio** (9,5% + IVA, con flota, ya en Bucaramanga)
   como competencia directa del canal propio. **Los pasos que quedan, en orden:** (1) hablar con
-  Bucaradomi sobre la flota **y cerrar de una vez los tres números que faltan (§3.3.7)**;
+  Bucaradomi sobre la flota **y cerrar de una vez los números que faltan (§3.3.7; el de DiDi ya se cerró el 16-sep)**;
   (2) enriquecer las 335 con contacto —el registro no trae teléfono ni web—; (3) 20 conversaciones.
 - **Riesgo:** que el ahorro neto contra la flota propia no dé. **Si no da, se sabe en la semana 2 y no
   se gastó nada** — que es justamente por qué va primero.
@@ -689,7 +711,7 @@ producto.
 - [Los pedidos de Rappi tendrán tarifa mínima fija de $3.050 — El Colombiano (21-feb-2024)](https://www.elcolombiano.com/negocios/empresas/pedidos-de-rappi-tendran-tarifa-minima-fija-EP23795537) — acuerdo con MinTrabajo: $3.050 por domicilio + $640/km desde el km 4
 - [Entrega a domicilio con flota propia usando la app — Rappi Merchants](https://merchants.rappi.com/es-co/entrega-domicilio-flota-propia-usando-app) — la fórmula del costo propio por pedido, sin cifras
 - [¿Cuánto cuesta comer en restaurante en Colombia? Domicilios 2026 — CuántoMeCuesta (abr-2026)](https://cuantomecuesta.com/co/restaurante/) — los $3.000–$8.000 que paga **el cliente**, no el restaurante
-- 🔴 [DiDi Tu Negocio — DiDi Colombia (oficial)](https://web.didiglobal.com/co/food/restaurantes/didi-tu-negocio/) — *«solo 9,5% por pedido (+IVA). Sin costos fijos ni cargos adicionales»*
+- 🔴 [DiDi Tu Negocio — DiDi Colombia (oficial)](https://web.didiglobal.com/co/food/restaurantes/didi-tu-negocio/) — *«solo 9,5% por pedido (+IVA). Sin costos fijos ni cargos adicionales»*; y más abajo, releída el 16-sep-2026: *«Qué pagan los usuarios: valor de productos + costos de envío + propina opcional para el repartidor»*
 - [DiDi Food llega a Bucaramanga — Vanguardia (26-jul-2022)](https://www.vanguardia.com/economia/local/2022/07/26/didi-food-la-nueva-app-de-comida-a-domicilio-llega-a-bucaramanga/)
 - *No cargó:* [chejefe.com/comisiones-rappi](https://www.chejefe.com/blog/independencia-de-las-apps/comisiones-rappi-cuanto-queda) sí abrió pero **no da cifras para Colombia 2026**; [maspedidos.com](https://www.maspedidos.com/blog/cuanto-cobra-rappi-a-los-restaurantes) es de México
 

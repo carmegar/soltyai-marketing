@@ -29,6 +29,44 @@
 
 ---
 
+## 2026-09-16 · Ventiva · Mentora · Kondory — reclamos de sitio, no anuncios · **competidor directo** (los tres están en `03` §2, §3)
+
+> ⚠️ **Entrada distinta a las demás, y se dice de frente:** no son anuncios vistos correr, son
+> **afirmaciones publicadas en el sitio** de tres competidores que aparecen en la tabla del `03`
+> (refresco del 16-sep-2026). La captura es de la página, no del feed (pantallazo con Edge headless
+> a 1280 px, el 16-sep-2026), y al lado va el **texto extraído del HTML** con la URL y la fecha
+> (`swipe/2026-09-16-*-reclamo.txt`) porque en Mentora la cifra está debajo del pliegue. Entra acá
+> porque es la munición exacta de `metricaSinFuente`: son los tres números que un prospecto nos va
+> a poner enfrente.
+
+**Capturas:** `swipe/2026-09-16-ventiva-roi-reclamo.jpg` · `swipe/2026-09-16-mentora-metricas-reclamo.jpg` · `swipe/2026-09-16-kondory-proyectos-reclamo.jpg` (y la transcripción en `.txt` con el mismo nombre)
+**Destino:** ventivaia.com/cuanto-cuesta-chatbot-whatsapp-colombia · mentoracolombia.com/automatizacion-facturacion-electronica · kondory.com/about-us · **Señal visible:** ninguna (no es un anuncio)
+**Oferta (lo que afirman, textual):**
+- Ventiva (Cali, agente IA de WhatsApp): *«876% ROI promedio en negocios colombianos primer mes»* y
+  *«ROI promedio mes 1: +500% a 900%»* al lado de su tabla de precios. Sin fuente, sin muestra, sin
+  fecha de medición.
+- Mentora (nacional, integración DIAN): *«−85%»* de horas digitando en su calculadora, y *«empresas
+  con 200+ facturas/mes suelen recuperar la inversión en 3-6 meses»*. Sin fuente.
+- Kondory (Bucaramanga, estudio): *«Más de 150 proyectos desarrollados para empresas en toda
+  Colombia»*. Sin lista, sin nombres, sin fecha.
+
+**Qué robar**
+- **Nada del número.** Lo que sí: los tres ponen la cifra **al lado del precio**, o sea que saben
+  que el comprador compara costo contra resultado en la misma pantalla. Nuestra versión honesta de
+  eso ya existe y es publicable: el costo por camino (`19 §3.3.6`), las horas del banco de dolores
+  como supuesto del espectador, y «todavía no lo hemos medido» dicho de frente.
+
+**Qué evitar**
+- 🔴 Los tres son exactamente lo que `metricaSinFuente` y `pruebaSocialInventada` cazan en nuestro
+  copy. No se copian ni «para responder». Si un prospecto los cita, la respuesta es la de
+  `05-PRICING.md` §10: pedir la fuente y mostrar el hecho con testigo (contrato, factura, sistema
+  en producción).
+
+**Acción:** ninguna pieza nueva. Sirve como objeción preparada («X promete 800% de ROI») y como
+prueba de que el guardrail apunta a lo que el mercado de verdad publica.
+
+---
+
 ## 2026-07-25 · SyroxTech — desarrollo de software a medida · **otro sector** (no competidor)
 
 **Capturas:** `swipe/2026-07-25-syroxtech-copy.png` · `...-creativo.png` · `...-link.png`

@@ -1,0 +1,6 @@
+Captura de texto (no es un anuncio: es el sitio del competidor). Consultado el 2026-09-16.
+URL: https://kondory.com/
+Fragmentos textuales extraidos del HTML con sed/grep (sin editar):
+
+ Más de 150 proyectos desarrollados para empresas en toda Colombia
+ Más de 150 proyectos exitosos en Colombia y Latinoamérica

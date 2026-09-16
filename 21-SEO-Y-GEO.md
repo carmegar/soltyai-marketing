@@ -247,6 +247,14 @@ Esta es la línea donde una página bien hecha puede entrar en una AI Overview e
 competencia local escribe sobre «transformación digital», no sobre la resolución 165 ni sobre el
 prefijo de numeración.
 
+> **Quién sí compite por estas búsquedas (verificado el 16-sep-2026, `03-competitor-analysis.md`
+> §3).** En Bucaramanga, nadie: las cinco firmas del listado local y Kondory no nombran la DIAN.
+> A nivel nacional, **Mentora** (mentoracolombia.com, lista Bucaramanga entre sus ciudades) vende
+> «automatización de facturación electrónica DIAN» con Siigo, World Office y Alegra, publica precio
+> (implementación desde $5.900.000 más desde $590.000 al mes) y escribe para estas mismas frases.
+> Es agencia de todo y no es facturador habilitado: el ángulo que nos queda es exactamente ese, y
+> la página tiene que decirlo en el primer párrafo, no en el pie.
+
 ### 4.3 Automatización de procesos
 
 | Frase | Por qué la buscan | Página | Evidencia |
@@ -270,6 +278,15 @@ prefijo de numeración.
 | `software para empresa de domicilios colombia` | Empresas de mensajería que despachan por WhatsApp | `/producto/domicilios-ops` | Supuesto |
 | `app para asignar domiciliarios` | El dueño describe la función | `/producto/domicilios-ops` | Supuesto |
 | `plataforma de despacho para mensajería bucaramanga` | Igual, local | `/producto/domicilios-ops` + post 1 del GBP | Supuesto |
+
+> **Quién sí compite por estas búsquedas (verificado el 16-sep-2026, `03-competitor-analysis.md`
+> §4).** Acá la tabla vieja decía «sin competencia local» y no es cierto para la palabra
+> «domicilios»: **Gestro** (somosgestro.com) es de Bucaramanga, vende POS de restaurante con módulo
+> de domicilios y factura electrónica DIAN desde $79.000 al mes, y aparece para «software
+> domicilios». No es lo mismo que `domicilios-ops` (resuelve al restaurante, no a la empresa que
+> tiene la flota), pero se lleva el clic del que busca la categoría. Consecuencia para la página: el
+> título ya dice «para empresas de domicilios», y le falta una línea de «para quién no» (no es POS
+> ni app de pedidos) para que Google y el visitante separen las dos cosas.
 
 ### 4.6 Marca
 

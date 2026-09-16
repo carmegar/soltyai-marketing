@@ -65,9 +65,20 @@ producto —el bot de negocio, adaptado a tu vertical— en tres tamaños; lo qu
   atiende por WhatsApp Business API oficial. **Telegram** sigue vivo y es el canal de demos.
 - **La conexión la hacemos nosotros** (camino asistido): el cliente nos agrega como socio a su WABA y
   lo registramos. No hay autoservicio, y en la venta eso no es una limitación, es el moat.
-- ⚠️ **El consumo de la API de WhatsApp lo paga el cliente**, no va dentro de la suscripción. En
-  Colombia las **primeras 1.000 conversaciones de servicio al mes son gratis** para él, así que en los
-  volúmenes de estos planes su costo real tiende a cero. Decirlo de frente evita el reclamo del mes 2.
+- ⚠️ **El consumo de WhatsApp Business lo paga el cliente a Meta**, no va dentro de la mensualidad, y
+  **toda cotización L2 lo dice en una línea fija: «consumo de WhatsApp a cargo del cliente, estimado
+  por volumen»** (`canon.json → lineasDeOferta.lineas.L2.precio.unidad`). Hasta el 30-sep-2026 las
+  conversaciones de servicio son gratis; **desde el 1-oct-2026 Meta cobra los mensajes de servicio**
+  (las respuestas dentro de la ventana de 24 h), con tarifas por país publicadas el 1-sep. La tarifa
+  para Colombia y si sigue habiendo 1.000 gratis al mes por número **no están verificadas al
+  16-sep-2026** (los BSP se contradicen; `03-competitor-analysis.md` §6): en la cotización se estima
+  por volumen y se dice que es estimado, nunca una cifra de Meta de memoria. Decirlo de frente evita
+  el reclamo del mes 2, y desde octubre evita que la mensualidad se coma el margen.
+- ⚠️ **El registro del WABA ya no se cobra como trabajo.** Desde el 15-sep-2026 Meta publica un MCP
+  server que deja a cualquier agente de código crear la cuenta, verificar el número y probar los
+  webhooks (`03` §1): la conexión sigue incluida en la adaptación (§3), pero no es un ítem de la
+  cotización ni un argumento de venta. Lo que sí se cobra es lo que viene después: conectar el bot a
+  la operación del cliente.
 - ⚠️ **El widget web no existe.** La web sigue siendo "próximamente" y **no se promete**. Vender una
   página web (línea de servicio, §8) es otra cosa distinta y sí se puede ofrecer.
 - ⚠️ Nunca se vende "un asistente de IA que responde lo que sea": la política de IA de WhatsApp
@@ -272,6 +283,11 @@ electrónico habilitado) y **se vende como servicio**; el motor contable como pr
 > Los precios de esta tabla son **de terceros, en USD, verificados** (`03-competitor-analysis.md`). La
 > columna en pesos es una conversión de referencia con **TRM supuesta de $4.000**, solo para comparar:
 > **no se usa en una cotización sin actualizarla contra la TRM real**.
+>
+> ⚠️ Tabla de junio-2026 (hoy `03` Anexo A.1). El refresco del 16-sep-2026 (`03` §1 y §2) agrega lo
+> que cambia la conversación: Meta One vende el agente por suscripción desde US$14,99 al mes, y las
+> agencias colombianas (Ventiva, Dinolabs) ya publican precio en pesos con el mismo done-for-you. Por
+> eso el bot no lleva precio de lista: se cotiza contra la operación del cliente, no contra esta tabla.
 
 | Competidor | Precio de lista | ≈ COP *(TRM supuesta $4.000)* | Modelo |
 |---|---|---|---|

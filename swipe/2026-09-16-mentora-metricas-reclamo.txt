@@ -1,0 +1,6 @@
+Captura de texto (no es un anuncio: es el sitio del competidor). Consultado el 2026-09-16.
+URL: https://mentoracolombia.com/automatizacion-facturacion-electronica
+Fragmentos textuales extraidos del HTML con sed/grep (sin editar):
+
+ −85% 
+La implementación parte desde $5.900.000 pago único e incluye: integración con su software contable, OCR para entrada de facturas de proveedor, conciliación bancaria automática y reportes para el contador. Operación mensual desde $590.000 según volumen. Empresas con 200+ facturas/mes suelen recuperar la inversión en 3-6 meses solo por horas-persona ahorradas.
