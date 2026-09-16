@@ -232,8 +232,9 @@ Números de mercado, **no de nuestra cuenta** (la cuenta es nueva y no tiene his
 
 > **Lo que estos números cambiaron:** el corte viejo de **$25.000 por lead calificado** estaba **3 a 10
 > veces por debajo del mercado**, y no por optimismo sino por un error de anclaje: se calculó para que
-> el **setup ($400.000) pagara la adquisición**. Con CPLs reales, la suscripción sola **no puede pagar *(retirado el 15-sep-2026)*
-> tráfico pago**. Hay que anclar al **LTV**. Recalibración completa en `06-BUDGET-PLAN.md`.
+> el **setup ($400.000) pagara la adquisición** *(cifra retirada el 15-sep-2026: hoy es referencia)*.
+> Con CPLs reales, la suscripción sola **no puede pagar tráfico pago**. Hay que anclar al **LTV**.
+> Recalibración completa en `06-BUDGET-PLAN.md`.
 
 ---
 

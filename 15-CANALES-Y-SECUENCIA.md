@@ -291,8 +291,9 @@ Telegram— y es la razón por la que Meta pasa de "bloqueado y sin sentido" a "
 | Regla | Valor |
 |---|---|
 | **LTV bruto 12 meses** | **$5.080.000** ($400.000 setup + $390.000 × 12) |
-| **Techo de CAC** | **$800.000** (2× el setup, se recupera en el mes 2) |
-| **Corte por lead calificado** | **$120.000** |
+| **Techo de CAC** | **$800.000** (vale para L1 y L2, las recurrentes; para L3 el techo es el margen del proyecto cotizado. En neto se recupera en el mes 3) |
+| **Corte por lead calificado** | **$120.000** (descansa sobre reunión→cierre **30%**, `tasaReunionCierreSupuesta`, supuesto; se recalibra con las primeras 8 reuniones) |
+| **Techo por reunión** | **$240.000** (= techo de CAC × 0,30; `techoPorReunion`, desde el 16-sep-2026. Es el umbral que vale en todos los canales, pagados o no) |
 | **Matar ad set / keyword** | **> $250.000 por calificado** |
 | **Advertencia** | **> $180.000 por calificado** a las 48 h |
 | **Escalar** | < $80.000 por calificado y con volumen → **+20%**, nunca más por paso |
@@ -303,8 +304,9 @@ Telegram— y es la razón por la que Meta pasa de "bloqueado y sin sentido" a "
 cierres**. Sigue siendo coherente con el "1–4 cierres, base ~2" que ya estaba escrito; lo que cambió es
 que ahora el número **es alcanzable** en vez de una condena a cortar temprano.
 
-**Regla de honestidad que no se toca:** cada métrica declara de dónde salió (`export-meta`, `calendly`,
-`suite-mcp`, `manual`…). Que un dato sea manual está bien; fingir que es automático, no.
+**Regla de honestidad que no se toca:** cada métrica declara de dónde salió (`export-meta`,
+`export-google`, `gbp`, `suite-mcp`, `manual`…; `calendly` salió de la lista el 16-sep-2026 porque no
+hay Calendly desde el 9-sep). Que un dato sea manual está bien; fingir que es automático, no.
 
 ---
 

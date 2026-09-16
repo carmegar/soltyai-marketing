@@ -27,8 +27,9 @@
 | Ticket promedio mensual | **$390.000** *(supuesto: mezcla Esencial/Pro)* | canon |
 | Caja del mes 1 por cliente | **$790.000** | adaptación $400.000 más el primer mes |
 | **LTV bruto a 12 meses** | **$5.080.000** | $400.000 más $390.000 × 12 |
-| **Techo de CAC** | **$800.000** | 2 veces el cobro inicial; se recupera con la caja acumulada del mes 2 |
-| **Corte por lead calificado** | **$120.000** | techo $800.000 ÷ 6,7 calificados por cierre *(supuesto)* |
+| **Techo de CAC** | **$800.000** | 2 veces el cobro inicial de referencia; en caja bruta se recupera en el mes 2, en neto en el mes 3 (§7.3). **Vale para L1 y L2, las recurrentes; para L3 el techo es el margen del proyecto cotizado** (§4.3) |
+| **Corte por lead calificado** | **$120.000** | techo $800.000 ÷ 6,7 calificados por cierre *(supuesto: reunión→cierre 30%, `canon.tablero.tasaReunionCierreSupuesta`)* |
+| **Techo por reunión** | **$240.000** | techo $800.000 × 0,30 (`canon.tablero.techoPorReunion`, 16-sep-2026). Es el umbral que vale en todos los canales |
 | Advertencia · matar · escalar | **$180.000** · **$250.000** · **menos de $80.000** | §5 |
 | **Payback** | **mes 2 a 3** | ya **no** es inmediato, y eso es lo correcto |
 | Margen mínimo por línea | suscripción **60%**, servicios **35%** | canon, y no se cruza |
@@ -122,14 +123,17 @@ media que **no está medido** (§7).
 | Vida media del cliente | **12 meses** *(supuesto)* | **El número más frágil del documento.** No hay churn medido: la única línea recurrente lleva un mes de facturación. Sensibilidad en §7. |
 | Margen de suscripción para modelar | **75%** *(supuesto, dentro del rango verificado 65% a 85%)* | Piso que no se cruza: 60%. |
 | Calificado → reunión agendada | **50%** *(supuesto)* | Un calificado a $120.000 ya es un SQL, no un curioso. |
-| Reunión → cierre | **30%** *(supuesto)* | B2B, decisión de dueño, marca nueva con dos referencias verificables. |
+| Reunión → cierre | **30%** *(supuesto; en el canon desde el 16-sep como `tablero.tasaReunionCierreSupuesta`)* | B2B, decisión de dueño, marca nueva con dos referencias verificables. `13-PLAN-12-CLIENTES.md` §1 usa 15% para el plan de cierres: los dos son supuestos y manda el del canon. Se recalibra con las primeras 8 reuniones reales. |
 | **Calificados por cierre** | **6,7** *(derivado)* | 1 ÷ (0,50 × 0,30). Es el número que convierte el techo de CAC en el corte por lead. |
 | CPL por lead calificado | **$80.000 a $250.000** *(benchmark externo verificado, no nuestro)* | CPL B2B Colombia. Base de planeación: $120.000. |
 
 > ⚠️ **Las dos tasas del embudo son las cifras más inciertas y se multiplican entre sí.** Si
 > reunión→cierre resulta ser 15% en vez de 30%, los calificados por cierre suben a 13,3 y el corte
 > real cae a **$60.000**, que está por debajo del piso de mercado. **Ese es el escenario que mata la
-> tesis**, y es lo primero que hay que medir con reuniones reales, no con clics.
+> tesis**, y es lo primero que hay que medir con reuniones reales, no con clics. Por eso el umbral
+> que se vigila en todos los canales es el **costo por reunión** (techo **$240.000** = $800.000 ×
+> 0,30): la reunión tiene testigo aunque no haya pauta, y si el 15% se confirma lo que se retrabaja
+> es la oferta, no el corte.
 
 ---
 
@@ -191,6 +195,28 @@ Meta          $1.200.000  ÷ $790.000   (caja mes 1 de un cliente de bot)   = 1,
 - **Meta:** hacen falta **2 cierres para recuperar la ronda dentro del mes 1**. El caso base son 1,5
   cierres, así que la ronda **no se recupera en el mes en que se gasta**: se recupera en el mes 2 o 3.
   Eso no es un defecto del carril, es exactamente lo que dice el anclaje nuevo.
+
+### 4.3 El techo no es el mismo para las tres líneas *(agregado el 2026-09-16)*
+
+El $800.000 es un número de **suscripción**: sale de un LTV de 12 meses y sólo tiene sentido donde
+hay recurrencia que lo amortice. Contra lo que hoy se vende (`18-ARQUITECTURA-DE-OFERTA.md`):
+
+| Línea | Qué amortiza el CAC | Techo que aplica |
+|---|---|---|
+| **L2 bot** (recurrente) | LTV neto 12 m ≈ $3.670.000 *(setup al 40% de margen, mensualidad al 75%)* | **$800.000** (4,6 : 1 neto; payback mes 3) |
+| **L1 domicilios-ops** (recurrente, sin cobro inicial) | margen mensual del catálogo, **sin horas de soporte medidas** | el techo de **$800.000** aguanta sólo si el soporte cabe en el margen; con 2 h/mes ya queda en 2,7 : 1 |
+| **L3 desarrollo a la medida** (cobro único) | el margen del proyecto, y nada más | **el margen del proyecto cotizado**, no $800.000: con el 20% que hoy declara el catálogo son $600.000 de break-even |
+| **L3 web-basica** (cobro único) | $160.000 de margen | **nunca paga pauta sola**: entra a Search sólo con `web-cuidada` |
+
+> 🔴 **Dos costos que hay que MEDIR antes de creerle a estos márgenes** (informe `C-math.md`,
+> 16-sep-2026): (1) `desarrollo-a-medida` está en el catálogo con **40 h** ($2.400.000, margen 20%)
+> mientras `13-PLAN-12-CLIENTES.md` dice **3 a 6 semanas** por proyecto (120 a 240 h), con lo que el
+> margen sería negativo antes de gastar un peso; y este doc usa 35% en §4.2. Cuatro cifras para el
+> mismo costo: se mide con el próximo proyecto y se corrige el catálogo, no este doc. (2) Las **horas
+> de soporte de L1** no están en `domicilios-ops.costoMes` (8.000, «margen optimista» según el propio
+> catálogo); el 7-sep hubo hotfix y reparación, o sea horas reales. Hasta medirlas, el 4,5 : 1 de L1
+> es un supuesto sobre otro. `data/catalogo.json` no se toca en esta sesión: se anota acá para que
+> el número no se cite como verificado.
 
 ---
 
@@ -255,16 +281,25 @@ donde el servicio es el titular.
   metropolitana primero.
 - **Negativos desde el día 1:** "gratis", "curso", "aprender", "empleo", "plantilla", "wordpress
   barato". En Search la plata se va por ahí, no por el CPC.
-- **Landing propia de servicio**, no la home del bot, con el mismo Calendly y su `origin` registrado.
+- **Landing propia de servicio** (hoy la home ya es L3), con el formulario de `/contacto` y su
+  `origin` registrado. No hay Calendly desde el 9-sep.
 - **Corte del carril:** se corta a las 2 semanas si el costo por calificado pasa $250.000 **o** si
   ninguno de los leads que llegaron es del perfil.
 - **Si entran 2 proyectos a la vez, se pausa el carril.** La regla de 1 proyecto simultáneo no se
   rompe por tener demanda.
 
 **Por qué este carril va primero pese a ser el más chico:** es el que produce caja rápido, y la caja es
-lo que permite flotar el payback de mes 2 a 3 del otro carril. Además, el techo de CAC del servicio es
-**más alto** que el del bot (margen mínimo de un proyecto piso = $1.050.000), así que aplicarle el
-mismo corte de $120.000 es el criterio conservador, no el laxo.
+lo que permite flotar el payback de mes 2 a 3 del otro carril.
+
+> ⚠️ **Corregido el 2026-09-16.** Este párrafo decía que el techo de CAC del servicio era «más alto
+> que el del bot» (margen mínimo de un proyecto piso = $1.050.000). Eso valía con el piso de
+> $3.000.000 al 35%, y el piso dejó de existir el 9-sep (el cliente pone el presupuesto). Con el
+> margen que el catálogo declara hoy para `desarrollo-a-medida` (20%, 40 h) el break-even de CAC es
+> **$600.000**, por debajo del techo, y la línea de **web** no paga pauta sola (§4.3). Lo que sí vale:
+> el anticipo del 50% sigue siendo el que produce la caja, y la ronda se juzga por **costo por
+> reunión** y por si los leads son del perfil, no por cierres (con $400.000 son 3 leads). **Qué entra
+> a la pauta:** desarrollo a la medida e integraciones; la web sólo con `web-cuidada` obligatoria
+> (`canon.tablero.rondas[G1].objetivo`).
 
 ### 6.2 Carril Meta: $1.200.000, línea de bot, y entra relegado
 
@@ -295,9 +330,9 @@ reuniones por semana**. Meta no es el motor de reuniones ni pretende serlo: **el
 es el outbound**, que no carga CAC.
 
 **Cómo entra cuando entre:** una sola vertical, 3 ángulos en ABO con presupuesto parejo a propósito
-(la ronda es para leer qué ángulo rinde, no para optimizar caja), el anuncio **llena el Calendly** en
-vez de pedir la venta, nunca "un asistente de IA", y **nunca subir los teléfonos del outbound** como
-audiencia (ToS y Ley 1581).
+(la ronda es para leer qué ángulo rinde, no para optimizar caja), el anuncio **pide la reunión** (el
+formulario de `/contacto`) en vez de pedir la venta, nunca "un asistente de IA", y **nunca subir los
+teléfonos del outbound** como audiencia (ToS y Ley 1581).
 
 ### 6.3 Los carriles que cuestan $0 y van antes que los dos
 
@@ -344,7 +379,9 @@ consciencia de que descansa sobre un supuesto**, y no se escala por encima de é
 Ya está dicho en §2.2 y se repite porque es el otro punto de quiebre: con 15% en vez de 30%, los
 calificados por cierre pasan de 6,7 a 13,3 y **el corte real cae a $60.000**, por debajo del piso de
 mercado. Si eso pasa, el problema no es la pauta: es que la oferta no cierra, y se retrabaja la oferta
-antes de comprar más tráfico.
+antes de comprar más tráfico. **El umbral no se baja** (`canon.tablero._notaTasaReunionCierre`): un
+corte de $60.000 hace que la ronda se corte sola, que es el error de anclaje del 13-ago. Lo que sí se
+recalcula en el mismo commit es `techoPorReunion`, que es derivado (a 15% sería $120.000).
 
 ### 7.3 El margen del cobro inicial no es el de la suscripción *(riesgo anotado)*
 
@@ -410,7 +447,8 @@ Nada de esto entra en los escenarios de §6, y todo mejora el resultado si apare
 > **Los números que se memorizan**
 > - Caja del mes 1 por cliente: **$790.000**. LTV bruto a 12 meses: **$5.080.000** *(supuesto de vida
 >   media)*.
-> - **Techo de CAC $800.000.** **Corte por lead calificado $120.000**, y es el límite, no la meta.
+> - **Techo de CAC $800.000** (líneas recurrentes; un proyecto se juzga contra su margen). **Corte por
+>   lead calificado $120.000**, y es el límite, no la meta. **Techo por reunión $240.000.**
 > - **Payback esperado: mes 2 a 3.** Ya no es inmediato, y esperar que lo sea es el error viejo.
 > - **6,7 calificados por cierre** *(supuesto)* es el número que traduce techo de CAC a corte por lead.
 >
@@ -427,5 +465,6 @@ Nada de esto entra en los escenarios de §6, y todo mejora el resultado si apare
 > - **Meta:** en el caso base **empata con el techo**. Si no baja del corte, **no se escala**.
 > - **Si ningún ángulo baja del corte, se para y se retrabaja la oferta** antes de gastar la ronda
 >   siguiente. El problema entonces no es el tráfico.
-> - **Toda métrica declara de dónde salió** (`export-google`, `export-meta`, `gbp`, `calendly`,
->   `suite-mcp`, `manual`). Que un dato sea manual está bien; fingir que es automático, no.
+> - **Toda métrica declara de dónde salió** (`export-google`, `export-meta`, `gbp`, `suite-mcp`,
+>   `manual`; `calendly` salió el 16-sep-2026). Que un dato sea manual está bien; fingir que es
+>   automático, no.

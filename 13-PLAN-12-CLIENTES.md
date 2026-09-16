@@ -44,7 +44,8 @@ Con las referencias de cotización del bot (`data/canon.json`; ⚠️ desde el 1
 | 6 suscripciones → **caja de setups** | **~$2.400.000** (una vez) |
 | 2 proyectos de servicio → **caja** | **~$6.000.000** (piso $3.000.000 c/u, 50% de anticipo) |
 | **LTV bruto 12 meses (suscripción)** | **~$5.080.000** ($400.000 + $390.000 × 12) |
-| **Techo de CAC** | **~$800.000** (2× el setup: se recupera en el mes 2) |
+| **Techo de CAC** | **~$800.000** (vale para las líneas recurrentes; para un proyecto de servicio el techo es su margen. En neto se recupera en el mes 3) |
+| **Techo por reunión** | **$240.000** (techo de CAC × la tasa de cierre supuesta del canon, 30%; `canon.tablero.techoPorReunion`, 16-sep-2026) |
 
 ### Por qué recortar a la mitad no cuesta la mitad de la caja
 
@@ -96,15 +97,23 @@ ese margen es lo que permite **decir que no** a un mal encaje en vez de tomarlo 
 > la empresa. Acá se baja a **15%**, que es lo normal en B2B frío, y aun así alcanza para 1,2/mes. Si
 > las primeras 8 reuniones cierran mejor que eso, se sube el número **con el dato en la mano**, no
 > antes. Es la misma disciplina que impuso la muerte de Chalá: una cifra vale cuando está cerrada.
+>
+> ⚠️ **Y la contradicción que esto dejó, resuelta el 2026-09-16:** `06-BUDGET-PLAN.md` §2.2 usa **30%**
+> y de ahí sale el corte de $120.000 por lead; este doc usa 15% para el plan de cierres. Los dos son
+> del 13-ago y ninguno mandaba. Ahora manda el canon: `tablero.tasaReunionCierreSupuesta = 0,30`,
+> declarado como supuesto, y `techoPorReunion = $240.000` derivado de él. El 15% de acá se queda
+> como el escenario conservador del plan de cierres, no como umbral. Si las primeras 8 reuniones
+> confirman 15%, **lo que se retrabaja es la oferta, no el umbral**: bajar el corte a $60.000 lo pone
+> debajo del piso de mercado y la ronda se corta sola (06 §7.2).
 
 El número que hay que vigilar **no** es el gasto ni los seguidores: son **reuniones agendadas por
 semana**. Menos de 2/semana = el mes no se cumple, sin importar qué digan las impresiones.
 
 > **Por qué dejó de ser «demos» (2026-08-13):** el cold email pivotó a pedir **15 minutos** en vez de
 > entregar una demo, y la venta se cierra en esa reunión (`business/16 §6c`). El número es el mismo
-> —una cita en el Calendly— pero el nombre viejo hacía pensar que había que entregar algo antes de
-> hablar. ⚠️ En `data/canon.json` y en `src/reportes` la clave **todavía se llama `demos`**: el
-> renombre se hace en canon, código y README a la vez, no a medias.
+> —una reunión concretada, hoy por el formulario de `/contacto` y la invitación de Meet a mano— pero
+> el nombre viejo hacía pensar que había que entregar algo antes de hablar. La clave se renombró a
+> `reuniones` en canon, código y README el 15-sep-2026.
 
 ---
 
@@ -206,7 +215,7 @@ necesita esas 4–6 semanas sin sobresaltos.
 | Ronda | Carril | Cuándo | Monto | Objetivo |
 |---|---|---|---|---|
 | **G1** | Google Search | tras el GBP | **$400.000** | Validar el carril de servicio a la medida. 3–4 keywords de intención, geo Bucaramanga y área metropolitana |
-| **R1** | Meta | cuando haga falta volumen | **$1.200.000** | Una vertical, 3 ángulos, objetivo **cita en el Calendly** |
+| **R1** | Meta | cuando haga falta volumen | **$1.200.000** | Una vertical, 3 ángulos, objetivo **reunión agendada** (formulario de `/contacto`) |
 | — | sin asignar | — | **$2.400.000** | **A propósito.** Se asignan contra resultados, no contra un plan escrito en agosto |
 
 **Reglas de corte, recalibradas** (`canon.json → tablero`):
@@ -216,7 +225,8 @@ necesita esas 4–6 semanas sin sobresaltos.
 | Costo por lead calificado **> $180.000** a las 48 h | Advertencia: revisar creatividad o audiencia |
 | **> $250.000** por calificado, o **3× el mejor** | **Matar** ese ad set o esa keyword |
 | **< $80.000** por calificado y con volumen | **Escalar +20%**, nunca más por paso |
-| CAC efectivo **> $800.000** | Se para el carril: por encima del techo no hay negocio |
+| $/reunión **> $240.000** | Se revisa el mensaje o la lista: la reunión sale más cara de lo que un cierre puede pagar (`techoPorReunion`, 16-sep) |
+| CAC efectivo **> $800.000** | Se para el carril: por encima del techo no hay negocio (líneas recurrentes; un proyecto se juzga contra su margen) |
 
 **Reglas que no se negocian:**
 - Los primeros 2–3 días **no se toca nada** salvo plomería rota (la plataforma está aprendiendo).
@@ -375,10 +385,11 @@ para saber cuál trae las citas.
 |---|---|---|
 | Contactos outbound nuevos | 20 | Hoja/CRM |
 | Conversaciones reales | 5 | Bot + WhatsApp |
-| **Reuniones agendadas** | **2** | Calendly |
+| **Reuniones agendadas** | **2** | formulario de `/contacto` + invitación de Meet (`manual`) |
 | Cierres de suscripción | 0,3 (~1,2/mes) | Suite (propuestas firmadas) |
 | **Semanas de Carlos comprometidas en entrega** | **≤ 3 de 4** | Honesto, a ojo, el viernes |
 | $/lead calificado (pauta) | **< $120.000** | `npm run reportes` |
+| **$/reunión** (pauta) | **< $240.000** | `npm run reportes` (`techoPorReunion`, con veredicto desde el 16-sep) |
 | Posts publicados | 2 | Calendario orgánico |
 
 > 🆕 **La fila nueva es la que importa después del recorte** (13-ago). Con 6 + 2, el plan no se cae por

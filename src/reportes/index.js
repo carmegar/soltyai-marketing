@@ -7,11 +7,13 @@
  *
  * Lo que hace que esto no sea una hoja de cálculo con más pasos:
  *
- *  1. Los **dos cortes** se CALCULAN y salen en rojo: el costo por lead calificado
- *     (`tablero.cortePorLeadCalificado`) y el **techo de CAC** (`tablero.techoCac`). Escritas en un
- *     doc, esas reglas se cumplen cuando uno quiere; calculadas, aparecen solas el viernes que toca
- *     parar. Los umbrales NO se escriben acá: se leen del canon, para que cambiarlos sea una
- *     decisión registrada y no una edición de código.
+ *  1. Los **tres cortes** se CALCULAN y salen marcados: el costo por lead calificado
+ *     (`tablero.cortePorLeadCalificado`, con su escalera `escalar` / `advertencia` / `matar`), el
+ *     **costo por reunión** (`tablero.techoPorReunion`, desde el 2026-09-16) y el **techo de CAC**
+ *     (`tablero.techoCac`). Escritas en un doc, esas reglas se cumplen cuando uno quiere; calculadas,
+ *     aparecen solas el viernes que toca parar. Los umbrales NO se escriben acá: se leen del canon,
+ *     para que cambiarlos sea una decisión registrada y no una edición de código. Lo que el canon
+ *     declara MANUAL (`escalarPasoMaximo`, LTV, ticket) no se lee acá: `tablero._notaKpi` lo dice.
  *  2. Todo número declara su **fuenteDato**. Hoy varios son `manual` y así se imprime: el hueco
  *     honesto del README de este módulo era precisamente no fingir que el conteo del bot es
  *     automático.
@@ -153,6 +155,23 @@ function metricas(canal) {
 
 const esPagada = (origin) => T.fuentesPagadas.includes(String(origin).split('_')[0]);
 
+/**
+ * La escalera del costo por lead calificado (06-BUDGET-PLAN §5), leída del canon y no de memoria.
+ * Hasta el 2026-09-16 `advertencia`, `matar` y `escalar` vivían en el canon y no los leía nadie:
+ * los docs decían «se calcula, no se estima a ojo» y se calculaban dos umbrales de seis.
+ *   ✖ matar   > matarPorLeadCalificado       ▲▲ advertencia > advertenciaPorLeadCalificado
+ *   ▲ corte   > cortePorLeadCalificado       ↑ escalar      < escalarPorLeadCalificado
+ * Sin denominador no hay marca, igual que en todo lo demás.
+ */
+function marcaCalificado(costo) {
+  if (costo === null) return '';
+  if (T.matarPorLeadCalificado && costo > T.matarPorLeadCalificado) return ' ✖';
+  if (T.advertenciaPorLeadCalificado && costo > T.advertenciaPorLeadCalificado) return ' ▲▲';
+  if (costo > T.cortePorLeadCalificado) return ' ▲';
+  if (T.escalarPorLeadCalificado && costo < T.escalarPorLeadCalificado) return ' ↑';
+  return '';
+}
+
 // ── Salida ──────────────────────────────────────────────────────────────────
 
 const money = (v) => (v === null ? '—' : cop(v));
@@ -178,11 +197,14 @@ function imprimirSemana(semana) {
 
   for (const canal of canales) {
     const m = metricas(canal);
-    const alerta = esPagada(canal.origin) && m.porCalificado !== null && m.porCalificado > T.cortePorLeadCalificado;
+    const pagada = esPagada(canal.origin);
     // El techo de CAC es el otro corte, y hasta el 13-ago-2026 no existía: la columna CAC se
     // imprimía sin veredicto. Un número sin umbral al lado no para nada, y era justamente el
-    // número que decidía si la adquisición tenía negocio o no.
-    const alertaCac = esPagada(canal.origin) && m.cac !== null && m.cac > T.techoCac;
+    // número que decidía si la adquisición tenía negocio o no. El costo por reunión tuvo el mismo
+    // hueco hasta el 2026-09-16 (`techoPorReunion`, que es el techo de CAC por la tasa supuesta de
+    // cierre): la reunión es el KPI que manda y el único hecho con testigo en todos los canales.
+    const alertaCac = pagada && m.cac !== null && m.cac > T.techoCac;
+    const alertaReunion = pagada && m.porReunion !== null && T.techoPorReunion && m.porReunion > T.techoPorReunion;
     console.log(
       '  ' +
         fila(
@@ -193,8 +215,8 @@ function imprimirSemana(semana) {
             m.calificados,
             m.reuniones,
             m.cierres,
-            money(m.porCalificado) + (alerta ? ' ▲' : ''),
-            money(m.porReunion),
+            money(m.porCalificado) + (pagada ? marcaCalificado(m.porCalificado) : ''),
+            money(m.porReunion) + (alertaReunion ? ' ▲' : ''),
             money(m.cac) + (alertaCac ? ' ▲' : ''),
           ],
           ANCHOS,
@@ -234,6 +256,18 @@ function imprimirSemana(semana) {
   console.log(
     `\n  ${señal} reuniones agendadas: ${total.reuniones} / ${meta} de meta semanal  ← el KPI que manda (13 §8)`,
   );
+
+  // El costo por reunión contra su techo, sobre el total de la semana. Mismo estilo que el CAC.
+  const porReunionTotal = porUnidad(total.gasto, total.reuniones);
+  if (porReunionTotal !== null && T.techoPorReunion) {
+    const okReunion = porReunionTotal <= T.techoPorReunion;
+    console.log(
+      `  ${okReunion ? '✓' : '✖'} costo por reunión: ${cop(porReunionTotal)} contra un techo de ${cop(T.techoPorReunion)}` +
+        (okReunion ? '' : '  ← la reunión sale más cara de lo que un cierre puede pagar: se revisa el mensaje o la lista'),
+    );
+  } else if (total.gasto > 0 && T.techoPorReunion) {
+    console.log(`  ⋯ costo por reunión: hubo gasto y cero reuniones, no hay denominador (techo: ${cop(T.techoPorReunion)}).`);
+  }
 
   // El techo de CAC, sobre el total pagado de la semana.
   const cacTotal = porUnidad(total.gasto, total.cierres);
@@ -354,6 +388,20 @@ function ronda() {
     console.log(`\n  ejecutado: ${cop(gastoTotal)} de ${cop(cfg.presupuesto)} (${pct(usado)})`);
   }
   console.log(`  reuniones agendadas en la ronda: ${reunionesTotal}`);
+
+  // El costo por reunión de la ronda, sólo sobre lo pagado (el outbound no carga CAC).
+  const reunionesPagadas = pagados.reduce((a, [, x]) => a + x.reuniones, 0);
+  const gastoPagadoReuniones = pagados.reduce((a, [, x]) => a + x.gasto, 0);
+  if (T.techoPorReunion && gastoPagadoReuniones > 0 && reunionesPagadas > 0) {
+    const porReunion = gastoPagadoReuniones / reunionesPagadas;
+    const ok = porReunion <= T.techoPorReunion;
+    console.log(
+      `  ${ok ? '✓' : '🔴'} costo por reunión de la ronda: ${cop(porReunion)} contra un techo de ${cop(T.techoPorReunion)}` +
+        (ok ? '' : ' (techo de CAC × tasa de cierre supuesta: por encima, ningún cierre paga la reunión).'),
+    );
+  } else if (T.techoPorReunion && gastoPagadoReuniones > 0) {
+    console.log(`  ⋯ costo por reunión de la ronda: sin reuniones todavía, no hay denominador (techo: ${cop(T.techoPorReunion)}).`);
+  }
 
   // El techo de CAC sobre la ronda completa. Mismo criterio que la regla de corte: sin denominador
   // no hay veredicto. Con cero cierres el CAC es infinito, y eso no es "malo", es "todavía no se sabe".

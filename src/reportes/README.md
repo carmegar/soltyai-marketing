@@ -45,8 +45,17 @@ precios y costos salen de `data/catalogo.json`, así que el margen arrastra el e
      Colombia de **$80.000 a $250.000 por lead**, la suscripción sola no puede pagar tráfico pago:
      hay que anclar al **LTV** ($5.080.000 a 12 meses) y aceptar que el payback se corre al mes 2–3.
      Con el corte viejo la ronda se cortaba sola y se leía como "la pauta no sirve", cuando el que
-     estaba mal era el umbral. Los demás valores también viven en el canon: advertencia **$180.000**,
-     matar **$250.000**, escalar por debajo de **$80.000** (+20% por paso), techo de CAC **$800.000**.
+     estaba mal era el umbral. Los demás valores también viven en el canon y **desde el 2026-09-16 los
+     lee este programa**: advertencia **$180.000** (▲▲), matar **$250.000** (✖), escalar por debajo de
+     **$80.000** (↑) en la columna `$/calificado` de cada origin pagado; techo de CAC **$800.000**; y el
+     **techo por reunión de $240.000** (`canon.tablero.techoPorReunion` = techo de CAC × la tasa
+     reunión→cierre supuesta de 0,30, `tasaReunionCierreSupuesta`). Hasta ese día `$/reunión` se imprimía
+     sin veredicto, que es el mismo hueco que tuvo el CAC hasta el 13-ago. Lo que sigue siendo MANUAL y
+     no lee ningún código: el +20% por paso al escalar, el LTV y el ticket (`canon.tablero._notaKpi`).
+   - **La reunión es el umbral que vale en todos los canales.** El lead calificado es un filtro manual
+     que sólo existe con pauta; la reunión tiene testigo (la invitación de Meet) también en outbound y
+     orgánico. Si la tasa de cierre se recalibra con las primeras 8 reuniones, `techoPorReunion` se
+     recalcula en el mismo commit: es derivado, no una decisión aparte.
 2. **Se evalúa sobre la ronda, no sobre la semana.** Una semana mala no significa que la oferta esté
    mal, y esperar al cierre de la ronda para mirar significa haberla gastado completa antes de saberlo.
 3. **Todo número declara su `fuenteDato`.** Hoy varios son `manual` y así se imprimen. Éste era el
@@ -77,7 +86,7 @@ de aquí.
 | `gasto` | **`export-google`** (Google Ads, por grupo de anuncios) o **`export-meta`** (Meta, por ad set), según el carril. Los carriles gratis —GBP, orgánico, outbound— van con **gasto 0 explícito**, no en blanco |
 | `leads` | conteo del bot / registro de `src/links` (`manual` o `bot-log`) |
 | `calificados` | los que pasan la pre-calificación del bot (`manual`) |
-| `reuniones` | formulario de `/contacto` + invitación de Meet a mano (`manual`); `calendly` sigue en `fuentesDeDato` sólo por si vuelve |
+| `reuniones` | formulario de `/contacto` + invitación de Meet a mano (`manual`). `calendly` salió de `fuentesDeDato` el 2026-09-16: no hay Calendly desde el 9-sep |
 | `cierres` | suite, MCP `listar_cotizaciones` / `resumen_dashboard` (`suite-mcp`) |
 
 > **Por qué `export-google` es una fuente aparte y no "el export de la pauta":** Google Search y Meta
