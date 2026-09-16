@@ -110,8 +110,8 @@ El número que hay que vigilar **no** es el gasto ni los seguidores: son **reuni
 semana**. Menos de 2/semana = el mes no se cumple, sin importar qué digan las impresiones.
 
 > **Por qué dejó de ser «demos» (2026-08-13):** el cold email pivotó a pedir **15 minutos** en vez de
-> entregar una demo, y la venta se cierra en esa reunión (`business/16 §6c`). El número es el mismo
-> —una reunión concretada, hoy por el formulario de `/contacto` y la invitación de Meet a mano— pero
+> entregar una demo, y la venta se cierra en esa reunión (`business/16 §6c`). El número es el mismo,
+> una reunión concretada (hoy por el formulario de `/contacto` y la invitación de Meet a mano), pero
 > el nombre viejo hacía pensar que había que entregar algo antes de hablar. La clave se renombró a
 > `reuniones` en canon, código y README el 15-sep-2026.
 

@@ -1,5 +1,66 @@
 # Changelog · soltyai-marketing
 
+## 2026-09-16 — Revisión con las skills: competencia por frente, techo por reunión, guiones al vertical, «su» en el guardrail
+
+Paquete P2 de la sesión de revisión con las skills (`claude-ads:ads-competitor`, `ads-math`,
+`ads-landing` y `marketing:brand-review`), ejecutado sobre los informes de sólo lectura
+`B-competencia.md`, `C-math.md`, `D-brand.md` y el hallazgo del patrón «su» de `A-landing.md`
+(bitácora, 16-sep-2026). Rama `revision/skills-2026-09-16`, cuatro commits, ningún importe del
+canon se mueve. `npm run check`: verde, **0 errores y 0 avisos** (eran 4 avisos).
+
+- **Competencia.** `03-competitor-analysis.md` reestructurado por frente: §1 Meta con los hechos de
+  septiembre (Meta One vende el agente por suscripción desde US$14,99; tokens a US$2/M desde el
+  1-ago; **WhatsApp cobra los mensajes de servicio desde el 1-oct-2026**; MCP server que comoditiza
+  el registro del WABA), §2 bots, §3 estudios e integración DIAN, §4 domicilios, §5 huecos y
+  amenazas, §6 método. Todo dato de tercero con URL y «consultado 16-sep-2026». Los huecos quedan en
+  tres (facturador habilitado + integración, empresa de domicilios, base de cobro en COP): el
+  done-for-you y la «IA incluida» ya los reclaman Ventiva y Dinolabs. La ronda de junio (mapa,
+  ángulos A–G, tabla) vive en el Anexo A con fecha; «03 §3 / §5 / §6» se leen como A.3/A.5/A.6.
+  **DiDi Tu Negocio NO incluye el envío** (página oficial: «qué pagan los usuarios: productos +
+  costos de envío + propina»): `incluyeElDomicilio` pasa a `vigente` en `dolores.json` y la
+  comparación de `19 §3.3` se rehace con el envío del mismo lado en los dos caminos: la suscripción
+  gana desde ~82 pedidos/mes, no «pierde bajo $50–60k de ticket». `21 §4.2/§4.5`: Mentora (nacional,
+  con precio) y Gestro (Bucaramanga, POS con domicilios y DIAN desde $79.000/mes). `14-SWIPE-FILE`:
+  entrada de reclamos de sitio (Ventiva 876% ROI, Mentora −85%, Kondory +150 proyectos) con captura
+  JPG y transcripción TXT. `05 §1`: consumo de WhatsApp a cargo del cliente, estimado por volumen;
+  el registro del WABA deja de ser trabajo cobrable.
+- **Canon + reportes.** `tablero`: `_notaCac` reescrita (el techo de 800.000 vale para L1 y L2, las
+  recurrentes; para L3 el techo es el margen del proyecto cotizado; en neto se recupera en el mes 3);
+  nueva `tasaReunionCierreSupuesta: 0.30` (06 §2.2 decía 30%, 13-PLAN 15%, ninguno mandaba; se
+  recalibra con las primeras 8 reuniones; si se confirma 15% se retrabaja la oferta, no el umbral);
+  nueva `techoPorReunion: 240000` (= techo × tasa, el umbral que vale en todos los canales); sale
+  `calendly` de `fuentesDeDato`; G1 con objetivo (sin la web sola en la pauta, sin el anticipo de
+  1,5M) y `cuando` realista; `_notaKpi` dice qué lee la máquina y qué es manual. **L2.precio.unidad
+  suma «más el consumo de WhatsApp Business, que el cliente paga a Meta (mensajes de servicio
+  cobrados desde el 1-oct-2026)»** ⚠️ la landing la imprime desde `canon.snapshot.json` (platform):
+  hay que refrescar el snapshot. `src/reportes`: veredicto de $/reunión contra `techoPorReunion`
+  en la semana y en la ronda, y la escalera advertencia/matar/escalar por origin pagado (▲▲/✖/↑);
+  probado sobre una semana de prueba y revertido. Sincronizados `06` (§0, §2.2, **§4.3 nueva**,
+  §6.1, §6.2, §7.2, recuadro), `13` (§1, §2, §5, §8; fuera «todavía se llama demos» y el Calendly),
+  `15 §8`, `01:235` (frase reparada), `src/reportes/README`. Nota en `06 §4.3`: los costos de
+  `desarrollo-a-medida` (40 h vs 3 a 6 semanas) y las horas de soporte de L1 hay que **medirlos**
+  antes de confiar en los márgenes; `data/catalogo.json` no se tocó.
+- **Guiones.** `video-demo-guion.md`: destino outbound + IG/FB/TikTok con marcador de canal (fuera
+  «post fijado del LinkedIn de empresa», que lleva servicio), fuera la compuerta de 5 pasos y el
+  «te la habilito hoy» (la demo es abierta), «querés» → «quieres», «15 minutos» → «media hora».
+  `guiones-tanda-1.md`: evidencia del #1 y del #5 sin atribuirle a Bucaradomi el registro de
+  pedidos por chat (su contrato lo excluye), «casi la mitad» → «buena parte», tabla de grabación
+  alineada con los marcadores. `videos-angulo-lo-necesitas.md`: **decisión del fundador, el video 5
+  pasa de «Bot» a «Domicilios y pedidos»** (la operación es el titular, el chat es la interfaz; el
+  🟡 declarado desde el 5-sep se cierra sin mover el canon ni el destino; `18 §4` y `20 C11` lo
+  registran); respuesta de precio para el bot y para domicilios con la base de cobro del canon, sin
+  cifra. `solty-fb-textos.md` y `solty-yt-textos.md`: declaran su canal y la bio, la descripción y
+  el primer post abren con el servicio a la medida (eran del 22-jul, anteriores al mensaje líder
+  por canal).
+- **Guardrail.** «su» entra al patrón 2 de `metricaSinFuente` junto a «sus» (autorizado: es agregar,
+  no aflojar). El hueco lo encontró la auditoría de la landing: «hasta el 40% de su jornada»
+  publicado en `/servicios` y el patrón no lo cazaba. Prueba directa `FRASES_QUE_CAZAN` en
+  `prueba.js` (control: el patrón viejo no cazaba la frase) y la frase en el fixture. Queda anotado
+  que «tu» en singular es el mismo hueco en tuteo y no se tocó por no estar autorizado.
+- **Fuera de este repo, para quien siga:** la landing (`platform`) tiene los cambios 1, 2, 4, 5, 6 y
+  11 del informe D y los 10 del informe A pendientes, más el refresco del snapshot del canon; el
+  `/servicios` sigue con «hasta el 40% de su jornada» publicado.
+
 ## 2026-09-16 — GSC: la alerta «bloqueada por robots.txt» era vieja; validación lanzada
 
 Correo de Search Console con «2 páginas sin indexar». Verificado en el panel (Claude in Chrome) y por
