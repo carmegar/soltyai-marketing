@@ -1,5 +1,16 @@
 # Changelog · soltyai-marketing
 
+## 2026-09-16 — GSC: la alerta «bloqueada por robots.txt» era vieja; validación lanzada
+
+Correo de Search Console con «2 páginas sin indexar». Verificado en el panel (Claude in Chrome) y por
+`curl`: la bloqueada es `https://www.soltyai.com/` con **último rastreo del 7-may-2026**, anterior al
+sitio actual; hoy `www` responde 301 a `soltyai.com` (Caddy) y `soltyai.com/robots.txt` es
+`Allow: /` (la versión del 15-sep con los rastreadores de IA). GSC ya tiene las tres variantes del
+`robots.txt` como «Obtenido» sin incidencias, y la **prueba en tiempo real** dice «la URL está
+disponible para Google». La otra, «página con redirección», es `http://soltyai.com/` → `https://`:
+correcto, no es error. No se cambió nada en el sitio; se lanzó **Validar corrección** (iniciada
+16-sep, Google avisa por correo al cerrarla). Sin pendiente en el tablero (🟡, se cierra solo).
+
 ## 2026-09-15 — D1: los planes de bot se despublican, el bot se cotiza, el motor contable sale de la oferta, KPI reuniones
 
 Decisión del fundador, textual: **«los chatbots hacen parte de nuestros productos pero cotizados
