@@ -1,4 +1,4 @@
-import { existe, leer, leerJson, lineaDe, listar } from '../lib/io.js';
+import { existe, leer, leerJson, lineaDe, listar, listarDir } from '../lib/io.js';
 import { canon, catalogo, preciosVigentes } from '../lib/canon.js';
 import { cop, largo, montosCop, normalizar, plazosEnDias } from '../lib/texto.js';
 
@@ -34,6 +34,74 @@ const ARCHIVOS_MD = () => [...listar('.md'), ...listar('.txt')];
  * doc puede nombrar lo prohibido para explicarlo; una bio de perfil, no).
  */
 const PUBLICADO = () => ARCHIVOS_MD().filter((f) => f.startsWith('redes/'));
+
+/**
+ * El copy publicado que vive en OTRO repo: los correos del outbound.
+ *
+ * `tools/apps/prospeccion` es el ejecutor del outbound (README de este repo: «tiene los datos, el
+ * `.env` y las credenciales; este repo mide y decide»). Ahí viven las plantillas de los toques 2 y
+ * 3, el prompt que redacta el toque 1, las respuestas guardadas con las que se contesta «¿cuánto
+ * vale?» y las hojas de envío que se copian a Gmail. Es el copy que MÁS gente lee de todo lo que
+ * escribimos —un correo por prospecto— y hasta el 15-sep-2026 ninguna prohibición lo miraba, por
+ * la misma razón por la que `redes/` estuvo fuera hasta el 20-ago: no vivía donde el linter
+ * buscaba. Estaba en el tablero como pendiente.
+ *
+ * Mismo patrón que la landing con el canon: **si el repo está en disco al lado, se compara; si no,
+ * se salta SIN fingir que verificó** —`alcanceExterno()` dice cuál de las dos pasó y el runner lo
+ * imprime—. En el CI de este repo el directorio no existe, así que ahí no se juzga; en la máquina
+ * del fundador, que es donde se escriben esos correos, sí. Un verde del CI no significa que los
+ * correos estén bien: significa que el CI no los vio, y lo dice.
+ *
+ * Sólo lectura: nada de este módulo escribe fuera de la raíz. Los hallazgos salen con la ruta
+ * `../tools/apps/prospeccion/...` y se corrigen ALLÁ, en ese repo, nunca desde acá.
+ *
+ * Qué entra y por qué esa lista y no «todo el directorio»:
+ *   - `RESPUESTAS-GUARDADAS.md`        lo que se contesta cuando preguntan precio: es copy.
+ *   - `src/06-generate-emails.js`      el prompt del toque 1 y las plantillas fijas de los toques 2 y 3.
+ *   - `src/06d-cierre-reunion.js`      el cierre que reemplaza al de la tanda.
+ *   - `src/06e-correo-con-auditoria.js` el correo del grupo tratamiento.
+ *   - `src/14-envio-manual.js`         los encabezados de la hoja de envío.
+ *   - `data/emails/tanda-NN-revision.md` y `tanda-NN-envio-manual-loteN.md`: lo que de verdad se
+ *     manda. Están fuera de git (datos personales, Ley 1581); el linter sólo reporta archivo y
+ *     línea, nunca el contenido. Las copias `.bak` y `.antes-de-*` no entran: son historia.
+ *   El resto del pipeline (scraping, score, CRM) no es copy y no se juzga.
+ *
+ * Entra a las prohibiciones (como PUBLICADO) y NO a `mensajeLider`: un archivo `.js` de otro repo
+ * no declara `<!-- canal: … -->` y no vamos a poner marcadores nuestros en código ajeno. Su canal
+ * es `outbound` por definición y eso ya lo vigila el canon; lo que faltaba era el precio y la
+ * promesa, que es lo que las prohibiciones miran.
+ */
+const EXTERNOS = [
+  {
+    id: 'prospeccion',
+    ruta: '../tools/apps/prospeccion',
+    que: 'los correos del outbound (plantillas, prompt del toque 1, respuestas guardadas y hojas de envío)',
+    archivos: [
+      'RESPUESTAS-GUARDADAS.md',
+      'src/06-generate-emails.js',
+      'src/06d-cierre-reunion.js',
+      'src/06e-correo-con-auditoria.js',
+      'src/14-envio-manual.js',
+    ],
+    carpeta: 'data/emails',
+    patron: /^tanda-\d+-(revision|envio-manual-lote\d+)\.md$/,
+  },
+];
+
+/** Qué repos vecinos se pudieron leer y cuáles no. El runner lo imprime para que el hueco se vea. */
+export function alcanceExterno() {
+  return EXTERNOS.map((e) => {
+    const presente = existe(e.ruta);
+    if (!presente) return { ...e, presente, archivos: [] };
+    const fijos = e.archivos.map((a) => `${e.ruta}/${a}`).filter(existe);
+    const hojas = existe(`${e.ruta}/${e.carpeta}`)
+      ? listarDir(`${e.ruta}/${e.carpeta}`).filter((n) => e.patron.test(n)).map((n) => `${e.ruta}/${e.carpeta}/${n}`)
+      : [];
+    return { ...e, presente, archivos: [...fijos, ...hojas].sort() };
+  });
+}
+
+const PUBLICADO_EXTERNO = () => alcanceExterno().flatMap((e) => e.archivos);
 
 /**
  * Exención POR LÍNEA, no por archivo.
@@ -133,12 +201,21 @@ export function preciosDePlan() {
 // ─────────────────────────────────────────────────────────────────────────────
 // 3 · Prohibiciones de mensaje (planes superados, WhatsApp, ángulos quemados, humo)
 // ─────────────────────────────────────────────────────────────────────────────
-export function prohibiciones(piezas = PIEZAS()) {
+export function prohibiciones(piezas = PIEZAS(), { respetarExcluir = true } = {}) {
   const hallazgos = [];
 
   for (const [nombre, regla] of Object.entries(canon.prohibiciones)) {
     if (nombre.startsWith('_')) continue;
-    // 🔴 Tres alcances, no dos (20-ago). Antes eran `copy/` y «todo», y en el medio se coló la
+    // `excluir` (2026-09-15): rutas relativas al repo que la regla NO mira aunque su alcance las
+    // cubra. Nació con `planesRetirados`, alcance «todo», y el CHANGELOG: es append-only, es la
+    // historia de por qué cada precio fue lo que fue, y reescribirlo para que el linter calle es
+    // falsificar el registro. Es una lista cerrada de archivos, nunca un patrón: un glob acá sería
+    // la forma cómoda de apagar la regla sobre media carpeta sin que se note en el diff. Y tiene
+    // prueba en prueba.js: una exclusión que no exime nada de verdad es una que se puede borrar sin
+    // que nadie se entere. `respetarExcluir=false` existe sólo para esa prueba.
+    const excluidos = new Set(respetarExcluir ? regla.excluir ?? [] : []);
+    // 🔴 Tres alcances, no dos (20-ago) — y cuatro desde el 15-sep, ver PUBLICADO_EXTERNO.
+    // Antes eran `copy/` y «todo», y en el medio se coló la
     // categoría más importante: **el copy que de verdad se publica y no vive en `copy/`**.
     //
     //   piezas      copy/*.json      las piezas de anuncio
@@ -151,8 +228,14 @@ export function prohibiciones(piezas = PIEZAS()) {
     // El error era meter `redes/` en el saco de los docs. No es documentación: es lo que el
     // cliente lee. De las 7 prohibiciones sólo UNA tenía alcance «todo», así que hasta hoy la
     // biografía del perfil podía prometer lo que quisiera.
-    const archivos =
-      regla.alcance === 'todo' ? [...ARCHIVOS_MD(), ...piezas] : [...PUBLICADO(), ...piezas];
+    //
+    // Y un cuarto (15-sep): PUBLICADO_EXTERNO, los correos del outbound en `../tools`, si el repo
+    // está en disco. Van en las dos ramas porque son copy publicado, igual que `redes/`.
+    const archivos = (
+      regla.alcance === 'todo'
+        ? [...ARCHIVOS_MD(), ...PUBLICADO_EXTERNO(), ...piezas]
+        : [...PUBLICADO(), ...PUBLICADO_EXTERNO(), ...piezas]
+    ).filter((a) => !excluidos.has(a));
 
     // `patronesEn` y `exencionesEn` existen en el canon desde que se escribieron y NUNCA se
     // leyeron: el bucle miraba sólo `patrones`, así que los patrones en inglés no protegían nada.

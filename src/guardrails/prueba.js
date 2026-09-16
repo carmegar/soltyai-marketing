@@ -7,6 +7,7 @@
  * debe cazar, y declara en `_esperados` cuáles. La prueba falla si alguno deja de dispararse.
  */
 import { leer, leerJson, listar } from '../lib/io.js';
+import { canon } from '../lib/canon.js';
 import { mensajeLider, piezasDeCopy, prohibiciones } from './reglas.js';
 
 const esteEs = (f) => f.startsWith('copy/_pruebas/');
@@ -62,6 +63,28 @@ for (const archivo of [...fixtures, ...fixturesTexto]) {
     (r) => !esperados.some((e) => r === e || r.startsWith(e)),
   );
   if (sobrantes.length) console.log(`    ▲ además disparó: ${sobrantes.join(', ')}`);
+}
+
+/*
+ * `excluir` (2026-09-15): una prohibición puede declarar rutas que NO mira aunque su alcance las
+ * cubra (hoy: `planesRetirados` no juzga el CHANGELOG, que es historia append-only). Se prueba
+ * distinto que el resto porque un fixture no puede estar y no estar en la lista a la vez: se corre
+ * la regla CON y SIN respetar la exclusión sobre el repo real, y se exigen las dos mitades:
+ *   - sin respetarla, el archivo excluido tiene que cantar (si no canta, la exclusión no exime
+ *     nada y es un adorno que se puede borrar sin que nadie lo note);
+ *   - respetándola, no puede quedar ni un hallazgo de esa regla en ese archivo.
+ */
+for (const [nombre, regla] of Object.entries(canon.prohibiciones)) {
+  if (nombre.startsWith('_') || !regla.excluir?.length) continue;
+  const enExcluidos = (h) => h.regla === `prohibicion:${nombre}` && regla.excluir.includes(h.archivo);
+  const sinRespetar = prohibiciones([], { respetarExcluir: false }).filter(enExcluidos);
+  const respetando = prohibiciones([], { respetarExcluir: true }).filter(enExcluidos);
+  const exime = sinRespetar.length > 0;
+  const calla = respetando.length === 0;
+  console.log(`\n  excluir · ${nombre} → ${regla.excluir.join(', ')}`);
+  console.log(`    ${exime ? '✓' : '✖'} sin la exclusión canta (${sinRespetar.length} hallazgo/s): la exclusión exime algo real`);
+  console.log(`    ${calla ? '✓' : '✖'} con la exclusión no queda ningún hallazgo en lo excluido`);
+  if (!exime || !calla) fallos++;
 }
 
 if (fallos) {

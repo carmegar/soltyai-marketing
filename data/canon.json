@@ -314,10 +314,14 @@
         "esencial[^.\\n]{0,25}\\$?\\s*290[.,]?000",
         "pro[^.\\n]{0,25}\\$?\\s*490[.,]?000",
         "premium[^.\\n]{0,25}\\$?\\s*790[.,]?000",
-        "\\$?\\s*(290|490|790)[.,]?000\\s*(/\\s*mes|mensual|al mes|por mes|cop/mes)",
+        "\\$?\\s*(290|790)[.,]?000\\s*(/\\s*mes|mensual|al mes|por mes|cop/mes)",
+        "(bot|chatbot|plan|suscripci)[^.\\n]{0,30}\\$?\\s*490[.,]?000",
         "setup[^.\\n]{0,20}\\$?\\s*400[.,]?000",
         "\\$?\\s*50[.,]?000\\s*(por|cada|/)\\s*100\\s*conversaciones"
       ],
+      "_ajustePatrones": "2026-09-15, la misma tarde: el patrón «(290|490|790).000 /mes» cazaba el «$490.000/mes» de soporte-evolutivo en las 4 páginas de redes/seo y en 17 §H9, y ese importe es legítimo (L3, catalogo → servicios[soporte-evolutivo]; coincide con el del plan Pro por casualidad). Se quitó el 490 de la forma suelta y se reemplazó por adyacencia con la palabra que lo identifica como bot (bot, chatbot, plan, suscripción), además del «pro …» que ya existía. Un «$490.000/mes» pegado a «soporte» no es un plan retirado.",
+      "excluir": ["CHANGELOG.md"],
+      "_excluir": "El CHANGELOG es append-only: es la historia de por qué cada precio fue lo que fue, y reescribirlo para que el linter calle es falsificar el registro. Es el único archivo excluido y es una lista cerrada de rutas (src/guardrails/reglas.js: nunca un patrón). Tiene prueba en src/guardrails/prueba.js: si la exclusión deja de eximir algo real, la prueba falla.",
       "alcance": "todo",
       "porque": "Los 3 planes de bot se despublicaron el 2026-09-15: el bot se cotiza por prospecto y ninguna cifra de plan es pública. Citarla en copy, redes, GBP o docs de oferta reabre un precio de lista que la empresa decidió cerrar.",
       "exenciones": [
