@@ -231,8 +231,9 @@ mano**, que es justo lo que se puede hacer sin presupuesto de pauta.
 **El ancla de precio**, con la lógica de `18 §6` (el reemplazo, no el costo): un auxiliar de
 producción o de costeo cuesta ~$1.900.000/mes. Y la desviación de cuero de una fábrica que corta
 10.000 pares al mes es plata de verdad. Un producto entre **$500.000 y $900.000/mes** cabe en esa
-conversación. En una página publicada, sin embargo, **se habla en horas, no en pesos**, hasta que
-`parametros.costoHoraOperativa` deje de estar marcado `supuesto`.
+conversación. En una página publicada, sin embargo, **se habla en horas, no en pesos**
+(`parametros.costoHoraOperativa` quedó verificado el 15-sep-2026 en $15.200/h; un peso se dice sólo
+con la fuente y la fecha al lado).
 
 ---
 
@@ -262,7 +263,8 @@ El precio de mercado del software de restaurante en Colombia en 2026 va de **$9.
   facturación) llega a ~$245.600/mes.
 - **Siigo POS Gastrobar:** $87.494/mes (otra fuente reporta desde ~$99.993).
 
-Nuestro plan más barato es **$290.000/mes**. Entrar a competir en POS significa llegar 3–4 veces por
+Nuestra referencia más barata de bot era **$290.000/mes** (retirada de la publicación el 15-sep-2026:
+el bot se cotiza). Entrar a competir en POS significa llegar 3–4 veces por
 encima del líder de precio, contra productos con años de camino, integraciones de plataformas y
 soporte 24/7. **No.** Y hay una razón de fondo: el POS es **horizontal disfrazado de vertical** —
 mismo producto para todo restaurante del país, guerra de precio garantizada. Es lo contrario del
@@ -337,8 +339,9 @@ el volumen de domicilio lo mueven restaurantes de barrio). 30 días operativos a
 
 A eso hay que sumarle lo que no aparece en ninguna nómina: **quién despacha**. A 1,5 minutos por
 pedido entre tomarlo, asignarlo, seguirlo y cerrarlo, son **7,5 horas al mes** con 10 pedidos
-diarios, **22 horas** con 30 y **60 horas** con 80. Se dice en horas y no en pesos, porque
-`costoHoraOperativa` sigue en `supuesto`. **Ese es el trabajo que reemplaza `domicilios-ops`**, y es
+diarios, **22 horas** con 30 y **60 horas** con 80. Se dice en horas y no en pesos por regla del
+carril de video (`costoHoraOperativa` ya está verificado: $15.200/h desde el 15-sep-2026, o sea
+~$114.000, ~$334.000 y ~$912.000 al mes en la conversación de venta, nunca en cámara sin la fuente). **Ese es el trabajo que reemplaza `domicilios-ops`**, y es
 el único de los tres caminos donde nuestro producto entra sin depender de la flota.
 
 #### 3.3.3 · Los tres escenarios
@@ -484,7 +487,7 @@ Aplicado, quedan estos:
 | **Transporte de carga — RNDC** | Desde el **1-may-2026** son obligatorios los formatos únicos de manifiesto electrónico y de cumplido (Res. 20263040016075). El **Decreto 1017 de 2025** exige reportar tiempos logísticos reales por sistemas de monitoreo de flota | 🟢 **Candidato, y encaja con lo que ya sabemos hacer** |
 | **Nómina electrónica / reforma laboral** | Obligatoria para prácticamente todo empleador; transmisión en los primeros 10 días hábiles del mes siguiente. Sanciones: 1% (tope 7.500 UVT) por no enviar, 0,7% con errores, 0,5% extemporánea, **más pérdida de deducibilidad** del gasto de nómina | 🟡 **Como módulo, nunca solo** |
 | **Propiedad horizontal (Ley 675)** | Sin fecha nueva | 🔴 **Descartado por precio** |
-| **Contable (documento DIAN → asiento)** | Ya es producto propio | ➡️ Ver `contable/` |
+| **Contable (documento DIAN → asiento)** | ~~Ya es producto propio~~ **No es producto a vender** (decisión del 15-sep-2026: no está terminado). La capacidad se vende como integración contable DIAN a la medida (L3) | ➡️ Ver `contable/` y `18 §4` |
 
 ### 4.1 · Salud (FEV + RIPS) — por qué es el más interesante
 
@@ -492,7 +495,7 @@ Aplicado, quedan estos:
   el software en cartera, que es el argumento más fácil de vender que existe.
 - El más golpeado es el **consultorio independiente y la IPS pequeña**, que no tiene con quién.
 - **Y encaja con un motor que ya construimos:** `contable/` ya es «documento electrónico DIAN → asiento
-  contable», determinista primero. La mecánica de validar estructura, cruzar contra la factura y
+  contable», determinista primero (no se vende como producto, pero la mecánica es nuestra). La mecánica de validar estructura, cruzar contra la factura y
   cantar la excepción es **la misma forma** del problema RIPS.
 
 ⚠️ **Los frenos, que son serios:** es un sector regulado con **datos sensibles de salud** (habeas data

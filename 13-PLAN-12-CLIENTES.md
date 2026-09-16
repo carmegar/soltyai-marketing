@@ -31,12 +31,14 @@
 **Ritmo necesario: ~1,2 suscripciones nuevas/mes + 1 proyecto de servicio por trimestre.** Contra las
 2,4/mes del plan viejo, que nunca se acercó a cumplirse.
 
-Con el pricing vigente en Colombia (`ESTADO.md` §Marketing — manda sobre el USD del paquete viejo):
+Con las referencias de cotización del bot (`data/canon.json`; ⚠️ desde el 15-sep-2026 los planes
+**no se publican**, el bot se cotiza por prospecto y estos importes son `referencia`, ver
+`_planesRetirados` — la aritmética de abajo sigue valiendo como supuesto de ticket):
 
 | Concepto | Valor |
 |---|---|
-| Ticket promedio supuesto | **$390.000/mes** (mezcla Esencial $290k / Pro $490k) |
-| Setup único | **$400.000** |
+| Ticket promedio supuesto | **$390.000/mes** (mezcla Esencial $290k / Pro $490k, referencia) |
+| Setup único (referencia, no publicado) | **$400.000** |
 | **Caja del mes 1 por cliente** | **~$790.000** |
 | 6 suscripciones → **MRR a diciembre** | **~$2.340.000/mes** |
 | 6 suscripciones → **caja de setups** | **~$2.400.000** (una vez) |
@@ -394,8 +396,8 @@ que compone sólo funciona si no se corta.
 
 ```
 npm run reportes registrar -- --semana=2026-W31 --ronda=R1 --origin=<origin> \
-    --gasto=300000 --leads=14 --calificados=6 --demos=2 --cierres=bot-pro:1,setup:1
-npm run reportes            # tablero de la semana: $/calificado, $/demo, CAC, MRR y margen
+    --gasto=300000 --leads=14 --calificados=6 --reuniones=2 --cierres=bot-pro:1,setup:1
+npm run reportes            # tablero de la semana: $/calificado, $/reunión, CAC, MRR y margen
 npm run reportes ronda      # la regla de corte del §5, calculada sobre la ronda completa
 ```
 

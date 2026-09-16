@@ -97,7 +97,10 @@ la comida fría.
 
 `digitar-la-factura-del-proveedor` · Contable y administrativo · N2 Automatizar · a la medida
 **Red:** LinkedIn + Shorts · *(orden viejo: número 5)*
-**Evidencia:** es el motor contable, y podemos mostrarlo corriendo.
+**Evidencia:** la integración factura electrónica → sistema contable, que ya hacemos a la medida, y
+se puede mostrar corriendo. *(Hasta el 15-sep-2026 acá decía «es el motor contable»: el motor no se
+ofrece como producto por decisión del fundador; lo que se vende es la integración, que es lo que
+este guion describe.)*
 
 > ¿Todavía tienes a alguien digitando facturas?
 >

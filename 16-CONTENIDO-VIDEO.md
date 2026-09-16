@@ -74,10 +74,14 @@ Ese número **no es una afirmación sobre el mercado**: es aritmética de un sup
 video lo dice así. *«Si tú haces esto 25 veces al día…»*. Quien se reconoce corrige el número en su
 cabeza y se convence solo; quien no, no era el cliente.
 
-Los **pesos** son otra cosa: exigen un costo-hora que hoy está en `parametros.costoHoraOperativa`
-marcado `supuesto` y **sin verificar** (falta confirmar el SMMLV 2026 y el factor prestacional).
-Mientras siga así, en cámara se habla en horas. Si el dueño quiere pesos, pone su propio número.
-El validador grita el aviso en cada corrida para que no se olvide.
+Los **pesos** son otra cosa: exigen un costo-hora, `parametros.costoHoraOperativa`. Estuvo marcado
+`supuesto` (12.000) hasta el **15-sep-2026**, cuando se verificó: **$15.200 por hora**, que es el
+costo mensual del empleador por un SMMLV 2026 con prestaciones y auxilio ($2.765.572, exonerado de
+aportes) sobre las **182 horas reales** de un mes de 42 horas semanales (Ley 2101, desde el
+15-jul-2026). Fuentes y aritmética en su `base`. Lo que NO cambia con eso: **en cámara se sigue
+hablando en horas**, porque las horas las verifica el espectador contra su propio negocio; un peso
+se dice sólo con la fuente y la fecha al lado (regla `metricaSinFuente`), y sirve más en la
+conversación de venta que en un video. Si el dueño quiere pesos, pone su propio número.
 
 ### Los tres niveles: la columna vertebral
 

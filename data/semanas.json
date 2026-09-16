@@ -6,7 +6,7 @@
     "gasto": "COP invertidos en ese origin durante la semana",
     "leads": "conversaciones nuevas atribuidas al origin",
     "calificados": "leads que cumplen el filtro de la pre-calificación (negocio real + rol + presupuesto)",
-    "demos": "citas agendadas — el KPI que manda",
+    "reuniones": "reuniones concretadas con un tomador de decisión (formulario de /contacto + Meet a mano) — el KPI que manda. Se llamó `demos` hasta el 2026-09-15; `validar` rechaza la clave vieja",
     "cierres": "[{ servicio: <id de catalogo.json>, cantidad: n }]",
     "fuenteDato": "de dónde salió cada número; valores válidos en canon.tablero.fuentesDeDato"
   },

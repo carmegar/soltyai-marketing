@@ -24,8 +24,14 @@
  *   npm run reportes tablero -- --semana=2026-W31
  *   npm run reportes ronda -- --ronda=R1              → la regla de corte sobre la ronda completa
  *   npm run reportes registrar -- --semana=2026-W31 --origin=meta_duenopyme_c1 \
- *       --gasto=250000 --leads=12 --calificados=5 --demos=2 \
- *       --cierres=bot-pro:1 --ronda=R1 --fuente-gasto=export-meta --fuente-demos=calendly
+ *       --gasto=250000 --leads=12 --calificados=5 --reuniones=2 \
+ *       --cierres=bot-pro:1 --ronda=R1 --fuente-gasto=export-meta --fuente-reuniones=manual
+ *
+ * ⚠️ La clave `reuniones` se llamó `demos` hasta el 2026-09-15. El KPI ya era «reuniones agendadas»
+ * desde el 13-ago (business/16 §6c), pero la clave, el flag y el canon seguían diciendo `demos`, y
+ * el README tenía que explicar cada vez que «la clave todavía se llama así». El renombre se hizo en
+ * canon + código + README + registro en el mismo commit, no a medias. Un `semanas.json` viejo con
+ * `demos` falla en `validar` a propósito: se migra el nombre, no se adivina.
  *   npm run reportes validar                          → reglas de consistencia (falla el CI)
  */
 import { canon, catalogo, servicio } from '../lib/canon.js';
@@ -134,10 +140,10 @@ function metricas(canal) {
     gasto,
     leads: canal.leads ?? 0,
     calificados: canal.calificados ?? 0,
-    demos: canal.demos ?? 0,
+    reuniones: canal.reuniones ?? 0,
     cierres,
     porCalificado: porUnidad(gasto, canal.calificados ?? 0),
-    porDemo: porUnidad(gasto, canal.demos ?? 0),
+    porReunion: porUnidad(gasto, canal.reuniones ?? 0),
     cac: porUnidad(gasto, cierres),
     ...eco,
     // Cuántos meses de margen recurrente tarda en devolverse lo que costó traer a esos clientes.
@@ -161,13 +167,13 @@ function imprimirSemana(semana) {
   console.log(
     '  ' +
       fila(
-        ['origin', 'gasto', 'leads', 'calif', 'demos', 'cierres', '$/calificado', '$/demo', 'CAC'],
+        ['origin', 'gasto', 'leads', 'calif', 'reun.', 'cierres', '$/calificado', '$/reunión', 'CAC'],
         ANCHOS,
       ),
   );
   console.log('  ' + '─'.repeat(ANCHOS.reduce((a, b) => a + b, 0) + ANCHOS.length - 1));
 
-  const total = { gasto: 0, leads: 0, calificados: 0, demos: 0, cierres: 0, mrr: 0, margenMes: 0 };
+  const total = { gasto: 0, leads: 0, calificados: 0, reuniones: 0, cierres: 0, mrr: 0, margenMes: 0 };
   const supuestos = new Set();
 
   for (const canal of canales) {
@@ -185,16 +191,16 @@ function imprimirSemana(semana) {
             cop(m.gasto),
             m.leads,
             m.calificados,
-            m.demos,
+            m.reuniones,
             m.cierres,
             money(m.porCalificado) + (alerta ? ' ▲' : ''),
-            money(m.porDemo),
+            money(m.porReunion),
             money(m.cac) + (alertaCac ? ' ▲' : ''),
           ],
           ANCHOS,
         ),
     );
-    for (const k of ['gasto', 'leads', 'calificados', 'demos']) total[k] += m[k];
+    for (const k of ['gasto', 'leads', 'calificados', 'reuniones']) total[k] += m[k];
     total.cierres += m.cierres;
     total.mrr += m.mrr;
     total.margenMes += m.margenMes;
@@ -210,23 +216,23 @@ function imprimirSemana(semana) {
           cop(total.gasto),
           total.leads,
           total.calificados,
-          total.demos,
+          total.reuniones,
           total.cierres,
           money(porUnidad(total.gasto, total.calificados)),
-          money(porUnidad(total.gasto, total.demos)),
+          money(porUnidad(total.gasto, total.reuniones)),
           money(porUnidad(total.gasto, total.cierres)),
         ],
         ANCHOS,
       ),
   );
 
-  // El KPI que manda no es el gasto: son las reuniones agendadas. La clave del registro se sigue
-  // llamando `demos` (13-ago-2026): es el mismo número —una cita en el Calendly— con el nombre
-  // viejo, y el renombre se hace en canon, código y README a la vez, no a medias.
-  const meta = T.metaDemosSemana;
-  const señal = total.demos >= meta ? '✓' : '✖';
+  // El KPI que manda no es el gasto: son las reuniones agendadas (una reunión concretada con un
+  // tomador de decisión, por el formulario de /contacto + invitación de Meet a mano). Desde el
+  // 2026-09-15 la clave se llama así en el canon, acá y en el registro.
+  const meta = T.metaReunionesSemana;
+  const señal = total.reuniones >= meta ? '✓' : '✖';
   console.log(
-    `\n  ${señal} reuniones agendadas: ${total.demos} / ${meta} de meta semanal  ← el KPI que manda (13 §8)`,
+    `\n  ${señal} reuniones agendadas: ${total.reuniones} / ${meta} de meta semanal  ← el KPI que manda (13 §8)`,
   );
 
   // El techo de CAC, sobre el total pagado de la semana.
@@ -289,7 +295,7 @@ function tablero() {
         '  Se llena el viernes, en 2 minutos:\n' +
         '    npm run reportes registrar -- --semana=' +
         semanaActual() +
-        ' --origin=<origin> --gasto=0 --leads=0 --calificados=0 --demos=0\n\n' +
+        ' --origin=<origin> --gasto=0 --leads=0 --calificados=0 --reuniones=0\n\n' +
         '  El `origin` sale de `npm run link listar`.\n',
     );
     return;
@@ -316,17 +322,17 @@ function ronda() {
 
   const porOrigin = new Map();
   let gastoTotal = 0;
-  let demosTotal = 0;
+  let reunionesTotal = 0;
   for (const semana of delaRonda) {
     for (const canal of semana.canales ?? []) {
-      const acc = porOrigin.get(canal.origin) ?? { gasto: 0, calificados: 0, demos: 0, cierres: 0 };
+      const acc = porOrigin.get(canal.origin) ?? { gasto: 0, calificados: 0, reuniones: 0, cierres: 0 };
       acc.gasto += canal.gasto ?? 0;
       acc.calificados += canal.calificados ?? 0;
-      acc.demos += canal.demos ?? 0;
+      acc.reuniones += canal.reuniones ?? 0;
       acc.cierres += cierresTotal(canal);
       porOrigin.set(canal.origin, acc);
       gastoTotal += canal.gasto ?? 0;
-      demosTotal += canal.demos ?? 0;
+      reunionesTotal += canal.reuniones ?? 0;
     }
   }
 
@@ -347,7 +353,7 @@ function ronda() {
     const usado = gastoTotal / cfg.presupuesto;
     console.log(`\n  ejecutado: ${cop(gastoTotal)} de ${cop(cfg.presupuesto)} (${pct(usado)})`);
   }
-  console.log(`  reuniones agendadas en la ronda: ${demosTotal}`);
+  console.log(`  reuniones agendadas en la ronda: ${reunionesTotal}`);
 
   // El techo de CAC sobre la ronda completa. Mismo criterio que la regla de corte: sin denominador
   // no hay veredicto. Con cero cierres el CAC es infinito, y eso no es "malo", es "todavía no se sabe".
@@ -416,7 +422,7 @@ function registrar() {
   }
 
   const fuenteDato = {};
-  for (const campo of ['gasto', 'leads', 'calificados', 'demos', 'cierres']) {
+  for (const campo of ['gasto', 'leads', 'calificados', 'reuniones', 'cierres']) {
     const f = flag(`fuente-${campo}`, campo === 'gasto' ? 'export-meta' : 'manual');
     if (!T.fuentesDeDato.includes(f)) {
       salir(`--fuente-${campo}="${f}" no es una fuente conocida. Válidas: ${T.fuentesDeDato.join(' · ')}`);
@@ -429,7 +435,7 @@ function registrar() {
     gasto: num('gasto'),
     leads: num('leads'),
     calificados: num('calificados'),
-    demos: num('demos'),
+    reuniones: num('reuniones'),
     cierres,
     fuenteDato,
     nota: flag('nota') || null,
@@ -487,7 +493,11 @@ function validar() {
       if (!origins.has(canal.origin)) {
         problemas.push(`✖ ${id}: no está en data/links.json. Sin origen registrado el lead no se puede atribuir.`);
       }
-      for (const campo of ['gasto', 'leads', 'calificados', 'demos']) {
+      // Un registro viejo con la clave `demos` no se traduce en silencio: se migra a mano.
+      if ('demos' in canal || 'demos' in (canal.fuenteDato ?? {})) {
+        problemas.push(`✖ ${id}: usa la clave "demos", que se renombró a "reuniones" el 2026-09-15. Renombrarla en data/semanas.json.`);
+      }
+      for (const campo of ['gasto', 'leads', 'calificados', 'reuniones']) {
         if (!canal.fuenteDato?.[campo]) {
           problemas.push(`✖ ${id}: "${campo}" sin fuenteDato declarada`);
         } else if (!T.fuentesDeDato.includes(canal.fuenteDato[campo])) {
@@ -502,8 +512,8 @@ function validar() {
           problemas.push(`✖ ${id}: el cierre "${c.servicio}" no existe en data/catalogo.json`);
         }
       }
-      if (cierresTotal(canal) > 0 && (canal.demos ?? 0) === 0) {
-        avisos.push(`▲ ${id}: cierres sin demos. Si vino por referido está bien; si no, falta cargar la demo.`);
+      if (cierresTotal(canal) > 0 && (canal.reuniones ?? 0) === 0) {
+        avisos.push(`▲ ${id}: cierres sin reuniones. Si vino por referido está bien; si no, falta cargar la reunión.`);
       }
       if ((canal.gasto ?? 0) > 0 && (canal.leads ?? 0) === 0) {
         avisos.push(`▲ ${id}: hubo gasto y cero leads. Revisar que el origin del anuncio sea el mismo de aquí.`);

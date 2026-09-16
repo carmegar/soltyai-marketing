@@ -172,7 +172,7 @@ Lo que tiene alcance cerrado va con precio publicado: una página web sencilla d
 
 El desarrollo a la medida se cotiza por alcance: tú pones el presupuesto y acomodamos qué entra, mitad al inicio y mitad contra entrega.
 
-Los planes del chatbot están publicados con su precio en soltyai.com/producto/chatbot.
+El chatbot de negocio se cotiza según lo que necesites: un cobro único de adaptación con tus datos (la mitad al arrancar, la otra mitad cuando ya esté atendiendo) y una mensualidad que depende de los canales, el volumen de conversaciones, si lleva IA y qué integraciones necesita. Lo explica soltyai.com/producto/chatbot.
 
 Cuéntame cuál es tu caso en soltyai.com/contacto y te paso el número de lo tuyo.
 ```
@@ -218,9 +218,11 @@ Cuéntame qué sistema tienes andando en soltyai.com/contacto.
 ```
 
 🔴 **Ojo con esta:** habla de **integrarnos** con el sistema contable del cliente y de nuestra propia
-habilitación DIAN, que son hechos con testigo. **No** ofrece el motor contable para firmas contables,
-que no está en `data/catalogo.json` y por lo tanto no se vende todavía (prohibición
-`servicioFantasma`). Si alguien pregunta por eso, se contesta a mano.
+habilitación DIAN, que son hechos con testigo. **No** ofrece el motor contable para firmas contables:
+**no es producto a vender** (decisión del fundador del 15-sep-2026: no está terminado y no está en
+`data/catalogo.json`, prohibición `servicioFantasma`). Lo que sí se vende es la **integración**
+contable y de facturación electrónica DIAN como servicio a la medida, que es lo que dice la
+respuesta. Si alguien pregunta por «el motor», se contesta a mano y se lleva a la integración.
 
 ### `/cita`
 

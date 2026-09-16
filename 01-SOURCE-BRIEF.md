@@ -1,5 +1,10 @@
 # 01 · SOURCE-BRIEF — Hechos canónicos de SoltyAI (NO inventar fuera de aquí)
 
+> ⚠️ **2026-09-15: los planes de bot que este doc cita (Esencial / Pro / Premium, setup y excedente)
+> quedaron como referencia interna de cotización, NO se publican;** el bot se cotiza por prospecto y
+> el motor contable no se ofrece como producto. Las líneas afectadas llevan el sufijo *(retirado el
+> 15-sep-2026)*. Fuente: `data/canon.json → _planesRetirados`; qué se dice hoy: `05-PRICING.md` §1.
+
 > **Fuente única de verdad** del producto, el precio y el mensaje para TODO el paquete de marketing.
 > Si un dato no está aquí ni en los archivos citados, decláralo como supuesto explícito
 > ("**Supuesto:** …"), no lo presentes como hecho. Nada de métricas fabricadas.
@@ -128,12 +133,12 @@ dentro de la plataforma. Lo que Meta **no** hace, y es todo lo que vendemos:
 
 | Plan | Precio/mes | Conversaciones | IA |
 |---|---|---|---|
-| **Esencial** | **$290.000** | 200 | sin IA (determinista) |
-| **Pro** | **$490.000** | 500 | con IA |
-| **Premium** | **$790.000** | 1.500 | con IA |
+| **Esencial** | **$290.000** | 200 | sin IA (determinista)  *(retirado el 15-sep-2026)* |
+| **Pro** | **$490.000** | 500 | con IA  *(retirado el 15-sep-2026)* |
+| **Premium** | **$790.000** | 1.500 | con IA  *(retirado el 15-sep-2026)* |
 
-- **Setup:** **$400.000** única vez. **50% al firmar, 50% cuando el bot esté atendiendo.**
-- **Excedente:** **$50.000 cada 100 conversaciones** por encima del tope del plan.
+- **Setup:** **$400.000** única vez. **50% al firmar, 50% cuando el bot esté atendiendo.** *(retirado el 15-sep-2026)*
+- **Excedente:** **$50.000 cada 100 conversaciones** por encima del tope del plan. *(retirado el 15-sep-2026)*
 - **IVA 19%:** todo precio de arriba es **antes de IVA** y se suma encima. La excepción marcada es
   `domicilios-ops` (contrato firmado con IVA incluido) — regla completa en `canon.json → ivaConvencion`.
 - **Descuentos autorizados, y **no se acumulan** (se aplica el mayor, nunca dos):
@@ -206,7 +211,7 @@ Referencias reales: Swisscontact **$2.300.000** (módulo Zaranda, factura `SOL3`
 - Entrada: Chately US$39, Cliengo US$45, Whaticket US$49 (self-serve, **tokens IA cobrados aparte**,
   sin setup). Media: Leadsales US$97, Chately top US$159, B2Chat ~US$50–300. Suman Wati, ManyChat,
   Zenvia y Atendio en el clúster LatAm.
-- PYME colombiana paga cómodo **US$40–100/mes** todo incluido. **Nuestro Esencial ($290.000 ≈ US$72)
+- PYME colombiana paga cómodo **US$40–100/mes** todo incluido. **Nuestro Esencial ($290.000 ≈ US$72) *(retirado el 15-sep-2026)*
   está dentro; el Premium está arriba y se sostiene solo con el done-for-you.**
 - **Hueco/moat:** done-for-you + vertical ya entrenado + IA incluida sin sorpresa de tokens + soporte
   local + adaptación en la instalación + empresa formal que factura. Nadie en PYME-LATAM combina eso.
@@ -227,7 +232,7 @@ Números de mercado, **no de nuestra cuenta** (la cuenta es nueva y no tiene his
 
 > **Lo que estos números cambiaron:** el corte viejo de **$25.000 por lead calificado** estaba **3 a 10
 > veces por debajo del mercado**, y no por optimismo sino por un error de anclaje: se calculó para que
-> el **setup ($400.000) pagara la adquisición**. Con CPLs reales, la suscripción sola **no puede pagar
+> el **setup ($400.000) pagara la adquisición**. Con CPLs reales, la suscripción sola **no puede pagar *(retirado el 15-sep-2026)*
 > tráfico pago**. Hay que anclar al **LTV**. Recalibración completa en `06-BUDGET-PLAN.md`.
 
 ---
@@ -237,7 +242,7 @@ Números de mercado, **no de nuestra cuenta** (la cuenta es nueva y no tiene his
 | Indicador | Antes | **Ahora** | De dónde sale |
 |---|---|---|---|
 | Ticket promedio supuesto | $390.000/mes | **$390.000/mes** *(supuesto: mezcla Esencial/Pro)* | canon |
-| Caja mes 1 por cliente | $790.000 | **$790.000** | setup $400.000 + mes 1 |
+| Caja mes 1 por cliente | $790.000 | **$790.000** | setup $400.000 + mes 1  *(retirado el 15-sep-2026)* |
 | **LTV bruto 12 meses** | no se usaba | **$5.080.000** | $400.000 + $390.000 × 12 |
 | **Techo de CAC** | $400.000 | **$800.000** | 2× el setup; se recupera en el mes 2 |
 | **Corte por lead calificado** | $25.000 | **$120.000** | $800.000 ÷ ~6,7 calificados por cierre |

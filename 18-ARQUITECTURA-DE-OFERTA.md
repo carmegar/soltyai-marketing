@@ -26,7 +26,7 @@ Verificado el 22-ago contra el sitio vivo:
 
 | Página | Publica precio |
 |---|---|
-| `soltyai.com` y `/precios` | ✅ $290.000 / $490.000 / $790.000 + setup $400.000 |
+| `soltyai.com` y `/precios` | ✅ $290.000 / $490.000 / $790.000 + setup $400.000 *(planes retirados de la publicación el 15-sep-2026, ver §4)* |
 | `/servicios` | ❌ ninguno |
 
 O sea: **hoy ya es híbrido** —producto con precio público, servicio por cotización— y eso coincide con
@@ -55,7 +55,7 @@ Junten las tres frases y sale el problema entero:
 1. **El único cliente que paga no compró un chatbot.** Compró **software operativo vertical por
    suscripción**, explícitamente sin chat y sin IA.
 2. **Los tres planes que sí publicamos** —los tres de chatbot, los tres con setup de $400.000— tienen
-   **cero clientes pagando**.
+   **cero clientes pagando**. *(Retirados de la publicación el 15-sep-2026: el bot se cotiza.)*
 3. **En la home, «Domicilios y logística» aparece como *vertical del bot*** («Pedidos por chat, listos
    para despachar»). La plataforma que Bucaradomi de verdad paga no está publicada en ninguna parte
    del sitio.
@@ -136,7 +136,7 @@ misma regla de lectura: *una línea juzgada con la métrica de otra siempre pare
 | # | Línea | Qué es | Su trabajo | Precio | Cómo se vende |
 |---|---|---|---|---|---|
 | **L1** | **Producto vertical** | `domicilios-ops` y los que salgan igual | **Renta recurrente y réplica.** Es el que compone | **se cotiza** por domiciliario activo y se negocia (desde el 9-sep; antes «público») | demo del sistema vivo + réplica al vertical |
-| **L2** | **Bot por suscripción** | Los 3 planes del canon | Volumen y entrada barata | público (ya está) | autoservicio desde `/producto/chatbot` |
+| **L2** | **Bot de negocio** | Bot estructurado por vertical para WhatsApp y Telegram, con o sin IA | Interfaz de las otras dos; nunca abre | **se cotiza** por prospecto (desde el 15-sep; antes «público», con 3 planes) | `/producto/chatbot` explica qué hace y cómo se cobra, y termina en una conversación |
 | **L3** | **Servicio a la medida** | Desarrollo, integraciones, web | **Caja hoy** y materia prima de L1 | **se cotiza**: el cliente pone el presupuesto y el alcance se acomoda (desde el 9-sep; antes «desde $3.000.000»); las líneas de web sí llevan su «desde» | escalera de valor de tres escalones |
 
 ### La regla de publicación que sale de esto
@@ -156,6 +156,21 @@ tarjeta donde antes iba la cifra. Los punteros de precio se conservan y se sigue
 cada build, como evidencia y referencia de cotización, no como lo que se publica. El «desde
 $400.000» de web-basica no cambia (alcance cerrado). El catálogo tampoco: el 370.000 sigue ahí
 porque es lo que se le factura a Bucaradomi. Detalle: `canon.lineasDeOferta.reglaDePublicacion._cambioFormas`.
+
+⚠️ **2026-09-15: L2 también pasa a «cotizacion», y los 3 planes se despublican.** Decisión del
+fundador, textual: *«los chatbots hacen parte de nuestros productos pero cotizados dependiendo de lo
+que necesite cada prospecto»*. Con esto **las tres líneas llevan la misma forma** salvo el escalón de
+web, que sigue en «desde» porque es lo único con alcance cerrado. La base del cobro que L2 está
+obligada a publicar: un cobro único de adaptación (50% al arrancar, 50% cuando el bot atiende) y una
+mensualidad según canales, volumen de conversaciones, uso de IA e integraciones. Los importes
+(Esencial, Pro, Premium, setup, excedente) **no se bajaron ni se borraron**: pasaron al estado
+`referencia` —no publicable, sí cotizable— y siguen siendo la base con la que se arma cada
+cotización. Por qué: Meta le da un agente que contesta bien a cualquier negocio dentro de WhatsApp
+Business, los tres planes llevaban desde el 22-jul con cero clientes, y un precio de lista de
+$290.000 contra algo casi gratis se refuta en 30 segundos y contamina la conversación de las líneas
+donde sí somos fuertes. La máquina: prohibición `planesRetirados` (alcance `todo`). Detalle:
+`canon.json → _planesRetirados` y `lineas.L2._cambioPrecio`. **También sale de toda oferta el motor
+contable** (no es producto a vender; la integración contable DIAN a la medida sí, es L3).
 
 ✅ **Desde el 2026-09-05 esta tabla vive en `data/canon.json → lineasDeOferta`**, con
 `ordenDeApertura`, `reglaDePublicacion.formas` y una línea por cada L. Dejó de ser memoria.
@@ -182,9 +197,10 @@ L1 producto vertical  →  L3 servicio a la medida  →  L2 bot
    (lo que compone)       (lo que paga hoy)          (la entrada barata)
 ```
 
-⚠️ **L2 no se mata ni se esconde.** Sigue publicado, sigue siendo la entrada más barata y sigue siendo
-lo que se anuncia en Meta y en el outbound según `mensajeLiderPorCanal`. Lo que cambia es
-que **deja de ser lo primero que ve alguien que llega frío.**
+⚠️ **L2 no se mata ni se esconde.** Sigue publicado en `/producto/chatbot` y sigue siendo lo que se
+anuncia en Meta y en el outbound según `mensajeLiderPorCanal`. Lo que cambió el 22-ago es que
+**deja de ser lo primero que ve alguien que llega frío**; lo que cambió el 15-sep es que **ya no
+lleva precio de lista** (hasta ese día esta nota decía «sigue siendo la entrada más barata»).
 
 > 🔄 **2026-09-15: los dolores de sector del banco dejan de ser «de la línea bot».** Los 24 dolores
 > que `dolores.json` etiquetaba `bot` (pedidos por chat, citas, fichas de inmuebles) pasan a
@@ -214,8 +230,9 @@ L3 servicio a la medida  →  L1 producto vertical  →  L2 bot
    movido el 17-ago por el mismo motivo. En `bot` quedan Meta y el outbound, que son embudos de
    audiencia fría con una sola oferta que mostrar.
 3. **L2 se muda completo a `/producto/chatbot`** y sale de la home, con los 3 planes y sus precios
-   intactos. No se mata: se le da destino propio. Sacarlo de la home sin darle página sería el
-   `silencio` que la regla de publicación prohíbe.
+   intactos *(hasta el 15-sep-2026: ese día los precios salieron de la página y el bot pasó a
+   cotizarse; la página se queda)*. No se mata: se le da destino propio. Sacarlo de la home sin darle
+   página sería el `silencio` que la regla de publicación prohíbe.
 
 ⚠️ **La consecuencia que se declara en vez de descubrirse después:** `/producto/chatbot` nombra la
 línea `bot` dentro de un canal que ahora lleva `servicio`. Si esa página entra alguna vez a `copy/` o
@@ -276,14 +293,17 @@ Para **L1 y L3** el precio deja de construirse desde el costo de servir y pasa a
 el cliente paga hoy por hacerlo a mano**. Es la lógica de valor, y es más defendible que un piso puesto
 a dedo.
 
-Ya está escrito para el contable —*el ancla es el costo de un auxiliar (~$1.900.000/mes), no el de un
-chatbot*, `contable/docs/giro-a-producto-2026-08-18.md`— y es la **misma** aritmética para el operador
-de domicilios y para el auxiliar administrativo que hoy digita.
+Ya estaba escrito para el contable —*el ancla es el costo de un auxiliar (~$1.900.000/mes), no el de
+un chatbot*, `contable/docs/giro-a-producto-2026-08-18.md`— y es la **misma** aritmética para el
+operador de domicilios y para el auxiliar administrativo que hoy digita. *(El motor contable dejó de
+ser producto a vender el 15-sep-2026; la aritmética del ancla sigue valiendo para L1 y L3, incluida
+la integración contable DIAN a la medida.)*
 
 ⚠️ **Con la restricción de honestidad que ya rige el carril de video** (`16-CONTENIDO-VIDEO §2`):
-mientras `parametros.costoHoraOperativa` siga marcado `supuesto` y sin verificar, **en público se habla
-en horas, no en pesos**. El ancla en pesos es para la conversación de venta, donde el cliente pone su
-propio número, no para una página publicada.
+**en público se habla en horas, no en pesos**. `parametros.costoHoraOperativa` quedó verificado el
+15-sep-2026 ($15.200/h, con fuentes), así que un peso ya se puede decir con la fuente y la fecha al
+lado; aun así el ancla en pesos es para la conversación de venta, donde el cliente pone su propio
+número, no para una página publicada.
 
 ---
 

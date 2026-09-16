@@ -8,8 +8,8 @@ npm run reportes                                   # tablero de la última seman
 npm run reportes tablero -- --semana=2026-W31
 npm run reportes ronda -- --ronda=G1               # la regla de corte, sobre la ronda completa
 npm run reportes registrar -- --semana=2026-W31 --ronda=G1 --origin=google_softwaremedida_lp1 \
-    --gasto=180000 --leads=9 --calificados=4 --demos=2 --cierres=desarrollo-a-medida:1 \
-    --fuente-gasto=export-google --fuente-demos=calendly --fuente-cierres=suite-mcp \
+    --gasto=180000 --leads=9 --calificados=4 --reuniones=2 --cierres=desarrollo-a-medida:1 \
+    --fuente-gasto=export-google --fuente-reuniones=manual --fuente-cierres=suite-mcp \
     --nota="keyword exacta"
 npm run reportes validar                           # consistencia — corre en el CI
 ```
@@ -25,12 +25,14 @@ nuevo**, **margen recurrente mensual** y en cuántos meses de margen se recupera
 precios y costos salen de `data/catalogo.json`, así que el margen arrastra el estado (`vigente` /
 `supuesto`) de los costos que usó y lo dice en pantalla.
 
-> ⚠️ **La clave todavía se llama `demos`, y la prosa ya no.** El KPI pasó a ser **reuniones
-> agendadas** el 2026-08-13, cuando el cold email dejó de entregar demos y pasó a pedir 15 minutos
-> (`business/16` §6c). Es **el mismo número** —una cita en el Calendly— con el nombre viejo, así que
-> el flag sigue siendo `--demos=` y `canon.tablero.kpiQueManda` sigue diciendo `demos`. El renombre
-> se hace en **canon + código + README a la vez**, nunca a medias: renombrar sólo acá dejaría el
-> tablero leyendo una clave que no existe.
+> ✅ **La clave se llama `reuniones` desde el 2026-09-15.** El KPI pasó a ser **reuniones agendadas**
+> el 2026-08-13, cuando el cold email dejó de entregar demos y pasó a pedir 15 minutos
+> (`business/16` §6c), pero la clave, el flag y el canon siguieron diciendo `demos` un mes. El
+> renombre se hizo en **canon (`kpiQueManda`, `metaReunionesSemana`) + código + README + registro a
+> la vez**, nunca a medias. Una reunión es una cita concretada con un tomador de decisión, por el
+> formulario de `/contacto` más la invitación de Meet a mano (no hay Calendly desde el 9-sep-2026), y
+> por eso su `fuenteDato` normal es `manual`. Un `semanas.json` con la clave vieja falla en `validar`
+> con el mensaje que dice qué renombrar.
 
 ## Las cuatro decisiones que lo hacen útil
 
@@ -64,9 +66,9 @@ precios y costos salen de `data/catalogo.json`, así que el margen arrastra el e
 - Sin semanas cargadas, pasa: el tablero arranca vacío y el CI no puede exigir datos que todavía no
   existen.
 
-Avisa (sin fallar) cuando hay cierres sin demos —puede ser un referido, o puede faltar cargar la
-demo— y cuando hubo gasto con cero leads, que casi siempre es el `origin` del anuncio distinto al de
-aquí.
+Avisa (sin fallar) cuando hay cierres sin reuniones —puede ser un referido, o puede faltar cargar la
+reunión— y cuando hubo gasto con cero leads, que casi siempre es el `origin` del anuncio distinto al
+de aquí.
 
 ## Entradas
 
@@ -75,7 +77,7 @@ aquí.
 | `gasto` | **`export-google`** (Google Ads, por grupo de anuncios) o **`export-meta`** (Meta, por ad set), según el carril. Los carriles gratis —GBP, orgánico, outbound— van con **gasto 0 explícito**, no en blanco |
 | `leads` | conteo del bot / registro de `src/links` (`manual` o `bot-log`) |
 | `calificados` | los que pasan la pre-calificación del bot (`manual`) |
-| `demos` *(= reuniones agendadas)* | Calendly (`calendly`) |
+| `reuniones` | formulario de `/contacto` + invitación de Meet a mano (`manual`); `calendly` sigue en `fuentesDeDato` sólo por si vuelve |
 | `cierres` | suite, MCP `listar_cotizaciones` / `resumen_dashboard` (`suite-mcp`) |
 
 > **Por qué `export-google` es una fuente aparte y no "el export de la pauta":** Google Search y Meta

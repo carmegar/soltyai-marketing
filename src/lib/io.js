@@ -35,6 +35,9 @@ export function listar(ext, desde = RAIZ) {
 }
 
 export const leer = (rutaRelativa) => readFileSync(join(RAIZ, rutaRelativa), 'utf8');
+/** Nombres de archivo (sin recorrer) de un directorio relativo a la raíz; vacío si no existe. */
+export const listarDir = (rutaRelativa) =>
+  existsSync(join(RAIZ, rutaRelativa)) ? readdirSync(join(RAIZ, rutaRelativa)).sort() : [];
 export const existe = (rutaRelativa) => existsSync(join(RAIZ, rutaRelativa));
 export const leerJson = (rutaRelativa) => JSON.parse(leer(rutaRelativa));
 

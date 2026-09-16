@@ -63,7 +63,8 @@ Reglas de marca para esta página. Van acá abajo a propósito, fuera del bloque
 nombran lo prohibido para explicarlo, y el linter no debe juzgarlas como copy.
 
 - Nunca abrimos con el producto de chat en LinkedIn. Sigue existiendo y sigue publicado en
-  su propia página (/producto/chatbot), en Meta y en el outbound, pero acá el titular es el
+  su propia página (/producto/chatbot), en Meta y en el outbound —desde el 15-sep-2026 sin
+  precio de lista: se cotiza por prospecto—, pero acá el titular es el
   servicio a la medida, igual que en la landing desde el 8-sep-2026
   (canon.json → mensajeLiderPorCanal). Dentro de una misma pieza hay un solo mensaje: si
   la descripción nombra las dos líneas, el CI la para con `canal:mezcla-de-lineas`.
@@ -74,7 +75,8 @@ nombran lo prohibido para explicarlo, y el linter no debe juzgarlas como copy.
 - Nunca conteos de clientes ni superlativos de mercado. Hoy podemos nombrar a Bucaradomi
   (con permiso) y a Swisscontact, y a nadie más.
 - Nunca el widget de chat para el sitio del cliente: no está construido y no se promete.
-- Nunca los planes viejos en dólares. Si aparece un precio, sale del canon y va en pesos.
+- Nunca los planes viejos en dólares, y desde el 15-sep-2026 tampoco ninguna cifra del bot
+  (se cotiza por prospecto). Si aparece un precio, es de web y sale del canon, en pesos.
 - Nunca "startup". Somos un estudio de desarrollo con empresa constituida, y esa palabra
   es justo la que hace que un comprador de contrato piense que nos vamos en seis meses.
 

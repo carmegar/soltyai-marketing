@@ -1,5 +1,10 @@
 # 02 · Brand DNA — SoltyAI
 
+> ⚠️ **2026-09-15: los planes de bot que este doc cita (Esencial / Pro / Premium, setup y excedente)
+> quedaron como referencia interna de cotización, NO se publican;** el bot se cotiza por prospecto y
+> el motor contable no se ofrece como producto. Las líneas afectadas llevan el sufijo *(retirado el
+> 15-sep-2026)*. Fuente: `data/canon.json → _planesRetirados`; qué se dice hoy: `05-PRICING.md` §1.
+
 > ADN de marca para el pipeline de marketing. Fuente canónica: `01-SOURCE-BRIEF.md`
 > + archivos reales de la landing (`global.css`, `site.ts`, `i18n/es.ts`, `useCases.ts`,
 > `plans.ts`, `services.ts`). soltyai.com aún no está viva; la marca se extrajo de estos
@@ -158,9 +163,9 @@
 > 🔴 La fuente es **`data/canon.json`** (decisión D1). Esto es su espejo legible: si difieren, gana
 > el canon. Todo va **antes de IVA**; el 19% se suma encima.
 
-Pricing **COP vigente**: **Esencial $290.000/mes** (200 conversaciones, sin IA) ·
-**Pro $490.000/mes** (500 conversaciones, con IA) · **Premium $790.000/mes** (1.500 conversaciones,
-con IA) · **setup $400.000** única vez, 50% al firmar y 50% cuando el bot ya esté atendiendo ·
+Pricing **COP vigente**: **Esencial $290.000/mes** (200 conversaciones, sin IA) · *(retirado el 15-sep-2026)*
+**Pro $490.000/mes** (500 conversaciones, con IA) · **Premium $790.000/mes** (1.500 conversaciones, *(retirado el 15-sep-2026)*
+con IA) · **setup $400.000** única vez, 50% al firmar y 50% cuando el bot ya esté atendiendo · *(retirado el 15-sep-2026)*
 **excedente $50.000 por cada 100 conversaciones** de más.
 
 Sin permanencia, mensual, datos exportables (Ley 1581). Descuentos autorizados, **no acumulables**
@@ -170,4 +175,4 @@ ONG y educación −25% permanente, caso por caso.
 > ⚠️ **PROHIBIDO** citar el pricing en dólares, que quedó **superado** por el canon COP: ni los
 > planes **Starter $49 / Growth $149 / Pro $399**, ni el catálogo por producto (Agenda $65/$250,
 > Pedidos $80/$280, Inmobiliario $249/$600 y $650/$1.500, Integraciones $180/$3.500).
-> Ojo: **"Pro" a secas SÍ es válido** — es el plan COP de $490.000.
+> Ojo: **"Pro" a secas SÍ es válido** — es el plan COP de $490.000. *(retirado el 15-sep-2026)*

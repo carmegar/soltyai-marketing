@@ -1,5 +1,10 @@
 # 09 · OUTBOUND — Estrategia + Playbook del canal manual (SoltyAI)
 
+> ⚠️ **2026-09-15: los planes de bot que este doc cita (Esencial / Pro / Premium, setup y excedente)
+> quedaron como referencia interna de cotización, NO se publican;** el bot se cotiza por prospecto y
+> el motor contable no se ofrece como producto. Las líneas afectadas llevan el sufijo *(retirado el
+> 15-sep-2026)*. Fuente: `data/canon.json → _planesRetirados`; qué se dice hoy: `05-PRICING.md` §1.
+
 > Canal **gratuito y de corto plazo**, que corre **en paralelo a todos los demás**: contacto directo
 > 1-a-1 a negocios, con el mismo gancho ("vive el bot ahora") y el mismo bot de demo. Es el único
 > carril que paga en **días** y no tiene CAC.
@@ -212,7 +217,7 @@ más claro (citas y comercio son apuestas altas). Mismo guion de 3 toques, mensa
 > **Usa `redes/outbound-mensajes.txt`**, que es la versión vigente y está en texto plano para pegar
 > directo en WhatsApp. Cuatro cosas cambiaron y por eso no sirve copiar de aquí:
 >
-> 1. **Precios en COP** (Esencial $290.000 / Pro $490.000 / Premium $790.000 + setup $400.000), no los
+> 1. **Precios en COP** (Esencial $290.000 / Pro $490.000 / Premium $790.000 + setup $400.000), no los *(retirado el 15-sep-2026)*
 >    USD de abajo.
 > 2. **Los asteriscos de markdown se pegan literales en WhatsApp** (`**así**`), contra la regla 10 de
 >    `business/13`. El `.txt` va limpio.
@@ -247,12 +252,12 @@ más claro (citas y comercio son apuestas altas). Mismo guion de 3 toques, mensa
 > Vi que alcanzaste a probar el bot 🙌. ¿Qué te pareció? Si quieres, **te lo dejo configurado con los datos reales de [Inmobiliaria X]** (tus proyectos, precios, zonas) para que veas cómo atendería de verdad, sin compromiso.
 
 ### Toque 3 — Oferta + cierre (Día 5–7)
-> Hola [nombre], cierro el tema 🙂. Si te animas, lo montamos para [Inmobiliaria X] **esta semana**: setup de **$400.000** (lo dejamos andando con tu inventario, y pagas la mitad al firmar y el resto cuando ya esté atendiendo) y luego **$490.000/mes + IVA** todo incluido — IA + soporte, **sin sorpresas de tokens**. ¿Agendamos 10 min para dejarlo listo?
+> Hola [nombre], cierro el tema 🙂. Si te animas, lo montamos para [Inmobiliaria X] **esta semana**: setup de **$400.000** (lo dejamos andando con tu inventario, y pagas la mitad al firmar y el resto cuando ya esté atendiendo) y luego **$490.000/mes + IVA** todo incluido — IA + soporte, **sin sorpresas de tokens**. ¿Agendamos 10 min para dejarlo listo? *(retirado el 15-sep-2026)*
 
 > 🔴 **Nota de precio (corregida 2026-08-09).** Los USD de arriba son del modelo viejo y **no se cotizan**.
 > El precio vigente sale de la **D1**: `marketing/data/canon.json` + `catalogo.json`, y ningún doc
-> —este incluido— lo define por su cuenta. Hoy: **Esencial $290.000/mes** (200 conversaciones, sin IA) ·
-> **Pro $490.000/mes** (500, con IA) · **Premium $790.000/mes** (1500, con IA) · **setup $400.000**
+> —este incluido— lo define por su cuenta. Hoy: **Esencial $290.000/mes** (200 conversaciones, sin IA) · *(retirado el 15-sep-2026)*
+> **Pro $490.000/mes** (500, con IA) · **Premium $790.000/mes** (1500, con IA) · **setup $400.000** *(retirado el 15-sep-2026)*
 > única vez (50 % al firmar, el resto cuando el bot ya atiende) · excedente **$50.000 por cada 100
 > conversaciones**. **Todo eso es ANTES de IVA: el 19 % se suma encima.** El caballo de batalla en frío
 > para una inmobiliaria PYME es **Pro**; Premium sólo con inventario grande o mucho volumen.
@@ -313,11 +318,11 @@ más claro (citas y comercio son apuestas altas). Mismo guion de 3 toques, mensa
 1. **Agenda 10 min** (call o WhatsApp) para configurar.
 2. **Propón el plan** — la fuente es la **D1** (`marketing/data/canon.json`), no este doc. Para la lista
    actual (inmobiliarias), todo **antes de IVA**:
-   - **Pro — $490.000/mes + setup $400.000.** El caballo de batalla en frío para una PYME de 3–15
+   - **Pro — $490.000/mes + setup $400.000.** El caballo de batalla en frío para una PYME de 3–15 *(retirado el 15-sep-2026)*
      agentes: 500 conversaciones, con IA, RAG de inventario + pre-calificación + agenda de visitas.
-   - **Premium — $790.000/mes + setup $400.000.** 1500 conversaciones. Sólo para inventarios grandes
+   - **Premium — $790.000/mes + setup $400.000.** 1500 conversaciones. Sólo para inventarios grandes *(retirado el 15-sep-2026)*
      o mucho volumen de consultas.
-   - **Esencial — $290.000/mes + setup $400.000.** 200 conversaciones y **sin IA** (flujo fijo): la
+   - **Esencial — $290.000/mes + setup $400.000.** 200 conversaciones y **sin IA** (flujo fijo): la *(retirado el 15-sep-2026)*
      salida cuando el presupuesto no da y el caso no necesita que el bot improvise.
    - Excedente: **$50.000 por cada 100 conversaciones** de más.
    - **Descuento autorizado:** primeros clientes **−30 % por 3 meses** (5 cupos, a cambio del caso de

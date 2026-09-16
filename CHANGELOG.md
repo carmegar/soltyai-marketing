@@ -1,5 +1,57 @@
 # Changelog · soltyai-marketing
 
+## 2026-09-15 — D1: los planes de bot se despublican, el bot se cotiza, el motor contable sale de la oferta, KPI reuniones
+
+Decisión del fundador, textual: **«los chatbots hacen parte de nuestros productos pero cotizados
+dependiendo de lo que necesite cada prospecto»**. Los tres planes COP (Esencial / Pro / Premium), el
+setup y el excedente pasan al estado **`referencia`** —no publicable, sí cotizable— y L2 a la forma
+`cotizacion` con su base de cobro (adaptación 50/50 + mensualidad según canales, volumen, IA e
+integraciones). El motor contable **no es producto a vender** (no está terminado); la integración
+contable y de facturación electrónica DIAN a la medida sí sigue (L3). Integraciones y software a la
+medida se cotizan en reunión; sólo lo web lleva cifra de lista. Rama `d1/2026-09-15-bot-a-cotizacion`.
+El canon y el catálogo cambiaron en `3173069`; esto es lo que alineó el resto del repo:
+
+- **Guardrail.** `prohibiciones.*.excluir` (lista cerrada de rutas; `planesRetirados` excluye este
+  `CHANGELOG.md`, que es historia y no se reescribe), con prueba en dos mitades en `prueba.js` (sin
+  la exclusión canta, con ella calla). El fixture `anuncio-malo.json` cita los tres planes para que
+  `planesRetirados` tenga contra qué morder. **Cuarto alcance:** los correos del outbound en
+  `../tools/apps/prospeccion` (`RESPUESTAS-GUARDADAS.md`, prompt y plantillas de `src/06*.js` y
+  `14-envio-manual.js`, hojas de envío de `data/emails/`) entran como copy publicado **si el repo
+  está en disco**; si no, el runner dice `⋯ no está en disco: NO se verificaron` y no finge. Era un
+  pendiente del tablero. Ajuste de patrón: el `$490.000/mes` de `soporte-evolutivo` coincide con el
+  plan Pro y cazaba las 4 páginas de `redes/seo`; el 490 pasa a adyacencia con bot/plan/suscripción
+  (`canon → planesRetirados._ajustePatrones`).
+- **Copy publicado (`redes/`).** `outbound-mensajes.txt`: toque 3, objeción «¿cuánto cuesta?» y la
+  sección de precios pasan a la base del cobro, sin cifras; declara `canal: outbound`; deja de decir
+  que WhatsApp «está en camino». `whatsapp-business-perfil.md` `/precios` sin «planes publicados con
+  su precio». FB/YT/LinkedIn: las reglas de marca dicen «ninguna cifra del bot». `video-demo-guion.md`:
+  reuniones y `/contacto` en vez de Calendly. `guiones-tanda-1` #2: la evidencia es la integración
+  DIAN, no «el motor contable» (reorientado, no borrado).
+- **Docs de oferta.** `05-PRICING` reescrito alrededor de la base del cobro (las cifras quedan como
+  referencia interna, marcadas); `README`, `CLAUDE.md` (pricing = forma `cotizacion` + estado
+  `referencia`; estados del catálogo con `referencia`; `excluir`; los cuatro alcances), `18 §4/§6`,
+  `15`, `13`, `17`, `19`, `20 C5`, `src/contenido/README`. **Docs históricos** (01, 02, 03, 04, 06,
+  09, 11, 12): nota al inicio y sufijo *(retirado el 15-sep-2026)* en cada línea que cantaba; no se
+  reescriben.
+- **`src/reportes`:** la clave `demos` pasa a `reuniones` (`--reuniones=`, `$/reunión`,
+  `canon.tablero.metaReunionesSemana`); `validar` rechaza la clave vieja con el mensaje de qué
+  renombrar. `semanas.json` sigue vacío (se probó un registro sobre la copia local y se revirtió).
+- **`src/catalogo`:** entiende `referencia` (◌ en la lista, separado de `supuesto` en `validar`) y
+  `cotizar` avisa «importe de referencia, NO publicable: es la base para armar la cotización».
+- **`data/dolores.json → costoHoraOperativa`: de 12.000 `supuesto` a $15.200/h `vigente`** (+27%).
+  SMMLV 2026 $1.750.905 (Decreto 1469/2025) + auxilio $249.095 (Decreto 1470/2025) con prestaciones
+  = $2.765.572/mes de costo del empleador exonerado, sobre 182 h reales de un mes de 42 h (Ley 2101,
+  desde el 15-jul-2026). Variantes en la `base` (210 h de nómina → $13.170; no exonerado → $16.500).
+  Los guiones siguen en horas por diseño; un peso sólo con fuente y fecha.
+- **`npm run check`:** 0 errores del repo y 4 avisos preexistentes (`canal:sin-declarar` en FB, YT y
+  video demo; 🟡 declarado del video #5). ⚠️ **En la máquina del fundador el check sigue rojo con 5
+  errores que son de OTRO repo:** `../tools/apps/prospeccion/RESPUESTAS-GUARDADAS.md:63-65` cita los
+  tres planes con su cifra. Se corrigen allá; el CI de este repo (sin `../tools`) sale verde.
+- Queda para el usuario, a mano: nada en el GBP (no tiene servicio de chatbot cargado) ni en la bio
+  de LinkedIn (no publica precios); sí revisar `/producto/chatbot` en `platform` (los precios salen
+  de la página; el snapshot del canon en la landing es copia manual, H7) y `RESPUESTAS-GUARDADAS.md`
+  en `tools`.
+
 ## 2026-09-15 — SEO + GEO: estrategia, copy de 8 páginas y corrección del doc del GBP (sesión 96)
 
 Frente nuevo, pendiente `cmu3623d2006301lfiegaqnno`. Tres agentes en paralelo, conciliados por la sesión.

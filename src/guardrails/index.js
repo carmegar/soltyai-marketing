@@ -9,7 +9,7 @@
  *   npm run guardrails -- --avisos → los avisos también fallan (útil antes de publicar)
  *   npm run guardrails -- --json   → salida máquina
  */
-import { TODAS } from './reglas.js';
+import { TODAS, alcanceExterno } from './reglas.js';
 
 const args = process.argv.slice(2);
 const estricto = args.includes('--avisos');
@@ -43,6 +43,21 @@ if (comoJson) {
   }
   if (!hallazgos.length) console.log('✓ guardrails: todo en regla');
   else console.log(`\n${errores.length} error(es) · ${avisos.length} aviso(s)`);
+
+  // Los repos vecinos que se leen como copy publicado (los correos del outbound en `../tools`,
+  // 2026-09-15). Se dice SIEMPRE cuál de las dos cosas pasó: si el directorio no está, el verde de
+  // arriba no los cubre y hay que verlo, no suponerlo. Lo que salga de ahí se corrige en ese repo.
+  for (const e of alcanceExterno()) {
+    const propios = errores.filter((h) => h.archivo.startsWith(e.ruta + '/')).length;
+    if (!e.presente) {
+      console.log(`⋯ ${e.ruta} no está en disco: ${e.que} NO se verificaron (no se finge).`);
+    } else {
+      console.log(
+        `${propios ? '✖' : '✓'} ${e.ruta}: ${e.archivos.length} archivo(s) leídos como copy publicado` +
+          (propios ? `, ${propios} error(es) que se corrigen en ese repo.` : '.'),
+      );
+    }
+  }
 }
 
 process.exit(errores.length || (estricto && avisos.length) ? 1 : 0);

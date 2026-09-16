@@ -1,5 +1,10 @@
 # 12 · QA-VALIDATION — Validaciones fechadas del paquete de marketing
 
+> ⚠️ **2026-09-15: los planes de bot que este doc cita (Esencial / Pro / Premium, setup y excedente)
+> quedaron como referencia interna de cotización, NO se publican;** el bot se cotiza por prospecto y
+> el motor contable no se ofrece como producto. Las líneas afectadas llevan el sufijo *(retirado el
+> 15-sep-2026)*. Fuente: `data/canon.json → _planesRetirados`; qué se dice hoy: `05-PRICING.md` §1.
+
 > **Este documento tiene dos partes, y el orden importa.**
 >
 > - **PARTE I — Validación vigente (2026-08-13):** el paquete contra el canon de hoy.
@@ -57,11 +62,11 @@ canon. Lo que dice ✅ acá se ejecutó; lo que no se pudo verificar se dice, no
 
 | Check | Resultado |
 |---|---|
-| Precios propios en **COP** y derivados del canon: Esencial $290.000 · Pro $490.000 · Premium $790.000 · setup $400.000 · excedente $50.000/100 conv. | ✅ |
+| Precios propios en **COP** y derivados del canon: Esencial $290.000 · Pro $490.000 · Premium $790.000 · setup $400.000 · excedente $50.000/100 conv. | ✅  *(retirado el 15-sep-2026)* |
 | Todo precio del canon es **antes de IVA**, con la excepción marcada de `domicilios-ops` (contrato con IVA incluido) | ✅ |
 | Cero pricing USD **superado** presentado como propio | ✅ — los hits restantes son avisos "PROHIBIDO/superado" o **precios de competidores** |
 | Precios de competidores **en USD, sin convertir** | ✅ **a propósito**: son datos verificados con URL, y una TRM supuesta los degradaría a estimación |
-| "Pro" a secas sigue siendo válido (es el plan COP de $490.000) | ✅ |
+| "Pro" a secas sigue siendo válido (es el plan COP de $490.000) | ✅  *(retirado el 15-sep-2026)* |
 
 ## 4. Economía de adquisición recalibrada
 
@@ -181,7 +186,7 @@ Decía que con el pricing por producto la caja del mes 1 más baja (**Agenda = $
 quedaba por debajo de los **US$400** de la ronda, o sea que un cierre no daba break-even inmediato.
 
 **Qué queda de eso:** el diagnóstico de fondo era correcto y el número era el equivocado. Hoy la caja
-del mes 1 es **$790.000** (setup $400.000 + un mes), el techo de CAC es **$800.000** y el payback
+del mes 1 es **$790.000** (setup $400.000 + un mes), el techo de CAC es **$800.000** y el payback *(retirado el 15-sep-2026)*
 dejó de ser inmediato **a propósito**: se corre al **mes 2–3**, porque anclar la adquisición al setup
 en vez de al LTV era justamente el error. La versión vigente está en `06-BUDGET-PLAN.md`.
 

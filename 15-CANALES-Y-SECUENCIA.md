@@ -135,7 +135,8 @@ el código: es el mes de prospección que no pasó.
 
 Y ahí SoltyAI tiene lo que casi nadie en la categoría tiene, porque no se puede inventar:
 
-- Un motor que arma **90 de 92 asientos contables DIAN sin gastar un solo token**.
+- Una integración DIAN que arma **90 de 92 asientos contables sin gastar un solo token** (se cuenta
+  como capacidad a la medida; el motor contable no se ofrece como producto desde el 15-sep-2026).
 - Un **RCE real en producción** (react2shell, 5-ago) contenido, con los 6 secretos rotados y el
   post-mortem escrito.
 - El **tren de facturación electrónica cerrado** de punta a punta por una empresa de una persona.
@@ -225,8 +226,10 @@ haciéndolo. Lo que queda en `bot` son los dos embudos de audiencia fría con un
 mostrar, que es donde ese mensaje sí trabaja.
 
 Lo que cambia en la home: abre con **L3** («desarrollo de software, automatización e implementación
-web a la medida para negocios colombianos»), sigue **L1**, y los 3 planes de bot se mudan completos a
-`/producto/chatbot` con sus precios intactos. **No se mata L2**, se le da destino propio.
+web a la medida para negocios colombianos»), sigue **L1**, y el bot se muda completo a
+`/producto/chatbot`. **No se mata L2**, se le da destino propio. *(El 8-sep se mudó «con sus 3
+planes y sus precios intactos»; el 15-sep los planes se despublicaron y el bot pasó a cotizarse por
+prospecto, ver `18 §4`.)*
 
 Doc canónico del orden de líneas: **`18-ARQUITECTURA-DE-OFERTA.md` §4**.
 

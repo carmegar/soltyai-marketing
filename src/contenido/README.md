@@ -29,9 +29,10 @@ es el código: es el mes de prospección que no pasó.** Es la misma lógica con
 Embedded Signup de WhatsApp hasta tener 3 clientes.
 
 **Y cuando exista, no escribe: reformatea y distribuye.** El insumo son **20 minutos del fundador por
-semana** contando lo que de verdad pasó —el motor contable que arma 90 de 92 asientos DIAN sin gastar
-un token, el RCE contenido con su post-mortem, el tren de facturación electrónica cerrado por una
-empresa de una persona—. Eso es material que un generador no produce, y es la razón exacta por la que
+semana** contando lo que de verdad pasó —la integración DIAN que arma 90 de 92 asientos sin gastar
+un token (se cuenta como lo que sabemos hacer a la medida, no como producto: el motor contable dejó
+de ofrecerse el 15-sep-2026), el RCE contenido con su post-mortem, el tren de facturación
+electrónica cerrado por una empresa de una persona—. Eso es material que un generador no produce, y es la razón exacta por la que
 el contenido automatizado del competidor no alcanza. Una máquina que **escriba** produce el mismo
 relleno que todos; una que **reformatee y distribuya** multiplica lo único que no se puede copiar.
 

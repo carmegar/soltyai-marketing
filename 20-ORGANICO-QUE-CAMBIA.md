@@ -89,7 +89,9 @@ con SVG → PDF por el navegador, o con una sola aprobada si hace falta rasteriz
 ### C5. LinkedIn se queda en dos temas; los sectores van a Instagram, TikTok y Facebook
 
 Para la autoridad temática, en LinkedIn el perfil habla de **(a) operación colombiana y DIAN**
-(motor contable, facturación, cotizaciones, cuentas de cobro, firma) y **(b) software a la medida
+(integración contable y factura electrónica DIAN, cotizaciones, cuentas de cobro, firma; el motor
+contable **no** se nombra como producto desde el 15-sep-2026, sólo la integración que sí se vende)
+y **(b) software a la medida
 y domicilios** (Bucaradomi como lighthouse). Los dolores de peluquería, taller, academia e
 inmobiliaria son valiosos, pero **su dueño no está en LinkedIn**: está en Facebook, Instagram y
 TikTok. Eso ya coincide con el destino que la tanda 1 tiene desde el 22-ago (5 a 10 → IG/TikTok);
