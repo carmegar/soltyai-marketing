@@ -1,9 +1,17 @@
 # Guion del video demo — asistente inmobiliario
 
-> **Para qué es este video.** Es la pieza que desbloquea el canal completo: post fijado del LinkedIn de
-> empresa, gancho del **toque 1** del outbound (`redes/outbound-mensajes.txt`) y destino al que apunta
-> el formulario de `/contacto` (no hay Calendly desde el 9-sep-2026: la invitación de Meet se manda
-> a mano). Sin él no arranca ni el orgánico ni la pauta (`13-PLAN-12-CLIENTES.md` §3).
+> **Para qué es este video.** Es la pieza que desbloquea el canal completo: gancho del **toque 1**
+> del outbound (`redes/outbound-mensajes.txt`), reel en **Instagram, Facebook y TikTok**, y destino al
+> que apunta el formulario de `/contacto` (no hay Calendly desde el 9-sep-2026: la invitación de Meet
+> se manda a mano). Sin él no arranca ni el orgánico ni la pauta (`13-PLAN-12-CLIENTES.md` §3).
+>
+> 🔄 **Destino corregido el 2026-09-16.** Hasta ese día decía «post fijado del LinkedIn de empresa».
+> LinkedIn lleva el servicio a la medida (`canon.json → mensajeLiderPorCanal`, por eso los siete
+> guiones de la tanda 1 salieron de ahí el 22-ago) y `20-ORGANICO-QUE-CAMBIA.md` C1 manda publicar
+> desde el perfil personal, no desde la página. Si va a LinkedIn, va en **Destacados** del perfil de
+> Carlos, nunca como post fijado. El bloque de guion declara su canal con `<!-- canal: … -->` y entra
+> al guardrail `mensajeLider`; el titular es la **inmobiliaria** (el producto vertical), y el chat es
+> la interfaz, como decidió el 24-ago.
 >
 > **Lo que el video tiene que lograr:** que un dueño de inmobiliaria piense *"esto contesta los
 > WhatsApp que yo no alcanzo a contestar"* y haga clic en agendar. **No** tiene que explicar la
@@ -15,18 +23,15 @@
 
 ## 1. Decisión de guion que conviene revisar antes de grabar
 
-`ESTADO.md` §3b listaba el orden *pre-calificación → búsqueda → visita → aviso → leads*. **Aquí la
-pre-calificación se saca del video** y estas son las razones:
+El video arranca con un cliente escribiendo a las 11 de la noche, no con un formulario. Los
+primeros 3 segundos deciden si se ve, y la mejor apertura es la escena, no la explicación.
 
-- La pre-calificación de 5 pasos es **nuestra compuerta de acceso a la demo**, no una función del bot
-  del cliente. Mostrarla arriba hace que el prospecto crea que *su* bot va a interrogar a *sus*
-  clientes antes de mostrarles un apartamento.
-- Los primeros 3 segundos deciden si el video se ve. Arrancar con un formulario de 5 preguntas es la
-  peor apertura posible; arrancar con un cliente escribiendo a las 11 de la noche es la mejor.
-- Dónde sí va: en la **tarjeta final** (toma 7), una línea — *"pídeme la demo y te la habilito hoy"* —
-  y en el mensaje de outbound, que es donde el prospecto efectivamente se encuentra con la compuerta.
-
-Si preferís mostrarla igual, va **después** de la toma 6, nunca antes de la 3.
+> 🔄 **2026-09-16.** Este apartado explicaba por qué la «pre-calificación de 5 pasos», que era la
+> compuerta de acceso a la demo, se sacaba del video y se mandaba a la tarjeta final («pídeme la demo
+> y te la habilito hoy»). Esa compuerta ya no existe: la landing publica la demo **abierta, sin
+> registro** (`demoLink`), así que no hay nada que mostrar ni que prometer para «hoy» (un plazo, y
+> los plazos no se prometen). La tarjeta final pasa a invitar a probar la demo y a agendar media
+> hora, que es lo que de verdad hay.
 
 ---
 
@@ -64,7 +69,7 @@ destino que un chat personal.
       nombre real de otros clientes.
 - [ ] Un inmueble elegido de antemano **que tenga buenas fotos** (hay 29 cargados; no todos lucen igual).
 - [ ] Grabador: cualquiera que capture ventana + micrófono. Grabá **en vertical 9:16** si podés
-      (LinkedIn, IG y TikTok lo premian) o en 16:9 y recortá después.
+      (Instagram, Facebook y TikTok lo premian) o en 16:9 y recortá después.
 
 ### 2.3 Reglas de la grabación
 
@@ -74,6 +79,8 @@ destino que un chat personal.
   cliente ficticio es "Andrés", y no aparece ningún dato de una persona real.
 
 ---
+
+<!-- canal: outbound, instagram, facebook, tiktok -->
 
 ## 3. Guion — versión larga (75–90 s)
 
@@ -99,10 +106,10 @@ no antes.
 **Voz:**
 > Ese mensaje no se pierde: se va para otra parte.
 
-### TOMA 3 · El bot atiende (0:15–0:35)
+### TOMA 3 · El asistente atiende (0:15–0:35)
 
-**Se ve:** el mismo mensaje, pero ahora el bot responde. El cliente escribe algo como
-*"busco apartamento en arriendo en Cabecera hasta 2 millones"* y el bot devuelve opciones reales.
+**Se ve:** el mismo mensaje, pero ahora el asistente responde. El cliente escribe algo como
+*"busco apartamento en arriendo en Cabecera hasta 2 millones"* y el asistente devuelve opciones reales.
 **Voz:**
 > Este es el asistente de una inmobiliaria. Con **sus** inmuebles, no con un catálogo genérico.
 > Entiende lo que le escriben y responde con lo que sí existe.
@@ -115,7 +122,7 @@ no antes.
 
 ### TOMA 5 · La visita (0:50–1:05)
 
-**Se ve:** el cliente pide agendar visita; el bot confirma.
+**Se ve:** el cliente pide agendar visita; el asistente confirma.
 **Voz:**
 > Y cuando el cliente quiere ver el inmueble, agenda ahí mismo.
 
@@ -135,15 +142,17 @@ no antes.
 **Texto en pantalla:** «Todo queda registrado» → luego la tarjeta final.
 **Voz:**
 > Nada se queda en el chat: los interesados quedan en un panel, con su historial.
-> Si querés verlo con los inmuebles de tu inmobiliaria, agenda 15 minutos por el enlace de abajo.
+> Si quieres verlo con los inmuebles de tu inmobiliaria, agenda media hora por el enlace de abajo.
 
 **Tarjeta final (3 s, estática):**
 
 ```
 soltyai.com
-Agenda 15 minutos → soltyai.com/contacto
-Bots de negocio para inmobiliarias · Bucaramanga
+Prueba la demo en Telegram · Agenda media hora → soltyai.com/contacto
+Atención por chat para inmobiliarias · Bucaramanga
 ```
+
+<!-- /canal -->
 
 ---
 
@@ -176,8 +185,9 @@ Estas no son sugerencias de estilo, son reglas que el CI hace cumplir (`CLAUDE.m
    `npm run link nuevo` → un `origin` por canal (LinkedIn orgánico, outbound, IG…). Sin eso el lead
    llega sin fuente y la ronda no se puede evaluar (`08-TRACKING-SETUP.md` §2).
 2. **Subtítulos quemados.** Se ve en silencio; sin subtítulos el video no existe.
-3. **Publicar:** post fijado del LinkedIn de empresa → adjuntar al toque 1 del outbound → IG/TikTok
-   como reel con el mismo audio.
+3. **Publicar:** adjuntar al toque 1 del outbound → Instagram, Facebook y TikTok como reel con el
+   mismo audio → en LinkedIn, si acaso, en Destacados del perfil personal (no como post fijado: ese
+   canal lleva el servicio a la medida).
 4. **Miniatura:** el frame de la toma 6 (el aviso al asesor), no el del chat vacío.
 
 ---
@@ -186,7 +196,7 @@ Estas no son sugerencias de estilo, son reglas que el CI hace cumplir (`CLAUDE.m
 
 | Métrica | Dónde | Para qué |
 |---|---|---|
-| Retención a los 3 s | Analítica de LinkedIn / IG | Si cae, el problema es la toma 1 |
+| Retención a los 3 s | Analítica de Instagram / TikTok | Si cae, el problema es la toma 1 |
 | Clics a `/contacto` | `origin` del enlace | Es el único número que importa |
 | **Reuniones agendadas / semana** | formulario de `/contacto` + invitación de Meet (`manual`) | El KPI que manda (`canon.tablero.metaReunionesSemana`: 2) |
 

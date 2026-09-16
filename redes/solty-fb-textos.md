@@ -3,6 +3,13 @@
 > Generado 2026-07-22. Imágenes: `solty-fb-perfil.png` (1024×1024) y
 > `solty-fb-portada.png` (1640×624), en esta misma carpeta. Paleta y voz según
 > `marketing/02-brand-dna.md`.
+>
+> 🔄 **Reescrito el 2026-09-16.** La bio, la descripción y el primer post abrían con «chatbots de
+> WhatsApp y Telegram», y Facebook lleva el **servicio a la medida** desde el 15-sep
+> (`canon.json → mensajeLiderPorCanal`, igual que todo el orgánico desde el 17-ago). El bloque
+> declara su canal con `<!-- canal: facebook -->` y entra al guardrail `mensajeLider`; el chat aparece
+> como interfaz de un sistema, nunca como titular. Si la página ya está publicada con los textos
+> viejos, se reemplazan.
 
 ## Identidad
 
@@ -15,37 +22,41 @@
 | **Foto de perfil** | `solty-fb-perfil.png` |
 | **Portada** | `solty-fb-portada.png` |
 | **Sitio web** | https://soltyai.com |
-| **Botón de acción (CTA)** | "Enviar mensaje" (Messenger) por ahora → cambiarlo al deeplink del bot demo de Telegram cuando esté vivo 24/7 |
+| **Botón de acción (CTA)** | "Enviar mensaje" (Messenger). El destino de la conversación es el formulario de soltyai.com/contacto |
+
+<!-- canal: facebook -->
 
 ## Bio (campo corto, máx ~100 caracteres)
 
 ```
-Chatbots de WhatsApp y Telegram que atienden, venden y agendan por ti. Hechos a tu medida.
+Software a la medida para negocios colombianos. Le quitamos el trabajo repetitivo a tu operación.
 ```
 
 ## Descripción larga (Información / "Más información")
 
 ```
-Te devolvemos tiempo y ponemos orden en tu negocio: un asistente que atiende, vende y agenda 24/7 — adaptado a tu forma de trabajar.
+SoltyAI es un estudio de desarrollo en Bucaramanga. Hacemos software a la medida para negocios colombianos que ya tienen una operación andando y quieren quitarle de encima el trabajo repetitivo: lo que hoy alguien copia, digita o persigue a mano.
 
-En SoltyAI construimos chatbots de WhatsApp y Telegram para negocios en Colombia: comercios y domicilios, citas (barberías, spas, consultorios), inmobiliarias e integraciones a medida.
+Lo que construimos se conecta a lo que ya usas: tu inventario, tu agenda, tu sistema contable y la facturación electrónica de la DIAN. Estamos habilitados por la DIAN como facturador electrónico, con certificado, prefijo y resolución propios, así que sabemos cómo se conecta.
 
-No te entregamos una herramienta para que la configures tú. La adaptamos a tu negocio en la instalación: tu catálogo, tus precios, tu forma de atender. Pagas una suscripción y nosotros nos encargamos del montaje, los ajustes y el mantenimiento. Sin equipo técnico de tu lado. Sin permanencia. Tus datos son tuyos.
+No te entregamos una herramienta para que la configures tú. La dejamos funcionando con los datos reales de tu negocio y te enseñamos a usarla. También hacemos páginas web con precio cerrado, y tenemos software propio en producción: una plataforma para empresas de domicilios que hoy opera con un cliente en Bucaramanga.
 
-¿Quieres ver un bot trabajando con un caso real? Escríbenos y te lo mostramos.
+Escríbenos y te contesta una persona. Miramos tu caso y te decimos qué se puede hacer, y qué no.
 ```
 
 ## Primer post (fijar)
 
 ```
-En SoltyAI hacemos algo simple de decir y difícil de encontrar: chatbots que trabajan como trabaja TU negocio.
+En SoltyAI hacemos software a la medida para negocios de Bucaramanga y de Colombia. Algo simple de decir y difícil de encontrar: programas que hacen el paso que hoy alguien hace a mano.
 
-No es una plataforma que te toca armar. Nosotros la montamos con tus datos reales: tu catálogo, tus precios, tu forma de atender. Tú sigues vendiendo; el bot atiende, agenda y responde a cualquier hora — incluso a las 9 p.m., cuando el cliente que no contestaste ya compró en otro lado.
+No es un sistema gigante ni un proyecto de un año. Casi siempre es una pieza chiquita que toma lo de allá, lo pone acá y te avisa cuando algo no cuadra. Se construye encima de lo que ya tienes, no sobre las cenizas de lo que ya pagaste.
 
-Hoy un negocio de domicilios en Bucaramanga coordina su operación completa con nuestro sistema: pedidos, mensajeros, cuadre de caja. Real, en producción, todos los días.
+Hoy una empresa de domicilios en Bucaramanga coordina su operación con un sistema nuestro: pedidos, asignación, estados en vivo, tarifas por zona y una aplicación para los domiciliarios. Con contrato y factura electrónica, en producción todos los días.
 
-Si tu WhatsApp ya es un cuello de botella, escríbenos. Miramos tu caso y te decimos qué se puede hacer — con honestidad de qué sí y qué no.
+Si en tu negocio hay un Excel que sólo una persona sabe manejar, o un dato que se digita tres veces, escríbenos. Miramos tu caso y te decimos qué se puede hacer, con honestidad de qué sí y qué no.
 ```
+
+<!-- /canal -->
 
 ## Checklist al configurar (una sola pasada)
 
@@ -61,11 +72,15 @@ Si tu WhatsApp ya es un cuello de botella, escríbenos. Miramos tu caso y te dec
 ## Reglas de marca al publicar (recordatorio)
 
 - Nombre SIEMPRE **SoltyAI** en textos (el "Solty AI" con espacio es solo el label de FB).
-- **Canal honesto, versión 2026-08-13:** la bio y la descripción de arriba dicen "WhatsApp y Telegram"
-  y **por fin son ciertas**: el bot atiende por la API oficial de Meta desde el **7-ago-2026**
-  (SoltyAI es Tech Provider aprobado). Los dos canales **se prometen**. **Lo que no se promete es el
-  widget web**, que sigue en *próximamente*. La nota vieja de este pie —"WhatsApp se menciona como
-  producto, no se promete fecha de API"— quedó obsoleta y por eso se reemplazó.
+- **Un solo mensaje líder, y en Facebook es el servicio a la medida** (desde el 15-sep-2026). El
+  producto de chat sigue existiendo y publicado en `/producto/chatbot`, en Meta pago y en el
+  outbound, pero acá no abre: si aparece, es como interfaz de un sistema. Nombrar las dos líneas en
+  la misma pieza es el error 🔴 `canal:mezcla-de-lineas`.
+- **Canal honesto, versión 2026-08-13:** WhatsApp y Telegram **se pueden nombrar como disponibles**:
+  el chat atiende por la API oficial de Meta desde el **7-ago-2026** (SoltyAI es Tech Provider
+  aprobado). **Lo que no se promete es el widget web**, que sigue en *próximamente*. La nota vieja de
+  este pie —"WhatsApp se menciona como producto, no se promete fecha de API"— quedó obsoleta y por
+  eso se reemplazó.
   - ⚠️ Se puede decir **que atiende por WhatsApp**; no se prometen **plazos de conexión**. El canal se
     probó contra nuestro propio número y el primer WABA de cliente se registra en vivo, con el
     cliente agregándonos como socio (no hay autoservicio).
@@ -76,4 +91,5 @@ Si tu WhatsApp ya es un cuello de botella, escríbenos. Miramos tu caso y te dec
 - Precios: **ninguna cifra del bot** (desde el 15-sep-2026 se cotiza por prospecto, canon →
   `_planesRetirados`); si hay que hablar de plata se dice la base del cobro: adaptación una vez,
   mitad y mitad, y mensualidad según canales, volumen, IA e integraciones. Nunca los de dólares.
-- CTA preferido: "escríbenos / escríbele al bot", no "agenda una demo".
+- CTA preferido: "escríbenos", y la conversación termina en el formulario de `/contacto` (no hay
+  Calendly desde el 9-sep-2026).

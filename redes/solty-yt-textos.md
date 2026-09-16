@@ -4,6 +4,12 @@
 > de la zona segura 1235×338 — se ve completo en móvil, TV y desktop). Foto de
 > perfil: la misma de las otras redes (`solty-fb-perfil.png`). Paleta y voz según
 > `marketing/02-brand-dna.md`.
+>
+> 🔄 **Reescrito el 2026-09-16.** La descripción abría con «chatbots de WhatsApp y Telegram», y
+> YouTube lleva el **servicio a la medida** desde el 17-ago (`canon.json → mensajeLiderPorCanal`).
+> Además, los Shorts que van a salir ahí son los de la tanda 1 y de «¿lo necesitas?», que hablan de
+> software a la medida y de operación por sector. El bloque declara su canal con
+> `<!-- canal: youtube -->` y entra al guardrail `mensajeLider`.
 
 ## Identidad
 
@@ -15,19 +21,21 @@
 | **Banner** | `solty-yt-banner.png` |
 | **Enlace** | https://soltyai.com |
 
+<!-- canal: youtube -->
+
 ## Descripción del canal (máx 1.000 caracteres — esta cabe)
 
 ```
-Chatbots de WhatsApp y Telegram que atienden, venden y agendan por ti. Hechos a tu medida.
+Software a la medida para negocios colombianos. Le quitamos el trabajo repetitivo a tu operación.
 
-En SoltyAI construimos bots para negocios en Colombia: comercios y domicilios, citas (barberías, spas, consultorios), inmobiliarias e integraciones a medida.
+SoltyAI es un estudio de desarrollo en Bucaramanga. Hacemos software a la medida para negocios que ya tienen una operación andando: lo que construimos se conecta a lo que ya usas (inventario, agenda, sistema contable y la facturación electrónica de la DIAN, donde estamos habilitados como facturador). Lo dejamos funcionando con tus datos reales y te enseñamos a usarlo.
 
-No te entregamos una herramienta para que la configures tú. La adaptamos a tu negocio en la instalación: tu catálogo, tus precios, tu forma de atender. Pagas una suscripción y nosotros nos encargamos del montaje, los ajustes y el mantenimiento. Sin equipo técnico de tu lado. Sin permanencia. Tus datos son tuyos.
+En este canal, videos cortos sobre una sola cosa: qué tarea manual de tu negocio se puede quitar con software, en horas que tú mismo puedes verificar. Sin cifras de resultado que no hayamos medido.
 
-Aquí verás bots trabajando con casos reales: demos, detrás de cámaras y resultados de negocios que ya operan con SoltyAI.
-
-¿Quieres ver uno funcionando con tu caso? Escríbenos: https://soltyai.com
+¿Te pasa en tu negocio? Escríbenos: https://soltyai.com
 ```
+
+<!-- /canal -->
 
 ## Checklist al configurar (una sola pasada)
 
@@ -42,11 +50,12 @@ Aquí verás bots trabajando con casos reales: demos, detrás de cámaras y resu
 ## Reglas de marca (recordatorio)
 
 - Nombre SIEMPRE **SoltyAI** en textos.
-- **Canal honesto, versión 2026-08-13:** la descripción de arriba dice "WhatsApp y Telegram" y **por
-  fin es cierta**: el bot atiende por la API oficial de Meta desde el **7-ago-2026** (SoltyAI es Tech
-  Provider aprobado). Los dos canales **se prometen**; **el widget web no**, sigue en *próximamente*.
-  La nota vieja de este pie —"WhatsApp se menciona como producto, no se promete fecha de API"— quedó
-  obsoleta y por eso se reemplazó.
+- **Un solo mensaje líder, y en YouTube es el servicio a la medida** (desde el 17-ago-2026). El
+  producto de chat no abre acá; si aparece en un video, es como interfaz de un sistema.
+- **Canal honesto, versión 2026-08-13:** WhatsApp y Telegram **se pueden nombrar como disponibles**:
+  el chat atiende por la API oficial de Meta desde el **7-ago-2026** (SoltyAI es Tech Provider
+  aprobado). **El widget web no**, sigue en *próximamente*. La nota vieja de este pie —"WhatsApp se
+  menciona como producto, no se promete fecha de API"— quedó obsoleta y por eso se reemplazó.
   - ⚠️ Se dice **que atiende por WhatsApp**; no se prometen **plazos de conexión**: el canal se probó
     contra nuestro propio número y el primer WABA de cliente se registra en vivo, asistido por
     nosotros (no hay autoservicio).
@@ -56,4 +65,4 @@ Aquí verás bots trabajando con casos reales: demos, detrás de cámaras y resu
 - Precios: **ninguna cifra del bot** (desde el 15-sep-2026 se cotiza por prospecto, canon →
   `_planesRetirados`); si hay que hablar de plata se dice la base del cobro: adaptación una vez,
   mitad y mitad, y mensualidad según canales, volumen, IA e integraciones. Nunca los de dólares.
-- CTA preferido: "escríbenos / escríbele al bot", no "agenda una demo".
+- CTA preferido: "escríbenos", y la conversación termina en el formulario de `/contacto`.

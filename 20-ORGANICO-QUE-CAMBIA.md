@@ -161,8 +161,9 @@ de los siete dice «bot»**: dicen «el pedido queda registrado solo», «el pac
 libres». Eso es la interfaz de un producto vertical, que es justo lo que decidió el 24-ago (el bot
 no se vende suelto). Se cambia la etiqueta `linea: bot` por `linea: vertical` en esos dolores de
 `dolores.json`, y el guardrail deja de avisar sin tocar `mensajeLiderPorCanal`. El video 5 de
-«¿lo necesitas?» (el del bot) es el único que sí nombra la línea y se queda como está, en IG y
-TikTok, con su 🟡 declarado.
+«¿lo necesitas?» (el del bot) era el único que sí nombraba la línea y se quedó, en IG y TikTok,
+con su 🟡 declarado. **2026-09-16:** se resolvió por la misma vía, a favor del vertical: el video 5
+pasa a «Domicilios y pedidos» (el titular es la operación; el chat es la interfaz) y el 🟡 se cierra.
 
 ---
 

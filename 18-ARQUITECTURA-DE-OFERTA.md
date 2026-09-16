@@ -208,8 +208,10 @@ lleva precio de lista** (hasta ese día esta nota decía «sigue siendo la entra
 > que es exactamente lo que dice la decisión del 24-ago (el bot no se vende suelto). Con eso el
 > orgánico entero lleva `servicio` sin el aviso 🟡 que el guardrail daba desde el 5-sep, y L2 se
 > queda donde la tabla de arriba lo puso: Meta, outbound y `/producto/chatbot`. El único video del
-> orgánico que sí nombra la línea del bot es el #5 de «¿lo necesitas?», y sale a IG/TikTok con su
-> 🟡 declarado. Doc: `20-ORGANICO-QUE-CAMBIA.md` C11.
+> orgánico que sí nombraba la línea del bot era el #5 de «¿lo necesitas?», que salía a IG/TikTok con
+> su 🟡 declarado. **2026-09-16: el fundador lo resolvió a favor del vertical**: el video 5 pasa a
+> «Domicilios y pedidos» (la operación es el titular, el chat es la interfaz) y el 🟡 se cierra sin
+> mover el canon ni el destino. Doc: `20-ORGANICO-QUE-CAMBIA.md` C11.
 
 #### 🔄 2026-09-08: el orden se invierte arriba, y la landing cambia de línea
 

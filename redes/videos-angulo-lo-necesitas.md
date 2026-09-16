@@ -1,7 +1,8 @@
 # Serie «¿Y tú lo necesitas?»: cinco guiones para cuatro canales
 
-> Cinco videos que explican qué es una cosa (página web, desarrollo a la medida, ERP, CRM, bot) y
-> terminan diciéndote **si la necesitas o no**, incluido el caso en que la respuesta es que no.
+> Cinco videos que explican qué es una cosa (página web, desarrollo a la medida, ERP, CRM, plataforma
+> de domicilios) y terminan diciéndote **si la necesitas o no**, incluido el caso en que la respuesta
+> es que no.
 > Para LinkedIn, Instagram, TikTok y YouTube Shorts, con mecánica de «comenta la palabra y te
 > escribo».
 >
@@ -17,7 +18,7 @@
 >
 > La salida no es botar la idea del fundador, que es buena: es invertir el orden. **La categoría es
 > el título de la serie; el video abre con la escena.** Ninguno de los cinco arranca definiendo
-> nada. Arrancan con una tarea manual que el espectador hace, y la palabra (web, ERP, CRM, bot) sólo
+> nada. Arrancan con una tarea manual que el espectador hace, y la palabra (web, ERP, CRM, pedidos) sólo
 > aparece en el tercer golpe, cuando ya se reconoció en el problema. La pregunta «¿lo necesitas?»
 > va al final, y **en tres de los cinco la respuesta honesta incluye un «todavía no»**. Ese «no» es
 > lo que hace creíble el «sí», y es lo que ningún competidor está diciendo.
@@ -32,7 +33,7 @@
 | 2 | Desarrollo a la medida | `MEDIDA` | LinkedIn, Instagram, Facebook, TikTok, YouTube Shorts | La línea que hoy factura. Abre junto con el 1 |
 | 3 | ERP | `ERP` | LinkedIn, Instagram, Facebook, TikTok, YouTube Shorts | Sube el nivel de conversación y filtra empresa con operación |
 | 4 | CRM | `CRM` | LinkedIn, Instagram, Facebook, TikTok, YouTube Shorts | Igual, y engancha con el 3 |
-| 5 | Bot | `BOT` | Instagram, Facebook, TikTok | **Va de último y no abre.** Ver el aviso de abajo |
+| 5 | Domicilios y pedidos | `PEDIDOS` | Instagram, Facebook, TikTok | **Va de último y no abre.** El titular es la operación de pedidos; el chat es la interfaz. Ver la nota de abajo |
 
 **Cadencia:** uno por semana (el viernes, dentro de la cadencia diaria de `16 §5`), en ese orden,
 video nativo subido a cada red. **Sin link en ningún post ni en ningún comentario:** el link vive en
@@ -46,12 +47,17 @@ Destacados del perfil de LinkedIn y en la bio de cada red, con su `origin` por r
 > dos veces, con la frase de cada red; el pipeline arma las dos versiones. Se grabaron marcados
 > abajo en cada guion.
 
-> ⚠️ **El video 5 sale con un 🟡 conocido del guardrail, y es a propósito.** Nombra la línea del bot,
-> y `canon.json → mensajeLiderPorCanal` pone Instagram y TikTok en la lista de `servicio` desde el
-> 17-ago, mientras `18-ARQUITECTURA-DE-OFERTA.md §4` mandó a propósito la línea del bot a esos dos
-> canales el 22-ago. Las dos decisiones se contradicen y ninguna es un error de dedo: por eso sale
-> aviso y no error. **Lo que sí es error 🔴 y no puede pasar: que un mismo video nombre las dos
-> líneas.** Cada uno de los cinco nombra una sola.
+> 🔄 **2026-09-16: el video 5 pasa de «Bot» a «Domicilios y pedidos», y el 🟡 se cierra.** Hasta ese
+> día el 5 nombraba la línea del bot y salía a Instagram, Facebook y TikTok, que llevan `servicio`
+> desde el 17-ago; `18-ARQUITECTURA-DE-OFERTA.md §4` lo había mandado ahí a propósito el 22-ago y el
+> guardrail lo marcaba 🟡 «declarado». El fundador lo resolvió a favor del **vertical**: el titular es
+> la operación de domicilios y pedidos (`domicilios-ops`, la línea del único cliente que paga) y el
+> chat es la interfaz, no el titular, que es exactamente la decisión del 24-ago (el bot no se vende
+> suelto) y la misma salida que tuvieron los siete guiones de la tanda 1 el 15-sep. Con Meta One
+> vendiendo el agente a US$14,99 al mes (`03-competitor-analysis.md` §1) el bot suelto no es titular
+> en ningún orgánico. Ni el canon ni el destino se movieron: se movió el guion. **Lo que sigue siendo
+> error 🔴: que un mismo video nombre las dos líneas.** Cada uno de los cinco nombra una sola, y el
+> quinto no nombra ninguna.
 
 ---
 
@@ -166,29 +172,31 @@ Destacados del perfil de LinkedIn y en la bio de cada red, con su `origin` por r
 
 ---
 
-## 5. Bot
+## 5. Domicilios y pedidos
 
 <!-- canal: instagram, facebook, tiktok -->
 
 **Gancho para la primera línea del post:**
-`Te escriben el sábado a las nueve de la noche. Contestas el lunes. Ahí se fue la venta.`
+`Te entran pedidos por WhatsApp, por llamada y por la app. Y alguien los pasa a mano a una lista para poder despacharlos.`
 
-**Guion (unas 145 palabras):**
+**Guion (unas 150 palabras):**
 
-> **(0 a 3 s)** ¿Te escriben el sábado a las nueve de la noche y contestas el lunes en la mañana?
+> **(0 a 3 s)** ¿Cuántos pedidos te entran hoy por WhatsApp que alguien tiene que copiar a mano
+> para poder despacharlos?
 >
-> **(3 a 15 s)** Ponle tu número: ¿cuántos mensajes te entran fuera de horario en una semana? De
-> esos, los que preguntan lo mismo de siempre, si tienen, cuánto vale, dónde quedan, no necesitaban
-> esperarte a ti. Y el que preguntó el sábado y no recibió respuesta, el domingo ya le escribió a
-> otro.
+> **(3 a 15 s)** Ponle tu número: treinta pedidos al día, un minuto y medio cada uno entre leer el
+> chat, anotarlo, asignarlo y avisarle al domiciliario. Son unas veintidós horas al mes de alguien
+> que no está despachando: está transcribiendo. Es un supuesto mío. Y el pedido que se quedó en el
+> chat sin copiar no existe hasta que el cliente reclama.
 >
-> **(15 a 40 s)** Un bot de negocio no es un robot que opine de todo. Es un flujo cerrado y corto:
-> contesta las cinco preguntas que te hacen siempre, toma el pedido o agenda la cita, y apenas la
-> conversación se sale de ese guion te la pasa a ti, con todo lo que ya se habló. Trabaja en
-> WhatsApp y en Telegram, que es donde te escriben.
+> **(15 a 40 s)** Una plataforma de domicilios no es una app de reparto ni una caja registradora.
+> Es una sola lista donde el pedido entra solo desde el chat, con nombre, dirección y lo que pidió;
+> se le asigna a un domiciliario con un toque; y tú y el cliente ven en qué va. El chat sigue siendo
+> el chat: lo que cambia es que ya nadie lo copia.
 >
-> **(40 a 55 s)** ¿Lo necesitas? Sólo si ya te escriben más de lo que alcanzas a contestar. Si te
-> escriben cinco personas al día, contéstales tú, que te va a ir mejor. Comenta BOT y te escribo.
+> **(40 a 55 s)** Vuelve a esas veintidós horas. ¿Lo necesitas? Si despachas menos de diez pedidos
+> al día, una lista en papel te sirve todavía. Si ya son treinta y alguien vive pegado al teléfono
+> asignando, sí. Comenta PEDIDOS y te escribo.
 
 <!-- /canal -->
 
@@ -221,7 +229,7 @@ una palabra todavía no pidió nada. **Se manda una sola pregunta, específica d
 | `MEDIDA` | Hola [NOMBRE], gracias por comentar. Una pregunta para no mandarte cosas genéricas: ¿cuál es el paso que hoy se hace a mano y que más les estorba? |
 | `ERP` | Hola [NOMBRE], gracias por comentar. Cuéntame primero: ¿cuántos programas distintos tienen que abrir hoy para cerrar una sola venta? |
 | `CRM` | Hola [NOMBRE], gracias por comentar. Antes de nada: ¿dónde vive hoy la lista de tus clientes, en el WhatsApp, en un Excel, o en algún programa? |
-| `BOT` | Hola [NOMBRE], gracias por comentar. Para no hablar en el aire: ¿por dónde te escriben más, WhatsApp o Instagram, y como cuántos mensajes te entran en un día normal? |
+| `PEDIDOS` | Hola [NOMBRE], gracias por comentar. Para no hablar en el aire: ¿cuántos pedidos despachan en un día normal, y quién los asigna hoy? |
 
 **Lo que sigue, según lo que conteste:**
 
@@ -237,9 +245,18 @@ una palabra todavía no pidió nada. **Se manda una sola pregunta, específica d
 ### Lo que nunca va en el DM
 
 - Un link de entrada, un PDF, un catálogo ni una presentación.
-- Un precio suelto sin haber entendido el alcance. Lo que sí se puede decir cuando pregunten:
-  página sencilla **desde $400.000 + IVA**; proyecto a la medida, **sin cifra: «tú pones el
-  presupuesto y el alcance se acomoda»** (forma `cotizacion` desde el 9-sep). Nada más de memoria.
+- Un precio suelto sin haber entendido el alcance. Lo que sí se puede decir cuando pregunten, y es
+  la base del cobro del canon (`lineasDeOferta.lineas.*.precio.unidad`), sin cifra:
+  - página sencilla **desde $400.000 + IVA**;
+  - proyecto a la medida, **sin cifra: «tú pones el presupuesto y el alcance se acomoda»** (forma
+    `cotizacion` desde el 9-sep);
+  - plataforma de domicilios: **se cotiza por domiciliario activo**, mensual, sin cobro de
+    instalación;
+  - si alguien pregunta por el chat o el bot (por este video o por otro): **se cotiza**; un cobro
+    único de adaptación (mitad al arrancar, mitad cuando ya atiende) y una mensualidad según
+    canales, volumen, IA e integraciones, más el consumo de WhatsApp que el cliente paga a Meta.
+    **Ninguna cifra de plan**, ni la de referencia: desde el 15-sep no existe precio de lista.
+  Nada más de memoria.
 - Ninguna métrica de resultado. No se han medido, y un número publicado lleva fuente o no va.
 - Ningún audio. El que comentó una palabra no pidió un audio de dos minutos.
 
@@ -255,10 +272,11 @@ una palabra todavía no pidió nada. **Se manda una sola pregunta, específica d
   lado (`metricaSinFuente`).
 - **Cero métricas de resultado y cero casos inventados.** Los cinco hablan del dolor, ninguno dice
   «un cliente nuestro logró».
-- **Un video, un mensaje.** Ninguno mezcla las dos líneas. Los cuatro primeros llevan `servicio`,
-  el quinto lleva `bot` y va declarado como tal.
+- **Un video, un mensaje.** Ninguno mezcla las dos líneas. Los cuatro primeros llevan `servicio`;
+  el quinto es vertical desde el 16-sep (nombra la operación de pedidos, no el bot ni el servicio) y
+  por eso el guardrail no lo marca.
 - **Subtítulos quemados**, obligatorio: se ve en silencio.
 - **Producción, no producciones:** cara a cámara, celular, luz de ventana, los cinco el mismo día,
   misma ropa y misma luz.
-- **Precios:** salen de `data/catalogo.json` y de `canon.lineaServicios.pisoPrecio`. Este archivo no
-  define ninguno.
+- **Precios:** salen de `data/catalogo.json`; el piso de `canon.lineaServicios.pisoPrecio` es
+  referencia interna desde el 9-sep y no se publica. Este archivo no define ninguno.

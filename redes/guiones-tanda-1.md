@@ -71,7 +71,7 @@
 
 `direccion-dictada-al-domiciliario` · Restaurante y domicilios · N1 Ordenar · vertical
 **Red:** LinkedIn + Shorts · *(orden viejo: número 4)*
-**Evidencia:** el piloto de Bucaradomi despacha así.
+**Evidencia:** la app del domiciliario de Bucaradomi muestra la dirección escrita, no dictada.
 
 > ¿Cuántas veces te ha tocado repetirle la dirección al domiciliario?
 >
@@ -178,7 +178,8 @@ Así es como uno cotiza barato sin darse cuenta.
 
 `pedidos-de-whatsapp-al-cuaderno` · Comercio y distribución · N1 Ordenar · vertical
 **Red:** LinkedIn + Shorts + IG + FB + TikTok · *(orden viejo: número 3)*
-**Evidencia:** es exactamente lo que hace el piloto de Bucaradomi desde el año pasado.
+**Evidencia:** el módulo de pedidos por chat está construido y tiene demo pública; el despacho sí lo
+opera Bucaradomi (su contrato excluye el chat, así que el registro por WhatsApp no se le atribuye).
 
 > ¿Todavía copias a un cuaderno los pedidos que te llegan por WhatsApp?
 >
@@ -213,7 +214,7 @@ enteras cuando el cliente reclama.
 > supuesto mío. Pon tu propio número, que seguro no baja mucho.
 >
 > Y hay algo que esa cuenta no muestra. El paciente que llamó a las siete de la noche no agendó
-> nada. Y casi la mitad de esas llamadas son para reagendar algo que ya estaba puesto.
+> nada. Y buena parte de esas llamadas son para reagendar algo que ya estaba puesto.
 >
 > Se puede hacer distinto. El paciente entra al chat, ve los espacios que de verdad están libres y
 > queda agendado solo. Tu recepcionista atiende a los que están en la sala, que es lo único que ahí
@@ -340,18 +341,23 @@ graban los cinco de `videos-angulo-lo-necesitas.md`**: 15 videos, unas 2 horas, 
 semanas de publicación diaria (`16 §4`). Los MP4 se nombran con el `id` del dolor (columna de la
 ficha) para que el pipeline los reconozca.
 
-| # | Gancho de arranque | Sector | Red | Línea |
+| # | Gancho de arranque | Sector | Red *(= el marcador de cada guion)* | Línea |
 |---|---|---|---|---|
-| 1 | ¿Cuántas veces te ha tocado repetirle la dirección al domiciliario? | Domicilios | LinkedIn | **L1 producto vertical** |
-| 2 | ¿Todavía tienes a alguien digitando facturas? | Contable | LinkedIn | L3 a la medida |
-| 3 | ¿Todavía haces los recibos con talonario? | Salud | LinkedIn | L3 a la medida |
-| 4 | Cada cotización que mandas, ¿la armas copiando la del mes pasado? | Profesional | LinkedIn | L3 a la medida |
-| 5 | ¿Todavía copias a un cuaderno los pedidos que te llegan por WhatsApp? | Comercio | LinkedIn + IG | L2 bot |
-| 6 | ¿Tu recepcionista agenda o alcanza a hacer algo más? | Salud | IG + TikTok | L2 bot |
-| 7 | ¿Cuántas veces mandaste hoy las mismas fotos del mismo apartamento? | Inmobiliaria | IG + TikTok | L2 bot |
-| 8 | ¿Te ha pasado que dos clientas quedaron a la misma hora? | Belleza | IG + TikTok | L2 bot |
-| 9 | ¿Cuántas fotos de motores tienes hoy en el chat sin contestar? | Taller | IG + TikTok | L2 bot |
-| 10 | En temporada de matrículas, ¿cuántas veces al día explicas lo mismo? | Educación | IG + TikTok | L2 bot |
+| 1 | ¿Cuántas veces te ha tocado repetirle la dirección al domiciliario? | Domicilios | LinkedIn + Shorts | **L1 producto vertical** |
+| 2 | ¿Todavía tienes a alguien digitando facturas? | Contable | LinkedIn + Shorts | L3 a la medida |
+| 3 | ¿Todavía haces los recibos con talonario? | Salud | LinkedIn + Shorts | L3 a la medida |
+| 4 | Cada cotización que mandas, ¿la armas copiando la del mes pasado? | Profesional | LinkedIn + Shorts | L3 a la medida |
+| 5 | ¿Todavía copias a un cuaderno los pedidos que te llegan por WhatsApp? | Comercio | LinkedIn + Shorts + IG + FB + TikTok | vertical (la interfaz de un producto, no el bot) |
+| 6 | ¿Tu recepcionista agenda o alcanza a hacer algo más? | Salud | IG + FB + TikTok + Shorts | vertical |
+| 7 | ¿Cuántas veces mandaste hoy las mismas fotos del mismo apartamento? | Inmobiliaria | IG + FB + TikTok + Shorts | vertical |
+| 8 | ¿Te ha pasado que dos clientas quedaron a la misma hora? | Belleza | IG + FB + TikTok + Shorts | vertical |
+| 9 | ¿Cuántas fotos de motores tienes hoy en el chat sin contestar? | Taller | IG + FB + TikTok + Shorts | vertical |
+| 10 | En temporada de matrículas, ¿cuántas veces al día explicas lo mismo? | Educación | IG + FB + TikTok + Shorts | vertical |
+
+*(Tabla alineada el 2026-09-16 con los marcadores `<!-- canal -->` de arriba: decía «L2 bot» para
+#5 a #10 y «LinkedIn + IG» para el #5 desde el 22-ago, y el 15-sep esos guiones pasaron a `vertical`
+y sumaron Facebook y Shorts. Es la lista con la que se graba y se publica, así que tiene que decir
+lo mismo que el marcador.)*
 
 **Recordatorio de la sesión D (reescrito el 2026-09-15):** **sin link en el post ni en el primer
 comentario.** LinkedIn suprime hasta 80% los comentarios con link externo. El link de `/contacto`
