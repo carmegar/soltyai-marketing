@@ -231,8 +231,9 @@ mano**, que es justo lo que se puede hacer sin presupuesto de pauta.
 **El ancla de precio**, con la lógica de `18 §6` (el reemplazo, no el costo): un auxiliar de
 producción o de costeo cuesta ~$1.900.000/mes. Y la desviación de cuero de una fábrica que corta
 10.000 pares al mes es plata de verdad. Un producto entre **$500.000 y $900.000/mes** cabe en esa
-conversación. En una página publicada, sin embargo, **se habla en horas, no en pesos**, hasta que
-`parametros.costoHoraOperativa` deje de estar marcado `supuesto`.
+conversación. En una página publicada, sin embargo, **se habla en horas, no en pesos**
+(`parametros.costoHoraOperativa` quedó verificado el 15-sep-2026 en $15.200/h; un peso se dice sólo
+con la fuente y la fecha al lado).
 
 ---
 
@@ -338,8 +339,9 @@ el volumen de domicilio lo mueven restaurantes de barrio). 30 días operativos a
 
 A eso hay que sumarle lo que no aparece en ninguna nómina: **quién despacha**. A 1,5 minutos por
 pedido entre tomarlo, asignarlo, seguirlo y cerrarlo, son **7,5 horas al mes** con 10 pedidos
-diarios, **22 horas** con 30 y **60 horas** con 80. Se dice en horas y no en pesos, porque
-`costoHoraOperativa` sigue en `supuesto`. **Ese es el trabajo que reemplaza `domicilios-ops`**, y es
+diarios, **22 horas** con 30 y **60 horas** con 80. Se dice en horas y no en pesos por regla del
+carril de video (`costoHoraOperativa` ya está verificado: $15.200/h desde el 15-sep-2026, o sea
+~$114.000, ~$334.000 y ~$912.000 al mes en la conversación de venta, nunca en cámara sin la fuente). **Ese es el trabajo que reemplaza `domicilios-ops`**, y es
 el único de los tres caminos donde nuestro producto entra sin depender de la flota.
 
 #### 3.3.3 · Los tres escenarios

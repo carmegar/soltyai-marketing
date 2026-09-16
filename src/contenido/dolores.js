@@ -120,10 +120,20 @@ function validar() {
     }
   }
 
-  // El parámetro de plata gobierna la regla de uso: mientras sea supuesto, el video habla en horas.
+  // El parámetro de plata gobierna la regla de uso. Mientras fue supuesto (hasta el 2026-09-15),
+  // el video hablaba en horas por obligación; verificado, sigue hablando en horas por diseño
+  // (16-CONTENIDO-VIDEO.md) y un peso se dice sólo con la fuente y la fecha al lado.
   const p = banco.parametros.costoHoraOperativa;
   if (p.estado === 'supuesto') {
     avisos.push(`▲ costoHoraOperativa sigue en "supuesto" (${p.valor} COP): los videos hablan en HORAS, no en pesos.`);
+  } else if (p.estado === 'vigente') {
+    if (!/\d{4}-\d{2}-\d{2}/.test(p.base ?? '')) {
+      problemas.push('✖ costoHoraOperativa está "vigente" y su base no dice la fecha en que se verificó');
+    } else {
+      avisos.push(`▲ costoHoraOperativa verificado (${p.valor} COP/h, ${p.verificadoEl ?? 'ver base'}): los videos siguen en HORAS; un peso sólo con la fuente y la fecha al lado.`);
+    }
+  } else {
+    problemas.push(`✖ costoHoraOperativa: estado "${p.estado}" tiene que ser "supuesto" o "vigente"`);
   }
 
   // 🔴 Misma disciplina para el costo de repartir. Es el número con el que se le habla a un

@@ -11,11 +11,13 @@
   ],
   "parametros": {
     "costoHoraOperativa": {
-      "valor": 12000,
+      "valor": 15200,
       "moneda": "COP",
-      "estado": "supuesto",
-      "base": "Costo cargado de una hora de auxiliar administrativo, redondeado. NO verificado: falta confirmar el SMMLV 2026 y el factor prestacional. Mientras siga en `supuesto`, la regla de uso manda hablar en horas.",
-      "verificarAntesDe": "decir un peso en cámara"
+      "unidad": "COP/hora trabajada",
+      "estado": "vigente",
+      "verificadoEl": "2026-09-15",
+      "base": "Costo real de una hora de trabajo de un empleado de salario mínimo con prestaciones, verificado el 2026-09-15. Aritmética: costo mensual del empleador por un SMMLV 2026 = $2.765.572 (Alegra, desglose con exoneración de aportes: salario $1.750.905 + auxilio de transporte $249.095 + pensión 12% + ARL clase I + caja 4% + prima + cesantías + intereses + vacaciones + dotación; ver costoDeRepartir.entorno.costoEmpleadorSmmlvExonerada). Factor sobre el salario: 1,58. Horas trabajadas al mes: 42 h/semana × 52 / 12 = 182 h (Ley 2101 de 2021: la jornada máxima bajó a 42 h desde el 15-jul-2026). $2.765.572 ÷ 182 h = $15.195 → $15.200. Fuentes oficiales: Decreto 1469 de 2025 (SMMLV 2026 $1.750.905, +23%) y Decreto 1470 de 2025 (auxilio de transporte $249.095), ambos del 29-dic-2025, consultados el 2026-09-15 vía hklaw.com/en/insights/publications/2025/12/colombia-decreta-aumento-del-salario-minimo-y-auxilio-de-transporte y andi.com.co (Novedades salario mínimo 2026); jornada de 42 h desde el 15-jul-2026: actualicese.com/asi-se-reducira-la-jornada-laboral-en-colombia-en-2026 y scolalegal.com (consultados el 2026-09-15). Variantes, para no discutirlas después: con el divisor de nómina de 210 h/mes (convención para liquidar la hora ordinaria a 42 h) da $13.170/h; para un empleador NO exonerado (persona natural con menos de dos empleados, o ingresos que no aplican al art. 114-1 ET) hay que sumar salud 8,5% + SENA 2% + ICBF 3% = $236.372/mes y da $16.500/h. El central es el de las horas realmente trabajadas con empleador exonerado, que es la pyme típica (SAS). ⚠️ Es el costo de un salario mínimo: un auxiliar contable o administrativo con experiencia gana más, así que en la conversación de venta este número es un PISO. Hasta el 2026-09-15 estaba en 12.000 y `supuesto`.",
+      "reglaDeUso": "Verificado no significa «se dice en cámara». Los videos siguen en horas (16-CONTENIDO-VIDEO.md); un peso se dice sólo con la fuente y la fecha al lado (canon → prohibiciones.metricaSinFuente) y sirve más en la conversación de venta, donde el cliente pone su propio número."
     },
     "diasHabilesMes": 22,
     "semanasMes": 4.33,

@@ -249,9 +249,10 @@ una palabra todavía no pidió nada. **Se manda una sola pregunta, específica d
 
 - **Plantilla:** los cinco siguen los cuatro golpes de `16-CONTENIDO-VIDEO.md §3`, entre 140 y 150
   palabras, unos 55 segundos.
-- **Horas y no pesos:** toda la aritmética va en horas y declarada como supuesto del espectador,
-  porque `parametros.costoHoraOperativa` sigue en `supuesto` y sin verificar. Ni un peso de ahorro
-  estimado en cámara.
+- **Horas y no pesos:** toda la aritmética va en horas y declarada como supuesto del espectador.
+  `parametros.costoHoraOperativa` quedó verificado el 15-sep-2026 ($15.200/h), y aun así ni un peso
+  de ahorro estimado en cámara: las horas las verifica el espectador; un peso exige fuente y fecha al
+  lado (`metricaSinFuente`).
 - **Cero métricas de resultado y cero casos inventados.** Los cinco hablan del dolor, ninguno dice
   «un cliente nuestro logró».
 - **Un video, un mensaje.** Ninguno mezcla las dos líneas. Los cuatro primeros llevan `servicio`,
