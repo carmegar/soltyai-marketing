@@ -1,5 +1,10 @@
 # 11 · PRE-LAUNCH-CHECKLIST — Qué tener listo antes de salir a marketing
 
+> ⚠️ **2026-09-15: los planes de bot que este doc cita (Esencial / Pro / Premium, setup y excedente)
+> quedaron como referencia interna de cotización, NO se publican;** el bot se cotiza por prospecto y
+> el motor contable no se ofrece como producto. Las líneas afectadas llevan el sufijo *(retirado el
+> 15-sep-2026)*. Fuente: `data/canon.json → _planesRetirados`; qué se dice hoy: `05-PRICING.md` §1.
+
 > Regla base: **para generar demanda NO necesitas la empresa formada; para COBRAR sí.**
 > **La SAS ya está constituida** (matrícula CCB 731655, NIT 902081265-3 con RST, 2026-07-02), desde el
 > **2026-07-13 hay cuenta Bancolombia + comercio Wompi (en sandbox)** y desde el **26-jul-2026 la SAS
@@ -134,11 +139,11 @@ para que lo pruebe de verdad → cierre** (el setup como prueba de valor que baj
       catálogo/agenda/inventario (lo que aplique al producto), canal de contacto.
 - [ ] **Plan correcto por rubro** claro para quien cierra. Los planes **no cambian con el rubro**: lo
       que cambia es el vertical que se activa. Precios **antes de IVA**, fuente `data/canon.json`:
-      - Inmobiliaria → **Pro $490.000/mes** (500 conversaciones, con IA) + **setup $400.000**.
-      - Citas (peluquerías, spas, consultorios) → **Esencial $290.000/mes** (200, sin IA): agendar y
+      - Inmobiliaria → **Pro $490.000/mes** (500 conversaciones, con IA) + **setup $400.000**. *(retirado el 15-sep-2026)*
+      - Citas (peluquerías, spas, consultorios) → **Esencial $290.000/mes** (200, sin IA): agendar y *(retirado el 15-sep-2026)*
         recordar no necesita que el bot improvise, y sin IA el margen es mejor.
-      - Domicilios / comercio con catálogo → **Pro $490.000/mes** + **setup $400.000**.
-      - Inventario grande o mucho volumen → **Premium $790.000/mes** (1.500 conversaciones).
+      - Domicilios / comercio con catálogo → **Pro $490.000/mes** + **setup $400.000**. *(retirado el 15-sep-2026)*
+      - Inventario grande o mucho volumen → **Premium $790.000/mes** (1.500 conversaciones). *(retirado el 15-sep-2026)*
       - Excedente: **$50.000 por cada 100 conversaciones** de más.
       - **PROHIBIDO** el catálogo en dólares: ni Starter/Growth/Pro, ni Agenda $65/$250, ni Pedidos
         $80/$280, ni Inmobiliario $249/$600 o $650/$1.500. Quedó **superado** por el canon COP.

@@ -1,5 +1,10 @@
 # 04 · STRATEGY — El carril de Meta (SoltyAI)
 
+> ⚠️ **2026-09-15: los planes de bot que este doc cita (Esencial / Pro / Premium, setup y excedente)
+> quedaron como referencia interna de cotización, NO se publican;** el bot se cotiza por prospecto y
+> el motor contable no se ofrece como producto. Las líneas afectadas llevan el sufijo *(retirado el
+> 15-sep-2026)*. Fuente: `data/canon.json → _planesRetirados`; qué se dice hoy: `05-PRICING.md` §1.
+
 > # ⚠️ ESTE CARRIL ESTÁ RELEGADO (2026-08-13)
 >
 > **Meta ya no es el primer carril pago, ni el único.** La secuencia vigente es
@@ -193,7 +198,7 @@ Intereses: *Inmobiliaria, Agente inmobiliario, Bienes raíces, Arriendo/venta de
 Finca raíz, CRM inmobiliario*.
 **Dolor:** asesores repitiendo lo mismo, leads sin calificar, agenda de visitas desordenada.
 **Promesa:** **pre-califica leads, responde del inventario (RAG) y agenda visitas** sola. → Producto
-el **vertical inmobiliaria**, que se vende con los planes del canon: **Esencial $290.000 / Pro
+el **vertical inmobiliaria**, que se vende con los planes del canon: **Esencial $290.000 / Pro *(retirado el 15-sep-2026)*
 $490.000 / Premium $790.000** al mes + setup $400.000, antes de IVA (`05-PRICING.md`). El tier
 "entry" en USD que decía acá quedó **superado** con el resto del catálogo por producto.
 

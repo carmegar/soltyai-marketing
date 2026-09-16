@@ -1,5 +1,10 @@
 # 06 · BUDGET-PLAN — La economía de adquisición en COP (recalibrada 2026-08-13)
 
+> ⚠️ **2026-09-15: los planes de bot que este doc cita (Esencial / Pro / Premium, setup y excedente)
+> quedaron como referencia interna de cotización, NO se publican;** el bot se cotiza por prospecto y
+> el motor contable no se ofrece como producto. Las líneas afectadas llevan el sufijo *(retirado el
+> 15-sep-2026)*. Fuente: `data/canon.json → _planesRetirados`; qué se dice hoy: `05-PRICING.md` §1.
+
 > Modelo financiero de la pauta, en **pesos**, contra el **pricing COP vigente** (`05-PRICING.md`) y
 > la **secuencia de canales** que manda (`15-CANALES-Y-SECUENCIA.md`). Metodología: skill `ads-math`
 > (break-even, LTV:CAC, payback, forecasting), fórmulas con números a la vista.
@@ -102,9 +107,9 @@ media que **no está medido** (§7).
 
 | Dato | Valor |
 |---|---|
-| Planes vigentes | Esencial $290.000 · Pro $490.000 · Premium $790.000, antes de IVA |
+| Planes vigentes | Esencial $290.000 · Pro $490.000 · Premium $790.000, antes de IVA  *(retirado el 15-sep-2026)* |
 | Adaptación inicial | $400.000 única vez, 50% al firmar y 50% cuando el bot atiende |
-| Excedente | $50.000 cada 100 conversaciones |
+| Excedente | $50.000 cada 100 conversaciones  *(retirado el 15-sep-2026)* |
 | Piso de la línea de servicio | $3.000.000, con 50% de anticipo para agendar |
 | Costo de servir | IA US$0,02 a US$0,05 por conversación · infra US$1 a US$2 por cliente al mes · modo sin IA = 0 |
 | Márgenes reales por plan | 65% a 85% *(la banda que se comunica)* |

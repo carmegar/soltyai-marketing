@@ -1,5 +1,10 @@
 # 03 · Análisis competitivo — SoltyAI (pauta Meta, ronda 1)
 
+> ⚠️ **2026-09-15: los planes de bot que este doc cita (Esencial / Pro / Premium, setup y excedente)
+> quedaron como referencia interna de cotización, NO se publican;** el bot se cotiza por prospecto y
+> el motor contable no se ofrece como producto. Las líneas afectadas llevan el sufijo *(retirado el
+> 15-sep-2026)*. Fuente: `data/canon.json → _planesRetirados`; qué se dice hoy: `05-PRICING.md` §1.
+
 > Inteligencia competitiva para la pauta de SoltyAI en Meta. Mercado: chatbots de IA /
 > WhatsApp para negocios en Colombia y LATAM. Foco: dueños/administradores de PYMEs.
 >
@@ -73,7 +78,7 @@ Dos ejes que importan para la pauta: **público** (DIY/PYME ↔ enterprise) y
 
 **Dónde cae SoltyAI:** cuadrante superior-PYME — **agente de IA que atiende, vende y agenda solo +
 done-for-you (lo montamos y adaptamos nosotros) + verticales ya entrenados por industria**, a precio
-PYME en pesos: **Esencial $290.000 · Pro $490.000 · Premium $790.000 al mes, más setup $400.000**
+PYME en pesos: **Esencial $290.000 · Pro $490.000 · Premium $790.000 al mes, más setup $400.000** *(retirado el 15-sep-2026)*
 (antes de IVA), donde el setup **ES** la adaptación. Es el único que combina **seis**
 cosas a la vez:
 
@@ -201,7 +206,7 @@ adaptado a TU negocio (no te toca configurarlo)"**, más *"pruébalo ahora mismo
 
 5. **Precio claro en pesos + español de Colombia + soporte local + empresa formal.** Treble, Keybe,
    Yalo, Aivo, Auronix **no publican precio** (sales-led, fricción). SoltyAI gana con transparencia
-   (**Esencial $290.000 · Pro $490.000 · Premium $790.000 al mes + setup $400.000**, antes de IVA) y
+   (**Esencial $290.000 · Pro $490.000 · Premium $790.000 al mes + setup $400.000**, antes de IVA) y *(retirado el 15-sep-2026)*
    ancla colombiana real (Bucaramanga), contra plataformas que facturan en USD con soporte distante.
    Y suma un argumento que ninguna de ellas puede dar acá: **factura electrónica DIAN**, así que el
    cliente descuenta el gasto.
@@ -249,7 +254,7 @@ adaptado a TU negocio (no te toca configurarlo)"**, más *"pruébalo ahora mismo
 - **D — "Costo bajo control, IA incluida":** *"IA cuando vale la pena, sin IA cuando no. El uso de
   IA va incluido — sin sorpresa de tokens."* Contra el costo variable opaco de tokens OpenAI
   (Whaticket) y $/conv (ManyChat). Modo con/sin IA es **único en el mercado revisado**.
-- **E — "Precio claro, soporte en colombiano":** *"Desde $290.000 al mes, sin cotizaciones eternas.
+- **E — "Precio claro, soporte en colombiano":** *"Desde $290.000 al mes, sin cotizaciones eternas. *(retirado el 15-sep-2026)*
   Hecho, soportado y facturado en Colombia."* Contra los sales-led sin precio público (Keybe,
   Treble, Yalo) y contra las plataformas que cobran en dólares sin factura que el cliente descuente.
 - **F — "Pruébalo con tus datos reales":** *"Te lo dejamos funcionando con TU negocio para que lo
@@ -302,7 +307,7 @@ adaptado a TU negocio (no te toca configurarlo)"**, más *"pruébalo ahora mismo
   capacidad central; "Parcial" cuando la IA existe pero el centro del mensaje es CRM/multiagente
   operado por humanos.
 - **Pricing de SoltyAI: en COP, y la fuente es `data/canon.json`** (decisión D1), no este documento.
-  Vigente: **Esencial $290.000 · Pro $490.000 · Premium $790.000 al mes, más setup $400.000**, todo
+  Vigente: **Esencial $290.000 · Pro $490.000 · Premium $790.000 al mes, más setup $400.000**, todo *(retirado el 15-sep-2026)*
   antes de IVA, con excedente de $50.000 por cada 100 conversaciones de más.
   **Prohibido** citar el modelo en dólares —los planes Starter/Growth/Pro y el catálogo por producto
   (Agenda $65/$250, Pedidos $80/$280, Inmobiliario $249/$600 y $650/$1.500)—: quedó **superado** por
