@@ -1,7 +1,8 @@
 {
   "_doc": "Catálogo de todo lo que SoltyAI puede vender, con su costo real de servir y su margen. Es la fuente para cotizar (src/catalogo) y para gobernar el margen. Regla dura: si un precio o un costo NO está verificado contra una fuente, va con estado 'supuesto' y el CLI lo marca en amarillo en cada cotización. Nada de números inventados que después se presentan como hechos.",
   "_iva": "TODO `precio` de este archivo es la BASE, sin IVA: el 19% se suma encima al cotizar (canon.json → ivaConvencion). Si un contrato pactó el total con IVA incluido, `precio` sigue siendo la base y el total va en `precioConIva`. Hoy la única línea así es domicilios-ops: $370.000 con IVA = $310.924,37 + $59.075,63.",
-  "actualizado": "2026-09-08",
+  "actualizado": "2026-09-15",
+  "_estados": "vigente (verificado, con fuente) · supuesto (estimación, sale marcado en cada cotización) · referencia (NO publicable, SÍ cotizable: el importe es la base interna para armar una cotización, nunca un precio de lista; entró el 2026-09-15 al despublicar los planes de bot) · legacy (modelo USD viejo, sin reconciliar, fuera de todo).",
   "moneda": "COP",
 
   "servicios": [
@@ -12,10 +13,10 @@
       "tipo": "recurrente",
       "precio": 290000,
       "costoMes": 8000,
-      "estado": "vigente",
+      "estado": "referencia",
       "fuente": "ESTADO.md §Marketing (acordado 2026-07-22)",
       "incluye": ["200 conversaciones/mes", "modo determinista sin IA", "1 canal: WhatsApp o Telegram"],
-      "notas": "El costo es casi puro infra: sin IA el costo marginal por conversación es ~0. Es el plan que más protege el margen."
+      "notas": "⚠️ 2026-09-15: despublicado (canon → _planesRetirados). El bot se cotiza por prospecto; este ítem es la REFERENCIA de un bot sin IA con ~200 conversaciones al mes, no un precio de lista. El costo es casi puro infra: sin IA el costo marginal por conversación es ~0. Es la configuración que más protege el margen."
     },
     {
       "id": "bot-pro",
@@ -24,10 +25,10 @@
       "tipo": "recurrente",
       "precio": 490000,
       "costoMes": 78000,
-      "estado": "vigente",
+      "estado": "referencia",
       "fuente": "ESTADO.md §Marketing + 01-SOURCE-BRIEF §Costo de servir",
       "incluye": ["500 conversaciones/mes", "IA Claude Haiku 4.5 dentro del tope", "1 canal: WhatsApp o Telegram"],
-      "notas": "Costo = infra (~$8.000) + IA 500 conv × US$0.035 × TRM 4.000 ≈ $70.000. El tope de conversaciones es lo que sostiene el margen; pasado el tope se cobra excedente."
+      "notas": "⚠️ 2026-09-15: despublicado (canon → _planesRetirados); referencia de cotización para un bot con IA y ~500 conversaciones al mes. Costo = infra (~$8.000) + IA 500 conv × US$0.035 × TRM 4.000 ≈ $70.000. El tope de conversaciones es lo que sostiene el margen; pasado el tope se cobra excedente."
     },
     {
       "id": "bot-premium",
@@ -36,10 +37,10 @@
       "tipo": "recurrente",
       "precio": 790000,
       "costoMes": 218000,
-      "estado": "vigente",
+      "estado": "referencia",
       "fuente": "ESTADO.md §Marketing + 01-SOURCE-BRIEF §Costo de servir",
       "incluye": ["1.500 conversaciones/mes", "IA topada", "multi-sede"],
-      "notas": "Costo = infra + IA 1.500 conv × US$0.035 × TRM 4.000 ≈ $210.000. Es el plan de margen porcentual más bajo: vigilarlo si el uso real se pega al tope."
+      "notas": "⚠️ 2026-09-15: despublicado (canon → _planesRetirados); referencia de cotización para un bot multi-sede con IA y ~1.500 conversaciones al mes. Costo = infra + IA 1.500 conv × US$0.035 × TRM 4.000 ≈ $210.000. Es la configuración de margen porcentual más bajo: vigilarla si el uso real se pega al tope."
     },
     {
       "id": "domicilios-ops",
@@ -70,7 +71,7 @@
       "tipo": "unico",
       "precio": 400000,
       "costoUnico": 240000,
-      "estado": "supuesto",
+      "estado": "referencia",
       "fuente": "Precio verificado (ESTADO.md §Marketing). El COSTO es supuesto: 4 h de trabajo del fundador a tarifa interna.",
       "incluye": ["carga de catálogo/inventario", "ajuste de flujos y tono", "conexión del canal", "prueba con datos reales"],
       "reglas": ["setup5050", "garantiaImplementacion"],
@@ -84,7 +85,7 @@
       "precio": 50000,
       "unidad": "cada 100 conversaciones",
       "costoUnico": 14000,
-      "estado": "vigente",
+      "estado": "referencia",
       "fuente": "ESTADO.md §Marketing",
       "notas": "Costo = 100 conv × US$0.035 × TRM 4.000. Margen sano; existe para que el uso alto no coma el margen del plan."
     },
@@ -227,10 +228,10 @@
       "precioRecurrente": 720000,
       "costoUnico": 2400000,
       "costoMes": 30000,
-      "estado": "legacy",
-      "fuente": "01-SOURCE-BRIEF (modelo USD: desde $3.500 setup + $180/mes). Convertido a COP con TRM supuesta 4.000 — NO reconciliado con el pricing COP vigente.",
-      "reglas": ["pisoPrecio", "anticipo50"],
-      "notas": "⚠️ Único ítem del catálogo que sigue en el modelo USD viejo. Antes de cotizarlo hay que fijar su precio COP igual que se hizo con los planes."
+      "estado": "referencia",
+      "fuente": "01-SOURCE-BRIEF (modelo USD: desde $3.500 setup + $180/mes), convertido a COP con TRM supuesta 4.000. 2026-09-15: pasa de legacy a referencia por decisión del fundador — las integraciones se cotizan en reunión, según qué se integra y para quién; no llevan precio fijo ni «desde».",
+      "reglas": ["anticipo50"],
+      "notas": "Se cotiza en reunión (forma cotizacion del canon). El importe es sólo el orden de magnitud de referencia para armar la cotización: nunca se publica ni se manda como lista. Aplica el margen mínimo de servicios (35%)."
     }
   ],
 

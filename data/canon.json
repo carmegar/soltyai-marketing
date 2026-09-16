@@ -19,12 +19,13 @@
   },
 
   "planes": [
-    { "id": "esencial", "nombre": "Esencial", "precioMes": 290000, "conversaciones": 200, "ia": false, "estado": "vigente" },
-    { "id": "pro", "nombre": "Pro", "precioMes": 490000, "conversaciones": 500, "ia": true, "estado": "vigente" },
-    { "id": "premium", "nombre": "Premium", "precioMes": 790000, "conversaciones": 1500, "ia": true, "estado": "vigente" }
+    { "id": "esencial", "nombre": "Esencial", "precioMes": 290000, "conversaciones": 200, "ia": false, "estado": "referencia" },
+    { "id": "pro", "nombre": "Pro", "precioMes": 490000, "conversaciones": 500, "ia": true, "estado": "referencia" },
+    { "id": "premium", "nombre": "Premium", "precioMes": 790000, "conversaciones": 1500, "ia": true, "estado": "referencia" }
   ],
-  "setup": { "precio": 400000, "anticipo": 0.5, "nota": "Única vez. ES la adaptación done-for-you, no una barrera. Se cobra 50% al firmar y 50% cuando el bot está atendiendo (ver garantiaImplementacion)." },
-  "excedente": { "precio": 50000, "cada": 100, "unidad": "conversaciones" },
+  "_planesRetirados": "2026-09-15: los 3 planes pasan de `vigente` a `referencia` por decisión del fundador. Se DESPUBLICAN: ninguna cifra de plan se publica en ningún plano (landing, GBP, redes, outbound, términos). El bot sigue siendo producto —«los chatbots hacen parte de nuestros productos pero cotizados dependiendo de lo que necesite cada prospecto»—, o sea que L2 pasa a la forma `cotizacion` de reglaDePublicacion, con su base de cobro: un cobro único de adaptación y una mensualidad que depende de canales, volumen de conversaciones, uso de IA e integraciones. Por qué: Meta le da un agente que contesta bien a cualquier negocio dentro de WhatsApp Business (business/estrategia/11 §5), los 3 planes llevaban desde el 22-jul con cero clientes, y un precio de lista de $290k contra algo casi gratis se refuta en 30 segundos y contamina la conversación de las líneas donde sí somos fuertes. Los números se quedan como REFERENCIA interna de cotización (igual que lineaServicios.pisoPrecio desde el 9-sep): no se bajaron porque no hay otros que los reemplacen; lo que cambió es su naturaleza, de lista a referencia. El estado `referencia` es nuevo y significa exactamente eso: no publicable, sí cotizable. `setup` y `excedente` siguen el mismo camino. La prohibición `planesRetirados` (abajo) hace que citar estas cifras en copy falle el CI.",
+  "setup": { "precio": 400000, "anticipo": 0.5, "estado": "referencia", "nota": "Única vez. ES la adaptación done-for-you, no una barrera. Se cobra 50% al firmar y 50% cuando el bot está atendiendo (ver garantiaImplementacion). Desde el 2026-09-15 es referencia de cotización, no precio publicado (ver _planesRetirados)." },
+  "excedente": { "precio": 50000, "cada": 100, "unidad": "conversaciones", "estado": "referencia" },
   "iva": 0.19,
   "ivaConvencion": {
     "_doc": "Regla de lectura del archivo, para que no se confundan dos cosas que se parecen: TODO precio de canon.json y de catalogo.json es ANTES de IVA, y el 19% se suma encima (así lo cotiza src/catalogo y así se derivan los importes con IVA en el chequeo de la landing). Una línea puede tener el precio pactado CON IVA incluido: entonces `precio` sigue siendo la base y el total va aparte, en `precioConIva`, con la fuente que lo fija.",
@@ -67,6 +68,7 @@
       { "plan": "pro", "siIncumple": "Lo del Esencial y además se devuelve el 50% ya pagado: el setup queda en cero.", "exposicionCaja": 200000 },
       { "plan": "premium", "siIncumple": "Lo del Pro y además el primer mes de suscripción no se cobra.", "exposicionCaja": 990000 }
     ],
+    "_cambioTiers": "2026-09-15: los planes que nombran los `tiers` pasaron a `referencia` (ver _planesRetirados). La garantía NO se retira: el 50/50 del cobro de adaptación es la base del cobro que la forma `cotizacion` obliga a publicar, y el mensajePublico sigue siendo cierto. Lo que cambia es que el escalón (qué se devuelve si no se cumple) se pacta en cada cotización tomando los tiers como referencia, no se publica por plan.",
     "mensajePublico": "Arrancas pagando la mitad del setup. La otra mitad solo cuando tu bot esté atendiendo.",
     "noSeAnuncia": "La devolución completa y el mes gratis NO van en anuncios ni en el toque 1 del outbound: son la carta que se juega en la objeción, cerrando Pro o Premium.",
     "porQueEsBarata": "Regalar un setup completo se recupera en 1,4 meses de margen del Esencial, 1,0 del Pro y 0,7 del Premium (margen mensual de data/catalogo.json). El riesgo caro nunca fue la devolución: era no cerrar."
@@ -150,7 +152,7 @@
     "_cambio": "2026-09-05: baja al canon. El hallazgo que lo obliga: **el único cliente que paga no compró un chatbot.** Bucaradomi paga `domicilios-ops` —software operativo vertical por suscripción, con el chat y la IA explícitamente FUERA del alcance— con contrato firmado y factura electrónica, mientras los 3 planes de bot que sí publicamos tienen cero clientes y la home presentaba «domicilios» como vertical del chatbot. La D1 vigila que los precios no diverjan entre planos y funciona; lo que ninguna regla vigilaba es la pregunta anterior: ¿lo que publicamos arriba de todo es lo que alguien está pagando? Este bloque es esa pregunta convertida en dato.",
     "_noMueveNingunPrecio": "Ni un importe se escribe acá. Cada línea apunta a DÓNDE vive su precio (`precio.fuente` + `precio.ruta`) en vez de copiarlo, porque una tercera copia del mismo número es una tercera fecha de vencimiento — es el hallazgo H7 de la reconciliación, el snapshot que derivó 8 días por ser copia manual. La regla `lineasDeOferta` de src/guardrails/reglas.js resuelve esas rutas en cada build: un puntero que no resuelve parece una referencia y no lo es, que es peor que un número copiado.",
     "ordenDeApertura": ["L3", "L1", "L2"],
-    "_ordenDeApertura": "L3 servicio a la medida (lo que paga hoy) → L1 producto vertical (lo que compone) → L2 bot (la entrada barata). ⚠️ L2 NO se mata ni se esconde: sigue publicado con sus 3 planes y sus precios, sigue siendo la entrada más barata y sigue siendo el mensaje líder en Meta y en el outbound según `mensajeLiderPorCanal`. Lo único que cambia es que deja de ser lo primero que ve alguien que llega frío.",
+    "_ordenDeApertura": "L3 servicio a la medida (lo que paga hoy) → L1 producto vertical (lo que compone) → L2 bot. ⚠️ L2 NO se mata ni se esconde: sigue publicado en `/producto/chatbot` y sigue siendo el mensaje líder en Meta y en el outbound según `mensajeLiderPorCanal`. Lo que cambió el 2026-09-15 es que ya no lleva precio de lista: se cotiza (ver `_planesRetirados` y lineas.L2._cambioPrecio). Hasta ese día esta nota decía «sigue publicado con sus 3 planes y sus precios».",
     "_cambioOrden": "2026-09-08: el orden pasa de L1 → L3 → L2 a L3 → L1 → L2, por decisión del fundador, junto con el paso de la landing a la línea `servicio` (ver mensajeLiderPorCanal._cambioLanding). El 22-ago se puso L1 al frente porque era la única línea con un cliente pagando, y eso sigue siendo cierto: lo que cambió es para qué se rehace la web. Se rehace para el evento con empresarios del 11-sep-2026, y lo que ahí se vende es lo que hoy factura y se puede contratar de una, que es L3. L1 no baja de importancia ni deja de estar en la home: entra segundo, que es donde el visitante ya entendió qué hacemos y le sirve ver el producto vertical armado. El bot deja la home y se muda completo a `/producto/chatbot`.",
     "reglaDePublicacion": {
       "regla": "Lleva precio público lo que tiene alcance cerrado. Lleva «desde» lo que se cotiza. Nada lleva silencio.",
@@ -175,13 +177,14 @@
         "_ojo": "Bucaradomi deja de ser «el piloto» y pasa a ser el lighthouse customer de esta línea. Lo que NO se publica de él: métricas de rendimiento, porque no se han medido (ver prohibiciones.metricaSinFuente). Lo publicable son hechos con testigo."
       },
       "L2": {
-        "nombre": "Bot por suscripción",
-        "que": "Los 3 planes de `planes`: Esencial, Pro, Premium",
-        "trabajo": "Volumen y entrada barata. Sigue publicado, pero deja de abrir.",
-        "comoSeVende": "autoservicio desde su propia página, `/producto/chatbot`",
-        "_dondeVive": "2026-09-08: los 3 planes salen de la home y se mudan completos a `/producto/chatbot`, con sus precios intactos. Antes esto decía «autoservicio desde la landing», y era cierto mientras la landing fuera canal `bot`. Ya no lo es (mensajeLiderPorCanal._cambioLanding), así que la línea necesita destino propio: sacarla de la home sin darle página sería el `silencio` que reglaDePublicacion.formas prohíbe.",
-        "precio": { "forma": "publico", "fuente": "canon", "ruta": "planes[].precioMes", "nota": "mensual, antes de IVA; más `setup.precio` una vez" },
-        "evidencia": "Ninguna todavía: cero clientes pagando. Es el dato que reordenó todo lo demás."
+        "nombre": "Bot de negocio",
+        "que": "Bot de negocio estructurado por vertical para WhatsApp y Telegram, con o sin IA. Se cotiza por prospecto.",
+        "trabajo": "Interfaz de los otros dos: el chat entra como parte de un producto vertical o de un proyecto, o solo cuando el prospecto pide exactamente eso. Nunca abre.",
+        "comoSeVende": "desde su propia página, `/producto/chatbot`, que explica qué hace y cómo se cobra, y termina en una conversación (no en un botón de compra)",
+        "_dondeVive": "2026-09-08: los 3 planes salen de la home y se mudan completos a `/producto/chatbot`, con sus precios intactos. Antes esto decía «autoservicio desde la landing», y era cierto mientras la landing fuera canal `bot`. Ya no lo es (mensajeLiderPorCanal._cambioLanding), así que la línea necesita destino propio: sacarla de la home sin darle página sería el `silencio` que reglaDePublicacion.formas prohíbe. 2026-09-15: la página se queda; lo que sale de ella son los precios.",
+        "precio": { "forma": "cotizacion", "fuente": "canon", "ruta": "planes[].precioMes", "unidad": "un cobro único de adaptación (50% al arrancar, 50% cuando el bot atiende) y una mensualidad según canales, volumen de conversaciones, uso de IA e integraciones", "nota": "NO se publica ninguna cifra. Los importes de `planes`, `setup` y `excedente` quedan como REFERENCIA interna al cotizar (estado `referencia`), igual que lineaServicios.pisoPrecio para L3." },
+        "_cambioPrecio": "2026-09-15: de «publico» a «cotizacion», por decisión del fundador (ver `_planesRetirados`). Textual: «los chatbots hacen parte de nuestros productos pero cotizados dependiendo de lo que necesite cada prospecto». Con esto las tres líneas llevan la misma forma salvo el escalón de entrada de web, que sigue en «desde» porque es lo único con alcance cerrado y precio de lista.",
+        "evidencia": "Ninguna todavía: cero clientes pagando en 8 semanas con precio de lista. Es el dato que reordenó todo lo demás, y el que terminó sacando los precios."
       },
       "L3": {
         "nombre": "Servicio a la medida",
@@ -245,9 +248,9 @@
 
   "tablero": {
     "_fuente": "13-PLAN-12-CLIENTES.md §5 (rondas y regla de corte) y §8 (tablero semanal). Lo lee src/reportes: la regla de corte se CALCULA, no se estima a ojo.",
-    "kpiQueManda": "demos",
-    "metaDemosSemana": 2,
-    "_notaKpi": "El KPI pasó a ser REUNIONES AGENDADAS (el cold email dejó de entregar demos y pide 15 minutos, business/16 §6c). La clave sigue llamándose 'demos' porque así la leen src/reportes y su registro; es el mismo número —una cita en el Calendly— con el nombre viejo. El renombre se hace en canon + código + README a la vez, no a medias.",
+    "kpiQueManda": "reuniones",
+    "metaReunionesSemana": 2,
+    "_notaKpi": "El KPI es REUNIONES AGENDADAS (el cold email dejó de entregar demos y pide 15 minutos, business/16 §6c). Hasta el 2026-09-15 la clave se llamaba 'demos' y el campo `metaDemosSemana`, porque así los leían src/reportes y su registro; ese día se renombró en canon + código + README en el mismo commit. Es el mismo número: una reunión concretada con un tomador de decisión (por el formulario de /contacto + invitación de Meet a mano; no hay Calendly desde el 9-sep).",
 
     "cortePorLeadCalificado": 120000,
     "_cambioCorte": "2026-08-13: subió de 25.000 a 120.000 COP. No era optimismo: era un error de ANCLAJE. Los 25.000 salían de exigir que el setup ($400.000) pagara toda la adquisición. El benchmark B2B real en Colombia es 80.000–250.000 COP por lead (ver 01-SOURCE-BRIEF §Mercado), así que la suscripción SOLA no puede pagar tráfico pago: hay que anclar al LTV y aceptar que el payback se corre al mes 2–3. Con el corte viejo, la ronda 1 se cortaba sola y se leía como 'la pauta no sirve' cuando el que estaba mal era el umbral.",
@@ -258,7 +261,7 @@
     "escalarPasoMaximo": 0.2,
 
     "techoCac": 800000,
-    "_notaCac": "2× el setup: se recupera en el mes 2. Antes era 400.000 (el setup solo). Derivado del LTV bruto de 12 meses = 5.080.000 (setup 400.000 + 390.000 × 12, con ticket promedio supuesto de mezcla Esencial/Pro).",
+    "_notaCac": "2× el setup: se recupera en el mes 2. Antes era 400.000 (el setup solo). Derivado del LTV bruto de 12 meses = 5.080.000 (setup 400.000 + 390.000 × 12, con ticket promedio supuesto de mezcla Esencial/Pro). ⚠️ 2026-09-15: los planes de los que sale esta aritmética pasaron a `referencia` (no se publican, sí sirven para cotizar), así que el LTV y el techo siguen valiendo como supuesto de cotización del bot; el ticket real de las otras líneas (domicilios-ops $370.000/mes con IVA) es del mismo orden.",
     "ltvBruto12m": 5080000,
     "ticketPromedioSupuesto": 390000,
     "cajaMes1": 790000,
@@ -303,6 +306,23 @@
         "prohibid", "superad", "no usar", "viejo", "anterior", "legacy", "descartad",
         "ya no", "reemplaz", "sin referencia", "sin starter", "cero", "nunca",
         "no existen", "no menciones", "no aparece"
+      ]
+    },
+    "planesRetirados": {
+      "_doc": "2026-09-15. Los 3 planes COP (Esencial $290.000 / Pro $490.000 / Premium $790.000), el setup de $400.000 y el excedente de $50.000 por 100 conversaciones pasaron a `referencia`: no se publican (ver `_planesRetirados`). Esta regla es la máquina de esa decisión: una pieza que cite cualquiera de esas cifras junto a la palabra que la identifica falla el CI. Es la hermana de `planesSuperados`, que hace lo mismo con los planes USD desde junio. Los patrones piden ADYACENCIA (nombre del plan + cifra, o la cifra + «/mes» o «mensual») para no cazar un $400.000 legítimo: web-basica sale «desde $400.000» y ese importe sí es público (lineasDeOferta.lineas.L3.preciosAdicionales).",
+      "patrones": [
+        "esencial[^.\\n]{0,25}\\$?\\s*290[.,]?000",
+        "pro[^.\\n]{0,25}\\$?\\s*490[.,]?000",
+        "premium[^.\\n]{0,25}\\$?\\s*790[.,]?000",
+        "\\$?\\s*(290|490|790)[.,]?000\\s*(/\\s*mes|mensual|al mes|por mes|cop/mes)",
+        "setup[^.\\n]{0,20}\\$?\\s*400[.,]?000",
+        "\\$?\\s*50[.,]?000\\s*(por|cada|/)\\s*100\\s*conversaciones"
+      ],
+      "alcance": "todo",
+      "porque": "Los 3 planes de bot se despublicaron el 2026-09-15: el bot se cotiza por prospecto y ninguna cifra de plan es pública. Citarla en copy, redes, GBP o docs de oferta reabre un precio de lista que la empresa decidió cerrar.",
+      "exenciones": [
+        "prohibid", "retirad", "despublicad", "referencia", "no se publica", "ya no", "hasta el",
+        "viejo", "anterior", "legacy", "descartad", "nunca", "no existen", "no menciones", "superad"
       ]
     },
     "_whatsappComoPromesa_RETIRADA": {
