@@ -1,9 +1,19 @@
-# 05 · PRICING — Precios vigentes en COP, qué incluye cada cosa y cómo se defiende
+# 05 · PRICING — Cómo se cobra cada línea, qué incluye cada cosa y cómo se defiende
 
 > 🔴 **La fuente es `data/canon.json` + `data/catalogo.json`** (decisión D1,
 > `business/24-coherencia-producto-empresa.md`). Este doc es su versión legible y vendible: si
 > difiere del canon, **el canon gana y este doc está mal**. El espejo en prosa de negocio vive en
 > `01-SOURCE-BRIEF.md` §Pricing.
+>
+> ⚠️ **2026-09-15: el bot se cotiza por prospecto y sus planes se despublicaron.** Decisión del
+> fundador, textual: *«los chatbots hacen parte de nuestros productos pero cotizados dependiendo de lo
+> que necesite cada prospecto»*. Los tres planes, el setup y el excedente pasaron al estado
+> **`referencia`**: **no publicables, sí cotizables**. Todo importe de bot que aparece en este doc es
+> esa referencia interna —la base con la que se arma cada cotización— y **no se dice en un chat, en
+> una página ni en un correo**. Lo que sí se dice siempre es la **base del cobro** (§1). Lo mismo para
+> `integracion-erp`: se cotiza en reunión. Sólo la línea de **web** conserva precio de lista (§8.2).
+> Y el **motor contable no es producto a vender**: sale de toda oferta; la integración contable y de
+> facturación electrónica DIAN a la medida (§8.2) sí se vende. Porqué: `canon.json → _planesRetirados`.
 >
 > **Reescrito el 2026-08-13.** La versión anterior publicaba un catálogo **USD por producto** (Agenda,
 > Pedidos, Inmobiliario entry y full, Integraciones) que **ya no existe**: quedó reemplazado por el
@@ -15,16 +25,26 @@
 
 ---
 
-## 1. Los tres planes
+## 1. El bot: cómo se cobra, y las tres referencias internas
 
-Un solo producto (el bot de negocio, adaptado a tu vertical) en tres tamaños. Lo que cambia entre
-planes es **volumen de conversaciones** y **si hay IA o no**, no las funciones.
+**Lo que se publica y se dice** (la base del cobro, obligatoria por la forma `cotizacion` del canon):
 
-| Plan | Precio/mes *(antes de IVA)* | Conversaciones/mes | IA | Canales |
+> Un cobro único de **adaptación** con los datos del negocio —la mitad al arrancar, la otra mitad
+> cuando el bot ya está atendiendo— y una **mensualidad** que depende de los canales (WhatsApp,
+> Telegram), el volumen de conversaciones, si lleva IA y qué integraciones necesita. Sin permanencia.
+> Más IVA. El número exacto sale en una reunión de 15 minutos con el caso a la vista, y se manda como
+> cotización desde la suite.
+
+**Lo que NO se publica:** ninguna cifra. Las tres configuraciones de abajo son la **referencia
+interna** para armar la cotización (estado `referencia` en el canon y en el catálogo). Un solo
+producto —el bot de negocio, adaptado a tu vertical— en tres tamaños; lo que cambia entre ellos es
+**volumen de conversaciones** y **si hay IA o no**, no las funciones.
+
+| Referencia interna *(no publicable)* | Mensualidad de referencia *(antes de IVA)* | Conversaciones/mes | IA | Canales |
 |---|---|---|---|---|
-| **Esencial** | **$290.000** | 200 | Sin IA, flujos deterministas | 1 canal |
-| **Pro** | **$490.000** | 500 | Con IA (Claude Haiku 4.5), topada | 1 canal |
-| **Premium** | **$790.000** | 1.500 | Con IA, topada | 1 canal, multi-sede |
+| **Esencial** *(referencia, retirado el 15-sep-2026)* | **$290.000** | 200 | Sin IA, flujos deterministas | 1 canal |
+| **Pro** *(referencia, retirado el 15-sep-2026)* | **$490.000** | 500 | Con IA (Claude Haiku 4.5), topada | 1 canal |
+| **Premium** *(referencia, retirado el 15-sep-2026)* | **$790.000** | 1.500 | Con IA, topada | 1 canal, multi-sede |
 
 **Lo que llevan los tres, sin costo aparte:**
 
@@ -57,7 +77,10 @@ planes es **volumen de conversaciones** y **si hay IA o no**, no las funciones.
 
 ---
 
-## 2. Cómo elegir el plan en una llamada
+## 2. Cómo elegir la referencia en una llamada
+
+La cotización se arma sobre una de las tres referencias de §1 y se ajusta (canales, integraciones,
+volumen real). El nombre de la referencia es interno: al prospecto se le dice qué incluye, no «Pro».
 
 | Si el negocio... | Va a... | Por qué |
 |---|---|---|
@@ -65,12 +88,15 @@ planes es **volumen de conversaciones** y **si hay IA o no**, no las funciones.
 | Necesita que el bot entienda cómo pregunta la gente de verdad | **Pro** | Es el plan de referencia y el que cierra la mayoría. |
 | Tiene varias sedes o volumen alto de chat | **Premium** | 1.500 conversaciones y multi-sede. |
 
-**Regla práctica:** si el prospecto duda entre dos, se cotiza el de abajo. Subir de plan al mes 3
-porque se pasó del tope es una conversación fácil; bajar de plan es una renegociación.
+**Regla práctica:** si el prospecto duda entre dos, se cotiza la de abajo. Subir al mes 3 porque se
+pasó del tope es una conversación fácil; bajar es una renegociación.
 
 ---
 
-## 3. El setup: $400.000, una sola vez
+## 3. El cobro de adaptación: una sola vez, mitad y mitad
+
+*(Referencia interna: $400.000, retirado de la publicación el 15-sep-2026. Se cotiza según el alcance
+de la adaptación; lo que sí se publica es que es una sola vez y se paga mitad y mitad.)*
 
 > **El setup no es una barrera. ES el producto.** Es el trabajo de dejar el bot funcionando **con los
 > datos del cliente**: su catálogo, sus precios, su agenda, su forma de atender. El cliente no recibe
@@ -88,16 +114,18 @@ porque se pasó del tope es una conversación fácil; bajar de plan es una reneg
 **Cómo se cobra:** en dos partes.
 
 - **50% al aceptar la cotización** y **50% cuando el bot ya está atendiendo.**
-- En pesos: $200.000 para arrancar y $200.000 contra el bot funcionando.
+- Sobre la referencia: $200.000 para arrancar y $200.000 contra el bot funcionando *(referencia)*.
 - El anticipo **nunca baja a cero** en ningún plan: es el filtro que separa al que va en serio del
   curioso.
 - No es reembolsable, salvo por la garantía de implementación (§6).
 
 ---
 
-## 4. Excedente: $50.000 cada 100 conversaciones
+## 4. Excedente por conversaciones
 
-Por encima del tope del plan se cobra **$50.000 por cada 100 conversaciones adicionales**.
+*(Referencia interna, retirada de la publicación el 15-sep-2026: $50.000 por cada 100 conversaciones
+adicionales.)* Por encima del tope pactado se cobra un excedente por bloque de conversaciones, que
+va escrito en la cotización.
 
 - Existe para que el uso alto no se coma el margen del plan, no para castigar al cliente.
 - Cuando el excedente se vuelve costumbre, la conversación correcta es **subir de plan**, no seguir
@@ -109,7 +137,7 @@ Por encima del tope del plan se cobra **$50.000 por cada 100 conversaciones adic
 
 **Todos los precios de este documento son antes de IVA.** El 19% se suma encima.
 
-| | Esencial | Pro | Premium |
+| *(referencias, no publicables)* | Esencial | Pro | Premium |
 |---|---|---|---|
 | Base | $290.000 | $490.000 | $790.000 |
 | IVA 19% | $55.100 | $93.100 | $150.100 |
@@ -127,9 +155,9 @@ Con IVA, el cobro inicial de la adaptación queda en un total de **$476.000** ($
 
 Hay **dos**, y son **excluyentes: se aplica el mayor, nunca los dos.**
 
-| | Esencial | Pro | Premium |
+| *(referencias, no publicables)* | Esencial | Pro | Premium |
 |---|---|---|---|
-| Lista | $290.000 | $490.000 | $790.000 |
+| Referencia | $290.000 | $490.000 | $790.000 |
 | **Primeros clientes, −30% por 3 meses** | $203.000 | $343.000 | $553.000 |
 | **ONG y educación, −25% permanente** | $217.500 | $367.500 | $592.500 |
 
@@ -230,9 +258,12 @@ C **$300.000**.
 > dueño, y de paso quedó claro que esa cifra era una propuesta **en DRAFT y nunca enviada**. Una
 > referencia sólo cuenta si se envió y se aceptó. Detalle en `01-SOURCE-BRIEF.md` (que manda).
 
-⚠️ **Integraciones a ERP o sistema legacy:** el ítem `integracion-erp` del catálogo sigue en el modelo
-USD **legacy** y **no está reconciliado** con el pricing COP. Hasta que se le fije precio en pesos, una
-integración se cotiza **dentro de la línea de servicio a la medida**, con el piso de $3.000.000.
+⚠️ **Integraciones a ERP, sistema contable o facturación electrónica DIAN:** se cotizan **en
+reunión**, según qué se integra y para quién (forma `cotizacion`; desde el 15-sep-2026 el ítem
+`integracion-erp` del catálogo está en estado `referencia`: su importe es sólo el orden de magnitud
+para armar la cotización, nunca un «desde»). Aplica el anticipo del 50% y el margen mínimo de
+servicios. La integración contable DIAN es la capacidad que más nos diferencia (SoltyAI es facturador
+electrónico habilitado) y **se vende como servicio**; el motor contable como producto, no.
 
 ---
 
@@ -275,8 +306,10 @@ ciudad**.
 ## 10. Cómo se dice el precio, y las tres objeciones
 
 **Cómo se dice:** primero el resultado, después el cobro inicial explicado como trabajo, y de último la
-mensualidad. Nunca al revés. "Te lo dejamos andando con tu catálogo por $400.000 de adaptación, y de
-ahí en adelante son $490.000 al mes más IVA, sin permanencia."
+mensualidad. Nunca al revés, y **nunca con cifra antes de la cotización** (15-sep-2026): "Te lo
+dejamos andando con tu catálogo: se cobra una vez la adaptación, la mitad al arrancar y la otra mitad
+cuando ya esté atendiendo, y después una mensualidad según el volumen y si lleva IA, sin permanencia.
+Te paso el número exacto viendo tu caso." La cifra va en la cotización que sale de la suite.
 
 | Objeción | Respuesta |
 |---|---|
@@ -297,9 +330,9 @@ ahí en adelante son $490.000 al mes más IVA, sin permanencia."
 
 **Margen por línea** *(estimado, sobre los costos del catálogo, TRM supuesta $4.000)*:
 
-| | Esencial | Pro | Premium | Adaptación inicial |
+| *(referencias, no publicables)* | Esencial | Pro | Premium | Adaptación inicial |
 |---|---|---|---|---|
-| Precio | $290.000 | $490.000 | $790.000 | $400.000 |
+| Precio de referencia | $290.000 | $490.000 | $790.000 | $400.000 |
 | Costo *(estimado)* | ~$8.000 | ~$78.000 | ~$218.000 | ~$240.000 |
 | Margen bruto *(estimado)* | ~97% | ~84% | ~72% | ~40% |
 
@@ -317,7 +350,11 @@ Cómo entra todo esto en la economía de la pauta: **`06-BUDGET-PLAN.md`**.
 ## 12. Lo que ya no existe y no se puede citar
 
 > ⚠️ **PROHIBIDO** cotizar, modelar o mencionar los planes USD **superados** Starter $49 / Growth $149
-> / Pro $399. (Ojo: **"Pro" a secas SÍ es válido**, es el plan COP de $490.000.)
+> / Pro $399. (Ojo: **"Pro" a secas SÍ es válido**, es la referencia COP de $490.000.)
+
+> ⚠️ **Y desde el 15-sep-2026 PROHIBIDO publicar cualquier cifra de plan del bot** (Esencial, Pro,
+> Premium, setup, excedente): son `referencia`, se cotiza con ellas y no se dicen. La prohibición
+> `planesRetirados` del canon lo hace cumplir en todo el repo.
 
 > ⚠️ **PROHIBIDO** también el catálogo USD por producto, igualmente **superado**: Agenda $65 y $250,
 > Pedidos $80 y $280, Inmobiliario $249 y $600, Inmobiliario full $650 y $1.500, Integraciones $180 y

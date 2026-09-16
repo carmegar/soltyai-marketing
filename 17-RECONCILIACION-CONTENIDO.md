@@ -157,8 +157,9 @@ misma línea. El catálogo **sí** tenía la excepción escrita (`excepcionPisoW
 leyera sólo el canon concluía que se estaba vendiendo por debajo del mínimo. **No cambió ningún
 precio:** se nombró a qué aplica el piso (`_alcanceDelPiso`).
 
-**H9 · Los dos escalones que faltaban.** Entre la suscripción más cara ($790.000/mes) y el piso del
-proyecto ($3.000.000) no había nada, y el proyecto no tenía **ninguna** línea recurrente detrás:
+**H9 · Los dos escalones que faltaban.** Entre la suscripción más cara ($790.000/mes, hoy referencia:
+los planes se retiraron de la publicación el 15-sep-2026) y el piso del proyecto ($3.000.000) no había
+nada, y el proyecto no tenía **ninguna** línea recurrente detrás:
 Swisscontact entregó $2.300.000 y después $0/mes. Entraron al catálogo, los dos marcados
 `supuesto` porque nadie los ha pagado todavía:
 

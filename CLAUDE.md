@@ -23,8 +23,9 @@ Motor de marketing de SoltyAI: la estrategia escrita (`01`–`14`) y los program
   runway; el porqué largo está en `16-CONTENIDO-VIDEO.md` y en `15-CANALES-Y-SECUENCIA.md §5`.
   **La landing se movió el 8-sep** al rehacer soltyai.com para el evento con empresarios del 11-sep:
   era el último canal que abría con el producto que Meta regala. Con eso el orden de apertura pasa a
-  **L3 → L1 → L2** y los 3 planes de bot se mudan a `/producto/chatbot`, publicados y con sus precios
-  intactos. Ver `18-ARQUITECTURA-DE-OFERTA.md §4`.
+  **L3 → L1 → L2** y el bot se muda a `/producto/chatbot`. ⚠️ **Desde el 15-sep-2026 esa página ya no
+  publica precios:** los 3 planes se despublicaron y el bot se cotiza por prospecto (ver «Pricing»
+  abajo). Ver `18-ARQUITECTURA-DE-OFERTA.md §4`.
   Dentro de una misma pieza sigue habiendo **uno solo**: "hacemos software a la medida, páginas web,
   bots y marketing" en el mismo anuncio es la agencia genérica de la esquina. Mapa en
   `canon.json → mensajeLiderPorCanal`.
@@ -59,9 +60,21 @@ Motor de marketing de SoltyAI: la estrategia escrita (`01`–`14`) y los program
   reinvente creyendo que falta. Lo que la reemplaza y **no caduca**: `asistenteGeneralIa` (la
   política de IA de WhatsApp prohíbe los bots de propósito general; vendemos bots de negocio
   **estructurados** por vertical) y `webComoPromesa` (el widget web sigue sin existir).
-- **Pricing COP vigente:** Esencial $290.000 · Pro $490.000 · Premium $790.000 · setup $400.000 ·
-  excedente $50.000/100 conversaciones. Los planes USD **Starter $49 / Growth $149 / Pro $399**
-  están superados (ojo: "Pro" a secas SÍ es válido, es el plan COP).
+- **Pricing del bot: se cotiza, sin cifra pública (15-sep-2026).** Los 3 planes COP (Esencial, Pro,
+  Premium), el setup y el excedente pasaron al estado **`referencia`**: NO publicables, SÍ cotizables
+  (los importes siguen en `canon.json → planes/setup/excedente` y en `catalogo.json` como base para
+  armar una cotización, igual que `lineaServicios.pisoPrecio` desde el 9-sep). L2 lleva la forma
+  **`cotizacion`** de `lineasDeOferta.reglaDePublicacion`, que obliga a publicar la **base del cobro**
+  y prohíbe la cifra: *un cobro único de adaptación (50% al arrancar, 50% cuando el bot atiende) y
+  una mensualidad según canales, volumen de conversaciones, uso de IA e integraciones*. Decisión del
+  fundador, textual: «los chatbots hacen parte de nuestros productos pero cotizados dependiendo de lo
+  que necesite cada prospecto». La máquina es la prohibición **`planesRetirados`** (alcance `todo`,
+  excluye el `CHANGELOG.md`): citar un plan con su cifra falla el CI en cualquier doc, salvo que la
+  línea se declare retirada/referencia. Porqué y alcance: `canon.json → _planesRetirados`. Los planes
+  USD **Starter $49 / Growth $149 / Pro $399** siguen superados (ojo: "Pro" a secas SÍ es válido,
+  es el nombre del plan COP de referencia). ⚠️ **El motor contable no es producto a vender** y sale de
+  toda oferta (no está terminado); lo que sí se vende es la **integración contable y de facturación
+  electrónica DIAN** como servicio a la medida (L3).
 - **Prueba social solo verificable:** hoy son Bucaradomi (piloto, con permiso) y Swisscontact
   (servicio). Nada de "+100 clientes" ni "líderes en".
   ✅ **Y desde el 2026-09-05 tampoco cifras de resultado ni citas firmadas.** `pruebaSocialInventada`
@@ -90,17 +103,21 @@ Motor de marketing de SoltyAI: la estrategia escrita (`01`–`14`) y los program
 - **El orden de las LÍNEAS lo manda `18-ARQUITECTURA-DE-OFERTA.md`** (22-ago, **reordenado el
   8-sep**): **L3** servicio a la medida (la caja de hoy, y lo que abre la home nueva) → **L1**
   producto vertical (`domicilios-ops` — el único que hoy paga: $370.000/mes con contrato y factura)
-  → **L2** bot, que sigue publicado pero **deja de abrir**. La regla que sale de
-  ahí: **lleva precio público lo que tiene alcance cerrado, lleva «desde» lo que se cotiza, y nada
-  lleva silencio** — el muro de «contáctanos» tiene ~38% más rebote. No cambia ningún precio: cambia
-  qué se publica y en qué orden.
+  → **L2** bot, que sigue publicado pero **deja de abrir** y, desde el 15-sep, **se cotiza**. La regla
+  que sale de ahí: **lleva precio público lo que tiene alcance cerrado, lleva «desde» lo que se
+  cotiza por alcance, lleva «se cotiza» con su base de cobro lo que se negocia, y nada lleva
+  silencio** — el muro de «contáctanos» tiene ~38% más rebote. Hoy sólo la línea de web lleva cifra
+  (`web-basica` «desde $400.000», `web-corporativa`, `web-redespliegue`, `web-cuidada`); L1, L2 y
+  el resto de L3 (a la medida, integraciones) van en `cotizacion`. Los importes de referencia no se
+  tocan: cambia qué se publica.
   ✅ **Desde el 2026-09-05 esto es dato, no memoria: `canon.json → lineasDeOferta`** (`ordenDeApertura`
   `["L1","L3","L2"]`, `reglaDePublicacion.formas` con `publico` / `desde` / `silencio: PROHIBIDO`, y
   una entrada por línea). **No copia ningún importe:** cada línea apunta a dónde vive su precio
   (`servicios[domicilios-ops].precioConIva`, `planes[].precioMes`, `lineaServicios.pisoPrecio`),
   porque una tercera copia del mismo número es una tercera fecha de vencimiento. La regla
   `lineasDeOferta` del linter **resuelve esas rutas en cada build**: un puntero roto parece una
-  referencia y no lo es.
+  referencia y no lo es. Que L2 apunte a `planes[].precioMes` con forma `cotizacion` no es una
+  contradicción: el puntero es la referencia interna para cotizar, no lo que se publica.
   ⚠️ **La landing queda atrás hasta que alguien la refresque:**
   `platform/apps/landing/src/data/canon.snapshot.json` es copia manual de este canon (es el H7 de
   `17-RECONCILIACION-CONTENIDO.md`, que ya derivó 8 días una vez).
@@ -153,7 +170,16 @@ Al ajustar patrones, revisar los **falsos positivos** contra los docs: un doc pu
 lo prohibido para explicarlo. Las exenciones se buscan en una ventana de ±1 línea y se ignoran los
 signos de énfasis de markdown.
 
-### Los tres alcances (cambió el 2026-08-20)
+**`excluir` (desde el 15-sep-2026):** una prohibición puede declarar `"excluir": ["CHANGELOG.md"]`,
+una **lista cerrada de rutas relativas al repo** que la regla no mira aunque su alcance las cubra.
+Nació con `planesRetirados`: el CHANGELOG es historia append-only y reescribirlo para que el linter
+calle es falsificar el registro. Es lista y nunca patrón (un glob sería la forma cómoda de apagar la
+regla sobre media carpeta sin que se note en el diff), y `prueba.js` la verifica en dos mitades: sin
+respetar la exclusión el archivo tiene que cantar (si no, la exclusión no exime nada y sobra) y
+respetándola no puede quedar ni un hallazgo. Una regla que se pueda borrar sin que ninguna prueba
+falle no está cuidando nada.
+
+### Los cuatro alcances (tres desde el 2026-08-20, cuatro desde el 2026-09-15)
 
 Eran dos —`copy/` y «todo»— y en el medio se colaba la categoría más importante:
 
@@ -161,7 +187,14 @@ Eran dos —`copy/` y «todo»— y en el medio se colaba la categoría más imp
 |---|---|---|
 | `copy/*.json` | piezas de anuncio | ✅ |
 | **`redes/**`** | **el copy que de verdad se publica**: la bio de LinkedIn, los textos de Facebook y YouTube, el outbound, los guiones de video | ✅ **desde el 20-ago** |
+| **`../tools/apps/prospeccion`** | **los correos del outbound**, que viven en otro repo: `RESPUESTAS-GUARDADAS.md`, el prompt y las plantillas de `src/06*.js` y `src/14-envio-manual.js`, y las hojas de envío de `data/emails/` | ✅ **desde el 15-sep, sólo si el repo está en disco al lado**; si no, se salta y el runner lo dice (`⋯ no está en disco: NO se verificaron`). Nunca se finge. Lo que cante se corrige **en ese repo** |
 | el resto de `.md` | documentación | ❌ y con razón: un doc tiene que poder nombrar lo prohibido |
+
+El cuarto es la misma lección de `redes/` repetida en otro directorio: el copy que más gente lee
+—un correo por prospecto— no vivía donde el linter buscaba. Entra a las prohibiciones y **no** a
+`mensajeLider`: no vamos a poner marcadores `<!-- canal -->` en código ajeno, y su canal es
+`outbound` por definición. El CI de este repo no tiene `../tools`, así que **un verde del CI no cubre
+los correos**; la máquina del fundador sí los ve, y ahí es donde se escriben.
 
 🔴 **`redes/` estuvo fuera desde siempre**, y era el hueco más grande: estaba en la lista de
 `IGNORADOS` de `src/lib/io.js`, y encima los `.txt` no se listaban. O sea que la biografía que lee
@@ -184,12 +217,19 @@ Mismo idioma que `<!-- archivo:ignorar -->` en la bitácora, a propósito.
 
 - Node 20, ESM, **sin dependencias**. Si algo necesita una librería, se discute primero.
 - Los números del catálogo llevan `estado`: `vigente` (verificado, con fuente) · `supuesto`
-  (estimación, sale marcado en cada cotización) · `legacy` (modelo USD viejo, sin reconciliar).
+  (estimación, sale marcado en cada cotización) · **`referencia`** (desde el 15-sep-2026: **NO
+  publicable, SÍ cotizable** — el importe es la base interna para armar una cotización, nunca un
+  precio de lista; es el estado de los 3 planes de bot, del setup, del excedente y de
+  `integracion-erp`; `npm run catalogo cotizar` lo avisa en cada cotización) · `legacy` (modelo USD
+  viejo, sin reconciliar).
 - **El banco de dolores (`data/dolores.json`) hereda esa disciplina y la endurece.** Cada frecuencia
-  lleva `estado` + `base` (de dónde sale el número) o `npm run dolores validar` falla. Y mientras
-  `parametros.costoHoraOperativa` siga en `supuesto`, **los videos hablan en horas, no en pesos**:
-  las horas son aritmética que el espectador verifica contra su propio negocio, los pesos serían una
-  cifra nuestra sin verificar. Proceso completo en `16-CONTENIDO-VIDEO.md`.
+  lleva `estado` + `base` (de dónde sale el número) o `npm run dolores validar` falla.
+  `parametros.costoHoraOperativa` quedó **verificado el 15-sep-2026** ($15.200/h: costo del
+  empleador por un SMMLV 2026 con prestaciones, sobre las 182 horas reales del mes de 42 h; fuentes
+  en su `base`). Aun así **los videos siguen hablando en horas**: las horas son aritmética que el
+  espectador verifica contra su propio negocio; un peso se dice sólo con la fuente y la fecha al
+  lado (`metricaSinFuente`), y es para la conversación de venta antes que para la cámara. Proceso
+  completo en `16-CONTENIDO-VIDEO.md`.
 - `data/` se versiona (memoria de la empresa). Las listas con datos personales **no** (Ley 1581).
 - Al cierre de sesión: `CHANGELOG.md` de este repo + lo que toque en `../ESTADO.md` y `../HISTORIAL.md`.
 - **Este repo no despliega nada**, así que su `main` es 🟢 en la política de `../CLAUDE.md`: Claude

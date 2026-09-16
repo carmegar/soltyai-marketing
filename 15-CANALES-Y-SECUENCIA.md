@@ -226,8 +226,10 @@ haciéndolo. Lo que queda en `bot` son los dos embudos de audiencia fría con un
 mostrar, que es donde ese mensaje sí trabaja.
 
 Lo que cambia en la home: abre con **L3** («desarrollo de software, automatización e implementación
-web a la medida para negocios colombianos»), sigue **L1**, y los 3 planes de bot se mudan completos a
-`/producto/chatbot` con sus precios intactos. **No se mata L2**, se le da destino propio.
+web a la medida para negocios colombianos»), sigue **L1**, y el bot se muda completo a
+`/producto/chatbot`. **No se mata L2**, se le da destino propio. *(El 8-sep se mudó «con sus 3
+planes y sus precios intactos»; el 15-sep los planes se despublicaron y el bot pasó a cotizarse por
+prospecto, ver `18 §4`.)*
 
 Doc canónico del orden de líneas: **`18-ARQUITECTURA-DE-OFERTA.md` §4**.
 

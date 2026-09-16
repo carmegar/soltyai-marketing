@@ -7,7 +7,8 @@ Nació como paquete de campaña para promocionar el **SaaS de chatbots especiali
 PYMEs en Colombia, producido con el plugin **claude-ads** mediante un pipeline de agentes en
 paralelo; desde 2026-07-25 es también código.
 
-**La promesa líder del bot** (titular en Meta, orgánico, outbound y la landing):
+**La promesa líder del bot** (titular en Meta y en el outbound; el orgánico y la landing llevan el
+servicio a la medida desde ago/sep-2026):
 *"Te devolvemos tiempo y ponemos orden en tu negocio: un asistente que atiende, vende y agenda 24/7
 — adaptado a tu forma de trabajar."* · Tagline: *"Más tiempo, más orden, más ventas — con un bot
 hecho a tu medida."* · Moat: **done-for-you — no te entregamos una herramienta para configurar tú; la
@@ -49,13 +50,13 @@ Node 20, ESM, **sin dependencias**: tiene que correr en segundos y no romperse p
 
 | Comando | Qué hace |
 |---|---|
-| `npm run guardrails` | **El linter del mensaje.** Convierte las decisiones ya escritas en reglas que fallan el CI: pricing COP vigente, planes superados, **el asistente de IA de propósito general** (política de WhatsApp) y **el canal web** como promesa, ángulos quemados del `03` §3, prueba social no verificable, límites de caracteres de Meta, coherencia de plazos y precios dentro de una pieza, enlaces internos rotos, fuentes de `origin` desconocidas, evidencia del swipe file. |
-| `npm run prueba` | Verifica que el linter **muerde**: corre las reglas contra `copy/_pruebas/anuncio-malo.json`, que acumula a propósito todos los errores que debe cazar. |
-| `npm run link nuevo -- --fuente=meta --audiencia=duenopyme --creatividad=c2` | Genera y **registra** el link de una pieza: UTMs + `origin` + deep-link de Telegram + WhatsApp + Calendly (`08` §2). Los UTMs se pierden al saltar al bot; el `origin` es lo único que sobrevive, y a mano se rompe. |
+| `npm run guardrails` | **El linter del mensaje.** Convierte las decisiones ya escritas en reglas que fallan el CI: pricing COP, planes superados (USD) **y planes retirados** (los 3 de bot, despublicados el 15-sep-2026: el bot se cotiza), **el asistente de IA de propósito general** (política de WhatsApp) y **el canal web** como promesa, ángulos quemados del `03` §3, prueba social no verificable, límites de caracteres de Meta, coherencia de plazos y precios dentro de una pieza, enlaces internos rotos, fuentes de `origin` desconocidas, evidencia del swipe file. Mira `copy/`, `redes/`, los `.txt` y, **si está en disco al lado, los correos de `../tools/apps/prospeccion`** (si no está, lo dice y no finge). |
+| `npm run prueba` | Verifica que el linter **muerde**: corre las reglas contra `copy/_pruebas/anuncio-malo.json`, que acumula a propósito todos los errores que debe cazar, y comprueba que cada `excluir` de una prohibición exime algo real. |
+| `npm run link nuevo -- --fuente=meta --audiencia=duenopyme --creatividad=c2` | Genera y **registra** el link de una pieza: UTMs + `origin` + deep-link de Telegram + WhatsApp + `/contacto` (`08` §2). Los UTMs se pierden al saltar al bot; el `origin` es lo único que sobrevive, y a mano se rompe. |
 | `npm run catalogo` | Tabla de todo lo vendible con precio, costo de servir y **margen**. |
 | `npm run catalogo validar` | Aplica por código las reglas del `13` §10: margen mínimo por línea, piso de $3.000.000, 50% de anticipo. |
-| `npm run catalogo cotizar -- bot-pro --meses=12 --descuento=0.3` | Cotización con IVA, margen y los avisos que correspondan. |
-| `npm run reportes` | Tablero semanal y regla de corte de la ronda, con **los dos cortes calculados**: $/lead calificado y **techo de CAC**. Los umbrales se leen del canon, no del código. |
+| `npm run catalogo cotizar -- bot-pro --meses=12 --descuento=0.3` | Cotización con IVA, margen y los avisos que correspondan. Un ítem en estado `referencia` (los planes de bot, el setup, `integracion-erp`) sale con el aviso de que el importe **no es publicable**: es la base para armar la cotización. |
+| `npm run reportes` | Tablero semanal y regla de corte de la ronda, con **los dos cortes calculados**: $/lead calificado y **techo de CAC**. El KPI que manda son las **reuniones** (`--reuniones=`, `canon.tablero.metaReunionesSemana`; la clave se llamó `demos` hasta el 15-sep-2026). Los umbrales se leen del canon, no del código. |
 | `npm run check` | Los **cinco** de arriba (`sin-dependencias` · `prueba` · `guardrails` · `catalogo validar` · `reportes validar`). Es lo que corre el CI. ⚠️ El workflow de Actions todavía corre sólo cuatro: le falta `reportes validar`. |
 
 **Datos** (`data/`, versionados — son memoria de la empresa): `canon.json` (hechos canónicos en
@@ -95,15 +96,21 @@ resultados, no contra un plan escrito en agosto.
 
 **El embudo, comprimido (un solo nivel de conversión):**
 
-1. El anuncio **no pide la venta: llena el Calendly.** El KPI es **reuniones agendadas**.
+1. El anuncio **no pide la venta: pide la reunión.** El KPI es **reuniones agendadas**
+   (`canon.tablero.kpiQueManda = "reuniones"`).
 2. El destino ofrece **3 opciones de entrada**:
    - **Prueba el bot ahora** — demo viva por **WhatsApp o Telegram** (los dos vivos; la web no).
-   - **Agenda una reunión** (la que hoy manda) — Calendly, 15 minutos.
+   - **Agenda una reunión** (la que hoy manda) — formulario de `/contacto` + invitación de Meet a
+     mano, 15 minutos (no hay Calendly desde el 9-sep-2026).
    - **Escríbenos por WhatsApp** — click-to-chat humano. ✅ Línea comercial propia desde el 11-sep-2026 (Tigo prepago, 300 570 1661).
 3. **Reunión** → oferta tester→cliente: *"te lo dejamos configurado con tus datos reales para que lo
    pruebes de verdad"* (el setup como prueba de valor).
-4. **Cierre por plan** (Esencial $290.000 · Pro $490.000 · Premium $790.000 + setup $400.000, antes
-   de IVA), o **por proyecto** si entró por Google (piso $3.000.000, 50% de anticipo).
+4. **Cierre por cotización.** El bot se cotiza por prospecto desde el 15-sep-2026 (los 3 planes se
+   retiraron de la publicación): un cobro único de adaptación, mitad al arrancar y mitad cuando el
+   bot atiende, más una mensualidad según canales, volumen, IA e integraciones; los importes de
+   referencia viven en `data/catalogo.json` (estado `referencia`) y no se publican. **Por proyecto** si
+   entró por Google: se cotiza (el cliente pone el presupuesto, 50% de anticipo); sólo la línea de web
+   lleva cifra pública («desde $400.000»).
 
 **Canal paralelo y gratuito:** **outbound** 1-a-1 **manual** sobre los 865 prospectos vivos
 (`09-OUTBOUND.md`). 🔴 **Nunca por la API de WhatsApp**, y **nunca subir esos teléfonos a Meta**
@@ -123,9 +130,11 @@ Orden operativo detallado: `15-CANALES-Y-SECUENCIA.md` + `13-PLAN-12-CLIENTES.md
   canal se probó contra nuestro propio número y el primer WABA de cliente real se registra en vivo.
   Y **nunca "un asistente de IA" abierto**: la política de IA de WhatsApp sólo permite bots de
   negocio estructurados, y romper eso no cuesta un anuncio, cuesta el canal.
-- **Pricing honesto:** manda el canon **en COP** (Esencial $290.000 / Pro $490.000 / Premium $790.000
-  + setup $400.000, antes de IVA). **Prohibido** Starter/Growth/Pro y todo el catálogo por producto en
-  USD: están **superados**.
+- **Pricing honesto:** manda el canon **en COP**, y desde el 15-sep-2026 **el bot no lleva cifra
+  pública**: sus 3 planes, el setup y el excedente son `referencia` (se cotiza con ellos, no se
+  publican; prohibición `planesRetirados`). **Prohibido** Starter/Growth/Pro y todo el catálogo por
+  producto en USD: están **superados**. El **motor contable no se ofrece** (no es producto a vender);
+  la integración contable DIAN a la medida sí.
 - **Atribución aproximada:** la plataforma no ve el salto al bot; se cierra con el parámetro `start`
   del deep-link + conteo manual de leads → reuniones → cierres (ver `08-TRACKING-SETUP.md`).
 - **Versionado desde 2026-07-25** en su propio repo privado `carmegar/soltyai-marketing`.
@@ -133,9 +142,10 @@ Orden operativo detallado: `15-CANALES-Y-SECUENCIA.md` + `13-PLAN-12-CLIENTES.md
   `15-CANALES-Y-SECUENCIA.md`. Los docs `04`, `06`, `07` y `10` siguen valiendo **como método**
   (estrategia, economía unitaria, creatividad, día a día de una ronda); el orden, el monto y el
   calendario los mandan el `15` y el `13`.
-- 🔴 **El linter no mira `redes/` ni los `.txt`**, así que el copy realmente **publicado** nunca pasó
-  por un guardrail. Es la razón por la que 4 líneas convivieron meses con una regla que las prohibía.
-  Está en el tablero.
+- ✅ **El linter mira `redes/` y los `.txt` desde el 20-ago-2026**, y desde el **15-sep** también los
+  correos del outbound en `../tools/apps/prospeccion` cuando el repo está en disco (si no está, lo
+  dice; no finge). Hasta el 20-ago el copy realmente publicado nunca pasó por un guardrail, y por
+  eso 4 líneas convivieron meses con una regla que las prohibía.
 
 ---
 
