@@ -8,6 +8,7 @@
  */
 import { leer, leerJson, listar } from '../lib/io.js';
 import { canon } from '../lib/canon.js';
+import { normalizar } from '../lib/texto.js';
 import { mensajeLider, piezasDeCopy, prohibiciones } from './reglas.js';
 
 const esteEs = (f) => f.startsWith('copy/_pruebas/');
@@ -85,6 +86,27 @@ for (const [nombre, regla] of Object.entries(canon.prohibiciones)) {
   console.log(`    ${exime ? '✓' : '✖'} sin la exclusión canta (${sinRespetar.length} hallazgo/s): la exclusión exime algo real`);
   console.log(`    ${calla ? '✓' : '✖'} con la exclusión no queda ningún hallazgo en lo excluido`);
   if (!exime || !calla) fallos++;
+}
+
+/*
+ * Patrones que tienen que cazar una frase EXACTA que ya estuvo publicada (2026-09-16). El fixture
+ * de arriba sólo sabe qué regla se disparó, así que un patrón nuevo dentro de `metricaSinFuente`
+ * queda tapado por los que ya la encienden. Acá se prueba el patrón contra la frase, normalizada
+ * igual que en reglas.js. La primera entrada es el hueco que encontró la auditoría de la landing:
+ * «hasta el 40% de su jornada» (/servicios, Problems.astro:11) pasaba porque el patrón 2 listaba
+ * «sus» y no «su». Si alguien quita «su» del patrón, esto falla.
+ */
+const FRASES_QUE_CAZAN = [
+  ['metricaSinFuente', 'Tus empleados pierden hasta el 40% de su jornada en tareas repetitivas'],
+  ['metricaSinFuente', 'Recupera el 30% de sus horas cada semana'],
+];
+for (const [nombre, frase] of FRASES_QUE_CAZAN) {
+  const patrones = (canon.prohibiciones[nombre]?.patrones ?? []).map((x) => new RegExp(x, 'i'));
+  const plano = normalizar(frase);
+  const caza = patrones.some((re) => re.test(plano));
+  console.log(`\n  patrón · ${nombre} → «${frase}»`);
+  console.log(`    ${caza ? '✓' : '✖'} ${caza ? 'lo caza' : 'NO lo caza: el patrón dejó de cubrir una frase que ya estuvo publicada'}`);
+  if (!caza) fallos++;
 }
 
 if (fallos) {

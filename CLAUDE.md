@@ -164,7 +164,11 @@ medición: se usa como guion, y los números salen de `src/reportes`.
 Casi siempre es editar `data/canon.json` (patrones, exenciones, límites) — no hace falta tocar
 código. Si la regla necesita lógica, va en `src/guardrails/reglas.js` **y** se agrega su caso al
 fixture `copy/_pruebas/anuncio-malo.json` con su nombre en `_esperados`: una regla sin prueba se
-apaga sola en el primer refactor.
+apaga sola en el primer refactor. **Si lo que entra es un patrón nuevo dentro de una regla que ya
+dispara** (el caso del 16-sep-2026: «su» en el patrón 2 de `metricaSinFuente`), el fixture no lo
+distingue, porque sólo sabe qué regla se encendió: la prueba va en `FRASES_QUE_CAZAN` de
+`src/guardrails/prueba.js`, con la frase exacta que se escapó, y se comprueba que el patrón viejo
+no la cazaba antes de dar el verde.
 
 Al ajustar patrones, revisar los **falsos positivos** contra los docs: un doc puede (y debe) nombrar
 lo prohibido para explicarlo. Las exenciones se buscan en una ventana de ±1 línea y se ignoran los
