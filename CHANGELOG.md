@@ -1,5 +1,14 @@
 # Changelog · soltyai-marketing
 
+## 2026-09-17 — Segunda reseña en el GBP: Swisscontact, 5 estrellas
+
+**Changed · `21-SEO-Y-GEO.md` (§1, §2 filas GBP y Reseñas), `redes/google-business-profile.md`.**
+Marcela (Swisscontact) dejó su reseña el 16-sep-2026, 5 estrellas; el aviso de Google llegó a
+`carlos@soltyai.com` y se vio en la primera lectura del buzón desde Claude Code (conector Gmail,
+ver `security/CHANGELOG.md` de hoy). Con la de Bucaradomi son **las dos referencias reales** que el
+plan pedía, y las dos filas pasan de 🔴 a 🟠: lo que queda es **responderla desde el perfil** (clic
+del fundador) y replicar las dos en Clutch. Guardrails en verde.
+
 ## 2026-09-16 — Revisión con las skills: competencia por frente, techo por reunión, guiones al vertical, «su» en el guardrail
 
 Paquete P2 de la sesión de revisión con las skills (`claude-ads:ads-competitor`, `ads-math`,

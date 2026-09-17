@@ -27,7 +27,7 @@
 > web`, `Consultor informático` y `Asistencia y servicios informáticos`; la portada NO es el banner
 > de YouTube (decía «chatbots») sino `solty-gbp-portada.png`, generada con `generar-portadas.ps1`
 > con el titular del servicio; `/producto/domicilios-ops` ya responde 200, así que el post 1 salió con
-> su enlace. Enlace de reseñas: `https://g.page/r/Cfnm6edFflNkEBM/review`. Bucaradomi ya dejó la suya.
+> su enlace. Enlace de reseñas: `https://g.page/r/Cfnm6edFflNkEBM/review`. Bucaradomi dejó la suya al abrir y Swisscontact la dejó el 16-sep-2026: las dos de 5 estrellas, las dos referencias reales ya están en el perfil.
 >
 > ### El mensaje líder de este canal es el servicio a la medida
 >

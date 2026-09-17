@@ -16,7 +16,7 @@
 
 1. **Esta semana:** Bing Webmaster Tools importando desde Search Console (5 minutos, gratis, y es
    la puerta a ChatGPT y Copilot); perfil gratis en Clutch y en Crunchbase con el mismo nombre y
-   los mismos datos del GBP; pedirle la reseña a Swisscontact; corregir el JSON-LD de la landing
+   los mismos datos del GBP; ~~pedirle la reseña a Swisscontact~~ (✅ dejada el 16-sep-2026, 5 estrellas); corregir el JSON-LD de la landing
    para que diga teléfono, razón social y NIT (lo hace el frente de la landing).
 2. **En un mes:** GoodFirms, intentar Bing Places (no está claro que acepte Colombia), primera
    ronda de medición GEO (§7) y una página que responda «integración contable y factura
@@ -39,7 +39,7 @@
 
 | Plano | Hoy (2026-09-15) | Falta | Peso |
 |---|---|---|---|
-| Google Business Profile | Creado y verificado con `carlos@soltyai.com`, verificación instantánea por coincidencia de dominio (`redes/google-business-profile.md`). 1 reseña (Bucaradomi) | Reseña de Swisscontact; post semanal; que salga por nombre (§3) | 🔴 |
+| Google Business Profile | Creado y verificado con `carlos@soltyai.com`, verificación instantánea por coincidencia de dominio (`redes/google-business-profile.md`). **2 reseñas de 5 estrellas (Bucaradomi y Swisscontact, la segunda el 16-sep-2026)** | Responder la de Swisscontact desde el perfil; post semanal; que salga por nombre (§3) | 🟠 |
 | Search Console | Propiedad verificada, sitemap enviado | Nada. Vigilar cobertura una vez al mes | ✅ |
 | Landing (Astro) | `Organization` + `WebSite` + `ProfessionalService` + `SoftwareApplication` en JSON-LD; `sameAs` a 5 redes; `robots.txt` abierto; sitemap | El `Organization` no declara `legalName`, `taxID`, `telephone`, `foundingDate` ni `address`; el `sameAs` no incluye GitHub, el mapa del GBP ni los directorios; `/en/` sigue vendiendo el bot (el `hreflang` ya está apagado por eso) | 🟠 |
 | Página por búsqueda | `/servicios` (4 subpáginas), `/producto/domicilios-ops`, `/producto/chatbot` | No hay página para «integración contable / factura electrónica DIAN» ni para «páginas web Bucaramanga» (ver §4) | 🟠 |
@@ -48,7 +48,7 @@
 | LinkedIn | Página de empresa + perfil del fundador | Que ambos digan «SoltyAI», «Bucaramanga» y el mismo teléfono y web | 🟡 |
 | GitHub | `carmegar` con repos privados | Un README público de la org o del perfil que nombre SoltyAI y enlace soltyai.com (decisión del fundador, §8) | 🟡 |
 | carmegar.dev | Enlaza a soltyai.com | Que la mención diga «SoltyAI S.A.S., Bucaramanga» y no sólo el link | 🟡 |
-| Reseñas | 1 (Google, Bucaradomi) | Swisscontact en Google; las mismas dos en Clutch | 🔴 |
+| Reseñas | 2 (Google: Bucaradomi y Swisscontact, ambas de 5 estrellas; la segunda el 16-sep-2026) | Las mismas dos en Clutch | 🟠 |
 | Blog / contenido indexable | Ninguno. Los videos de `16` no se han grabado | No se abre blog. Los posts del GBP y los Shorts con título de búsqueda son el contenido indexable de 2026 (`20 §C6`) | 🟡 |
 | Medición GEO | Ninguna | Protocolo mensual de §7 | 🟠 |
 
